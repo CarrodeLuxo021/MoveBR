@@ -12,7 +12,7 @@
     </header>
 
     <main>
-        <form class="form-container">
+        <form class="form-container" action="/cadastrar" method="post">
             <label for="name">Nome:</label>
             <input type="text" id="name" placeholder="Insira seu nome completo">
             
@@ -26,16 +26,23 @@
             <input type="text" id="cnh" placeholder="Insira sua CNH D">
             
             <label for="phone">Telefone:</label>
-            <input type="text" id="phone" placeholder="Insira seu telefone com DDD">
+            <input type="text" id="telefone" placeholder="Insira seu telefone com DDD">
+            
+            <label for="periodo">Periodo:</label>
+            <input type="text" id="periodo" placeholder="Insira seu periodo de trabalho">
+            
             
             <label for="email">Email:</label>
             <input type="email" id="email" placeholder="Insira seu email">
+
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" placeholder="Insira sua cidade">
             
             <label for="address">Endereço:</label>
-            <input type="text" id="address" placeholder="Insira seu endereço">
+            <input type="text" id="endereco" placeholder="Insira seu endereço">
             
             <label for="password">Senha:</label>
-            <input type="password" id="password" placeholder="Insira sua senha">
+            <input type="password" id="senha" placeholder="Insira sua senha">
             
             <div class="button-container">
                 <button type="submit" class="cadastrar">Cadastrar</button>
