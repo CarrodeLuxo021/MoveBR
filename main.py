@@ -10,12 +10,12 @@ def pag_inicio():
     return render_template('index.html')
 
 
-@app.route("/cadastrar", methods=["GET"])
+@app.route("/cadastrar-motorista", methods=["GET"])
 def pag_cadastro():
-    return render_template('cadastro.html')
+    return render_template('pag-motorista.html')
 
 
-@app.route("/cadastrar", methods=["POST"])
+@app.route("/cadastrar-motorista", methods=["POST"])
 def cadastrar():
 
     nome = request.form["nome"]
@@ -34,13 +34,37 @@ def cadastrar():
 
     mycursor = mydb.cursor()
 
-    sql = "INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, m_periodos, tel_motorista, email, senha) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    valores = (nome, cpf, cnh, cnpj, cidade, endereco, periodo, telefone, email, senha)
+    sql = f"""
+    INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, m_periodos, tel_motorista, email, senha)
+    VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}', '{cidade}', '{endereco}', '{periodo}', '{telefone}', '{email}', '{senha}')
+    """
 
-    mycursor.execute(sql, valores)    
+    mycursor.execute(sql)    
     mydb.commit()
-    
-    return render_template('login.html')
+    return render_template('pag-aluno.html')
 
+@app.route("/cadastrar-aluno", methods=["POST"])
+def cadastrar_aluno():
+    nome_aluno = request.form["nome_aluno"]
+    endereco = request.form["endereco"]
+    cidade = request.form["cidade"]
+    idade = request.form["idade"]
+    nome_responsavel = request.form["nome_responsavel"]
+    tel_responsavel = request.form["tel_responsavel"]
+    a_periodo = request.form["a_periodo"]
+    
+    mydb = Conexao.conectar()
+    mycursor = mydb.cursor()
+
+    sql = """
+    INSERT INTO tb_alunos (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel, a_periodo)
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """
+    valores = (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel, a_periodo)
+
+    mycursor.execute(sql, valores)
+    mydb.commit()
+
+    return render_template('pag-aluno.html')
 
 app.run(debug=True)
