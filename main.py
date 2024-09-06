@@ -65,6 +65,6 @@ def cadastrar_aluno():
     mycursor.execute(sql, valores)
     mydb.commit()
 
-    return render_template('pag-aluno.htm')
+    return render_template('pag-aluno.html')
 
 app.run(debug=True)
