@@ -1,0 +1,64 @@
+-- Criação do banco de dados e seleção
+CREATE DATABASE movebr;
+USE movebr;
+
+-- Criação da tabela tb_alunos
+CREATE TABLE tb_alunos (
+    id_aluno INT AUTO_INCREMENT,
+    nome_aluno VARCHAR(50),
+    endereco VARCHAR(100),
+    cidade VARCHAR(100),
+    idade SMALLINT,
+    nome_responsavel VARCHAR(100),
+    tel_responsavel VARCHAR(15),
+    PRIMARY KEY (id_aluno)
+);
+
+-- Criação da tabela tb_motoristas
+CREATE TABLE tb_motoristas (
+    nome varchar(60),
+    cpf VARCHAR(11) PRIMARY KEY,
+    cnh VARCHAR(100),
+    cnpj int,
+    cidade VARCHAR(100),
+    endereco VARCHAR(100),
+    tel_motorista VARCHAR(15),
+    email VARCHAR(50),
+    senha varchar(50)
+);
+
+-- Criação da tabela tb_alunos_registrados
+CREATE TABLE tb_alunos_registrados (
+    id_aluno INT,
+    cpf VARCHAR(11),
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf) REFERENCES tb_motoristas(cpf)
+);
+
+-- Criação da tabela historico_pagamento
+CREATE TABLE historico_pagamento (
+    id_fatura INT AUTO_INCREMENT,
+    valor FLOAT,
+    mes INT,
+    id_aluno INT,
+    cpf VARCHAR(11),
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf) REFERENCES tb_motoristas(cpf),
+    PRIMARY KEY (id_fatura)
+);
+
+-- Criação da tabela tb_faltas
+CREATE TABLE tb_faltas (
+    data DATE,
+    id_aluno INT,
+    cpf VARCHAR(11),
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf) REFERENCES tb_motoristas(cpf)
+);
+
+-- Criação do usuário e concessão de privilégios
+CREATE USER 'movebr'@'%' IDENTIFIED BY '123456789';
+
+GRANT ALL PRIVILEGES ON movebr.* TO 'movebr'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
