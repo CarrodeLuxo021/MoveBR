@@ -11,7 +11,6 @@ CREATE TABLE tb_alunos (
     idade SMALLINT,
     nome_responsavel VARCHAR(100),
     tel_responsavel VARCHAR(15),
-    a_periodo VARCHAR(10),
     PRIMARY KEY (id_aluno)
 );
 
@@ -23,7 +22,6 @@ CREATE TABLE tb_motoristas (
     cnpj int,
     cidade VARCHAR(100),
     endereco VARCHAR(100),
-    m_periodos VARCHAR(10),
     tel_motorista VARCHAR(15),
     email VARCHAR(50),
     senha varchar(50)
