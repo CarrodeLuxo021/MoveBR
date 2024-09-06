@@ -46,7 +46,7 @@ header h1 {
     position: fixed;
     top: 10%;
     right: -400px; /* Mover para fora da tela */
-    height: 80%;
+    height: 100%;
     width: 170px;
     background-color: #00000086;
     padding: 20px;
