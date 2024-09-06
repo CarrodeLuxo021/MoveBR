@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="/static/listar-aluno.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Movebr</h1>
+    </header>
+
+    <main>
+        <table class="tabela-alunos">
+        
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">Expandir</button></td>
+                </tr>
+                <tr class="detalhes">
+                    <td colspan="4">Detalhes </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">Expandir</button></td>
+                </tr>
+                <tr class="detalhes">
+                    <td colspan="4">Detalhes </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">Expandir</button></td>
+                </tr>
+                <tr class="detalhes">
+                    <td colspan="4">Detalhes </td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>Rodapé da Página</p>
+    </footer>
+
+    <script>
+        function toggleExpandir(button) {
+            const row = button.parentElement.parentElement.nextElementSibling;
+            row.classList.toggle("expandir");
+            button.textContent = row.classList.contains("expandir") ? "Recolher" : "Expandir";
+        }
+    </script>
 </body>
 </html>
