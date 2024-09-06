@@ -3,40 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoveBR</title>
+    <title>MoveBR - Motoristas</title>
     <link rel="stylesheet" href="/static/css/pag-inicial-motorista.css">
 </head>
 <body>
     <header>
         <h1>MoveBR</h1>
         <div class="menu-icon" id="menu-icon">
-            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Ícone de perfil" id="profile-icon"/>
         </div>
     </header>
     
-    <nav id="menu" class="menu">
-        <button class="card" id="Cash">
-            <img src="/static/icones/Cash.png" alt="" />
+    <nav id="menu" class="menu" role="navigation">
+        <button class="card" id="Cash" aria-label="Pagamentos">
+            <img src="/static/icones/Cash.png" alt="Ícone de pagamentos" />
             <p>Pagamentos</p>
         </button>
-        <button class="card" id="Rotas">
-            <img src="/static/icones/Road.png" alt="" />
+        <button class="card" id="Rotas" aria-label="Rotas">
+            <img src="/static/icones/Road.png" alt="Ícone de rotas" />
             <p>Rotas</p>
         </button>
      
-        <button class="card" id="aluno">
-            <img src="https://img.icons8.com/ios-filled/100/ffffff/student-male.png" alt="Aluno" />
-            <p>Alunos</p>
+        <button class="card" id="escola">
+                <img src="/static/icones/escola.png" alt="escola" />
+                <p>ESCOLAS</p>
         </button>
-        <button class="card" id="configuracao">
-            <img src="https://img.icons8.com/ios-filled/100/ffffff/settings.png" alt="Configuração" />
+        <button class="card" id="configuracao" aria-label="Configuração">
+            <img src="https://img.icons8.com/ios-filled/100/ffffff/settings.png" alt="Ícone de configurações" />
             <p>Configuração</p>
         </button>
-
-        
     </nav>
 
+    <main>
+        <section id="about" class="section">
+            <h2>Bem-vindo, Motorista!</h2>
+            <p>Como parte da equipe MoveBR, você desempenha um papel crucial em garantir que nossos passageiros cheguem ao seu destino com segurança e pontualidade. Nesta seção, você encontrará informações úteis, ferramentas e recursos para facilitar seu trabalho.</p>
+    
+        </section>
 
-    <script src="/static/js/pag-inicial-motorista.js"></script>
+        <section id="resources" class="section">
+            <h2>Recursos para Motoristas</h2>
+            <ul>
+                <li>Guia do Motorista: <a href="/static/docs/guia-motorista.pdf" target="_blank">Baixar PDF</a></li>
+                <li>Relatórios de Viagem: Acesse e visualize os relatórios das suas viagens diárias.</li>
+                <li>Assistência e Suporte: Entre em contato com nosso suporte técnico para qualquer problema ou dúvida.</li>
+                <li>Treinamento Online: Acesse módulos de treinamento para aprimorar suas habilidades e conhecimentos.</li>
+            </ul>
+            <img src="https://www.example.com/imagens/recursos.png" alt="Imagem de recursos" style="width: 100%; max-width: 600px; border-radius: 8px;">
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="/js/pag-inicial-motorista.js"></script>
 </body>
 </html>

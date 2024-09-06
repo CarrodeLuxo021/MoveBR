@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e4e4e4; /* Verde escuro */
+    background-color: #e4e4e4; /* Cinza claro */
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -44,10 +44,10 @@ header h1 {
 /* Inicialmente, o menu estará fora da tela (à direita) */
 .menu {
     position: fixed;
-    top: 10%;
+    top: 5%;
     right: -400px; /* Mover para fora da tela */
-    height: 100%;
-    width: 170px;
+    height: 80%;
+    width: 140px;
     background-color: #00000086;
     padding: 20px;
     display: flex;
@@ -57,7 +57,6 @@ header h1 {
     transition: right 0.5s ease, transform 0.5s ease;
     transform: scale(1); /* Sem redimensionamento inicialmente */
     opacity: 1;
-    
 }
 
 /* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
@@ -104,6 +103,7 @@ header h1 {
     transform: scale(0.98);
 }
 
+/* Estilo do container principal */
 .container {
     display: flex;
     justify-content: center;
@@ -113,6 +113,69 @@ header h1 {
     background-color: #004400;
 }
 
+/* Estilos para as novas seções */
+main {
+    flex: 1;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #f4f4f4; /* Fundo claro para contraste */
+    color: #333; /* Texto escuro para melhor legibilidade */
+}
+
+.section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Estilo do formulário de contato */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
 @media screen and (min-width: 600px) {
     .menu {
         flex-direction: column;
@@ -121,5 +184,17 @@ header h1 {
 
     .container p {
         font-size: 1.5rem;
+    }
+
+    .section {
+        padding: 40px;
+    }
+
+    input, textarea {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
     }
 }
