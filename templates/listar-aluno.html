@@ -8,49 +8,60 @@
 </head>
 <body>
     <header>
-        <h1>Movebr</h1>
+        <h1>MoveBR</h1>
     </header>
 
     <main>
         <table class="tabela-alunos">
-        
             <tbody>
-                <tr>
-                    <td></td>
-                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">Expandir</button></td>
+                <!-- Aluno 1 -->
+                <tr class="aluno">
+                    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
+                    <td>Rebeca Andrade</td>
+                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">▼</button></td>
                 </tr>
-                <tr class="detalhes">
-                    <td colspan="4">Detalhes </td>
+                <tr class="aluno-detalhes detalhes">
+                    <td colspan="3">Detalhes do Aluno 1</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">Expandir</button></td>
+
+                <!-- Aluno 2 -->
+                <tr class="aluno">
+                    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
+                    <td>Rebeca Andrade</td>
+                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">▼</button></td>
                 </tr>
-                <tr class="detalhes">
-                    <td colspan="4">Detalhes </td>
+                <tr class="aluno-detalhes detalhes">
+                    <td colspan="3">Detalhes do Aluno 2</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">Expandir</button></td>
+
+                <!-- Aluno 3 -->
+                <tr class="aluno">
+                    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
+                    <td>Rebeca Andrade</td>
+                    <td><button class="btn-expandir" onclick="toggleExpandir(this)">▼</button></td>
                 </tr>
-                <tr class="detalhes">
-                    <td colspan="4">Detalhes </td>
+                <tr class="aluno-detalhes detalhes">
+                    <td colspan="3">Detalhes do Aluno 3</td>
                 </tr>
-                
-                
             </tbody>
         </table>
     </main>
 
     <footer>
-        <p>Rodapé da Página</p>
+        <p></p>
     </footer>
 
     <script>
         function toggleExpandir(button) {
-            const row = button.parentElement.parentElement.nextElementSibling;
-            row.classList.toggle("expandir");
-            button.textContent = row.classList.contains("expandir") ? "Recolher" : "Expandir";
+            // Encontrar a linha de detalhes correspondente ao aluno
+            const alunoRow = button.closest('.aluno');
+            const detalhesRow = alunoRow.nextElementSibling;
+
+            // Alternar a exibição da linha de detalhes
+            detalhesRow.classList.toggle('expandir');
+            
+            // Alterar o símbolo do botão
+            button.textContent = detalhesRow.classList.contains('expandir') ? '▲' : '▼';
         }
     </script>
 </body>
