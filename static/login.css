@@ -1,88 +1,120 @@
+/* Reset básico para garantir consistência entre navegadores */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
+/* Estilização do corpo da página */
 body {
-    background-color: #e8f0f2;
+    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Cor de fundo clara para uma aparência clean */
+    color: #333; /* Cor do texto para bom contraste */
+}
+
+/* Estilização do cabeçalho */
+header {
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
+    color: #fff; /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+}
+
+.logo img {
+    width: 80px; /* Tamanho da imagem do logo */
+    height: auto; /* Manter a proporção da imagem */
+    margin-left: 10px;
+}
+
+/* Estilização do main */
+main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-.container {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.login-box {
-    background-color: #f2f2f2;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #4ba3c3;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 160px); /* Altura mínima: 100% da altura da tela menos o espaço do header e footer */
+    padding: 20px; /* Adiciona espaçamento interno para garantir que o formulário não encoste nas bordas */
 }
 
-label {
-    text-align: left;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
+/* Estilização do container-form */
+.container-form {
+    max-width: 1000px;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-input[type="email"],
-input[type="password"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+/* Layout dos itens do formulário */
+.itens-form {
+    display: flex;
+    flex-wrap: wrap; /* Permitir quebra de linha para responsividade */
+    gap: 20px; /* Espaçamento entre os containers */
 }
 
-button {
-    padding: 10px;
-    background-color: #4ba3c3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+/* Estilização dos containers de lado */
+.lado-esquerdo-container,
+.lado-direito-container {
+    flex: 1; /* Fazer os containers ocuparem espaço igual */
+    min-width: 450px; /* Garantir que os containers não fiquem muito estreitos */
 }
 
-button:hover {
-    background-color: #3a8ca0;
+/* Estilização dos labels */
+.container-form label {
+    display: block; /* Forçar os labels a ocupar uma linha inteira */
+    margin-bottom: 8px; /* Espaço entre o label e o campo de entrada */
+    font-weight: 600; /* Destacar o texto dos labels com um peso de fonte mais forte */
+    color: #346D7E; /* Azul petróleo para os labels para combinar com o cabeçalho */
 }
 
-.forgot-password {
-    text-align: right;
-    margin-bottom: 20px;
+/* Estilização dos campos de entrada */
+.container-form input[type="text"],
+.container-form input[type="email"],
+.container-form input[type="password"] {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 12px; /* Espaçamento interno aumentado para conforto */
+    margin-bottom: 15px; /* Espaço entre os campos de entrada */
+    border: 1px solid #ddd; /* Borda leve para os campos */
+    border-radius: 6px; /* Bordas arredondadas para um visual mais moderno */
+    font-size: 16px; /* Tamanho de fonte adequado para leitura */
+    background-color: #f9f9f9; /* Fundo claro e suave para os campos de entrada */
 }
 
-.forgot-password a {
-    color: #555;
-    font-size: 12px;
-    text-decoration: none;
+/* Estilização dos botões */
+.btn-container {
+    text-align: right; /* Centralizar os botões */
+    margin-top: 20px; /* Espaço acima dos botões */
 }
 
-.register {
-    margin-top: 20px;
-    font-size: 14px;
+.btn-container button {
+    background-color: #346D7E; /* Azul petróleo para os botões */
+    color: #fff; /* Texto bege claro para contraste */
+    border: none; /* Remover bordas padrão dos botões */
+    padding: 12px 24px; /* Espaçamento interno dos botões */
+    border-radius: 6px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor em forma de mão ao passar sobre o botão */
+    font-size: 16px; /* Tamanho de fonte adequado */
+    margin: 5px; /* Espaço entre os botões */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves para cor e efeito de clique */
 }
 
-.register a {
-    color: #4ba3c3;
-    text-decoration: none;
+.btn-container button:hover {
+    background-color: #6DA6B1; /* Azul claro ao passar o mouse sobre o botão */
+}
+
+.btn-container button:active {
+    transform: scale(0.98); /* Efeito de clique para um feedback visual adicional */
+}
+
+/* Estilização do rodapé */
+footer {
+    background-image: linear-gradient(to right, #346D7E 0%, #6DA6B1 100%);
+    color: #fff; /* Texto claro para contraste */
+    padding: 30px; /* Espaçamento interno */
+    text-align: center; /* Centralizar o conteúdo */
+    position: fixed; /* Manter o rodapé fixo na parte inferior */
+    bottom: 0;
+    width: 100%; /* Ocupa toda a largura da página */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
 }

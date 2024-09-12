@@ -1,33 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login MoveBR</title>
+    <title>Cadastro do Aluno</title>
     <link rel="stylesheet" href="../static/login.css">
 </head>
 <body>
-    <div class="container">
-        <div class="login-box">
-            <h1>MoveBR</h1>
-            <form>
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Insira seu e-mail">
-                
-                <label for="password">Senha:</label>
-                <input type="password" id="password" placeholder="Insira sua senha">
-                
-                <div class="forgot-password">
-                    <a href="#">Esqueceu sua senha?</a>
+
+    <header>
+        <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
+    </header>
+
+    <main>
+        <form class="container-form">
+            <div class="itens-form">
+                <div class="lado-esquerdo-container">
+                    <label for="nomeAluno">Nome:</label>
+                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva">
+                    
+                    <label for="nomeResponsavel">Nome do responsável:</label>
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza">
+                    
+                    <label for="telefoneResponsavel">Telefone do responsável:</label>
+                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000">
+                    
+                    <label for="cpfResponsavel">CPF do responsável:</label>
+                    <input type="text" id="cpfResponsavel" placeholder="ex: 000.000.000-00">
                 </div>
-
-                <button type="submit">logar</button>
-            </form>
-
-            <div class="register">
-                <p>Não possui um cadastro? <a href="#">Cadastrar-se</a></p>
+                
+                <div class="lado-direito-container">
+                    <label for="escola">Escola:</label>
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul">
+                    
+                    <label for="emailAluno">Email:</label>
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
+                    
+                    <label for="endereçoAluno">Endereço:</label>
+                    <input type="text" id="endereçoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
+                    
+                    <label for="senhaAluno">Senha:</label>
+                    <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
+                </div>
             </div>
-        </div>
-    </div>
+
+            <div class="btn-container">
+                <button type="submit" class="cadastrar">Cadastrar</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+    </footer>
+    
 </body>
 </html>
