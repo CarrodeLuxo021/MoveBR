@@ -14,6 +14,7 @@ body {
     align-items: center;
     height: 100vh;
     justify-content: space-between;
+    position: relative; /* Adicionado para garantir que o menu fique sobreposto */
 }
 
 header {
@@ -41,37 +42,33 @@ header h1 {
     filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
 }
 
-/* Inicialmente, o menu estará fora da tela (à direita) */
+/* Menu desliza a partir da direita */
 .menu {
-    position: fixed;
-    top: 10%;
-    right: -400px; /* Mover para fora da tela */
-    height: 80%;
-    width: 170px;
-    background-color: #00000086;
+    position: fixed; /* Fixa o menu na tela */
+    top: 0; /* Alinha ao topo da página */
+    right: -300px; /* Mova o menu para fora da tela à direita */
+    height: 100%; /* Ocupa a altura total da tela */
+    width: 250px; /* Largura do menu */
+    background-color: rgba(0, 0, 0, 0.8); /* Cor de fundo escura com opacidade */
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 10px 0 0 10px;
-    transition: right 0.5s ease, transform 0.5s ease;
-    transform: scale(1); /* Sem redimensionamento inicialmente */
-    opacity: 1;
-    
+    border-radius: 0 10px 10px 0; /* Bordas arredondadas no lado direito */
+    transition: right 0.3s ease; /* Transição suave ao deslizar */
+    z-index: 1000; /* Garante que o menu fique acima de outros elementos */
 }
 
 /* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
 .menu.show {
     right: 0; /* Move o menu para dentro da tela */
-    transform: scale(0.9); /* Reduz o tamanho um pouco */
-    opacity: 1;
 }
 
 /* Estilo dos cards */
 .card {
-    background-color: #d3d3d300;
+    background-color: rgba(211, 211, 211, 0.3); /* Cor de fundo semi-transparente */
     border: none;
-    padding: 40px;
+    padding: 20px; /* Ajustado para mais espaçamento */
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
@@ -104,22 +101,26 @@ header h1 {
     transform: scale(0.98);
 }
 
-.container {
+.container-principal {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     height: calc(100vh - 80px); /* Altura restante após o header */
-    background-color: #004400;
+    padding: 20px;
+}
+
+.titulo {
+    text-align: center;
+    color: #000; /* Cor do texto */
 }
 
 @media screen and (min-width: 600px) {
     .menu {
-        flex-direction: column;
-        justify-content: center;
+        width: 300px; /* Largura do menu em telas maiores */
     }
-
-    .container p {
+    
+    .container-principal p {
         font-size: 1.5rem;
     }
 }

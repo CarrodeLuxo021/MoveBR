@@ -8,13 +8,16 @@ app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('index.html')
+    return render_template('pag-inicial.html')
 
 
 @app.route("/cadastrar-motorista", methods=["GET"])
-def pag_cadastro():
+def pag_cadastro_motorista():
     return render_template('pag-motorista.html')
 
+@app.route("/cadastrar-aluno", methods=["GET"])
+def pag_cadastro_aluno ():
+    return render_template('cadastro-aluno.html')
 
 @app.route("/cadastrar-motorista", methods=["POST"])
 def cadastrar():
@@ -35,13 +38,13 @@ def cadastrar():
     mycursor = mydb.cursor()
 
     sql = f"""
-    INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, m_periodos, tel_motorista, email, senha)
+    INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, tel_motorista, email, senha)
     VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}', '{cidade}', '{endereco}', '{telefone}', '{email}', '{senha}')
     """
 
     mycursor.execute(sql)    
     mydb.commit()
-    return render_template('pag-aluno.html')
+    return render_template('pag-inicial.html')
 
 @app.route("/cadastrar-aluno", methods=["POST"])
 def cadastrar_aluno():
@@ -52,20 +55,23 @@ def cadastrar_aluno():
     nome_responsavel = request.form["nome_responsavel"]
     tel_responsavel = request.form["tel_responsavel"]
     
+    # Conectar ao banco de dados
     mydb = Conexao.conectar()
     mycursor = mydb.cursor()
 
+    # Instrução SQL corrigida
     sql = """
-    INSERT INTO tb_alunos (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel, a_periodo)
-    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO tb_alunos (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel)
+    VALUES (%s, %s, %s, %s, %s, %s)
     """
     valores = (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel)
 
+    # Executar a instrução SQL e fazer commit
     mycursor.execute(sql, valores)
     mydb.commit()
 
-    return render_template('pag-aluno.html')
-
+    # Renderizar a página de inicial
+    return render_template('pag-inicial.html')
 
 
 @app.route("/login-aluno", methods=["POST"])

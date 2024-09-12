@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoveBR</title>
+    <link rel="stylesheet" href="../static/css/pag-motorista.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
+    </header>
+
+    <main>
+        <div class="itens-form">
+            <form class="container-form" action="/cadastrar-aluno" method="post">
+                <div class="lado-esquerdo-container">
+                    <label for="nome_aluno">Nome do Aluno:</label>
+                    <input type="text" id="nome_aluno" name="nome_aluno" placeholder="Ex: João da Silva">
+                    
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
+                    
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="ex: São Paulo">
+                    
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="idade" name="idade" placeholder="ex: 10" min="1">
+                </div>
+                
+                <div class="lado-direito-container">
+                    <label for="nome_responsavel">Nome do Responsável:</label>
+                    <input type="text" id="nome_responsavel" name="nome_responsavel" placeholder="ex: Maria da Silva">
+                    
+                    <label for="tel_responsavel">Telefone do Responsável:</label>
+                    <input type="text" id="tel_responsavel" name="tel_responsavel" placeholder="ex: (00) 0000-0000">
+                </div>
+                
+                <button type="submit" class="cadastrar">Cadastrar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>
