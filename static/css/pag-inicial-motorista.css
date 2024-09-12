@@ -170,6 +170,36 @@ button {
     cursor: pointer;
     font-size: 1rem;
 }
+/* Estilo para o menu superior (top-menu) */
+.top-menu {
+   
+    width: 100%;
+    background-color: #346D7E; /* Mesma cor do header */
+    display: flex;
+    justify-content: space-around; /* Espaçamento uniforme entre os itens */
+    align-items: center;
+    padding: 10px; /* Espaçamento interno */
+    z-index: 100; /* Garantir que o menu esteja no topo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+}
+
+.top-menu a {
+    color: #ffcc00; /* Amarelo como o outro menu */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 20px; /* Espaçamento interno nos links */
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.top-menu a:hover {
+    color: #ffffff; /* Cor branca ao passar o mouse */
+    background-color: #6DA6B1; /* Fundo verde mais claro ao passar o mouse */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+/* Estilo para garantir espaçamento entre o menu superior e o restante do conteúdo */
+
 
 button:hover {
     background-color: #0056b3;
@@ -180,6 +210,7 @@ button:hover {
     .menu {
         flex-direction: column;
         justify-content: center;
+       
     }
 
     .container p {
