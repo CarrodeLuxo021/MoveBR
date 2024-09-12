@@ -4,7 +4,7 @@
     margin: 0;
 }
 .logo img{
-    width: 100px;;
+    width: 100px;
     
 }
 .header h1 {
@@ -145,7 +145,7 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .header1 {
-    background-color: #007BFF;
+    background-color:  #346D7E;
     color: #ffffff;
     padding: 10px 20px;
     display: flex;
@@ -169,7 +169,7 @@ body {
 .month {
     padding: 10px;
     border: none;
-    background-color: #007BFF;
+    background-color:  #6DA6B1;
     color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
