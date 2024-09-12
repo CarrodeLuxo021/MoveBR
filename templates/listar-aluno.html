@@ -31,8 +31,10 @@
                 <tr class="aluno">
                     <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
                     <td>
+                        <div class="info">
                         <h1>Pedro Almeida</h1>
                         <p>SESI</p>
+                    </div>
                         <!-- Div expansível com informações adicionais -->
                         <div class="detalhes" style="display: none;">
                             <p><strong>Período:</strong> Manhã</p>
@@ -56,7 +58,9 @@
                  <tr class="aluno">
                     <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
                     <td>
+                        <div class="info">
                         <h1>Ana Silva</h1>
+                        </div>
                         <p>Colégio Anchieta</p>
                         <div class="detalhes" style="display: none;">
                             <p><strong>Período:</strong> Tarde</p>
@@ -76,6 +80,89 @@
                         <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
                     </td>
                 </tr>
+                <!-- Aluno 2 -->
+<tr class="aluno">
+    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
+    <td>
+        <div class="info">
+
+            <h1>Maria Oliveira</h1>
+            <p>Colégio São João</p>
+        </div>
+        <div class="detalhes" style="display: none;">
+            <p><strong>Período:</strong> Tarde</p>
+            <p><strong>Prazo de pagamento:</strong> 20/09/2024</p>
+            <p><strong>Valor:</strong> R$280,00 (ida e volta)</p>
+            <div class="toggle-container">
+                <span>Pagamento:</span>
+                <label class="switch">
+                    <input type="checkbox" class="toggle-payment">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </td>
+    <td class="button-container">
+        <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
+        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+    </td>
+</tr>
+
+<!-- Aluno 3 -->
+<tr class="aluno">
+    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
+    <td>
+        <div class="info">
+
+            <h1>Lucas Martins</h1>
+            <p>Escola Verde</p>
+        </div>
+        <div class="detalhes" style="display: none;">
+            <p><strong>Período:</strong> Integral</p>
+            <p><strong>Prazo de pagamento:</strong> 05/10/2024</p>
+            <p><strong>Valor:</strong> R$350,00 (ida e volta)</p>
+            <div class="toggle-container">
+                <span>Pagamento:</span>
+                <label class="switch">
+                    <input type="checkbox" class="toggle-payment">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </td>
+    <td class="button-container">
+        <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
+        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+    </td>
+</tr>
+<!-- Aluno 1 -->
+<tr class="aluno">
+    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
+    <td>
+        <div class="info">
+
+        <h1>João Silva</h1>
+        <p>Escola ABC</p>
+        </div>
+
+        <div class="detalhes" style="display: none;">
+            <p><strong>Período:</strong> Manhã</p>
+            <p><strong>Prazo de pagamento:</strong> 10/09/2024</p>
+            <p><strong>Valor:</strong> R$300,00 (ida e volta)</p>
+            <div class="toggle-container">
+                <span>Pagamento:</span>
+                <label class="switch">
+                    <input type="checkbox" class="toggle-payment">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </td>
+    <td class="button-container">
+        <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
+        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+    </td>
+</tr>
 
             </tbody>
         </table>

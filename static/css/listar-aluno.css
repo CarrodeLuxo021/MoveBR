@@ -18,16 +18,20 @@ body {
 
 header {
     display: flex;
-    padding: 3px;
+    align-items: center; /* Centraliza a logo verticalmente */
+    padding: 0 20px; /* Adiciona espaçamento interno ao header */
     background-image: linear-gradient(to right, #6DA6B1, #346D7E);
     width: 100%;
     height: 50px;
     color: rgb(44, 43, 43);
 }
-header img{
-    width: 90px;
-    height: 56px;
+
+header img {
+    width: 80px;
+    height: 80PX; /* Mantém a proporção da imagem */
+    margin-right: 20px; /* Espaço entre a logo e o texto do header */
 }
+
 
 footer {
     display: flex;
