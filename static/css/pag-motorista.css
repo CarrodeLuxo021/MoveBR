@@ -17,14 +17,13 @@ body {
 header {
     background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
     color: #fff; /* Texto em bege claro para contraste elegante */
-    padding: 20px 40px; /* Aumentar o espaçamento interno para um visual mais arejado */
-    text-align: center; /* Centralizar o conteúdo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
 }
 
-header .logo img {
-    max-width: 180px; /* Tamanho máximo da imagem do logo */
+.logo img {
+    width: 80px; /* Tamanho da imagem do logo */
     height: auto; /* Manter a proporção da imagem */
+    margin-left: 10px;
 }
 
 /* Estilização do main */
@@ -35,11 +34,6 @@ main {
     flex-direction: column;
     min-height: calc(100vh - 160px); /* Altura mínima: 100% da altura da tela menos o espaço do header e footer */
     padding: 20px; /* Adiciona espaçamento interno para garantir que o formulário não encoste nas bordas */
-}
-
-h1{
-    margin-bottom: 20px;
-    
 }
 
 /* Estilização do container-form */
