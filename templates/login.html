@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro do Aluno</title>
-    <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" href="../static/css/login.css">
 </head>
 <body>
 
@@ -15,37 +15,24 @@
     <main>
         <form class="container-form">
             <div class="itens-form">
-                <div class="lado-esquerdo-container">
-                    <label for="nomeAluno">Nome:</label>
-                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva">
-                    
-                    <label for="nomeResponsavel">Nome do responsável:</label>
-                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza">
-                    
-                    <label for="telefoneResponsavel">Telefone do responsável:</label>
-                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000">
-                    
-                    <label for="cpfResponsavel">CPF do responsável:</label>
-                    <input type="text" id="cpfResponsavel" placeholder="ex: 000.000.000-00">
-                </div>
-                
-                <div class="lado-direito-container">
-                    <label for="escola">Escola:</label>
-                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul">
-                    
+
+                <div class="cima-container">
                     <label for="emailAluno">Email:</label>
                     <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
                     
-                    <label for="endereçoAluno">Endereço:</label>
-                    <input type="text" id="endereçoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
-                    
                     <label for="senhaAluno">Senha:</label>
                     <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
+                    <a href="#" class="link-senha">Esqueceu sua senha?</a>
+                </div>
+
+                <div class="baixo-container">
+                    <hr>
+                    <p>Ainda não possui cadastro? <a href="#">Cadastrar-se!</a></p>
                 </div>
             </div>
 
             <div class="btn-container">
-                <button type="submit" class="cadastrar">Cadastrar</button>
+                <button type="submit" class="login">Login</button>
             </div>
         </form>
     </main>
