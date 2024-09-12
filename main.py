@@ -69,46 +69,4 @@ def cadastrar_aluno():
 
 
 
-@app.route("/login-motorista", methods=["GET", "POST"])
-def login_motorista():
-    if request.method == "POST":
-        email = request.form["email"]
-        senha = request.form["senha"]
-
-        mydb = Conexao.conectar()
-        mycursor = mydb.cursor()
-
-        sql = "SELECT * FROM tb_motoristas WHERE email = %s AND senha = %s"
-        mycursor.execute(sql, (email, senha))
-        result = mycursor.fetchone()
-
-        if result:
-            session['user'] = email
-            return redirect(url_for('home_motorista'))
-        else:
-            return "Email ou senha incorretos!"
-
-    return render_template('login_motorista.html')
-
-@app.route("/login-aluno", methods=["GET", "POST"])
-def login_aluno():
-    if request.method == "POST":
-        nome_aluno = request.form["nome_aluno"]
-        idade = request.form["idade"]
-
-        mydb = Conexao.conectar()
-        mycursor = mydb.cursor()
-
-        sql = "SELECT * FROM tb_alunos WHERE nome_aluno = %s AND idade = %s"
-        mycursor.execute(sql, (nome_aluno, idade))
-        result = mycursor.fetchone()
-
-        if result:
-            session['aluno'] = nome_aluno
-            return redirect(url_for('home_aluno'))
-        else:
-            return "Nome ou idade incorretos!"
-
-    return render_template('login_aluno.html')
-
 app.run(debug=True)
