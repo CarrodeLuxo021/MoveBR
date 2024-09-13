@@ -1,34 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoveBR - Login</title>
-    <link rel="stylesheet" href="/static/css/login.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/login.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="/static/icones/" alt="logo">
-        </div>
-        <div class="login-box">
-            <form>
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Insira seu email">
 
-                <label for="password">Senha:</label>
-                <input type="password" id="password" placeholder="Insira sua senha">
+    <header>
+        <div class="logo"><img src="../static/icones/logo.png" alt="Logo"></div>
+    </header>
 
-                <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+    <main>
+        <form class="container-form">
+            <div class="itens-form">
+
+                <div class="cima-container">
+                    <label for="emailAluno">Email:</label>
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
+                    
+                    <label for="senhaAluno">Senha:</label>
+                    <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
+                    <a href="#" class="link-senha">Esqueceu sua senha?</a>
+                </div>
                 
-                <button type="submit" class="login-button">Login</button>
-            </form>
-            <hr>
-            <div class="signup">
-                <p>Ainda não tem cadastro?</p>
-                <a href="/cadastrar-motorista"><button class="signup-button">Cadastrar-se</button></a>
+                <div class="btn-container">
+                    <button type="submit" class="login">Login</button>
+                </div>
+
+                <div class="baixo-container">
+                    <hr>
+                    <p>Ainda não possui cadastro? <a href="#">Cadastrar-se!</a></p>
+                </div>
             </div>
-        </div>
-    </div>
+        </form>
+    </main>
+
+    <footer>
+    </footer>
+    
 </body>
 </html>

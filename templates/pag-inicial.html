@@ -8,40 +8,73 @@
 </head>
 <body>
     <header>
-        <h1>MoveBR</h1>
+        <div class="logo"><img src="/static/icones/logo.png" alt="logo"></div>
         <div class="menu-icon" id="menu-icon">
             <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
         </div>
-   
     </header>
-    <section>
-        <div class="container-principal">
-            <nav id="menu" class="menu"></nav>
 
-                <a href="/cadastrar-motorista"><button class="card" id="motorista">
-                    <img src="https://img.icons8.com/ios-filled/100/ffffff/steering-wheel.png" alt="Motorista" />
-                    <p>Motorista</p>
-                    </button>
-                </a>
+    <nav id="menu" class="menu">
+        <a href="/templates/login.html">
+            <button class="card" id="motorista" >
+                <img src="https://img.icons8.com/ios-filled/100/ffffff/steering-wheel.png" alt="Motorista" />
+                <p>Motorista</p>
+            </button>
+        </a>
+        
 
-                <a href="/cadastrar-aluno"><button class="card" id="aluno">
-                    <img src="https://img.icons8.com/ios-filled/100/ffffff/student-male.png" alt="Aluno" />
-                    <p>Aluno</p>
-                </button>
-                </a>
+        <a href="/templates/login.html">
+            <button class="card" id="aluno" >
+                <img src="https://img.icons8.com/ios-filled/100/ffffff/student-male.png" alt="Aluno" />
+                <a href="/templates/pag-aluno.html"></a>
+                <p>Aluno</p>
+            </button>
+        </a>
+        
+        
+    </nav>
 
-                <button class="card" id="configuracao">
-                    <img src="https://img.icons8.com/ios-filled/100/ffffff/settings.png" alt="Configuração" />
-                    <p>Configuração</p>
-                </button>
-            </nav>
-            <div class="titulo">
-                <h1>Bem vindo a MoveBR!</h1>
-                <h2>O site que garante a segurança do seu filho(a) e facilita sua vida!</h2>  
-            </div>
-        </div>
-    </section>
-    
+    <main>
+        <!-- Seção Sobre Nós -->
+        <section class="about" id="about">
+            <h2>Sobre a MoveBr</h2>
+            <p>A <strong>MoveBr</strong> é uma empresa especializada no transporte escolar seguro e eficiente. Atuamos há mais de 20 anos no mercado, garantindo o deslocamento seguro de milhares de crianças e adolescentes para escolas, atividades extracurriculares e eventos, sempre com foco em qualidade, conforto e segurança. Nossa missão é fornecer um serviço confiável para as famílias, com rigorosos padrões de segurança, pontualidade e atendimento personalizado.</p>
+            <img src="https://example.com/movebr-van-escolar.jpg" alt="Vans escolares da MoveBr">
+            <ul>
+                <li>Atuação em mais de 50 cidades do Brasil</li>
+                <li>Certificação em segurança veicular e transporte de crianças</li>
+                <li>Aplicativo para rastreamento em tempo real da localização das vans</li>
+                <li>Parcerias com mais de 200 escolas e instituições de ensino</li>
+                <li>Atendimento especializado para crianças com necessidades especiais</li>
+            </ul>
+        </section>
+
+        <!-- Seção Serviços -->
+        <section class="services" id="services">
+            <h2>Nossos Serviços</h2>
+            <p>A MoveBr oferece uma variedade de serviços voltados ao transporte escolar e deslocamento seguro de crianças e adolescentes. Adaptamos nossas rotas e horários para melhor atender as necessidades das famílias e escolas, garantindo sempre conforto e segurança.</p>
+            <ul>
+                <li><strong>Transporte Escolar Regular:</strong> Serviço diário de transporte escolar para crianças e adolescentes, com horários flexíveis e atendimento personalizado conforme as necessidades dos pais e escolas.</li>
+                <li><strong>Atividades Extracurriculares:</strong> Transporte seguro para atividades como cursos de idiomas, esportes, música e outros eventos fora do horário escolar regular.</li>
+                <li><strong>Transporte para Passeios e Excursões:</strong> Vans confortáveis e seguras para levar grupos escolares em excursões, passeios educacionais e eventos especiais.</li>
+                <li><strong>Transporte para Necessidades Especiais:</strong> Veículos adaptados e equipe treinada para atender crianças com necessidades especiais, garantindo acessibilidade e cuidado extra.</li>
+                <li><strong>Aplicativo de Rastreio:</strong> Ferramenta de rastreamento em tempo real que permite aos pais acompanhar a localização exata da van durante o trajeto.</li>
+            </ul>
+        </section>
+
+        <!-- Seção Segurança -->
+        <section class="security" id="security">
+            <h2>Compromisso com a Segurança</h2>
+            <p>A segurança é o nosso maior compromisso. Todos os nossos veículos são equipados com tecnologia de ponta para garantir a proteção das crianças durante o trajeto, incluindo cintos de segurança apropriados, cadeirinhas e manutenção regular da frota. Além disso, nossos motoristas passam por um rigoroso processo de seleção e treinamentos constantes.</p>
+            <ul>
+                <li><strong>Motoristas Treinados:</strong> Todos os motoristas possuem certificação para transporte escolar e participam de treinamentos de reciclagem semestrais.</li>
+                <li><strong>Sistema de Monitoramento:</strong> Cada van é equipada com câmeras internas e sistema de rastreamento por GPS, permitindo o acompanhamento em tempo real do trajeto.</li>
+                <li><strong>Manutenção Preventiva:</strong> Nossa frota passa por manutenção regular, seguindo rigorosos padrões de segurança para garantir a qualidade dos veículos.</li>
+                <li><strong>Protocolos de Higienização:</strong> Desde a pandemia de COVID-19, intensificamos nossos protocolos de higienização, garantindo a limpeza constante dos veículos.</li>
+                <li><strong>Seguro Completo:</strong> Todos os passageiros estão cobertos por um seguro especializado, garantindo a tranquilidade das famílias.</li>
+            </ul>
+        </section>
+    </main>
 
     
 
