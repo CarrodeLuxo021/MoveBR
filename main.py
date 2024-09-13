@@ -54,6 +54,8 @@ def cadastrar_aluno():
     idade = request.form["idade"]
     nome_responsavel = request.form["nome_responsavel"]
     tel_responsavel = request.form["tel_responsavel"]
+    nome_responsavel = request.form["nome_responsavel"]
+    tel_responsavel = request.form["tel_responsavel"]
     
     # Conectar ao banco de dados
     mydb = Conexao.conectar()
@@ -76,27 +78,27 @@ def cadastrar_aluno():
 
 @app.route("/login-aluno", methods=["POST"])
 def login_aluno():
-    # Obtém os dados enviados pelo formulário de login (ID e nome do aluno)
-    id_aluno = request.form["id_aluno"]
-    nome_aluno = request.form["nome_aluno"]
+    # Obtém os dados enviados pelo formulário de login (email e senha)
+    email = request.form["email"]
+    senha = request.form["senha"]
 
     # Estabelece a conexão com o banco de dados
     mydb = Conexao.conectar()
     mycursor = mydb.cursor()
 
-    # Define a consulta SQL para buscar um aluno específico usando ID e nome
-    sql = "SELECT id_aluno FROM tb_alunos WHERE id_aluno = %s AND nome_aluno = %s"
+    # Define a consulta SQL para buscar um aluno específico usando email e senha
+    sql = "SELECT id_aluno FROM tb_alunos WHERE email = %s AND senha = %s"
     # Executa a consulta SQL com os parâmetros fornecidos
-    mycursor.execute(sql, (id_aluno, nome_aluno))
+    mycursor.execute(sql, (email, senha))
     # Obtém o resultado da consulta (uma linha ou None)
     resultado = mycursor.fetchone()
 
     # Verifica se o resultado contém dados (ou seja, se as credenciais estão corretas)
     if resultado:
         # Se as credenciais forem válidas, armazena o ID do aluno na sessão
-        session['id_aluno'] = id_aluno
+        session['id_aluno'] = resultado[0]
         # Redireciona para a página principal do aluno
-        return redirect(url_for('pagina_aluno'))
+        return redirect(url_for('pag-inicial.html'))
     else:
         # Se as credenciais forem inválidas, exibe uma mensagem de erro e reexibe o formulário de login
         flash("Credenciais inválidas")
