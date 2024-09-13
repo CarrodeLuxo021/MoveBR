@@ -21,10 +21,14 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 20px;
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
+    padding: 5px;
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
+    color: #fff; /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
 }
-
+.logo img{
+    width: 100px;
+}
 header h1 {
     color: #ffcc00; /* Amarelo */
     font-size: 2rem;
@@ -57,7 +61,6 @@ header h1 {
     transition: right 0.5s ease, transform 0.5s ease;
     transform: scale(1); /* Sem redimensionamento inicialmente */
     opacity: 1;
-    
 }
 
 /* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
@@ -122,4 +125,70 @@ header h1 {
     .container p {
         font-size: 1.5rem;
     }
+}
+
+/* Estilos adicionais */
+
+/* Seção principal */
+main {
+    padding: 100px;
+    background-color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #333;
+}
+
+h2 {
+    color: #6DA6B1;
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+
+.services ul,
+.about ul,
+.security ul {
+    list-style-type: circle;
+    padding-left: 20px;
+}
+
+.services img,
+.about img,
+.security img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px 0;
+}
+
+.team {
+    background-color: #f7f7f7;
+    padding: 30px;
+    text-align: center;
+}
+
+.team img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.team h3 {
+    color: #6DA6B1;
+}
+
+.testimonials {
+    background-color: #fff3e0;
+    padding: 30px;
+}
+
+.testimonials blockquote {
+    border-left: 5px solid #6DA6B1;
+    padding-left: 15px;
+    font-style: italic;
+    color: #555;
 }
