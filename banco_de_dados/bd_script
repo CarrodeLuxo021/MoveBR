@@ -3,58 +3,81 @@ CREATE DATABASE movebr;
 USE movebr;
 
 -- Criação da tabela tb_alunos
-CREATE TABLE tb_alunos (
-    id_aluno INT AUTO_INCREMENT,
-    nome_aluno VARCHAR(50),
-    endereco VARCHAR(100),
-    cpf_responsavel int,
+CREATE TABLE tb_responsavel (
     nome_responsavel VARCHAR(100),
+    cpf_responsavel int,
+    endereco_responsavel VARCHAR(100),
     tel_responsavel VARCHAR(15),
     email_responsavel varchar(30),
-    senha varchar(15),
+    senha_responsavel varchar(15),
+    PRIMARY KEY (cpf_responsavel)
+);
+-- Criação da tabela tb_alunos
+CREATE TABLE tb_alunos (
+    id_aluno  int AUTO_INCREMENT,
+    nome_aluno VARCHAR(100),
+    foto_aluno VARCHAR(300),
+    condicao_medica varchar(300),
+    idade int,
+    responsavel_aluno int,
+	FOREIGN KEY (responsavel_aluno) REFERENCES tb_motorista(cpf_responsavel),
     PRIMARY KEY (id_aluno)
 );
 
 -- Criação da tabela tb_motoristas
 CREATE TABLE tb_motoristas (
-    nome varchar(60),
-    cpf VARCHAR(11) PRIMARY KEY,
+    nome_motorista varchar(60),
+    cpf_motorista VARCHAR(11) PRIMARY KEY,
     cnh VARCHAR(100),
     cnpj int,
-    cidade VARCHAR(100),
-    endereco VARCHAR(100),
+    cidade_motorista VARCHAR(100),
+    endereco_motorista VARCHAR(100),
     tel_motorista VARCHAR(15),
-    email VARCHAR(50),
-    senha varchar(50)
+    email_motorista VARCHAR(50),
+    senha_motorista varchar(50),
+    valor_cobrado int;
 );
 
 -- Criação da tabela tb_alunos_registrados
-CREATE TABLE tb_alunos_registrados (
+CREATE TABLE tb_alunos_clientes (
     id_aluno INT,
-    cpf VARCHAR(11),
+    cpf_motorista int,
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
-    FOREIGN KEY (cpf) REFERENCES tb_motoristas(cpf)
+    FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
 );
 
 -- Criação da tabela historico_pagamento
-CREATE TABLE historico_pagamento (
-    id_fatura INT AUTO_INCREMENT,
-    valor FLOAT,
-    mes INT,
+CREATE TABLE historico_pagamentos (
+    id_pagamento INT AUTO_INCREMENT,
+    valor_pagamento FLOAT,
+    mes_pagamento INT,
+    data_pagamento date,
     id_aluno INT,
-    cpf VARCHAR(11),
+    cpf_responsavel VARCHAR(11),
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
-    FOREIGN KEY (cpf) REFERENCES tb_motoristas(cpf),
-    PRIMARY KEY (id_fatura)
+    FOREIGN KEY (cpf_responsavel) REFERENCES tb_motoristas(cpf_responsavel),
+    PRIMARY KEY (id_pagamento)
 );
 
 -- Criação da tabela tb_faltas
-CREATE TABLE tb_faltas (
-    data DATE,
+CREATE TABLE verificacao_pagamento(
+    cpf_responsavel int,
     id_aluno INT,
-    cpf VARCHAR(11),
+    valor_pagamento int,
+    mes_pagamento int,
+    data_pagamento date,
+    estado_pagamento int,
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
-    FOREIGN KEY (cpf) REFERENCES tb_motoristas(cpf)
+    FOREIGN KEY (cpf_responsavel) REFERENCES tb_motoristas(cpf-responsavel)
+);
+
+-- Criação da tabela tb_alunos_registrados
+CREATE TABLE contratos_fechados (
+    id_contrato PRIMARY KEY,
+    id_aluno INT,
+    cpf_motorista int,
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
 );
 
 -- Criação do usuário e concessão de privilégios
