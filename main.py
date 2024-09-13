@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from conexao import Conexao
-import bcrypt
+from usuario import Usuario
 
 
 app = Flask(__name__)
@@ -46,33 +46,41 @@ def cadastrar():
     mydb.commit()
     return render_template('pag-inicial.html')
 
-@app.route("/cadastrar-aluno", methods=["POST"])
-def cadastrar_aluno():
-    nome_aluno = request.form["nome_aluno"]
-    endereco = request.form["endereco"]
-    cidade = request.form["cidade"]
-    idade = request.form["idade"]
+from flask import Flask, request, render_template
+import mysql.connector
+
+app = Flask(__name__)
+
+class Conexao:
+    @staticmethod
+    def conectar():
+        return mysql.connector.connect(
+            host="localhost",
+            user="usuario",
+            password="senha",
+            database="nome_do_banco"
+        )
+
+@app.route("/cadastrar-responsavel", methods=["POST"])
+def cadastrar_responsavel():
     nome_responsavel = request.form["nome_responsavel"]
+    endereco_responsavel = request.form["endereco_responsavel"]
     tel_responsavel = request.form["tel_responsavel"]
-    nome_responsavel = request.form["nome_responsavel"]
-    tel_responsavel = request.form["tel_responsavel"]
-    
+    cpf_responsavel = request.form["cpf_responsavel"]
+    email_responsavel = request.form["email_responsavel"]
+    senha_responsavel = request.form["senha_responsavel"]
+
     # Conectar ao banco de dados
-    mydb = Conexao.conectar()
-    mycursor = mydb.cursor()
+    
 
-    # Instrução SQL corrigida
-    sql = """
-    INSERT INTO tb_alunos (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel)
-    VALUES (%s, %s, %s, %s, %s, %s)
-    """
-    valores = (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel)
-
-    # Executar a instrução SQL e fazer commit
-    mycursor.execute(sql, valores)
+   
     mydb.commit()
 
-    # Renderizar a página de inicial
+    # Fechar o cursor e a conexão
+    mycursor.close()
+    mydb.close()
+
+    # Renderizar a página de sucesso ou redirecionar conforme necessário
     return render_template('pag-inicial.html')
 
 
