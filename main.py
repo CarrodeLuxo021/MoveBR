@@ -137,4 +137,8 @@ def pagina_motorista():
         return redirect(url_for('login_motorista'))
     return "Bem-vindo à página do motorista, CPF: " + session['cpf_motorista']
 
+@app.route("/listarAluno")
+def pag_inicio():
+    return render_template('listar-aluno.html')
+
 app.run(debug=True)
