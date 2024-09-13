@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "index.html" %}
+
+{% block content %}
     <title>MoveBR - Motoristas</title>
-    <link rel="stylesheet" href="/static/css/pag-inicial-motorista.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../static/styles/pag-inicial-motorista.css">
     <header>
-        <h1>MoveBR</h1>
-        <div class="menu-icon" id="menu-icon">
-            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Ícone de perfil" id="profile-icon"/>
+        <div class="menu-icon" id="menu-icon"></div>
+            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
         </div>
     </header>
-    
+ 
     <div class="top-menu">
         <a href="#">Gerenciamento de Alunos</a>
         <a href="#">Sobre Nós</a>
@@ -64,6 +59,5 @@
         <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="/js/pag-inicial-motorista.js"></script>
-</body>
-</html>
+    <script src="../static/js/pag-inicial-motorista.js"></script>
+{% endblock %}

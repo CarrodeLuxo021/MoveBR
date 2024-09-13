@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "index.html" %}
+
+{% block content %}
     <title>MoveBR</title>
-    <link rel="stylesheet" href="/static/css/pag-inicial.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../static/styles/pag-inicial.css">
+
     <header>
-        <div class="logo"><img src="/static/icones/logo.png" alt="logo"></div>
         <div class="menu-icon" id="menu-icon">
             <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
         </div>
@@ -78,6 +74,6 @@
 
     
 
-    <script src="/js/pag-inicial.js"></script>
-</body>
-</html>
+    <script src="../static/js/pag-inicial.js"></script>
+
+{% endblock %}

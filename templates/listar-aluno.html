@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "index.html" %}
+
+{% block content %}
     <title>Lista de Alunos</title>
     <!-- Importa o FontAwesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Importa o arquivo de estilo CSS -->
-    <link rel="stylesheet" href="/static/css/listar-aluno.css">
-</head>
-<body>
-    <!-- Cabeçalho semântico -->
-    <header>
-        <h1>
-            <img src="https://chat.google.com/u/0/api/get_attachment_url?url_type=FIFE_URL&content_type=image%2Fpng&attachment_token=AOo0EEU9UBAZVjhAItMcb%2By%2Fk96ZjhIrVQq5YKIr10ARXkBVU2OU71gZgURhcGjQD9UOV612E8vAnytDpEEocdVAmOU7zd5%2B%2F9xcT21ITzYHrTOvgdlZGcZxHIWMVGKnkNzt%2Buj5eaoNWHVwsMVeOWTur938nKFRHENyn6R6HD5FhgP%2B3dTXAWOUHlnigjMGRf%2FQQPNVaSSFlW%2Fg5SSClsze05Ap3RV4gM4ZHQwKU%2FRdqjy7GeNBV15RRA4zIta8Yp1fBMy7pl3vmVQvY9YerFkeWwn%2B14OsWowMVxUCE28xZt7S4FwZibuGCQpy9FJbp3mPJaLEJLnE5DK%2BWIOLuarvngDm4WFqeyqBWvf3ZwF7eP94gnd7B7OA55ln46w8Gaca2QMoWQ3TTZahZlqj%2BwKgimmkqAWrJJPv864oq2xp%2FX15bA8ZAEIKDc9wTyrNcZndSOrNwhe%2Fr5Ohe4iOzEOu%2Bi0HIf2%2FbrwYLuzBGOoC9f%2FgtTfFdlaFSikRSOWJ%2Fs2Sr1OtfEXhCxI6tNBccIgiLvdrjqIsDBYrtKnleUqlxMA5S3W2UWj3mLk6kf02RHCxxg%3D%3D&sz=w1920-h899" alt="logo">
-        </h1>
-    </header>
+    <link rel="stylesheet" href="../static/styles/listar-aluno.css">
 
     <!-- Conteúdo principal da página -->
     <main>
@@ -117,5 +107,5 @@
             });
         });
     </script>
-</body>
-</html>
+
+{% endblock %}
