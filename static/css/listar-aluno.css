@@ -205,7 +205,7 @@ thead {
 /* Cor para o botão com ícone "verificado" */
 .btn-verificado {
    
-    color: #049104; /* Cor do ícone "verificado" verde */
+    color: #8ef85c; /* Cor do ícone "verificado" verde */
 }
 /* Estilo para os botões */
 .button-container {
@@ -349,7 +349,7 @@ thead {
 }
 
 input:checked + .slider {
-    background-color: #4CAF50; /* Verde quando selecionado */
+    background-color: #0c8eff; /* Verde quando selecionado */
 }
 
 input:checked + .slider:before {

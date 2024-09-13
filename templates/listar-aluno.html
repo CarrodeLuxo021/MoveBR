@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Alunos</title>
+    <!-- Importa o FontAwesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <!-- Importa o arquivo de estilo CSS -->
     <link rel="stylesheet" href="/static/css/listar-aluno.css">
 </head>
 <body>
+    <!-- Cabeçalho semântico -->
     <header>
-        <h1><img src="https://chat.google.com/u/0/api/get_attachment_url?url_type=FIFE_URL&content_type=image%2Fpng&attachment_token=AOo0EEX6RhQgXvHe9vTX%2B7wYrWCWqglrigrJyVcCScVh9v8SEzB0B7%2FSigyQOi6Zgc3P1YT8K5J7BQIqCv%2BUrjr6VQ9uls%2B%2BeHvwPQMfyx7SwrVIWc0%2Fm0fhTkNs0YvcCApWozxK8qqiJH5OqEtJdtOCS96ZN82UdlPm%2FkDdGcbALZD2gEtQ5BoAVXJ1LA7kDw0f%2BZfs0qmewjuS348CKNJvJoUtfLTfa8N2R4AxX4YaQKfjcygD12x9BNZss3zpc5LloNg5mbMw3UQqHFSHkdUzcZunVbz2rck8ORbmiZf5QCdTdz6IhsLRngvr%2Fz1PAXrBEiNjSauzJidzxS1lGRG8PVicQpfTJSW8fkCG%2B8N6ir9dUMw2zavQxpMZAJk50QUeUwRlASW797qasGA3EFTREUN58%2FkuILfbZFHxGYjQ3q0sNCh%2BJ3CRnDn4kv21wX29k32%2BGbnbbhXoYg8l6zWfs9TwkXBATSlfVOxl%2FSpXQcqQtqITXC5cADi%2BSsxjePlMsqWm15noK491Sf9Li8m%2BEa9xIdoMnmzSzvlU9rhDxaD2YBDsx9SwdN%2BGdzvOoNY71g%3D%3D&sz=w1920-h904" alt="logo"></h1>
+        <h1>
+            <img src="https://chat.google.com/u/0/api/get_attachment_url?url_type=FIFE_URL&content_type=image%2Fpng&attachment_token=AOo0EEU9UBAZVjhAItMcb%2By%2Fk96ZjhIrVQq5YKIr10ARXkBVU2OU71gZgURhcGjQD9UOV612E8vAnytDpEEocdVAmOU7zd5%2B%2F9xcT21ITzYHrTOvgdlZGcZxHIWMVGKnkNzt%2Buj5eaoNWHVwsMVeOWTur938nKFRHENyn6R6HD5FhgP%2B3dTXAWOUHlnigjMGRf%2FQQPNVaSSFlW%2Fg5SSClsze05Ap3RV4gM4ZHQwKU%2FRdqjy7GeNBV15RRA4zIta8Yp1fBMy7pl3vmVQvY9YerFkeWwn%2B14OsWowMVxUCE28xZt7S4FwZibuGCQpy9FJbp3mPJaLEJLnE5DK%2BWIOLuarvngDm4WFqeyqBWvf3ZwF7eP94gnd7B7OA55ln46w8Gaca2QMoWQ3TTZahZlqj%2BwKgimmkqAWrJJPv864oq2xp%2FX15bA8ZAEIKDc9wTyrNcZndSOrNwhe%2Fr5Ohe4iOzEOu%2Bi0HIf2%2FbrwYLuzBGOoC9f%2FgtTfFdlaFSikRSOWJ%2Fs2Sr1OtfEXhCxI6tNBccIgiLvdrjqIsDBYrtKnleUqlxMA5S3W2UWj3mLk6kf02RHCxxg%3D%3D&sz=w1920-h899" alt="logo">
+        </h1>
     </header>
 
+    <!-- Conteúdo principal da página -->
     <main>
-        <div class="c-table">
+        <section class="c-table">
+            <!-- Área de busca -->
             <div class="search-container">
                 <button> Buscar 
-                    <img src="https://img.icons8.com/?size=100&id=7695&format=png&color=000000" alt="" srcset="">
+                    <img src="https://img.icons8.com/?size=100&id=7695&format=png&color=000000" alt="Ícone de busca">
                 </button>
             </div>
             <h2>Alunos</h2>
-        </div>
+        </section>
+
+        <!-- Tabela de alunos -->
         <table class="tabela-alunos">
-            <thead>
-                <!-- Cabeçalho da tabela, se necessário -->
-            </thead>
+           
             <tbody>
-                <!-- Aluno 4 -->
+                <!-- Exemplo de aluno -->
                 <tr class="aluno">
                     <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
                     <td>
+                        <!-- Informações do aluno -->
                         <div class="info">
-                        <h1>Pedro Almeida</h1>
-                        <p>SESI</p>
-                    </div>
-                        <!-- Div expansível com informações adicionais -->
+                            <h1>Pedro Almeida</h1>
+                            <p>SESI</p>
+                        </div>
+                        <!-- Detalhes expansíveis -->
                         <div class="detalhes" style="display: none;">
                             <p><strong>Período:</strong> Manhã</p>
                             <p><strong>Prazo de pagamento:</strong> 27/07/2024</p>
@@ -49,148 +56,41 @@
                             </div>
                         </div>
                     </td>
+                    <!-- Botões de ação -->
                     <td class="button-container">
                         <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
                         <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
                     </td>
                 </tr>
-                 <!-- Aluno 2 -->
-                 <tr class="aluno">
-                    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
-                    <td>
-                        <div class="info">
-                        <h1>Ana Silva</h1>
-                        </div>
-                        <p>Colégio Anchieta</p>
-                        <div class="detalhes" style="display: none;">
-                            <p><strong>Período:</strong> Tarde</p>
-                            <p><strong>Prazo de pagamento:</strong> 15/08/2024</p>
-                            <p><strong>Valor:</strong> R$250,00 (ida)</p>
-                            <div class="toggle-container">
-                                <span>Pagamento:</span>
-                                <label class="switch">
-                                    <input type="checkbox" class="toggle-payment">
-                                    <span class="slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="button-container">
-                        <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
-                        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-                    </td>
-                </tr>
-                <!-- Aluno 2 -->
-<tr class="aluno">
-    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
-    <td>
-        <div class="info">
 
-            <h1>Maria Oliveira</h1>
-            <p>Colégio São João</p>
-        </div>
-        <div class="detalhes" style="display: none;">
-            <p><strong>Período:</strong> Tarde</p>
-            <p><strong>Prazo de pagamento:</strong> 20/09/2024</p>
-            <p><strong>Valor:</strong> R$280,00 (ida e volta)</p>
-            <div class="toggle-container">
-                <span>Pagamento:</span>
-                <label class="switch">
-                    <input type="checkbox" class="toggle-payment">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-    </td>
-    <td class="button-container">
-        <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
-        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-    </td>
-</tr>
-
-<!-- Aluno 3 -->
-<tr class="aluno">
-    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
-    <td>
-        <div class="info">
-
-            <h1>Lucas Martins</h1>
-            <p>Escola Verde</p>
-        </div>
-        <div class="detalhes" style="display: none;">
-            <p><strong>Período:</strong> Integral</p>
-            <p><strong>Prazo de pagamento:</strong> 05/10/2024</p>
-            <p><strong>Valor:</strong> R$350,00 (ida e volta)</p>
-            <div class="toggle-container">
-                <span>Pagamento:</span>
-                <label class="switch">
-                    <input type="checkbox" class="toggle-payment">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-    </td>
-    <td class="button-container">
-        <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
-        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-    </td>
-</tr>
-<!-- Aluno 1 -->
-<tr class="aluno">
-    <td><img src="https://via.placeholder.com/50" alt="Imagem do Aluno"></td>
-    <td>
-        <div class="info">
-
-        <h1>João Silva</h1>
-        <p>Escola ABC</p>
-        </div>
-
-        <div class="detalhes" style="display: none;">
-            <p><strong>Período:</strong> Manhã</p>
-            <p><strong>Prazo de pagamento:</strong> 10/09/2024</p>
-            <p><strong>Valor:</strong> R$300,00 (ida e volta)</p>
-            <div class="toggle-container">
-                <span>Pagamento:</span>
-                <label class="switch">
-                    <input type="checkbox" class="toggle-payment">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-    </td>
-    <td class="button-container">
-        <button class="btn-icone" onclick="toggleIcon(this)"><i class="fa-solid fa-x"></i></button>
-        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-    </td>
-</tr>
-
+                <!-- Repetição para os demais alunos -->
+                <!-- ... -->
             </tbody>
         </table>
-        
     </main>
 
+    <!-- Rodapé semântico -->
     <footer>
-        <p></p>
+        <p>&copy; 2024 Sistema de Gestão de Van Escolar</p>
     </footer>
 
+    <!-- Script para manipulação de interações e animações -->
     <script>
+        // Função para expandir/ocultar detalhes do aluno
         function toggleExpandir(button) {
-            // Encontrar a linha de aluno correspondente
             const alunoRow = button.closest('.aluno');
-    
-            // Encontrar o contêiner de detalhes dentro da linha de aluno
             const detalhesContainer = alunoRow.querySelector('.detalhes');
-    
-            // Alternar a exibição do contêiner de detalhes
+
             if (detalhesContainer.style.display === 'none') {
                 detalhesContainer.style.display = 'block';
-                button.textContent = '▲'; // Alterar o símbolo do botão
+                button.textContent = '▲';
             } else {
                 detalhesContainer.style.display = 'none';
-                button.textContent = '▼'; // Voltar o símbolo do botão
+                button.textContent = '▼';
             }
         }
-    
+
+        // Função para alternar ícone de verificação
         function toggleIcon(button) {
             const icon = button.querySelector('i');
             if (icon.classList.contains('fa-x')) {
@@ -205,18 +105,17 @@
                 button.classList.remove('btn-verificado');
             }
         }
-    
+
+        // Função para alternar a cor do botão de pagamento
         document.querySelectorAll('.toggle-payment').forEach(function (toggle) {
             toggle.addEventListener('change', function () {
                 if (this.checked) {
-                    this.nextElementSibling.style.backgroundColor = '#4CAF50'; // Verde
+                    this.nextElementSibling.style.backgroundColor = '#4CAF50';
                 } else {
-                    this.nextElementSibling.style.backgroundColor = '#ff4d4d'; // Vermelho
+                    this.nextElementSibling.style.backgroundColor = '#ff4d4d';
                 }
             });
         });
     </script>
-    
-        
 </body>
 </html>
