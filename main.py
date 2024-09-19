@@ -77,6 +77,14 @@ def cadastrar_aluno():
 
     
 
+@app.route("/login-responsavel", methods=["get"])
+def login_responsavel_get():
+    return render_template('login-aluno.html')
+
+@app.route("/login-motorista", methods=["motorista"])
+def login_motorista_get():
+    return render_template('login-motorista.html')
+
 @app.route("/login-responsavel", methods=["POST"])
 def login_responsavel():
     # Obtém os dados enviados pelo formulário de login (email e senha)
