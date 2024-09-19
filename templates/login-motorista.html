@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../static/css/login.css">
-</head>
-<body>
+{% extends "index.html" %}
 
-    <header>
-        <div class="logo"><img src="../static/icones/logo.png" alt="Logo"></div>
-    </header>
+{% block content %}
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/styles/login.css">
 
     <main>
         <form class="container-form">
@@ -37,8 +29,4 @@
         </form>
     </main>
 
-    <footer>
-    </footer>
-    
-</body>
-</html>
+{% endblock %}
