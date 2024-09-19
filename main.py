@@ -32,37 +32,18 @@ def cadastrar():
     cidade = request.form["cidade"]
     endereco = request.form["endereco"]
     
+    # Criação da instância da classe Usuario
+    usuario = Usuario()
+    
+    # Chama a função cadastrar_motorista
+    if usuario.cadastrar_motorista(nome, endereco, cidade, cpf, cnh, cnpj, telefone, email, senha):
+        return render_template('pag-inicial.html')
+    else:
+        return "Erro ao cadastrar motorista", 500
 
-    mydb = Conexao.conectar()
-
-    mycursor = mydb.cursor()
-
-    sql = f"""
-    INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, tel_motorista, email, senha)
-    VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}', '{cidade}', '{endereco}', '{telefone}', '{email}', '{senha}')
-    """
-
-    mycursor.execute(sql)    
-    mydb.commit()
-    return render_template('pag-inicial.html')
-
-from flask import Flask, request, render_template
-import mysql.connector
-
-app = Flask(__name__)
-
-class Conexao:
-    @staticmethod
-    def conectar():
-        return mysql.connector.connect(
-            host="localhost",
-            user="usuario",
-            password="senha",
-            database="nome_do_banco"
-        )
 
 @app.route("/cadastrar-responsavel", methods=["POST"])
-def cadastrar_responsavel():
+def cadastrar_resp():
     nome_responsavel = request.form["nome_responsavel"]
     endereco_responsavel = request.form["endereco_responsavel"]
     tel_responsavel = request.form["tel_responsavel"]
@@ -72,16 +53,30 @@ def cadastrar_responsavel():
 
     # Conectar ao banco de dados
     
+    usuario = Usuario()
+    
+    if usuario.cadastrar_responsavel(nome_responsavel, endereco_responsavel, tel_responsavel, cpf_responsavel, email_responsavel, senha_responsavel):
+        return render_template('pag-inicial.html')
+    else:
+        return 'ERRO AO CADASTRAR'
 
-   
-    mydb.commit()
+@app.route("/cadastrar-aluno", methods=["POST"])
+def cadastrar_aluno():
+    nome_aluno = request.form["nome_aluno"]
+    condicao_medica = request.form.get("condicao_medica")  # Pode ser opcional
+    idade = request.form["idade"]
 
-    # Fechar o cursor e a conexão
-    mycursor.close()
-    mydb.close()
+    # Criação da instância da classe Usuario
+    usuario = Usuario()
+    
+    # Chama a função cadastrar_aluno
+    if usuario.cadastrar_aluno(nome_aluno, condicao_medica, idade):
+        return render_template('pag-inicial.html')
+    else:
+        return "Erro ao cadastrar aluno", 500
 
-    # Renderizar a página de sucesso ou redirecionar conforme necessário
-    return render_template('pag-inicial.html')
+    
+    
 
 
 @app.route("/login-aluno", methods=["POST"])
