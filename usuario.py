@@ -1,4 +1,5 @@
 from conexao import Conexao
+from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 
 class Usuario():
     def __init__(self):
@@ -10,7 +11,7 @@ class Usuario():
         self.cpf = None
         self.logado = False
 
-    def cadastrar_responsaveis(nome_responsavel, endereco_responsavel, tel_responsavel, cpf_responsavel, email_responsavel, senha_responsavel):
+    def cadastrar_responsaveis(self, nome_responsavel, endereco_responsavel, tel_responsavel, cpf_responsavel, email_responsavel, senha_responsavel):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
@@ -44,7 +45,7 @@ class Usuario():
             mycursor = mydb.cursor()
             
             sql = """
-            INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, tel_motorista, email, senha)
+            INSERT INTO tb_motoristas ( , email, senha)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
             valores = (nome, cpf, cnh, cnpj, cidade, endereco, telefone, email, senha)
@@ -89,7 +90,52 @@ class Usuario():
             print(f"Erro: {e}")  # Para depuração
             return False
 
-    def listar_usuario():
+
+    def logar_resposavel(self, email, senha):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+            sql = "SELECT cpf_responsavel FROM tb_responsavel WHERE email_responsavel = %s AND senha_responsavel = %s"
+            # Executa a consulta SQL com os parâmetros fornecidos
+            mycursor.execute(sql, (email, senha))
+            resultado = mycursor.fetchone()
+            if resultado:
+                session['cpf_responsavel'] = {
+                    "nome_responsavel": resultado['nome_responsavel'],
+                    "telefone_responsavel": resultado['tel_responsavel'],
+                    "cpf_responsavel": resultado['cpf_responsavel']
+                }
+                return True
+            else:
+                # Se as credenciais forem inválidas, exibe uma mensagem de erro e reexibe o formulário de login
+                flash("Credenciais inválidas")
+                return False
+        except:
+            return False
+    
+    def logar_motorista(self, email, senha):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+            sql = "SELECT cpf_motorista FROM tb_motorista WHERE email_motorista = %s AND senha_motorista = %s"
+            # Executa a consulta SQL com os parâmetros fornecidos
+            mycursor.execute(sql, (email, senha))
+            resultado = mycursor.fetchone()
+            if resultado:
+                session['cpf_motorista'] = {
+                    "nome_motorista": resultado['nome_motorista'],
+                    "telefone_motorista": resultado['tel_motorista'],
+                    "cpf_motorista": resultado['cpf_motorista']
+                }
+                return True
+            else:
+                # Se as credenciais forem inválidas, exibe uma mensagem de erro e reexibe o formulário de login
+                flash("Credenciais inválidas")
+                return False
+        except:
+            return False
+        
+    def listar_alunos():
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()

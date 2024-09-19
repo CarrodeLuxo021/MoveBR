@@ -76,8 +76,6 @@ def cadastrar_aluno():
         return "Erro ao cadastrar aluno", 500
 
     
-    
-
 
 @app.route("/login-responsavel", methods=["POST"])
 def login_responsavel():
@@ -85,62 +83,30 @@ def login_responsavel():
     email = request.form["email"]
     senha = request.form["senha"]
 
-    # Estabelece a conexão com o banco de dados
-    mydb = Conexao.conectar()
-    mycursor = mydb.cursor()
-
-    # Define a consulta SQL para buscar um aluno específico usando email e senha
-    sql = "SELECT id_aluno FROM tb_alunos WHERE email = %s AND senha = %s"
-    # Executa a consulta SQL com os parâmetros fornecidos
-    mycursor.execute(sql, (email, senha))
-    # Obtém o resultado da consulta (uma linha ou None)
-    resultado = mycursor.fetchone()
-
-    # Verifica se o resultado contém dados (ou seja, se as credenciais estão corretas)
-    if resultado:
-        # Se as credenciais forem válidas, armazena o ID do aluno na sessão
-        session['id_aluno'] = resultado[0]
-        # Redireciona para a página principal do aluno
-        return redirect(url_for('pag-inicial.html'))
+    usuario = Usuario()
+    
+    # Chama a função cadastrar_aluno
+    if usuario.logar_resposavel(email, senha):
+        return render_template('pag-inicial.html')
     else:
-        # Se as credenciais forem inválidas, exibe uma mensagem de erro e reexibe o formulário de login
-        flash("Credenciais inválidas")
-        return render_template('login_aluno.html')
+        return "Erro ao cadastrar aluno", 500
 
-@app.route("/pagina-aluno")
-def pagina_aluno():
-    # Verifica se o ID do aluno está armazenado na sessão (se o aluno está autenticado)
-    if 'id_aluno' not in session:
-        # Se o ID do aluno não estiver na sessão, redireciona para a página de login
-        return redirect(url_for('login_aluno'))
-    # Se o aluno estiver autenticado, exibe uma mensagem de boas-vindas com o ID do aluno
-    return "Bem-vindo à página do aluno, ID: " + session['id_aluno']
+
 
 @app.route("/login-motorista", methods=["POST"])
 def login_motorista():
     email = request.form["email"]
     senha = request.form["senha"]
 
-    mydb = Conexao.conectar()
-    mycursor = mydb.cursor()
-
-    # Buscar o motorista pelo e-mail
-    sql = "SELECT cpf, senha FROM tb_motoristas WHERE email = %s"
-    mycursor.execute(sql, (email,))
-    resultado = mycursor.fetchone()
-
-    if resultado:
-        cpf, senha_hash = resultado
-        # Verificar a senha fornecida com o hash armazenado
-        if bcrypt.checkpw(senha.encode('utf-8'), senha_hash.encode('utf-8')):
-            session['cpf_motorista'] = cpf
-            return redirect(url_for('listar-aluno.html'))
-        else:
-            flash("Credenciais inválidas")
-            return render_template('login_motorista.html')
+    usuario = Usuario()
+    
+    # Chama a função cadastrar_aluno
+    if usuario.logar_motorista(email, senha):
+        return render_template('pag-inicial.html')
     else:
-        flash("Credenciais inválidas")
-        return render_template('login_motorista.html')
+        return "Erro ao cadastrar aluno", 500
+    
+    
 
 @app.route("/pagina-motorista")
 def pagina_motorista():
