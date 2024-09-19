@@ -2,14 +2,13 @@ from conexao import Conexao
 
 class Usuario():
     def __init__(self):
-        self.nome_responsavel = None
-        self.email_responsavel = None
-        self.senha_responsavel = None
-        self.tel_responsavel = None
-        self.endereco_responsavel = None
-        self.cpf_responsavel = None
-
-        self.logado_responsavel = False
+        self.nome = None
+        self.email = None
+        self.senha = None
+        self.telefone = None
+        self.endereco = None
+        self.cpf = None
+        self.logado = False
 
     def cadastrar_responsaveis(nome_responsavel, endereco_responsavel, tel_responsavel, cpf_responsavel, email_responsavel, senha_responsavel):
         try:
@@ -52,6 +51,13 @@ class Usuario():
 
             # Executar a instrução SQL e fazer commit
             mycursor.execute(sql, valores)
+
+            self.nome = nome
+            self.cpf = cpf
+            self.endereco = endereco
+            self.tel = telefone
+            self.email = email
+            self.senha = senha
 
             mydb.commit()
             mycursor.close()

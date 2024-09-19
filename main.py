@@ -79,8 +79,8 @@ def cadastrar_aluno():
     
 
 
-@app.route("/login-aluno", methods=["POST"])
-def login_aluno():
+@app.route("/login-responsavel", methods=["POST"])
+def login_responsavel():
     # Obtém os dados enviados pelo formulário de login (email e senha)
     email = request.form["email"]
     senha = request.form["senha"]

@@ -15,10 +15,10 @@ CREATE TABLE tb_responsavel (
 -- Criação da tabela tb_alunos
 CREATE TABLE tb_alunos (
     id_aluno  int AUTO_INCREMENT,
-    nome_aluno VARCHAR(100) required,
+    nome_aluno VARCHAR(100),
     foto_aluno VARCHAR(300),
     condicao_medica varchar(300),
-    idade int required,
+    idade int,
     responsavel_aluno int,
 	FOREIGN KEY (responsavel_aluno) REFERENCES tb_responsavel(cpf_responsavel),
     PRIMARY KEY (id_aluno)
@@ -27,7 +27,7 @@ CREATE TABLE tb_alunos (
 -- Criação da tabela tb_motoristas
 CREATE TABLE tb_motoristas (
     nome_motorista varchar(60),
-    cpf_motorista VARCHAR(11) PRIMARY KEY,
+    cpf_motorista INT PRIMARY KEY,
     cnh VARCHAR(100),
     cnpj int,
     cidade_motorista VARCHAR(100),
@@ -35,7 +35,7 @@ CREATE TABLE tb_motoristas (
     tel_motorista VARCHAR(15),
     email_motorista VARCHAR(50),
     senha_motorista varchar(50),
-    valor_cobrado int;
+    valor_cobrado int
 );
 
 -- Criação da tabela tb_alunos_registrados
@@ -53,7 +53,7 @@ CREATE TABLE historico_pagamentos (
     mes_pagamento INT,
     data_pagamento date,
     id_aluno INT,
-    cpf_responsavel VARCHAR(11),
+    cpf_responsavel INT,
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
     FOREIGN KEY (cpf_responsavel) REFERENCES tb_responsavel(cpf_responsavel),
     PRIMARY KEY (id_pagamento)
@@ -68,12 +68,12 @@ CREATE TABLE verificacao_pagamento(
     data_pagamento date,
     estado_pagamento int,
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
-    FOREIGN KEY (cpf_responsavel) REFERENCES tb_responsavel(cpf-responsavel)
+    FOREIGN KEY (cpf_responsavel) REFERENCES tb_responsavel(cpf_responsavel)
 );
 
 -- Criação da tabela tb_alunos_registrados
 CREATE TABLE contratos_fechados (
-    id_contrato PRIMARY KEY,
+    id_contrato INT AUTO_INCREMENT PRIMARY KEY,
     id_aluno INT,
     cpf_motorista int,
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
