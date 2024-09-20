@@ -3,18 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- link para bootstrap html -->
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+     <!-- link bootstrap css -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <!-- link para JS bootstrap -->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+     
+     <!-- icone cdn -->
+     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+ 
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>MoveBR</title>
     <link rel="stylesheet" href="/static/css/pag-inicial.css">
 </head>
+
 <body>
     <header>
-        <div class="logo"><img src="/static/icones/logo.png" alt="logo"></div>
+        <div class="logo">
+            <img src="/static/icones/logo.png" alt="logo">
+        </div>
         <div class="menu-icon" id="menu-icon">
             <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
         </div>
     </header>
+    
 
     <nav id="menu" class="menu">
+
+
+        <h3>Cadastrar-se como?</h3>
+
         <a href="/templates/login.html">
             <button class="card" id="motorista" >
                 <img src="https://img.icons8.com/ios-filled/100/ffffff/steering-wheel.png" alt="Motorista" />
@@ -26,27 +51,43 @@
         <a href="/templates/login.html">
             <button class="card" id="aluno" >
                 <img src="https://img.icons8.com/ios-filled/100/ffffff/student-male.png" alt="Aluno" />
-                <a href="/templates/pag-aluno.html"></a>
                 <p>Aluno</p>
             </button>
         </a>
         
         
     </nav>
+          <!-- carrosel de imgs -->
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="c2" src="https://img.freepik.com/fotos-premium/van-branco-isolado-sobre-superficie-transparente-1_1134599-6943.jpg" alt="Primeiro Slide">
+              </div>
+              <div class="carousel-item">
+                <img class="c2" src="/static/icones/Venh a com a move.png" alt="Segundo Slide">
+              </div>
+              <div class="carousel-item">
+                <img class="c2" src="https://img.freepik.com/fotos-premium/van-branco-isolado-sobre-superficie-transparente-1_1134599-6943.jpg" alt="Terceiro Slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Próximo</span>
+            </a>
+        </div>
 
     <main>
+  
         <!-- Seção Sobre Nós -->
         <section class="about" id="about">
             <h2>Sobre a MoveBr</h2>
-            <p>A <strong>MoveBr</strong> é uma empresa especializada no transporte escolar seguro e eficiente. Atuamos há mais de 20 anos no mercado, garantindo o deslocamento seguro de milhares de crianças e adolescentes para escolas, atividades extracurriculares e eventos, sempre com foco em qualidade, conforto e segurança. Nossa missão é fornecer um serviço confiável para as famílias, com rigorosos padrões de segurança, pontualidade e atendimento personalizado.</p>
-            <img src="https://example.com/movebr-van-escolar.jpg" alt="Vans escolares da MoveBr">
-            <ul>
-                <li>Atuação em mais de 50 cidades do Brasil</li>
-                <li>Certificação em segurança veicular e transporte de crianças</li>
-                <li>Aplicativo para rastreamento em tempo real da localização das vans</li>
-                <li>Parcerias com mais de 200 escolas e instituições de ensino</li>
-                <li>Atendimento especializado para crianças com necessidades especiais</li>
-            </ul>
+            <p>A MoveBR é uma empresa inovadora que está revolucionando o setor de transporte escolar, oferecendo uma solução digital altamente eficiente para motoristas de vans escolares e gestores de frotas. Com a crescente demanda por serviços mais organizados e seguros, a MoveBR se posiciona como uma parceira essencial para quem atua no transporte de crianças e adolescentes, proporcionando mais facilidade na gestão de rotinas diárias e otimização dos processos. <br><p>
+
+                O principal diferencial da MoveBR é seu aplicativo, desenvolvido com o objetivo de trazer fluidez e praticidade para o dia a dia dos motoristas de vans escolares. O app é uma ferramenta completa que centraliza diversas funções essenciais para o bom funcionamento do transporte escolar, focando em agilizar pagamentos e facilitar a gestão de alunos. Ele foi pensado para simplificar a vida dos motoristas, reduzindo a burocracia e aumentando a eficiência das operações, tudo isso com uma interface intuitiva e fácil de usar.</p>
         </section>
 
         <!-- Seção Serviços -->
@@ -54,25 +95,62 @@
             <h2>Nossos Serviços</h2>
             <p>A MoveBr oferece uma variedade de serviços voltados ao transporte escolar e deslocamento seguro de crianças e adolescentes. Adaptamos nossas rotas e horários para melhor atender as necessidades das famílias e escolas, garantindo sempre conforto e segurança.</p>
             <ul>
-                <li><strong>Transporte Escolar Regular:</strong> Serviço diário de transporte escolar para crianças e adolescentes, com horários flexíveis e atendimento personalizado conforme as necessidades dos pais e escolas.</li>
-                <li><strong>Atividades Extracurriculares:</strong> Transporte seguro para atividades como cursos de idiomas, esportes, música e outros eventos fora do horário escolar regular.</li>
-                <li><strong>Transporte para Passeios e Excursões:</strong> Vans confortáveis e seguras para levar grupos escolares em excursões, passeios educacionais e eventos especiais.</li>
-                <li><strong>Transporte para Necessidades Especiais:</strong> Veículos adaptados e equipe treinada para atender crianças com necessidades especiais, garantindo acessibilidade e cuidado extra.</li>
-                <li><strong>Aplicativo de Rastreio:</strong> Ferramenta de rastreamento em tempo real que permite aos pais acompanhar a localização exata da van durante o trajeto.</li>
+                
+
+                <li><strong><h4>Gestão de Alunos:</h4></strong> Outro aspecto fundamental da solução da MoveBR é a gestão integrada de alunos. Sabemos que administrar a rotina de transporte escolar envolve muito mais do que apenas levar e buscar crianças na escola. É necessário manter um controle preciso sobre os horários, locais de embarque e desembarque, além de gerenciar as informações de cada aluno e a comunicação com os responsáveis. <br><p>
+
+                    
+
+                <li><strong><h4>Apoio ao Motorista de Van Escolar:</h4></strong> A MoveBR também se destaca pelo suporte oferecido aos motoristas. A empresa compreende as necessidades específicas desse público e busca proporcionar um atendimento completo, que vai além da tecnologia. Os motoristas podem contar com suporte técnico especializado para tirar dúvidas sobre o uso do aplicativo, além de receberem atualizações constantes que garantem a melhoria contínua da plataforma. <br><p>
+
+                   
+
+        
+                
+                <li><strong><h4>Conclusão:</h4></strong>A MoveBR é uma empresa que veio para transformar o transporte escolar no Brasil, oferecendo uma plataforma completa e eficiente para motoristas de vans escolares. Com o foco em agilizar pagamentos, facilitar a gestão de alunos e melhorar a comunicação com os pais, a MoveBR simplifica o trabalho dos motoristas e promove uma operação mais segura e organizada. <br><p>
+
+                    Por meio da tecnologia, a empresa está ajudando a criar um serviço de transporte escolar mais confiável, profissional e sustentável. Os motoristas ganham em eficiência e tranquilidade, os pais têm mais segurança e transparência, e os alunos podem contar com um transporte mais ágil e seguro. A MoveBR está, sem dúvida, redefinindo os padrões do transporte escolar no país, e o futuro parece cada vez mais promissor com a sua presença no mercado.</li>
             </ul>
         </section>
 
         <!-- Seção Segurança -->
-        <section class="security" id="security">
-            <h2>Compromisso com a Segurança</h2>
-            <p>A segurança é o nosso maior compromisso. Todos os nossos veículos são equipados com tecnologia de ponta para garantir a proteção das crianças durante o trajeto, incluindo cintos de segurança apropriados, cadeirinhas e manutenção regular da frota. Além disso, nossos motoristas passam por um rigoroso processo de seleção e treinamentos constantes.</p>
-            <ul>
-                <li><strong>Motoristas Treinados:</strong> Todos os motoristas possuem certificação para transporte escolar e participam de treinamentos de reciclagem semestrais.</li>
-                <li><strong>Sistema de Monitoramento:</strong> Cada van é equipada com câmeras internas e sistema de rastreamento por GPS, permitindo o acompanhamento em tempo real do trajeto.</li>
-                <li><strong>Manutenção Preventiva:</strong> Nossa frota passa por manutenção regular, seguindo rigorosos padrões de segurança para garantir a qualidade dos veículos.</li>
-                <li><strong>Protocolos de Higienização:</strong> Desde a pandemia de COVID-19, intensificamos nossos protocolos de higienização, garantindo a limpeza constante dos veículos.</li>
-                <li><strong>Seguro Completo:</strong> Todos os passageiros estão cobertos por um seguro especializado, garantindo a tranquilidade das famílias.</li>
-            </ul>
+        <section class="servicos">
+            <h2>Nossos Serviços</h2>
+            <div class="cards2">
+    
+                <div class="card3">
+                    <div class="icon">
+                        <img src="car-icon.png" alt="Transporte Executivo">
+                    </div>
+                    <h2>Transporte Escolar</h2>
+                    <p>Motoristas sempre pontuais, devidamente trajados e todos especializados em atendimento personalizado de acordo com sua necessidade. Equipe sempre preparada. Atendimento 24hs.</p>
+                </div>
+    
+                <div class="card3">
+                    <div class="icon">
+                        <img src="plane-icon.png" alt="Transfer para Aeroporto">
+                    </div>
+                    <h2>Transfer para Aeroporto</h2>
+                    <p>Na chegada ou na saída, fazemos o seu Transfer do/para Aeroporto ou Rodoviária, em veículos com ar-condicionado e confortáveis, 24hs por dia.</p>
+                </div>
+    
+                <div class="card3">
+                    <div class="icon">
+                        <img src="map-icon.png" alt="Passeios e Excursões">
+                    </div>
+                    <h2>Passeios e Excursões</h2>
+                    <p>Levamos você para passeios à diversos pontos turísticos, seja um passeio em Família, ou um evento da sua Empresa, Igreja ou Instituição. Tudo com, segurança e conforto.</p>
+                </div>
+    
+                <div class="card3">
+                    <div class="icon">
+                        <img src="bus-icon.png" alt="Transporte Corporativo">
+                    </div>
+                    <h2>Transporte Corporativo</h2>
+                    <p>Precisa de transporte para seu evento? Oferecemos diversas opções para atender perfeitamente o seu evento: casamentos, excursões, convenções, entre outros.</p>
+                </div>
+    
+            </div>
         </section>
     </main>
 

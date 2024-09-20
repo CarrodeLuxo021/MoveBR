@@ -9,26 +9,35 @@ body {
     font-family: Arial, sans-serif;
     background-color: #e4e4e4; /* Verde escuro */
     color: #fff;
-    display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     justify-content: space-between;
+    
 }
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     width: 100%;
+    height: 25%;
     padding: 5px;
     background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
     color: #fff; /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
 }
+.c2{
+
+    width: 100%;
+    height: 700px;
+ }
+
+
 .logo img{
-    width: 100px;
+    width: 150px;
 }
+
 header h1 {
     color: #ffcc00; /* Amarelo */
     font-size: 2rem;
@@ -48,7 +57,7 @@ header h1 {
 /* Inicialmente, o menu estará fora da tela (à direita) */
 .menu {
     position: fixed;
-    top: 10%;
+    top: 24%;
     right: -400px; /* Mover para fora da tela */
     height: 80%;
     width: 170px;
@@ -132,15 +141,28 @@ header h1 {
 /* Seção principal */
 main {
     padding: 100px;
-    background-color: white;
+    
     max-width: 1200px;
     margin: 0 auto;
     color: #333;
 }
 
 h2 {
-    color: #6DA6B1;
+    color: #000000;
     margin-bottom: 20px;
+    font-size: 300%;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+      
+    
+}
+h4{
+    color: #000000;
+    margin-bottom: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 section {
@@ -191,4 +213,65 @@ section {
     padding-left: 15px;
     font-style: italic;
     color: #555;
+}
+
+
+
+
+
+
+
+
+
+
+.servicos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.cards2 {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card3 {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card3 h2 {
+    color: #6b1c1c;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.card3 p {
+    color: #333;
+    font-size: 0.9em;
+}
+
+.icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .cards2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card3 {
+        width: 80%;
+        margin-bottom: 20px;
+    }
 }
