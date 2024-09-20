@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoveBR - Motoristas</title>
-    <link rel="stylesheet" href="../static/styles/pag-inicial-motorista.css">
+    <link rel="stylesheet" href="/static/styles/pag-inicial-motorista.css">
     <script src="../static/js/pag-inicial-motorista.js"></script>
 </head>
 <body>
@@ -12,78 +12,41 @@
         <div class="cabecalho_motorista">
             <figure>
                 <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
-            </figure>
-            <div class="container-menu-motorista">
-                <div id="nav-test">
-                    <div id="nav-motorista">
-                       <ul id="ul-menu-motorista">
-                           <li class = "nav-item-motorista">
-                               <a href="">Lista de alunos</a> 
-                           </li>
-       
-                           <li class = "nav-item-motorista">
-                               <a href="">Gerenciamento de clientes</a> 
-                           </li>
-       
-                           <li class = "nav-item-motorista">
-                               <a href="">Histórico de pagamentos</a> 
-                           </li>
-       
-                           <li class = "nav-item-motorista">
-                               <a href="">Seu Perfil</a> 
-                           </li>
-                       <div id="line-menu"></div>
-               </div>
-            </div>
-            <div class="menu-icon" id="menu-icon"></div>
-                <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
-            </div>
+            </figure>  
         </div>
     </header>
  
-    <div class="top-menu">
-        <a href="#">Gerenciamento de Alunos</a>
-        <a href="#">Sobre Nós</a>
-        <a href="#">Recursos para Motoristas</a>
-    </div>
-    
-    <nav id="menu" class="menu" role="navigation">
-        <button class="card" id="Cash" aria-label="Pagamentos">
-            <img src="/static/icones/Cash.png" alt="Ícone de pagamentos" />
-            <p>Pagamentos</p>
-        </button>
-        <button class="card" id="Rotas" aria-label="Rotas">
-            <img src="/static/icones/Road.png" alt="Ícone de rotas" />
-            <p>Rotas</p>
-        </button>
-     
-        <button class="card" id="escola">
-                <img src="/static/icones/escola.png" alt="escola" />
-                <p>ESCOLAS</p>
-        </button>
-        <button class="card" id="configuracao" aria-label="Configuração">
-            <img src="https://img.icons8.com/ios-filled/100/ffffff/settings.png" alt="Ícone de configurações" />
-            <p>Configuração</p>
-        </button>
-    </nav>
+    <div class="container-menu-motorista">
+            <ul id="ul-menu-motorista">
 
-    <main>
-        <section id="about" class="section">
-            <h2>Bem-vindo, Motorista!</h2>
-            <p>Como parte da equipe MoveBR, você desempenha um papel crucial em garantir que nossos passageiros cheguem ao seu destino com segurança e pontualidade. Nesta seção, você encontrará informações úteis, ferramentas e recursos para facilitar seu trabalho.</p>
-    
-        </section>
+                <li class = "nav-item-motorista"></li>
+                    <a id="a-menu-motorista" href="seu-perfil-motorista">Seu Perfil</a> 
+                </li>
 
-        <section id="resources" class="section">
-            <h2>Recursos para Motoristas</h2>
-            <ul>
-                <li>Guia do Motorista: <a href="/static/docs/guia-motorista.pdf" target="_blank">Baixar PDF</a></li>
-                <li>Relatórios de Viagem: Acesse e visualize os relatórios das suas viagens diárias.</li>
-                <li>Assistência e Suporte: Entre em contato com nosso suporte técnico para qualquer problema ou dúvida.</li>
-                <li>Treinamento Online: Acesse módulos de treinamento para aprimorar suas habilidades e conhecimentos.</li>
+                <li class = "nav-item-motorista">
+                    <a id="a-menu-motorista" href="/listar-aluno">Lista de alunos</a> 
+                </li>
+
+                <li class = "nav-item-motorista">
+                    <a id="a-menu-motorista" href="/listar-responsavel">Gerenciamento de clientes</a> 
+                </li>
+
+                <li class = "nav-item-motorista">
+                    <a id="a-menu-motorista" href="/historico-pagamento">Histórico de pagamentos</a> 
+                </li>
             </ul>
-            <img src="https://www.example.com/imagens/recursos.png" alt="Imagem de recursos" style="width: 100%; max-width: 600px; border-radius: 8px;">
+       </div>
+    </div>
+    <main>
+        <section class="section01-pag_motorista">
+            <h1>Bem-vindo, {Nome do motorista}</h1>
+            <p>Facilite seu negócio com a MoveBR e otimize seu trabalho!</p>
         </section>
+        {% block content %}{% endblock %}
+        <section>
+            
+        </section>
+        
 
     </main>
 

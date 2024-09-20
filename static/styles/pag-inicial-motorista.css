@@ -13,7 +13,7 @@ header {
     color: #fff; /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
 }
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 
 body {
 	margin: 0;
@@ -21,6 +21,21 @@ body {
 	background: #eaeaea;
 }
 
+.container-menu-motorista{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul-menu-motorista{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
 section#nav-test {
 	height: 100vh;
 	display: flex;
@@ -53,9 +68,9 @@ section#nav-test {
     margin-left: 0;
 }
 
-    a {
-        color: rgb(241, 241, 241);
-    }
+#a-menu-motorista {
+    color: rgb(241, 241, 241);
+}
 
 
 
