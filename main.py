@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from conexao import Conexao
-import bcrypt
+from usuario import Usuario
+
 
 
 app = Flask(__name__)
@@ -11,62 +12,45 @@ def pag_inicio():
     return render_template('index.html')
 
 
-@app.route("/cadastrar-motorista", methods=["GET"])
+@app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro():
-    return render_template('pag-motorista.html')
+    if request.method == 'GET':
+        return render_template('pag-motorista.html')
+    else:
+        nome = request.form["nome"]
+        cpf = request.form["cpf"]
+        cnpj = request.form["cnpj"]
+        cnh = request.form["cnh"]
+        telefone = request.form["telefone"]
+        email = request.form["email"]
+        senha = request.form["senha"]
+        cidade = request.form["cidade"]
+        endereco = request.form["endereco"]
 
+        usuario = Usuario()
+        if usuario.cadastrar(nome, cpf, cnpj, cnh, telefone, email, senha, cidade, endereco):
+            return 'CADASTRO COM SUCESSO'
+        else:
+            return 'ERRO AO CADASTRAR'
 
-@app.route("/cadastrar-motorista", methods=["POST"])
-def cadastrar():
+@app.route("/cadastrar-aluno", methods=['GET','POST'])
+def pag_cdaluno():
+    if request.method == 'GET':
+        return render_template('pag-aluno.html')
+    else: 
+        
+        nome_aluno = request.form["nome_aluno"]
+        endereco = request.form["endereco"]
+        cidade = request.form["cidade"]
+        idade = request.form["idade"]
+        nome_responsavel = request.form["nome_responsavel"]
+        tel_responsavel = request.form["tel_responsavel"]
 
-    nome = request.form["nome"]
-    cpf = request.form["cpf"]
-    cnpj = request.form["cnpj"]
-    cnh = request.form["cnh"]
-    telefone = request.form["telefone"]
-    email = request.form["email"]
-    senha = request.form["senha"]
-    cidade = request.form["cidade"]
-    endereco = request.form["endereco"]
-    
-
-    mydb = Conexao.conectar()
-
-    mycursor = mydb.cursor()
-
-    sql = f"""
-    INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, m_periodos, tel_motorista, email, senha)
-    VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}', '{cidade}', '{endereco}', '{telefone}', '{email}', '{senha}')
-    """
-
-    mycursor.execute(sql)    
-    mydb.commit()
-    return render_template('pag-aluno.html')
-
-@app.route("/cadastrar-aluno", methods=["POST"])
-def cadastrar_aluno():
-    nome_aluno = request.form["nome_aluno"]
-    endereco = request.form["endereco"]
-    cidade = request.form["cidade"]
-    idade = request.form["idade"]
-    nome_responsavel = request.form["nome_responsavel"]
-    tel_responsavel = request.form["tel_responsavel"]
-    
-    mydb = Conexao.conectar()
-    mycursor = mydb.cursor()
-
-    sql = """
-    INSERT INTO tb_alunos (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel, a_periodo)
-    VALUES (%s, %s, %s, %s, %s, %s, %s)
-    """
-    valores = (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel)
-
-    mycursor.execute(sql, valores)
-    mydb.commit()
-
-    return render_template('pag-aluno.html')
-
-
+        usuario = Usuario()
+        if usuario.cadastrar_aluno(nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel):
+            return 'ALUNO CADASTRADO COM SUCESSO'
+        else:
+            return 'ERRO AO CADASTRAR'
 
 @app.route("/login-aluno", methods=["POST"])
 def login_aluno():
