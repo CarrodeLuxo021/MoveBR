@@ -7,7 +7,8 @@ class Conexao:
             user="root",
             password="root",
             host="localhost",
-            database="movebr"
+            database="movebr",
+            port="3307"
         )
         
         return mydb

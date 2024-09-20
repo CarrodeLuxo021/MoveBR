@@ -7,17 +7,18 @@ class Usuario():
         self.senha = None
         self.endereco = None
         self.cpf = None
+        self.cidade = None
         self.email = None
         self.logado = False
 
-    def cadastrar(self, nome, cpf, cnh, cnpj, cidade, endereco, telefone, email, senha):
+    def cadastrar(self, nome, cpf, cnh, cnpj, telefone,  email, senha, cidade):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
             sql = f"""
-            INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, m_periodos, tel_motorista, email, senha)
-            VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}', '{cidade}', '{endereco}', '{telefone}', '{email}', '{senha}')
+            INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, tel_motorista, email, senha, cidade)
+            VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}',  '{telefone}', '{email}', '{senha}', '{cidade}')
             """
             mycursor.execute(sql)  
 
@@ -25,11 +26,10 @@ class Usuario():
             self.cpf = cpf
             self.cnh = cnh
             self.cnpj = cnpj
-            self.cidade = cidade
-            self.endereco = endereco
             self.tel = telefone
             self.email = email
             self.senha = senha
+            self.cidade = cidade
 
             
             mydb.commit()
@@ -38,30 +38,27 @@ class Usuario():
         except:
             return False
         
-    def cadastrar_aluno(self, nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel):
-        try:
-            mydb = Conexao.conectar()
-            mycursor = mydb.cursor()
-
-            sql = f"""
-            INSERT INTO tb_alunos (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel)
-            VALUES ('{nome_aluno}', '{endereco}', '{cidade}', '{idade}', '{nome_responsavel}', '{tel_responsavel}')
-            """
-            mycursor.execute(sql)
-
-            self.nome_aluno = nome_aluno
-            self.endereco = endereco
-            self.cidade = cidade
-            self.idade = idade
-            self.nome_responsavel = nome_responsavel
-            self.tel_responsavel = tel_responsavel
-
-
-            mydb.commit()
-            mydb.close()
-            return True
-        except:
-            return False
+        
+    def logar(self, senha, email):
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+        
+        
+        sql = f"SELECT tel_motorista, nome, senha, cpf FROM tb_motoristas WHERE email='{email}' AND senha='{senha}'"
+        
+        mycursor.execute(sql)
+    
+        resultado = mycursor.fetchone()
+        print(resultado)
+        if not resultado == None:
+            self.logado = True
+            self.cpf = resultado[3]
+            self.nome = resultado[1]
+            self.tel = resultado[0]
+            self.senha = resultado[2]
+        else:
+            self.logado = False
+        
 
     def listar_usuario():
         try:
