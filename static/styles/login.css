@@ -5,20 +5,19 @@
     box-sizing: border-box;
 }
 
-/* Estilização do corpo da página */
-body {
-    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
-    line-height: 1.6;
-    background-color: #f4f4f4; /* Cor de fundo clara para uma aparência clean */
-    color: #333; /* Cor do texto para bom contraste */
-}
-
 /* Estilização do cabeçalho */
 header {
     background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
     color: #fff; /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
 }
+
+.logo img {
+    width: 80px; /* Tamanho da imagem do logo */
+    height: auto; /* Manter a proporção da imagem */
+    margin-left: 10px;
+}
+
 
 .logo img {
     width: 80px; /* Tamanho da imagem do logo */

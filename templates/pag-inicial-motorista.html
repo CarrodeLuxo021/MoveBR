@@ -1,11 +1,43 @@
-{% extends "index.html" %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoveBR - Motoristas</title>
     <link rel="stylesheet" href="../static/styles/pag-inicial-motorista.css">
+    <script src="../static/js/pag-inicial-motorista.js"></script>
+</head>
+<body>
     <header>
-        <div class="menu-icon" id="menu-icon"></div>
-            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+        <div class="cabecalho_motorista">
+            <figure>
+                <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
+            </figure>
+            <div class="container-menu-motorista">
+                <div id="nav-test">
+                    <div id="nav-motorista">
+                       <ul id="ul-menu-motorista">
+                           <li class = "nav-item-motorista">
+                               <a href="">Lista de alunos</a> 
+                           </li>
+       
+                           <li class = "nav-item-motorista">
+                               <a href="">Gerenciamento de clientes</a> 
+                           </li>
+       
+                           <li class = "nav-item-motorista">
+                               <a href="">Histórico de pagamentos</a> 
+                           </li>
+       
+                           <li class = "nav-item-motorista">
+                               <a href="">Seu Perfil</a> 
+                           </li>
+                       <div id="line-menu"></div>
+               </div>
+            </div>
+            <div class="menu-icon" id="menu-icon"></div>
+                <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+            </div>
         </div>
     </header>
  
@@ -58,6 +90,7 @@
     <footer>
         <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
     </footer>
+</body>
 
-    <script src="../static/js/pag-inicial-motorista.js"></script>
+    
 {% endblock %}
