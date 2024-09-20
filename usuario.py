@@ -65,14 +65,14 @@ class Usuario():
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"SELECT  FROM tb_alunos"
+            sql = f"SELECT nome, cidade, tel_motorista FROM tb_motoristas"
 
             mycursor.execute(sql)
             mycursor.fetchall()
             resultados = mycursor.fetchall()
             alunos = []
             for linha in resultados:
-                alunos.append({"id_aluno":linha[0],
+                alunos.append({"nome":linha[0],
                                })
                 for dados in linha:
                     print(dados)
