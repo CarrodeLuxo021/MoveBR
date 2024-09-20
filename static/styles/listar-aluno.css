@@ -1,56 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
-    background-color: #FFFFFF;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-header {
-    display: flex;
-    align-items: center; /* Centraliza a logo verticalmente */
-    padding: 0 20px; /* Adiciona espaçamento interno ao header */
-    background-image: linear-gradient(to right, #6DA6B1, #346D7E);
-    width: 100%;
-    height: 50px;
-    color: rgb(44, 43, 43);
-}
-
-header img {
-    width: 80px;
-    height: 80PX; /* Mantém a proporção da imagem */
-    margin-right: 20px; /* Espaço entre a logo e o texto do header */
-}
-
-
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: linear-gradient(to right, #346D7E, #6DA6B1);
-    width: 100%;
-    height: 50px;
-    color: rgb(36, 35, 35);
+    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
+    line-height: 1.6; /* Melhora a legibilidade */
+    background-color: #f4f4f4; /* Cor de fundo clara */
+    color: var(--cor-01); /* Cor do texto */
 }
 
 h1 {
     font-size: 20px;
-    color: #6DA6B1;
+    color: var(--cor-06);
     margin: 0;
 }
+
 h2 {
     font-size: 20px;
-    color: #1c1c1c;
+    color: var(--cor-01);
     margin: 0;
 }
 
@@ -60,31 +23,40 @@ main {
 }
 
 .tabela-alunos {
-    width: 100%;
+    width: 50%;
     border-collapse: separate;
     border-spacing: 0 10px;
-    box-shadow: 0 2px 4px rgba(240, 228, 228, 0.1);
     margin-top: 20px;
 }
 
 td, th{
     padding: 12px 20px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-    height: 50px;
     background-color: #D9D9D9;
-    vertical-align: middle;
-    color: #232323;
     font-weight: bold;
-    font-size: 16px;
 }
 
+/* Ajuste da classe .titulo para dar mais espaço à imagem */
+.titulo {
+    display: flex;
+    align-items: center; /* Alinha a imagem e o texto verticalmente */
+    margin: 10px; /* Espaçamento ao redor do container */
+}
 
+/* Ajuste para centralizar o texto na vertical e dar espaço entre a imagem e o texto */
+.info {
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+}
 
+/* Espaçamento ao redor da imagem */
+.titulo img {
+    margin-right: 20px; /* Espaço maior entre a imagem e o texto */
+    width: 60px; /* Ajuste do tamanho da imagem, opcional */
+    height: 60px; /* Ajuste do tamanho da imagem, opcional */
+}
 
 .detalhes {
     display: none; /* Oculta inicialmente as linhas de detalhes */
-    color: #000000; /* Define a cor do texto como preta */
 }
 
 .expandir {
@@ -92,181 +64,27 @@ td, th{
 }
 
 .btn-expandir {
-    padding: 6px 12px;
-    background-color: #D9D9D9;
     color: #346D7E;
-    border: none;
     cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    border-radius: 10px;
 }
 
 .detalhes.expandir {
     display: table-row; /* Mostra a linha de detalhes quando expandida */
 }
 
-thead {
-    background-color: #8d8686;
-}
-
-.c-table {
-    display: flex;
-    margin-top: 20px;
-}
-
-.search-container {
-    padding: 0px 900px 0px 0px;
-    color: black;
-    height: 20px;
-  
-  
-}
-.search-container button{
-    background-color: #b0b0b0;
-    border: none;
-    border-radius: 10px;
-}
-/* Estilo para o novo botão */
-.btn-icone {
-    padding: 6px 12px;
-    background-color: #D9D9D9;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-right: 10px; /* Espaço entre o ícone e o botão de expandir */
-}
-
-.btn-icone i {
-    font-size: 1rem;
-}
-
-/* Estilo para os botões */
-.button-container {
-    text-align: right;
-}
-
-/* Estilo para o botão de ícone */
-.btn-icone {
-    padding: 6px 12px;
-    background-color: #D9D9D9;
-    color: #346D7E;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-left: 10px; /* Espaço entre o ícone e o botão de expandir */
-}
-
-/* Estilo para o botão de expandir */
-.btn-expandir {
-    padding: 6px 12px;
-    background-color: #D9D9D9;
-    color: #346D7E;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-.tabela-alunos td {
-    position: relative;
-}
-
-.tabela-alunos td .button-container {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-/* Estilo para o botão de ícone */
-.btn-icone {
-    padding: 6px 12px;
-    background-color: #D9D9D9;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-left: 10px; /* Espaço entre o ícone e o botão de expandir */
-    transition: background-color 0.3s ease; /* Transição suave para a mudança de cor */
-}
-
-.btn-icone i {
-    font-size: 1rem;
-}
-
 /* Cor para o botão com ícone "x" */
 .btn-x {
-    font-weight: bold;
     color: #ff0000; /* Cor do ícone "x" vermelha */
 }
 
 /* Cor para o botão com ícone "verificado" */
 .btn-verificado {
-   
     color: #8ef85c; /* Cor do ícone "verificado" verde */
 }
-/* Estilo para os botões */
-.button-container {
-    text-align: right;
-}
-
-/* Estilo para o botão de ícone */
-.btn-icone {
-    padding: 6px 12px;
-    background-color: #D9D9D9;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-left: 10px; /* Espaço entre o ícone e o botão de expandir */
-    transition: background-color 0.3s ease; /* Transição suave para a mudança de cor */
-}
 
 .btn-icone i {
     font-size: 1rem;
-}
-
-/* Cor para o botão com ícone "x" */
-.btn-x {
-   
-    color: #ff0000; /* Cor do ícone "x" vermelha */
-}
-
-/* Cor para o botão com ícone "verificado" */
-.btn-verificado {
-    
-    color: #295b29; /* Cor do ícone "verificado" verde */
-}
-
-/* Estilo para a linha de detalhes */
-.detalhes-row {
-    display: none; /* Oculta inicialmente */
-    background-color: #f2f2f2; /* Cor de fundo cinza claro */
-    transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-/* Estilo para a linha de detalhes expandida */
-.expandir {
-    display: table-row; /* Mostra a linha de detalhes quando expandida */
-}
-
-.detalhes {
-
-    padding: 10px; /* Espaço interno para as informações */
-    color: #333; /* Cor do texto */
-}
-
-/* Exibe o conteúdo dentro da linha de detalhes */
-.detalhes.visible {
-    display: block;
-}
-
-thead {
-    background-color: #8d8686;
-    color: white;
-    text-align: left;
 }
 
 .tabela-alunos td {
@@ -276,7 +94,7 @@ thead {
 .tabela-alunos td .button-container {
     position: absolute;
     right: 0;
-    top: 50%;
+    top: 15%;
     transform: translateY(-50%);
 }
 
@@ -285,6 +103,7 @@ thead {
     background-color: #F2F2F2;
     transition: max-height 0.3s ease, padding 0.3s ease;
 }
+
 .c-table {
     display: flex;
     margin-bottom: 20px;

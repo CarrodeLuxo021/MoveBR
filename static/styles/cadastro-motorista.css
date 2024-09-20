@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
     line-height: 1.6; /* Melhora a legibilidade */
     background-color: #f4f4f4; /* Cor de fundo clara */
-    color: #333; /* Cor do texto */
+    color: var(--cor-01); /* Cor do texto */
 }
 
 /* Estilização do main */
