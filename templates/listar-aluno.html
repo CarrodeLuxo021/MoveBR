@@ -22,42 +22,39 @@
         <!-- Tabela de alunos -->
         <table class="tabela-alunos">
            
-            <tbody>
-                <!-- Exemplo de aluno -->
-                <tr class="aluno">
-                    <td>
-                        <div class="titulo">
-                            <img src="https://via.placeholder.com/50" alt="Imagem do Aluno">
-
-                            <!-- Informações do aluno -->
-                            <div class="info">
-                                <h1>Pedro Almeida</h1>
-                                <p>SESI</p>
-                            </div>                           
-                        </div>
-
-                        <!-- Detalhes expansíveis -->
-                        <div class="detalhes" style="display: none;">
-                            <p><strong>Responsável:</strong> </p>
-                            <p><strong>Período:</strong> </p>
-                            <div class="toggle-container">
-                                <span>Pagamento:</span>
-                                <label class="switch">
-                                    <input type="checkbox" class="toggle-payment">
-                                    <span class="slider"></span>
-                                </label>
+            <div class="container-tabela">
+                <tbody>
+                    <!-- Aluno 1 -->
+                    <tr class="aluno">
+                        <td>
+                            <div class="titulo">
+                                <img src="" alt="Imagem do Aluno">
+                                <div class="info">
+                                    <h1>{{}}</h1>
+                                    <p>{{}}</p>
+                                </div>
                             </div>
-                        </div>     
+                            <div class="detalhes" style="display: none;">
+                                <p><strong>Responsável:</strong> {{}} </p>
+                                <p><strong>Período:</strong> {{}} </p>
+                                <div class="toggle-container">
+                                    <span>Pagamento:</span>
+                                    <label class="switch">
+                                        <input type="checkbox" class="toggle-payment">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+                            </div>
+                        </td>
+                    </tr>
 
-                        <!-- Botões de ação -->
-                        <div class="button-container">
-                            <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-                        </div>
-                    </td>
-                </tr>
-
-                <!-- Repetição para os demais alunos -->
-            </tbody>
+                    <!-- Adicione mais alunos aqui -->
+                </tbody>
+            </div>
+            
         </table>
     </main>
 

@@ -23,7 +23,7 @@ main {
 }
 
 .tabela-alunos {
-    width: 50%;
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0 10px;
     margin-top: 20px;
@@ -48,6 +48,64 @@ td, th{
     flex-direction: column; /* Alinha os itens verticalmente */
 }
 
+/* Adicionando espaçamento vertical entre H1 e H2 e centralizando-os */
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ajuste para centralizar verticalmente os títulos */
+.titulo h1, .titulo h2 {
+    display: inline-block;
+    vertical-align: middle; /* Centraliza verticalmente */
+}
+
+/* Remover o padding padrão do <h2> e definir margem */
+h2 {
+    margin-top: 5px; /* Espaço reduzido entre H1 e H2 */
+}
+
+/* Ajustes no botão expandir */
+.button-container {
+    position: relative; /* Para que a seta fique fixa */
+}
+
+/* Ajuste do botão de expansão para manter a seta no mesmo lugar */
+.btn-expandir {
+    position: absolute;
+    right: 0;
+    top: 50%; /* Alinhado verticalmente ao centro do botão */
+    transform: translateY(-50%); /* Ajusta a posição para centralizar */
+    padding: 6px 12px;
+    background-color: #D9D9D9;
+    color: #346D7E;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Mantém o botão switch alinhado com a linha de pagamento */
+.toggle-container {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Ajuste para o switch */
+.switch {
+    margin-left: 10px; /* Margem à esquerda do switch */
+}
+
+/* Remover a repetição e manter o estilo dos detalhes */
+.detalhes {
+    display: none; /* Esconde inicialmente */
+    background-color: #F2F2F2; /* Cor de fundo cinza claro */
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
 /* Espaçamento ao redor da imagem */
 .titulo img {
     margin-right: 20px; /* Espaço maior entre a imagem e o texto */
@@ -61,12 +119,6 @@ td, th{
 
 .expandir {
     display: table-row; /* Exibe a linha ao expandir */
-}
-
-.btn-expandir {
-    color: #346D7E;
-    cursor: pointer;
-    border-radius: 10px;
 }
 
 .detalhes.expandir {
@@ -185,14 +237,4 @@ input:checked + .slider:before {
 
 .aluno.expandido .detalhes {
     display: block; /* Mostra os detalhes quando a classe "expandido" é aplicada */
-}
-
-.btn-expandir {
-    padding: 6px 12px;
-    background-color: #D9D9D9;
-    color: #346D7E;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
 }
