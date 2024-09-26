@@ -18,7 +18,7 @@ main {
     max-width: 1000px; /* Largura máxima */
     margin: 0 auto; /* Centraliza horizontalmente */
     padding: 30px; /* Espaçamento interno */
-    background-color: #ffffff; /* Cor de fundo branca */
+    background-color: var(--cor-03); /* Cor de fundo branca */
     border-radius: 10px; /* Bordas arredondadas */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
@@ -40,7 +40,7 @@ main {
     display: block; /* Ocupa uma linha inteira */
     margin-bottom: 8px; /* Espaço abaixo do label */
     font-weight: 600; /* Texto em negrito */
-    color: #346D7E; /* Cor do texto */
+    color: var(--cor-06); /* Cor do texto */
 }
 
 /* Estilização dos campos de entrada */
@@ -62,8 +62,8 @@ main {
 }
 
 .btn-container button {
-    background-color: #346D7E; /* Cor de fundo */
-    color: #fff; /* Cor do texto */
+    background-color: var(--cor-06); /* Cor de fundo */
+    color: var(--cor-03); /* Cor do texto */
     border: none; /* Remove borda padrão */
     padding: 12px 24px; /* Espaçamento interno */
     border-radius: 6px; /* Bordas arredondadas */
@@ -74,7 +74,7 @@ main {
 }
 
 .btn-container button:hover {
-    background-color: #6DA6B1; /* Cor ao passar o mouse */
+    background-color: var(--cor-05); /* Cor ao passar o mouse */
 }
 
 .btn-container button:active {
