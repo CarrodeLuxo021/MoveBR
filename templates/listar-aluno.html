@@ -2,10 +2,41 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Alunos</title>
+    <style>
+        .alunos-content {
+            background-color: antiquewhite;
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .aluno {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .aluno:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
-    
+    <main>
+        <h1>Lista de Alunos</h1>
+        <div class="alunos-content">
+            {% for usuario in alunos %}
+            <div class="aluno">
+                <h2>{{ usuario.nome }}</h2>
+                <p>Email: {{ usuario.cidade }}</p>
+                <p>Telefone: {{ usuario.nome_responsavel }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
 </body>
 </html>

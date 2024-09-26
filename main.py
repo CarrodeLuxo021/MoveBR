@@ -51,15 +51,15 @@ def pag_cdaluno():
         return render_template('pag-aluno.html')
     else: 
         
-        nome_aluno = request.form["nome_aluno"]
-        endereco = request.form["endereco"]
-        cidade = request.form["cidade"]
-        idade = request.form["idade"]
-        nome_responsavel = request.form["nome_responsavel"]
-        tel_responsavel = request.form["tel_responsavel"]
+        nome_aluno = request.form["name"]
+        condicao_medica = request.form["condicao_medica"]
+        foto_aluno = request.form["ft_aluno"]
+        escola  = request.form["escola"]
+        nome_responsavel = request.form["nomeResponsavel"]
+        tel_responsavel = request.form["telResponsavel"]
 
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel):
+        if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola,  nome_responsavel, tel_responsavel):
             return 'ALUNO CADASTRADO COM SUCESSO'
         else:
             return 'ERRO AO CADASTRAR'
@@ -89,6 +89,14 @@ def listar_motorista():
         lista_usuarios = usuario.listar_usuario()
         return render_template("listar-motorista.html", usuarios=lista_usuarios)
     
+
+    
+@app.route("/listar-alunos", methods=['GET', 'POST'])
+def listar_alunos():
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_alunos= usuario.listar_aluno()
+        return render_template("listar-aluno.html", alunos=lista_alunos)
 
 app.run(debug=True)
 
