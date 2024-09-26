@@ -60,7 +60,7 @@ class Usuario():
             self.logado = False
         
 
-    def listar_usuario():
+    def listar_usuario(self):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
@@ -68,16 +68,18 @@ class Usuario():
             sql = f"SELECT nome, cidade, tel_motorista FROM tb_motoristas"
 
             mycursor.execute(sql)
-            mycursor.fetchall()
             resultados = mycursor.fetchall()
             alunos = []
             for linha in resultados:
-                alunos.append({"nome":linha[0],
-                               })
-                for dados in linha:
-                    print(dados)
-                    mycursor.close()
-                    mydb.close()
-            return True
+                alunos.append({
+                    "nome": linha[0],
+                    "cidade": linha[1],
+                    "tel_motorista": linha[2]
+                })
+            mycursor.close()
+            mydb.close()
+            return alunos
         except:
             return False
+
+    

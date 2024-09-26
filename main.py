@@ -85,10 +85,9 @@ def logar():
 @app.route("/listar-motorista", methods=['GET', 'POST'])
 def listar_motorista():
     if request.method == 'GET':
-        return render_template("listar-aluno.html")
-    else:
         usuario = Usuario()
-        usuario.listar_usuario()
+        lista_usuarios = usuario.listar_usuario()
+        return render_template("listar-motorista.html", usuarios=lista_usuarios)
     
 
 app.run(debug=True)
