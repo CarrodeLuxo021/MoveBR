@@ -1,146 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+    <!-- Meta tags essenciais -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- link para bootstrap html -->
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/styles/pag-inicial.css">
+
+    <script src="/static/js/pag-inicial.js"></script>
+
+
+    <!-- Bootstrap CSS (link oficial para uso do Bootstrap) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+
+    <!-- Links para JS do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
     
-     <!-- link bootstrap css -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-     <!-- link para JS bootstrap -->
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-     
-     <!-- icone cdn -->
-     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
- 
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Google Fonts (fonte Bebas Neue) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    <!-- Ícones CDN (Flaticon) -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    
+    <!-- Título da Página -->
     <title>MoveBR</title>
-    <link rel="stylesheet" href="/static/css/pag-inicial.css">
 </head>
 
 <body>
+    <!-- Cabeçalho -->
     <header>
         <div class="logo">
+            <!-- Logo da empresa -->
             <img src="/static/icones/logo.png" alt="logo">
         </div>
         <div class="menu-icon" id="menu-icon">
-            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+            <!-- Ícone de perfil (pode ser clicado para abrir o menu) -->
+            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon" />
         </div>
     </header>
-    
 
+    <!-- Menu lateral fixo -->
     <nav id="menu" class="menu">
-
-
         <h3>Cadastrar-se como?</h3>
 
+        <!-- Link para cadastro de motorista -->
         <a href="/templates/login.html">
-            <button class="card" id="motorista" >
+            <button class="card" id="motorista">
                 <img src="https://img.icons8.com/ios-filled/100/ffffff/steering-wheel.png" alt="Motorista" />
                 <p>Motorista</p>
             </button>
         </a>
-        
 
+        <!-- Link para cadastro de aluno -->
         <a href="/templates/login.html">
-            <button class="card" id="aluno" >
+            <button class="card" id="aluno">
                 <img src="https://img.icons8.com/ios-filled/100/ffffff/student-male.png" alt="Aluno" />
                 <p>Aluno</p>
             </button>
         </a>
-        
-        
     </nav>
-      
 
+    <!-- Conteúdo Principal -->
     <main>
-  
+
         <!-- Seção Sobre Nós -->
         <section class="about" id="about">
             <h2>Sobre a MoveBr</h2>
-            <p>A MoveBR é uma empresa inovadora que está revolucionando o setor de transporte escolar, oferecendo uma solução digital altamente eficiente para motoristas de vans escolares e gestores de frotas. Com a crescente demanda por serviços mais organizados e seguros, a MoveBR se posiciona como uma parceira essencial para quem atua no transporte de crianças e adolescentes, proporcionando mais facilidade na gestão de rotinas diárias e otimização dos processos. <br><p>
-
-                O principal diferencial da MoveBR é seu aplicativo, desenvolvido com o objetivo de trazer fluidez e praticidade para o dia a dia dos motoristas de vans escolares. O app é uma ferramenta completa que centraliza diversas funções essenciais para o bom funcionamento do transporte escolar, focando em agilizar pagamentos e facilitar a gestão de alunos. Ele foi pensado para simplificar a vida dos motoristas, reduzindo a burocracia e aumentando a eficiência das operações, tudo isso com uma interface intuitiva e fácil de usar.</p>
+            <p>
+                A MoveBR é uma empresa inovadora que está revolucionando o setor de transporte escolar, oferecendo uma solução digital altamente eficiente para motoristas de vans escolares e gestores de frotas.
+                Com o aumento da demanda por serviços mais organizados e seguros, a MoveBR proporciona mais facilidade na gestão de rotinas diárias e otimização dos processos.
+            </p>
+            <p>
+                O principal diferencial da MoveBR é seu aplicativo, desenvolvido para trazer fluidez e praticidade para o dia a dia dos motoristas de vans escolares. Focado em agilizar pagamentos e facilitar a gestão de alunos, o app simplifica a vida dos motoristas, reduzindo a burocracia e aumentando a eficiência.
+            </p>
         </section>
 
         <!-- Seção Serviços -->
         <section class="services" id="services">
             <h2>Nossos Serviços</h2>
-            <p>A MoveBr oferece uma variedade de serviços voltados ao transporte escolar e deslocamento seguro de crianças e adolescentes. Adaptamos nossas rotas e horários para melhor atender as necessidades das famílias e escolas, garantindo sempre conforto e segurança.</p>
+            <p>A MoveBr oferece serviços adaptados para garantir conforto e segurança no transporte escolar.</p>
             <ul>
-                
-
-                <li><strong><h4>Gestão de Alunos:</h4></strong> Outro aspecto fundamental da solução da MoveBR é a gestão integrada de alunos. Sabemos que administrar a rotina de transporte escolar envolve muito mais do que apenas levar e buscar crianças na escola. É necessário manter um controle preciso sobre os horários, locais de embarque e desembarque, além de gerenciar as informações de cada aluno e a comunicação com os responsáveis. <br><p>
-
-                    
-
-                <li><strong><h4>Apoio ao Motorista de Van Escolar:</h4></strong> A MoveBR também se destaca pelo suporte oferecido aos motoristas. A empresa compreende as necessidades específicas desse público e busca proporcionar um atendimento completo, que vai além da tecnologia. Os motoristas podem contar com suporte técnico especializado para tirar dúvidas sobre o uso do aplicativo, além de receberem atualizações constantes que garantem a melhoria contínua da plataforma. <br><p>
-
-                   
-
-        
-                
-                <li><strong><h4>Conclusão:</h4></strong>A MoveBR é uma empresa que veio para transformar o transporte escolar no Brasil, oferecendo uma plataforma completa e eficiente para motoristas de vans escolares. Com o foco em agilizar pagamentos, facilitar a gestão de alunos e melhorar a comunicação com os pais, a MoveBR simplifica o trabalho dos motoristas e promove uma operação mais segura e organizada. <br><p>
-
-                    Por meio da tecnologia, a empresa está ajudando a criar um serviço de transporte escolar mais confiável, profissional e sustentável. Os motoristas ganham em eficiência e tranquilidade, os pais têm mais segurança e transparência, e os alunos podem contar com um transporte mais ágil e seguro. A MoveBR está, sem dúvida, redefinindo os padrões do transporte escolar no país, e o futuro parece cada vez mais promissor com a sua presença no mercado.</li>
+                <li>
+                    <h4>Gestão de Alunos:</h4>
+                    <p>
+                        A MoveBR oferece uma gestão integrada de alunos, facilitando o controle sobre horários, locais de embarque e comunicação com os responsáveis.
+                    </p>
+                </li>
+                <li>
+                    <h4>Apoio ao Motorista de Van Escolar:</h4>
+                    <p>
+                        A MoveBR oferece suporte técnico especializado e atualizações constantes, além de atendimento completo para motoristas de vans escolares.
+                    </p>
+                </li>
+                <li>
+                    <h4>Conclusão:</h4>
+                    <p>
+                        A MoveBR transforma o transporte escolar com uma plataforma eficiente e segura, oferecendo uma operação mais organizada e transparente.
+                    </p>
+                </li>
             </ul>
         </section>
 
-        <!-- Seção Segurança -->
+        <!-- Seção de Serviços Oferecidos -->
         <section class="servicos">
             <h2>Nossos Serviços</h2>
             <div class="cards2">
-    
+
+                <!-- Card 1 - Transporte Escolar -->
                 <div class="card3">
                     <div class="icon">
-                        <img src="/static/icones/van-icon.png" alt="Transporte Executivo">
+                        <img src="/static/icones/van-icon.png" alt="Transporte Escolar">
                     </div>
                     <h2>Transporte Escolar</h2>
-                    <p>Motoristas sempre pontuais, devidamente trajados e todos especializados em atendimento personalizado de acordo com sua necessidade. Equipe sempre preparada. Atendimento 24hs.</p>
+                    <p>
+                        Motoristas especializados, sempre pontuais e preparados. Atendimento 24 horas para qualquer eventualidade.
+                    </p>
                 </div>
-    
+
+                <!-- Card 2 - Suporte 24 Horas -->
                 <div class="card3">
                     <div class="icon">
-                        <img src="/static/icones/relogio.png" alt="Transfer para Aeroporto">
+                        <img src="/static/icones/relogio.png" alt="Suporte 24 Horas">
                     </div>
-                    <h2>Suporte 24Horas</h2>
-                    <p>Na MoveBR, priorizamos o bem-estar e a segurança de nossos motoristas. Por isso, oferecemos suporte 24 horas por dia, 7 dias por semana. Nossa equipe está sempre pronta para ajudar, resolver dúvidas e fornecer assistência em tempo real, garantindo que você tenha a melhor experiência possível. Conte conosco a qualquer hora do dia ou da noite!</p>
+                    <h2>Suporte 24 Horas</h2>
+                    <p>
+                        Oferecemos suporte 24 horas por dia, 7 dias por semana, para garantir que motoristas e responsáveis tenham todo o apoio necessário.
+                    </p>
                 </div>
-    
+
+                <!-- Card 3 - Segurança -->
                 <div class="card3">
                     <div class="icon">
-                        <img src="/static/icones/escudo.png" alt="Passeios e Excursões">
+                        <img src="/static/icones/escudo.png" alt="Segurança de Dados">
                     </div>
                     <h2>Segurança</h2>
-                    <p>A MoveBR se compromete com a proteção dos dados de seus usuários, implementando rigorosas medidas de segurança. Utilizamos tecnologia de ponta para garantir que todas as informações sejam criptografadas e armazenadas de forma segura.</p>
+                    <p>
+                        Implementamos rigorosas medidas de segurança para proteger os dados dos usuários, garantindo que suas informações sejam armazenadas de forma segura.
+                    </p>
                 </div>
-    
-    
+
             </div>
         </section>
+
     </main>
 
+    <!-- Rodapé -->
     <footer>
         <div class="social-icons">
-            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/facebook-new.png" alt="Facebook"/></a>
-            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/instagram-new.png" alt="Instagram"/></a>
-            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/twitter-squared.png" alt="Twitter"/></a>
+            <!-- Ícones de redes sociais -->
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/facebook-new.png" alt="Facebook" /></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/instagram-new.png" alt="Instagram" /></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/twitter-squared.png" alt="Twitter" /></a>
         </div>
         <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
     </footer>
-    
-    
- 
 
+  
 
-    
-
-    <script src="/js/pag-inicial.js"></script>
+    <!-- Script personalizado (adicione seu arquivo JavaScript aqui) -->
+   
 </body>
+
 </html>
