@@ -65,10 +65,10 @@ def logar_get_aluno():
 def logar_get_motorista():
     return render_template("login-motorista.html")
 
-@app.route("/logar", methods=['POST'])
+@app.route("/logar", methods=['POST', 'GET'])
 def logar():
     if request.method == 'GET':
-        return render_template("logar.html")
+        return render_template("login-motorista.html")
     else:
         senha = request.form['senha']
         email = request.form['email']
