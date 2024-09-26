@@ -14,22 +14,34 @@ class Usuario():
         self.logado = False
         self.foto_aluno = None
         self.condicao_medica = None
+        self.ft_motorista = None
+        self.ft_veiculo = None
+        self.valor_cobrado = None
 
 
-    def cadastrar_motorista(self, nome, cpf, cnh, cnpj, telefone,  email, senha, cidade):
+    def cadastrar_motorista(self, nome, cpf, cnh, cnpj, telefone,  email, senha, cidade, foto_motorista, foto_van, valor_cobrado):
         try:
-            mydb = Conexao.conectar()
-            mycursor = mydb.cursor()
 
-            sql = f"""
-            INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, tel_motorista, email, senha, cidade)
-            VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}',  '{telefone}', '{email}', '{senha}', '{cidade}')
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor(prepared=True)
+
+            sql = """
+            INSERT INTO tb_motoristas (nome_motorista, cpf_motorista, cnh, cnpj, tel_motorista, email_motorista, senha_motorista, cidade_motorista, foto_van, foto_motorista, valor_cobrado)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
-            mycursor.execute(sql)  
+
+            values = (nome, cpf, cnh, cnpj, telefone, email, senha, cidade, foto_motorista, foto_van, valor_cobrado)
+            mycursor.execute(sql, values)
+
+# ... (restante do código permanece o mesmo)
+    
 
             self.nome = nome
             self.cpf = cpf
             self.cnh = cnh
+            self.ft_motorista = foto_motorista
+            self.ft_veiculo = foto_van
+            self.valor_cobrado = valor_cobrado                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
             self.cnpj = cnpj
             self.tel = telefone
             self.email = email

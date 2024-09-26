@@ -34,13 +34,16 @@ def pag_cadastro():
         cpf = request.form["cpf"]
         cnpj = request.form["cnpj"]
         cnh = request.form["cnh"]
+        foto_motorista = request.form["ft_motorista"]
+        foto_veiculo = request.form["ft_veiculo"]
+        valor_mensalidade = request.form["valor_cobrado"]
         telefone = request.form["phone"]
         email = request.form["email"]
         senha = request.form["senha"]
         cidade = request.form["cidade"]
 
         usuario = Usuario()
-        if usuario.cadastrar(nome, cpf, cnpj, cnh, telefone, email, senha, cidade):
+        if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha, cidade, foto_motorista, foto_veiculo, valor_mensalidade):
             return 'CADASTRO COM SUCESSO'
         else:
             return 'ERRO AO CADASTRAR'
