@@ -1,9 +1,12 @@
 {% extends "index.html" %}
 
 {% block content %}
+    <title>Listar Aluno</title>
+
     <!-- Importa o FontAwesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Importa o arquivo de estilo CSS -->
+
+    <!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
     <link rel="stylesheet" href="../static/styles/listar-aluno.css">
     <link rel="stylesheet" href="../static/styles/variaveis.css">
 
@@ -13,40 +16,54 @@
             <!-- Área de busca -->
             <div class="search-container">
                 <button> Buscar 
+                    <!-- Ícone de busca importado de um serviço externo (icons8) -->
                     <img src="https://img.icons8.com/?size=100&id=7695&format=png&color=000000" alt="Ícone de busca">
                 </button>
             </div>
-            <h2>Alunos</h2>
         </section>
 
         <!-- Tabela de alunos -->
-        <table class="tabela-alunos">
-           
+        <table class="alunos-listados">
             <div class="container-tabela">
                 <tbody>
-                    <!-- Aluno 1 -->
+                    <!-- Estrutura de cada linha de aluno na tabela -->
                     <tr class="aluno">
                         <td>
-                            <div class="titulo">
-                                <img src="" alt="Imagem do Aluno">
-                                <div class="info">
-                                    <h1>{{}}</h1>
-                                    <p>{{}}</p>
+                            <!-- Perfil do Aluno -->
+                            <div class="perfil-aluno">
+                                <!-- Foto do Aluno -->
+                                <div class="foto-aluno">
+                                    <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
+                                    <img src="{{}}" alt="Foto do Aluno">
+                                </div>
+                                <!-- Informações básicas do aluno -->
+                                <div class="info-aluno">
+                                    <h2> {{}} </h2> <!-- Nome do aluno -->
+                                    <p><strong>Nome resposável:</strong> {{}} </p> <!-- Nome do responsável -->
+                                    <p><strong>Telefone resposável:</strong> {{}} </p> <!-- Telefone do responsável -->
+                                    <p><strong>Cidade:</strong> {{}} </p> <!-- Cidade do aluno -->
                                 </div>
                             </div>
+
+                            <!-- Container para informações adicionais, inicialmente ocultas -->
                             <div class="detalhes" style="display: none;">
-                                <p><strong>Responsável:</strong> {{}} </p>
-                                <p><strong>Período:</strong> {{}} </p>
-                                <div class="toggle-container">
-                                    <span>Pagamento:</span>
-                                    <label class="switch">
-                                        <input type="checkbox" class="toggle-payment">
-                                        <span class="slider"></span>
-                                    </label>
+                                <!-- Informações de transporte -->
+                                <div class="info-transporte">
+                                    <h3>Informações de Transporte</h3>
+                                    <p><strong>Endereço:</strong> {{}} </p> <!-- Endereço do aluno -->
+                                    <p><strong>Escola:</strong> {{}} </p> <!-- Escola que o aluno frequenta -->
+                                </div>
+                        
+                                <!-- Informações extras do aluno -->
+                                <div class="info-extra">
+                                    <h3>Informações Extras</h3>
+                                    <p> {{}} </p> <!-- Qualquer informação adicional relevante -->
                                 </div>
                             </div>
+
+                            <!-- Botão para expandir/ocultar os detalhes do aluno -->
                             <div class="button-container">
-                                <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+                                <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button> <!-- Ícone de seta para expandir -->
                             </div>
                         </td>
                     </tr>
@@ -54,7 +71,6 @@
                     <!-- Adicione mais alunos aqui -->
                 </tbody>
             </div>
-            
         </table>
     </main>
 
@@ -62,44 +78,20 @@
     <script>
         // Função para expandir/ocultar detalhes do aluno
         function toggleExpandir(button) {
+            // Encontra a linha do aluno correspondente ao botão clicado
             const alunoRow = button.closest('.aluno');
+            // Seleciona o container de detalhes do aluno
             const detalhesContainer = alunoRow.querySelector('.detalhes');
 
+            // Alterna entre mostrar e ocultar os detalhes
             if (detalhesContainer.style.display === 'none') {
-                detalhesContainer.style.display = 'block';
-                button.textContent = '▲';
+                detalhesContainer.style.display = 'block';  // Mostra os detalhes
+                button.textContent = '▲';  // Muda o ícone do botão para uma seta para cima
             } else {
-                detalhesContainer.style.display = 'none';
-                button.textContent = '▼';
+                detalhesContainer.style.display = 'none';  // Oculta os detalhes
+                button.textContent = '▼';  // Muda o ícone do botão para uma seta para baixo
             }
         }
-
-        // Função para alternar ícone de verificação
-        function toggleIcon(button) {
-            const icon = button.querySelector('i');
-            if (icon.classList.contains('fa-x')) {
-                icon.classList.remove('fa-x');
-                icon.classList.add('fa-check');
-                button.classList.add('btn-verificado');
-                button.classList.remove('btn-x');
-            } else {
-                icon.classList.remove('fa-check');
-                icon.classList.add('fa-x');
-                button.classList.add('btn-x');
-                button.classList.remove('btn-verificado');
-            }
-        }
-
-        // Função para alternar a cor do botão de pagamento
-        document.querySelectorAll('.toggle-payment').forEach(function (toggle) {
-            toggle.addEventListener('change', function () {
-                if (this.checked) {
-                    this.nextElementSibling.style.backgroundColor = '#4CAF50';
-                } else {
-                    this.nextElementSibling.style.backgroundColor = '#ff4d4d';
-                }
-            });
-        });
     </script>
 
 {% endblock %}
