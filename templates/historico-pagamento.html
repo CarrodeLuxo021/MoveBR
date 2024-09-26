@@ -1,29 +1,23 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histórico de Pagamentos</title>
-    <!-- Adiciona Font Awesome para os ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/static/css/historico-pagamento.css">
-</head>
-<body>
+{% extends "index.html" %}
 
+{% block content %}
+    <title>Histórico de Pagamentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/styles/historico-pagamento.css">
 
     <header>
-        <div class="logo"><img src="/static/icones/logo.png" alt="logo"></div>
         <div class="menu-icon" id="menu-icon">
             <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
         </div>
-   
     </header>
     
     <nav id="menu" class="menu">
+
         <button class="card" id="Cash" aria-label="Pagamentos">
             <img src="/static/icones/Cash.png" alt="Ícone de pagamentos" />
             <p>Pagamentos</p>
         </button>
+
         <button class="card" id="Rotas" aria-label="Rotas">
             <img src="/static/icones/Road.png" alt="Ícone de rotas" />
             <p>Rotas</p>
@@ -31,12 +25,9 @@
      
         <button class="card" id="escola">
                 <img src="/static/icones/escola.png" alt="escola" />
-                <p>ESCOLAS</p>
+                <p>Escolas</p>
         </button>
-        
-        
     </nav>
-
 
     <div class="container1">
         <div class="header1">
@@ -69,7 +60,6 @@
         </div>
     </div>
 
-    <script src="/js/historico-pagamento.js"></script>
+    <script src="../static/js/historico-pagamento.js"></script>
 
-</body>
-</html>
+{% endblock %}

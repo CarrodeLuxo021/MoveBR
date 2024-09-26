@@ -1,0 +1,240 @@
+body {
+    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
+    line-height: 1.6; /* Melhora a legibilidade */
+    background-color: #f4f4f4; /* Cor de fundo clara */
+    color: var(--cor-01); /* Cor do texto */
+}
+
+h1 {
+    font-size: 20px;
+    color: var(--cor-06);
+    margin: 0;
+}
+
+h2 {
+    font-size: 20px;
+    color: var(--cor-01);
+    margin: 0;
+}
+
+main {
+    width: 1200px;
+    margin: auto;
+}
+
+.tabela-alunos {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 20px;
+}
+
+td, th{
+    padding: 12px 20px;
+    background-color: #D9D9D9;
+    font-weight: bold;
+}
+
+/* Ajuste da classe .titulo para dar mais espaço à imagem */
+.titulo {
+    display: flex;
+    align-items: center; /* Alinha a imagem e o texto verticalmente */
+    margin: 10px; /* Espaçamento ao redor do container */
+}
+
+/* Ajuste para centralizar o texto na vertical e dar espaço entre a imagem e o texto */
+.info {
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+}
+
+/* Adicionando espaçamento vertical entre H1 e H2 e centralizando-os */
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ajuste para centralizar verticalmente os títulos */
+.titulo h1, .titulo h2 {
+    display: inline-block;
+    vertical-align: middle; /* Centraliza verticalmente */
+}
+
+/* Remover o padding padrão do <h2> e definir margem */
+h2 {
+    margin-top: 5px; /* Espaço reduzido entre H1 e H2 */
+}
+
+/* Ajustes no botão expandir */
+.button-container {
+    position: relative; /* Para que a seta fique fixa */
+}
+
+/* Ajuste do botão de expansão para manter a seta no mesmo lugar */
+.btn-expandir {
+    position: absolute;
+    right: 0;
+    top: 50%; /* Alinhado verticalmente ao centro do botão */
+    transform: translateY(-50%); /* Ajusta a posição para centralizar */
+    padding: 6px 12px;
+    background-color: #D9D9D9;
+    color: #346D7E;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Mantém o botão switch alinhado com a linha de pagamento */
+.toggle-container {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+}
+
+/* Ajuste para o switch */
+.switch {
+    margin-left: 10px; /* Margem à esquerda do switch */
+}
+
+/* Remover a repetição e manter o estilo dos detalhes */
+.detalhes {
+    display: none; /* Esconde inicialmente */
+    background-color: #F2F2F2; /* Cor de fundo cinza claro */
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+/* Espaçamento ao redor da imagem */
+.titulo img {
+    margin-right: 20px; /* Espaço maior entre a imagem e o texto */
+    width: 60px; /* Ajuste do tamanho da imagem, opcional */
+    height: 60px; /* Ajuste do tamanho da imagem, opcional */
+}
+
+.detalhes {
+    display: none; /* Oculta inicialmente as linhas de detalhes */
+}
+
+.expandir {
+    display: table-row; /* Exibe a linha ao expandir */
+}
+
+.detalhes.expandir {
+    display: table-row; /* Mostra a linha de detalhes quando expandida */
+}
+
+/* Cor para o botão com ícone "x" */
+.btn-x {
+    color: #ff0000; /* Cor do ícone "x" vermelha */
+}
+
+/* Cor para o botão com ícone "verificado" */
+.btn-verificado {
+    color: #8ef85c; /* Cor do ícone "verificado" verde */
+}
+
+.btn-icone i {
+    font-size: 1rem;
+}
+
+.tabela-alunos td {
+    position: relative;
+}
+
+.tabela-alunos td .button-container {
+    position: absolute;
+    right: 0;
+    top: 15%;
+    transform: translateY(-50%);
+}
+
+.detalhes-row {
+    display: none;
+    background-color: #F2F2F2;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.c-table {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.search-container button img {
+    
+    width: 15px;
+    height: 15px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 26px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ff4d4d; /* Vermelho por padrão */
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #0c8eff; /* Verde quando selecionado */
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+.detalhes {
+    display: none; /* Esconde inicialmente */
+    background-color: #F2F2F2; /* Cor de fundo cinza claro */
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.aluno.expandido .detalhes {
+    display: block; /* Mostra os detalhes quando a classe "expandido" é aplicada */
+}

@@ -1,0 +1,31 @@
+/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização do cabeçalho */
+header {
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
+    color: #fff; /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+}
+
+.logo img {
+    width: 80px; /* Tamanho da imagem do logo */
+    height: auto; /* Manter a proporção da imagem */
+    margin-left: 10px;
+}
+
+/* Estilização do rodapé */
+footer {
+    background-image: linear-gradient(to right, #346D7E 0%, #6DA6B1 100%);
+    color: #fff; /* Texto claro para contraste */
+    padding: 30px; /* Espaçamento interno */
+    text-align: center; /* Centralizar o conteúdo */
+    position: fixed; /* Manter o rodapé fixo na parte inferior */
+    bottom: 0;
+    width: 100%; /* Ocupa toda a largura da página */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
+}

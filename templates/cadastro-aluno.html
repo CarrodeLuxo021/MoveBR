@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro do Aluno</title>
-    <link rel="stylesheet" href="../static/css/pag-aluno.css">
-</head>
-<body>
+{% extends "index.html" %}
 
-    <header>
-        <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
-    </header>
+{% block content %}
+    <title>Cadastro do Aluno</title>
+    <link rel="stylesheet" href="../static/styles/cadastro-aluno.css">
 
     <main>
         <form class="container-form">
             <div class="itens-form">
-                <div class="lado-esquerdo-container">
+                <section class="lado-esquerdo-container">
                     <label for="nomeAluno">Nome:</label>
                     <input type="text" id="nomeAluno" placeholder="ex: João da Silva">
                     
@@ -27,9 +19,12 @@
                     
                     <label for="cpfResponsavel">CPF do responsável:</label>
                     <input type="text" id="cpfResponsavel" placeholder="ex: 000.000.000-00">
-                </div>
+
+                    <label for="cnh">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="ex: Araraquara">
+                </section>
                 
-                <div class="lado-direito-container">
+                <section class="lado-direito-container">
                     <label for="escola">Escola:</label>
                     <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul">
                     
@@ -41,17 +36,14 @@
                     
                     <label for="senhaAluno">Senha:</label>
                     <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
-                </div>
-            </div>
 
-            <div class="btn-container">
-                <button type="submit" class="cadastrar">Cadastrar</button>
+                    <div class="btn-container">
+                        <button type="submit" class="cadastrar">Cadastrar</button>
+                    </div>
+
+                </section>
             </div>
         </form>
     </main>
 
-    <footer>
-    </footer>
-    
-</body>
-</html>
+{% endblock %}
