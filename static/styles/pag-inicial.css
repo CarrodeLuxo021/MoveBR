@@ -1,85 +1,85 @@
-/* Estilos gerais */
+/* Estilos gerais para zerar margens, padding e ajustar box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilo para o corpo do site */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #e4e4e4;
-    color: #fff;
+    font-family: Arial, sans-serif; /* Define a fonte do corpo */
+    background-color: #e4e4e4; /* Cor de fundo neutra */
+    color: #fff; /* Cor do texto geral branca */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
+    min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
 }
 
+/* Estilos para o cabeçalho */
 header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Alinha logo e ícone do menu nas extremidades */
+    align-items: center; /* Centraliza verticalmente os itens no header */
     width: 100%;
     padding: 5px;
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%);
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente no background */
     color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra no header */
+    z-index: 999; /* Garante que o header fique sempre por cima de outros elementos */
 }
 
-.c2 {
-    width: 100%;
-    height: 700px;
-    object-fit: cover;
-}
-
+/* Estilo para a logo */
 .logo img {
-    width: 150px;
+    width: 150px; /* Define o tamanho da logo */
 }
 
+/* Ícone de menu responsivo */
 .menu-icon {
-    cursor: pointer;
-    color: #ffcc00; /* Amarelo */
+    cursor: pointer; /* Muda o cursor ao passar sobre o ícone */
+    color: #ffcc00; /* Define cor do ícone de menu */
+    padding-left: 96%;
 }
 
 .menu-icon img {
     width: 50px;
     height: 50px;
+    /* Aplica um efeito para alterar a cor da imagem usando filtros */
     filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
 }
 
-/* Menu */
+/* Estilo do menu lateral oculto inicialmente */
 .menu {
-    position: fixed; /* Torna o menu fixo na tela, independente do scroll */
-    top: 20%; /* Ajuste conforme necessário para posicionamento vertical */
-    right: -400px; /* Fora da tela inicialmente */
-    height: 60%;
+    position: fixed; /* Mantém o menu fixo na tela */
+    top: 20%; /* Posição do menu em relação ao topo */
+    right: -400px; /* Inicialmente fora da tela */
+    height: 60%; /* Altura do menu */
     width: 170px;
-    background-color: #00000086;
+    background-color: #00000086; /* Fundo preto com opacidade */
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border-radius: 10px 0 0 10px;
-    transition: right 0.5s ease;
-    z-index: 1001; /* Z-index maior que o carrossel para garantir que fique na frente */
+    align-items: center; /* Centraliza o conteúdo dentro do menu */
+    border-radius: 10px 0 0 10px; /* Bordas arredondadas do menu */
+    transition: right 0.5s ease; /* Transição suave quando o menu abre */
+    z-index: 1001; /* Sobreposição para garantir que o menu fique acima do conteúdo */
 }
 
-/* Quando a classe 'show' é aplicada, o menu aparece */
+/* Classe que exibe o menu quando ativada */
 .menu.show {
     right: 0; /* Move o menu para dentro da tela */
-    opacity: 1;
+    opacity: 1; /* Faz o menu aparecer */
 }
 
+/* Estilo dos cards dentro do menu */
 .card {
-    background-color: transparent;
+    background-color: black;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    background-color: #d3d3d300;
     border: none;
     padding: 40px;
-    transition: transform 0.2s;
+    transition: transform 0.2s; /* Transição ao passar o mouse */
     width: 150px;
     margin: 10px 0;
     display: flex;
@@ -88,57 +88,66 @@ header {
     cursor: pointer;
 }
 
+/* Estilo para as imagens dentro dos cards */
 .card img {
     width: 80px;
     height: 80px;
+    
 }
 
+/* Texto dentro dos cards */
 .card p {
     margin-top: 10px;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Tamanho da fonte */
 }
 
+/* Efeito ao passar o mouse sobre o card */
 .card:hover {
-    transform: scale(1.05);
-    background-color: #ffcc00; /* Amarelo */
+    transform: scale(1.05); /* Aumenta o tamanho ligeiramente */
+    background-color: #ffcc00; /* Muda o fundo para amarelo */
 }
 
+/* Efeito ao clicar no card */
 .card:active {
-    transform: scale(0.98);
+    transform: scale(0.98); /* Leve redução ao clicar */
 }
 
-
-/* Seções principais */
+/* Estilos principais do conteúdo */
 main {
     padding: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: #333;
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    color: #333; /* Cor do texto */
 }
 
+/* Estilo dos títulos (h2) */
 h2 {
     color: #000;
     margin-bottom: 20px;
-    font-size: 3rem;
-    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem; /* Tamanho maior para destaque */
+    font-family: 'Bebas Neue', sans-serif; /* Fonte especial */
 }
 
+/* Estilo para h4 (subtítulos) */
 h4 {
     color: #000;
     margin-bottom: 10px;
     font-family: 'Bebas Neue', sans-serif;
 }
 
+/* Margem entre as seções */
 section {
     margin-bottom: 40px;
 }
 
+/* Layout de cards para seções de serviços */
 .cards2 {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-around; /* Distribui os cards uniformemente */
+    flex-wrap: wrap; /* Permite que os cards se ajustem em telas menores */
 }
 
+/* Estilo dos cards de serviços */
 .card3 {
     background-color: white;
     border: 1px solid #ddd;
@@ -146,28 +155,31 @@ section {
     width: 250px;
     margin: 20px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
     text-align: center;
 }
 
+/* Estilo dos títulos dos cards */
 .card3 h2 {
-    color: #6b1c1c;
+    color: #6b1c1c; /* Cor de destaque */
     font-size: 1.4rem;
     margin-bottom: 15px;
 }
 
+/* Estilo dos parágrafos dentro dos cards */
 .card3 p {
     color: #333;
     font-size: 0.9rem;
 }
 
+/* Estilo dos ícones dentro dos cards */
 .icon img {
     width: 60px;
     height: 60px;
     margin-bottom: 15px;
 }
 
-/* Footer */
+/* Estilo do rodapé */
 footer {
     background-color: #346D7E;
     color: #fff;
@@ -176,45 +188,49 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Ícones sociais no rodapé */
 footer .social-icons {
     margin: 10px 0;
 }
 
+/* Estilo dos links de ícones sociais */
 footer .social-icons a {
     color: #fff;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Tamanho dos ícones */
 }
 
+/* Estilo do texto do rodapé */
 footer p {
     margin-top: 10px;
 }
 
-/* Responsividade */
+/* Responsividade para telas menores que 768px */
 @media (max-width: 768px) {
     .cards2 {
-        flex-direction: column;
+        flex-direction: column; /* Alinha os cards em uma coluna */
         align-items: center;
     }
 
     .card3 {
-        width: 80%;
+        width: 80%; /* Card ocupa maior parte da largura */
         margin-bottom: 20px;
     }
 }
 
+/* Responsividade para telas menores que 600px */
 @media (max-width: 600px) {
     main {
-        padding: 20px;
+        padding: 20px; /* Reduz o padding em telas pequenas */
     }
 
     header {
-        flex-direction: column;
+        flex-direction: column; /* Header em coluna para telas menores */
         padding: 20px;
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 2rem; /* Reduz o tamanho do título */
     }
 }
