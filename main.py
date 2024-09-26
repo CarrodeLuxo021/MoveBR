@@ -28,9 +28,12 @@ def pag_cadastro_motorista():
 
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, cnh, cnpj, telefone, email, senha, cidade, endereco, foto_motorista, foto_van, valor_mensalidade):
-            return 'CADASTRO COM SUCESSO'
+            return render_template('') 
+        
         else:
             return 'ERRO AO CADASTRAR'
+        
+        
 
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cdaluno():
