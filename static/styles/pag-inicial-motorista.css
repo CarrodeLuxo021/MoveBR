@@ -1,0 +1,197 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização do cabeçalho */
+header {
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+
+}
+
+.logo img{
+    height: auto;
+    width: 50px;
+}
+.cabecalho_motorista{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body {
+	margin: 0;
+	font-family: "Roboto", "Helvetica Neue", "Helvetica",  "Arial", sans-serif;
+	background: #eaeaea;
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    margin-top: 20px; /* Ajusta a margem para dar espaçamento */
+}
+
+/* Estilos dos botões */
+.botao {
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
+}
+
+/* Último botão sem margem à direita */
+nav a:last-child .botao {
+    margin-right: 0;
+}
+
+/* Efeito hover para mudar a cor da letra */
+.botao:hover {
+    color: var(--cor-03); /* Texto branco */
+    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
+    transform: scale(1.05); /* Pequeno zoom no botão */
+}
+
+
+.logo img {
+    width: 180px; /* Tamanho da imagem do logo */
+    height: auto; /* Manter a proporção da imagem */
+    margin-left: 10px;
+}
+
+/* Estilização do rodapé */
+footer {
+    background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
+    color: var(--cor-03); /* Texto claro para contraste */
+    padding: 30px; /* Espaçamento interno */
+    text-align: center; /* Centralizar o conteúdo */
+    position: fixed; /* Manter o rodapé fixo na parte inferior */
+    bottom: 0;
+    width: 100%; /* Ocupa toda a largura da página */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
+}
+
+/* Estilos para as novas seções */
+main {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #f4f4f4; /* Fundo claro para contraste */
+    color: #000000; /* Texto escuro para melhor legibilidade */
+}
+
+.section01-pag_motorista {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: var(--cor-01);
+    margin-bottom: 70px;
+}
+
+h1{
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+h2{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.slogan{
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--cor-06);
+}
+
+.section02-pag_motorista{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #000000;
+    margin-bottom: 100px;
+}
+.section02-pag_motorista h2{
+    font-weight: 800;
+
+}
+.cards-inicio-motorista {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card-pag-inicio-motorista {
+    background-color: var(--cor-03);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-pag-inicio-motorista h2 {
+    color: #1c89aa;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+.card-pag-inicio-motorista p {
+    color: var(--cor-01);
+    font-size: 0.9rem;
+}
+
+.icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+
+
+/* Responsividade */
+@media screen and (min-width: 600px) {
+    .menu {
+        flex-direction: column;
+        justify-content: center;
+       
+    }
+
+    .container p {
+        font-size: 1.5rem;
+    }
+
+    .section {
+        padding: 40px;
+    }
+
+    input, textarea {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}

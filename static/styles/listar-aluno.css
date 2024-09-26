@@ -1,0 +1,150 @@
+body {
+    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
+    line-height: 1.6; /* Melhora a legibilidade */
+    background-color: var(--cor-04); /* Cor de fundo clara */
+    color: var(--cor-01); /* Cor do texto */
+}
+
+main {
+    width: 1200px;
+    margin: auto;
+}
+
+.c-table {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.search-container button img {
+    width: 15px;
+    height: 15px;
+}
+
+.alunos-listados {
+    background-color: var(--cor-03);
+    margin: 0 auto;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.alunos-listados td {
+    position: relative;
+}
+
+.alunos-listados td .button-container {
+    position: absolute;
+    right: 0;
+    top: 15%;
+    transform: translateY(-50%);
+}
+
+td{
+    padding: 12px 20px;
+    font-weight: bold;
+}
+
+.perfil-aluno {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.foto-aluno img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cor-06);
+}
+
+.info-aluno {
+    margin-left: 20px;
+}
+
+.info-aluno h2 {
+    font-size: 24px;
+    color: var(--cor-06);
+    margin: 0;
+    padding: 0;
+}
+
+.info-aluno p {
+    font-size: 16px;
+    color: var(--cor-02);
+}
+
+.info-aluno {
+    margin-left: 20px;
+}
+
+.info-aluno h2 {
+    font-size: 24px;
+    color: var(--cor-01);
+}
+
+.info-aluno p {
+    font-size: 16px;
+    color: var(--cor-02);
+}
+
+/* Remover a repetição e manter o estilo dos detalhes */
+.detalhes {
+    display: none; /* Esconde inicialmente */
+    background-color: #F2F2F2; /* Cor de fundo cinza claro */
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.info-transporte {
+    margin-bottom: 20px;
+}
+
+.info-transporte h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--cor-06);
+}
+
+.info-transporte p {
+    font-size: 16px;
+    color: var(--cor-01);
+    margin-bottom: 5px;
+}
+
+.info-extra h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--cor-06);
+}
+
+/* Ajuste do botão de expansão para manter a seta no mesmo lugar */
+.btn-expandir {
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    color: #346D7E;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,211 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.logo img{
+    width: 100px;
+    
+    
+}
+.header h1 {
+    color: #ffcc00; /* Amarelo */
+    font-size: 2rem;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
+}
+
+.menu-icon {
+    cursor: pointer;
+    color: #ffcc00; /* Amarelo */
+}
+
+.menu-icon img {
+    width: 50px;
+    height: 50px;
+    filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
+}
+
+/* Inicialmente, o menu estará fora da tela (à direita) */
+.menu {
+    position: fixed;
+    top: 10%;
+    right: -400px; /* Mover para fora da tela */
+    height: 80%;
+    width: 170px;
+    background-color: #00000086;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px 0 0 10px;
+    transition: right 0.5s ease, transform 0.5s ease;
+    transform: scale(1); /* Sem redimensionamento inicialmente */
+    opacity: 1;
+    
+}
+
+/* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
+.menu.show {
+    right: 0; /* Move o menu para dentro da tela */
+    transform: scale(0.9); /* Reduz o tamanho um pouco */
+    opacity: 1;
+}
+
+/* Estilo dos cards */
+.card {
+    background-color: #d3d3d300;
+    border: none;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    width: 130px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+}
+
+.card p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* Efeitos de hover */
+.card:hover {
+    background-color: #ffcc00; /* Amarelo */
+    transform: scale(1.05);
+}
+
+.card:active {
+    transform: scale(0.98);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 80px); /* Altura restante após o header */
+    background-color: #004400;
+}
+@media screen and (min-width: 600px) {
+    .menu {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container p {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+.container1 {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.header1 {
+    background-color:  #346D7E;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.user-photo {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.menu1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    display: none; /* Menu começa oculto */
+}
+.month {
+    padding: 10px;
+    border: none;
+    background-color:  #6DA6B1;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+}
+.month i {
+    font-size: 16px;
+}
+.month:hover {
+    background-color: #0056b3;
+}
+.details {
+    padding: 20px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+.toggle-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+.toggle-btn:focus {
+    outline: none;
+}
+
+
+
+
+
+

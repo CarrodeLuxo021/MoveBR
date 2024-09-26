@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <title>Cadastro do Aluno</title>
+    <link rel="stylesheet" href="../static/styles/cadastro-aluno.css">
+    <link rel="stylesheet" href="../static/styles/variaveis.css">
+
+    <main>
+        <form class="container-form">
+            <div class="itens-form">
+                <section class="lado-esquerdo-container">
+                    <label for="nomeAluno">Nome:</label>
+                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva">
+                    
+                    <label for="nomeResponsavel">Nome do responsável:</label>
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza">
+                    
+                    <label for="telefoneResponsavel">Telefone do responsável:</label>
+                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000">
+                    
+                    <label for="cpfResponsavel">CPF do responsável:</label>
+                    <input type="text" id="cpfResponsavel" placeholder="ex: 000.000.000-00">
+
+                    <label for="cnh">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="ex: Araraquara">
+                </section>
+                
+                <section class="lado-direito-container">
+                    <label for="escola">Escola:</label>
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul">
+                    
+                    <label for="emailAluno">Email:</label>
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
+                    
+                    <label for="endereçoAluno">Endereço:</label>
+                    <input type="text" id="endereçoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
+                    
+                    <label for="senhaAluno">Senha:</label>
+                    <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
+
+                    <div class="btn-container">
+                        <button type="submit" class="cadastrar">Cadastrar</button>
+                    </div>
+
+                </section>
+            </div>
+        </form>
+    </main>
+
+{% endblock %}
