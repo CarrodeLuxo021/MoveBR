@@ -6,7 +6,7 @@ app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('index.html')
+    return render_template('pag-inicial.html')
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
@@ -28,15 +28,15 @@ def pag_cadastro_motorista():
 
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, cnh, cnpj, telefone, email, senha, cidade, endereco, foto_motorista, foto_van, valor_mensalidade):
-            return render_template('') 
+            return render_template('login-motorista.html') 
         
         else:
-            return 'ERRO AO CADASTRAR'
+            return render_template('cadastro-motorista.html')
         
         
 
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
-def pag_cdaluno():
+def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
@@ -53,11 +53,19 @@ def pag_cdaluno():
 
         usuario = Usuario()
         if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel):
-            return 'ALUNO CADASTRADO COM SUCESSO'
+             return render_template('login-aluno.html') 
         else:
-            return 'ERRO AO CADASTRAR'
+           return render_template('cadastro-aluno.html')
+        
+@app.route("/logar_get_aluno", methods=['GET'])
+def logar_get_aluno():
+    return render_template("login-aluno.html")
 
-@app.route("/logar", methods=['GET', 'POST'])
+@app.route("/logar_get_motorista", methods=['GET'])
+def logar_get_motorista():
+    return render_template("login-motorista.html")
+
+@app.route("/logar", methods=['POST'])
 def logar():
     if request.method == 'GET':
         return render_template("logar.html")
