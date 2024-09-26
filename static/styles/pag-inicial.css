@@ -7,13 +7,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e4e4e4; /* Verde escuro */
+    background-color: #e4e4e4;
     color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100vh;
     justify-content: space-between;
+    min-height: 100vh;
 }
 
 header {
@@ -22,16 +21,20 @@ header {
     align-items: center;
     width: 100%;
     padding: 5px;
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: #fff; /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 999;
 }
-.logo img{
-    width: 100px;
+
+.c2 {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
 }
-header h1 {
-    color: #ffcc00; /* Amarelo */
-    font-size: 2rem;
+
+.logo img {
+    width: 150px;
 }
 
 .menu-icon {
@@ -45,12 +48,12 @@ header h1 {
     filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
 }
 
-/* Inicialmente, o menu estará fora da tela (à direita) */
+/* Menu */
 .menu {
-    position: fixed;
-    top: 10%;
-    right: -400px; /* Mover para fora da tela */
-    height: 80%;
+    position: fixed; /* Torna o menu fixo na tela, independente do scroll */
+    top: 20%; /* Ajuste conforme necessário para posicionamento vertical */
+    right: -400px; /* Fora da tela inicialmente */
+    height: 60%;
     width: 170px;
     background-color: #00000086;
     padding: 20px;
@@ -58,32 +61,31 @@ header h1 {
     flex-direction: column;
     align-items: center;
     border-radius: 10px 0 0 10px;
-    transition: right 0.5s ease, transform 0.5s ease;
-    transform: scale(1); /* Sem redimensionamento inicialmente */
-    opacity: 1;
+    transition: right 0.5s ease;
+    z-index: 1001; /* Z-index maior que o carrossel para garantir que fique na frente */
 }
 
-/* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
+/* Quando a classe 'show' é aplicada, o menu aparece */
 .menu.show {
     right: 0; /* Move o menu para dentro da tela */
-    transform: scale(0.9); /* Reduz o tamanho um pouco */
     opacity: 1;
 }
 
-/* Estilo dos cards */
 .card {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
     background-color: #d3d3d300;
     border: none;
     padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    width: 130px;
+    transition: transform 0.2s;
+    width: 150px;
     margin: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 }
 
 .card img {
@@ -94,101 +96,125 @@ header h1 {
 .card p {
     margin-top: 10px;
     font-size: 1.2rem;
-    color: #fff;
 }
 
-/* Efeitos de hover */
 .card:hover {
-    background-color: #ffcc00; /* Amarelo */
     transform: scale(1.05);
+    background-color: #ffcc00; /* Amarelo */
 }
 
 .card:active {
     transform: scale(0.98);
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: calc(100vh - 80px); /* Altura restante após o header */
-    background-color: #004400;
-}
 
-@media screen and (min-width: 600px) {
-    .menu {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .container p {
-        font-size: 1.5rem;
-    }
-}
-
-/* Estilos adicionais */
-
-/* Seção principal */
+/* Seções principais */
 main {
-    padding: 100px;
-    background-color: white;
+    padding: 50px;
     max-width: 1200px;
     margin: 0 auto;
     color: #333;
 }
 
 h2 {
-    color: #6DA6B1;
+    color: #000;
     margin-bottom: 20px;
+    font-size: 3rem;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+h4 {
+    color: #000;
+    margin-bottom: 10px;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 section {
     margin-bottom: 40px;
 }
 
-
-.services ul,
-.about ul,
-.security ul {
-    list-style-type: circle;
-    padding-left: 20px;
+.cards2 {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.services img,
-.about img,
-.security img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    margin: 20px 0;
-}
-
-.team {
-    background-color: #f7f7f7;
-    padding: 30px;
+.card3 {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.team img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+.card3 h2 {
+    color: #6b1c1c;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
 }
 
-.team h3 {
-    color: #6DA6B1;
+.card3 p {
+    color: #333;
+    font-size: 0.9rem;
 }
 
-.testimonials {
-    background-color: #fff3e0;
-    padding: 30px;
+.icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
 }
 
-.testimonials blockquote {
-    border-left: 5px solid #6DA6B1;
-    padding-left: 15px;
-    font-style: italic;
-    color: #555;
+/* Footer */
+footer {
+    background-color: #346D7E;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+footer .social-icons {
+    margin: 10px 0;
+}
+
+footer .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cards2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card3 {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 20px;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
 }
