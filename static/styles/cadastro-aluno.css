@@ -2,8 +2,8 @@
 body {
     font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
     line-height: 1.6; /* Melhora a legibilidade */
-    background-color: #f4f4f4; /* Cor de fundo clara */
-    color: var(--cor-01); /* Cor do texto */
+    background-color: var(--cor-04); /* Cor de fundo clara */
+    color: var(--cor-01); /* Cor do texto */ 
 }
 
 /* Estilização do main */
@@ -40,7 +40,7 @@ main {
     display: block; /* Ocupa uma linha inteira */
     margin-bottom: 8px; /* Espaço abaixo do label */
     font-weight: 600; /* Texto em negrito */
-    color: #346D7E; /* Cor do texto */
+    color: var(--cor-06); /* Cor do texto */
 }
 
 /* Estilização dos campos de entrada */
@@ -62,8 +62,8 @@ main {
 }
 
 .btn-container button {
-    background-color: #346D7E; /* Cor de fundo */
-    color: #fff; /* Cor do texto */
+    background-color: var(--cor-06); /* Cor de fundo */
+    color: var(--cor-03); /* Cor do texto */
     border: none; /* Remove borda padrão */
     padding: 12px 24px; /* Espaçamento interno */
     border-radius: 6px; /* Bordas arredondadas */
@@ -74,7 +74,7 @@ main {
 }
 
 .btn-container button:hover {
-    background-color: #6DA6B1; /* Cor ao passar o mouse */
+    background-color: var(--cor-05); /* Cor ao passar o mouse */
 }
 
 .btn-container button:active {
