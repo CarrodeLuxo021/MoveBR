@@ -9,8 +9,8 @@
 
 /* Estilização do cabeçalho */
 header {
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: #fff; /* Texto em bege claro para contraste elegante */
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
 
 }
@@ -41,10 +41,10 @@ nav {
 
 /* Estilos dos botões */
 .botao {
-    border: solid 1px #346D7E;
+    border: solid 1px var(--cor-06);
     border-radius: 10px;
     color: #000000;
-    background-color: #ffffff;
+    background-color: var(--cor-03);
     transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
     height: 50px;
     width: 200px;
@@ -58,8 +58,8 @@ nav a:last-child .botao {
 
 /* Efeito hover para mudar a cor da letra */
 .botao:hover {
-    color: #ffffff; /* Texto branco */
-    background-color: #346D7E; /* Cor de fundo diferente ao passar o mouse */
+    color: var(--cor-03); /* Texto branco */
+    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
     transform: scale(1.05); /* Pequeno zoom no botão */
 }
 
@@ -72,8 +72,8 @@ nav a:last-child .botao {
 
 /* Estilização do rodapé */
 footer {
-    background-image: linear-gradient(to right, #346D7E 0%, #6DA6B1 100%);
-    color: #fff; /* Texto claro para contraste */
+    background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
+    color: var(--cor-03); /* Texto claro para contraste */
     padding: 30px; /* Espaçamento interno */
     text-align: center; /* Centralizar o conteúdo */
     position: fixed; /* Manter o rodapé fixo na parte inferior */
@@ -99,7 +99,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    color: #333;
+    color: var(--cor-01);
     margin-bottom: 70px;
 }
 
@@ -117,7 +117,7 @@ h2{
 .slogan{
     font-size: 20px;
     font-weight: 800;
-    color: #346D7E;
+    color: var(--cor-06);
 }
 
 .section02-pag_motorista{
@@ -141,7 +141,7 @@ h2{
 }
 
 .card-pag-inicio-motorista {
-    background-color: white;
+    background-color: var(--cor-03);
     border: 1px solid #ddd;
     border-radius: 10px;
     width: 250px;
@@ -159,7 +159,7 @@ h2{
 }
 
 .card-pag-inicio-motorista p {
-    color: #333;
+    color: var(--cor-01);
     font-size: 0.9rem;
 }
 
