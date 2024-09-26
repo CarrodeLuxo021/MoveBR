@@ -12,85 +12,61 @@ header {
     background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
     color: #fff; /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+
 }
 
-
+.cabecalho_motorista{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 body {
 	margin: 0;
 	font-family: "Roboto", "Helvetica Neue", "Helvetica",  "Arial", sans-serif;
 	background: #eaeaea;
 }
 
-.container-menu-motorista{
-    width: 100%;
+nav {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centraliza horizontalmente */
     align-items: center;
+    margin-top: 20px; /* Ajusta a margem para dar espaçamento */
 }
 
-.ul-menu-motorista{
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-section#nav-test {
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-#nav-motorista {
-    position: relative;
-    margin: 60px auto;
-    box-sizing: border-box;
-};
-
-#ul-menu-motorista {
-    display: flex;
-    background: rgb(50, 54, 57);
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-    padding-left: 30px;
-    padding-right: 30px;
-    margin: 0;
-}
-#nav-item-motorista {
-    display: flex;
-    align-items: center;
-    min-height: 48px;
-    margin-left: 60px;
-    cursor: pointer;
-    user-select: none;
-}
-&:first-child {
-    margin-left: 0;
+/* Estilos dos botões */
+.botao {
+    border: solid 1px #346D7E;
+    border-radius: 10px;
+    color: #000000;
+    background-color: #ffffff;
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
 }
 
-#a-menu-motorista {
-    color: rgb(241, 241, 241);
+/* Último botão sem margem à direita */
+nav a:last-child .botao {
+    margin-right: 0;
 }
 
-
-
-#line-menu {
-    position: absolute;
-    bottom: 0;
-    height: 2px;
-    background: red;
-    transition: all 150ms ease-in-out;
+/* Efeito hover para mudar a cor da letra */
+.botao:hover {
+    color: #ffffff; /* Texto branco */
+    background-color: #346D7E; /* Cor de fundo diferente ao passar o mouse */
+    transform: scale(1.05); /* Pequeno zoom no botão */
 }
 
-	
 h1 {
-    margin-top: 30px;
+    
     font-weight: 500;
     color: #212121;
 }
 
 .logo img {
-    width: 80px; /* Tamanho da imagem do logo */
+    width: 140px; /* Tamanho da imagem do logo */
     height: auto; /* Manter a proporção da imagem */
     margin-left: 10px;
 }
@@ -107,106 +83,28 @@ footer {
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
 }
 
-.menu-icon {
-    cursor: pointer;
-    color: #ffcc00; /* Amarelo */
-}
-
-.menu-icon img {
-    width: 50px;
-    height: 50px;
-    filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
-}
-
-/* Inicialmente, o menu estará fora da tela (à direita) */
-.menu {
-    position: fixed;
-    top: 5%;
-    right: -400px; /* Mover para fora da tela */
-    height: 80%;
-    width: 140px;
-    background-color: #00000086;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px 0 0 10px;
-    transition: right 0.5s ease, transform 0.5s ease;
-    transform: scale(1); /* Sem redimensionamento inicialmente */
-    opacity: 1;
-}
-
-/* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
-.menu.show {
-    right: 0; /* Move o menu para dentro da tela */
-    transform: scale(0.9); /* Reduz o tamanho um pouco */
-    opacity: 1;
-}
-
-/* Estilo dos cards */
-.card {
-    background-color: #d3d3d300;
-    border: none;
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    width: 130px;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card img {
-    width: 80px;
-    height: 80px;
-}
-
-.card p {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: #fff;
-}
-
-/* Efeitos de hover */
-.card:hover {
-    background-color: #ffcc00; /* Amarelo */
-    transform: scale(1.05);
-}
-
-.card:active {
-    transform: scale(0.98);
-}
-
-/* Estilo do container principal */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: calc(100vh - 80px); /* Altura restante após o header */
-    background-color: #004400;
-}
-
 /* Estilos para as novas seções */
 main {
-    flex: 1;
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    height: 100%;
     padding: 20px;
+    margin-top: 30px;
     background-color: #f4f4f4; /* Fundo claro para contraste */
     color: #333; /* Texto escuro para melhor legibilidade */
 }
 
-.section {
+.section01-pag_motorista {
     margin: 20px 0;
-    padding: 20px;
-    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     color: #333;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1{
+    font-size: 30px;
 }
 
 h2 {

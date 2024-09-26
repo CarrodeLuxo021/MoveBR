@@ -12,37 +12,23 @@
         <div class="cabecalho_motorista">
             <figure>
                 <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
-            </figure>  
+            </figure>
         </div>
     </header>
- 
-    <div class="container-menu-motorista">
-            <ul id="ul-menu-motorista">
 
-                <li class = "nav-item-motorista"></li>
-                    <a id="a-menu-motorista" href="seu-perfil-motorista">Seu Perfil</a> 
-                </li>
+    <nav>
+        <a href="seu-perfil-motorista"><button class="botao">Início</button></a> 
+        <a href="/listar-aluno"><button class="botao">Lista de alunos</button></a> 
+        <a href="/listar-responsavel"><button class="botao">Gerenciamento de clientes</button></a> 
+        <a href="/historico-pagamento"><button class="botao">Histórico de pagamentos</button></a> 
+    </nav>
 
-                <li class = "nav-item-motorista">
-                    <a id="a-menu-motorista" href="/listar-aluno">Lista de alunos</a> 
-                </li>
-
-                <li class = "nav-item-motorista">
-                    <a id="a-menu-motorista" href="/listar-responsavel">Gerenciamento de clientes</a> 
-                </li>
-
-                <li class = "nav-item-motorista">
-                    <a id="a-menu-motorista" href="/historico-pagamento">Histórico de pagamentos</a> 
-                </li>
-            </ul>
-       </div>
-    </div>
     <main>
         <section class="section01-pag_motorista">
             <h1>Bem-vindo, {Nome do motorista}</h1>
-            <p>Facilite seu negócio com a MoveBR e otimize seu trabalho!</p>
+            <p class="slogan">Transporte Escolar com Segurança, Confiabilidade e Praticidade no seu dia a dia!</p>
         </section>
-        {% block content %}{% endblock %}
+            {% block content %}{% endblock %}
         <section>
             
         </section>
@@ -53,7 +39,7 @@
     <footer>
         <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
     </footer>
+
 </body>
 
     
-{% endblock %}
