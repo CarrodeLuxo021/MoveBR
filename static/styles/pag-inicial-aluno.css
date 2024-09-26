@@ -1,0 +1,111 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e4e4e4;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+}
+
+.c2 {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.menu-icon {
+    cursor: pointer;
+    color: #ffcc00; /* Amarelo */
+}
+
+.menu-icon img {
+    width: 50px;
+    height: 50px;
+    filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
+}
+
+/* Menu */
+.menu {
+    position: fixed; /* Torna o menu fixo na tela, independente do scroll */
+    top: 20%; /* Ajuste conforme necessário para posicionamento vertical */
+    right: -400px; /* Fora da tela inicialmente */
+    height: 60%;
+    width: 170px;
+    background-color: #00000086;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px 0 0 10px;
+    transition: right 0.5s ease;
+    z-index: 1001; /* Z-index maior que o carrossel para garantir que fique na frente */
+}
+
+/* Quando a classe 'show' é aplicada, o menu aparece */
+.menu.show {
+    right: 0; /* Move o menu para dentro da tela */
+    opacity: 1;
+}
+.driver-card {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.driver-card:hover {
+    transform: scale(1.05);
+}
+
+.driver-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #777;
+}
+
+.btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
