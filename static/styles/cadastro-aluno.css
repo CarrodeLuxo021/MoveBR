@@ -12,13 +12,13 @@ main {
     justify-content: center; /* Centraliza horizontalmente */
     padding: 20px; /* Espaçamento interno */
 }
-
+ 
 /* Estilização do container-form */
 .container-form {
     max-width: 1000px; /* Largura máxima */
     margin: 0 auto; /* Centraliza horizontalmente */
     padding: 30px; /* Espaçamento interno */
-    background-color: #ffffff; /* Cor de fundo branca */
+    background-color: var(--cor-03); /* Cor de fundo branca */
     border-radius: 10px; /* Bordas arredondadas */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
