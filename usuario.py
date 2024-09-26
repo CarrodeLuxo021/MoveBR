@@ -2,85 +2,77 @@ from conexao import Conexao
 
 class Usuario():
     def __init__(self):
-        self.tel = None
         self.nome = None
-        self.senha = None
-        self.endereco = None
         self.cpf = None
         self.email = None
         self.logado = False
 
-    def cadastrar(self, nome, cpf, cnh, cnpj, cidade, endereco, telefone, email, senha):
+    def cadastrar_motorista(self, nome, cpf, cnh, cnpj, telefone, email, senha, cidade, endereco, foto_motorista, foto_van, valor_cobrado):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"""
-            INSERT INTO tb_motoristas (nome, cpf, cnh, cnpj, cidade, endereco, m_periodos, tel_motorista, email, senha)
-            VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}', '{cidade}', '{endereco}', '{telefone}', '{email}', '{senha}')
+            sql = """
+            INSERT INTO tb_motoristas 
+            (nome_motorista, cpf_motorista, cnh, cnpj, cidade_motorista, endereco_motorista, tel_motorista, email_motorista, senha_motorista, foto_van, foto_motorista, valor_cobrado)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
-            mycursor.execute(sql)  
-
-            self.nome = nome
-            self.cpf = cpf
-            self.cnh = cnh
-            self.cnpj = cnpj
-            self.cidade = cidade
-            self.endereco = endereco
-            self.tel = telefone
-            self.email = email
-            self.senha = senha
-
-            
+            values = (nome, cpf, cnh, cnpj, cidade, endereco, telefone, email, senha, foto_van, foto_motorista, valor_cobrado)
+            mycursor.execute(sql, values)
             mydb.commit()
-            mydb.close()
+            mycursor.close()
             return True
-        except:
-            return False
-        
-    def cadastrar_aluno(self, nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel):
-        try:
-            mydb = Conexao.conectar()
-            mycursor = mydb.cursor()
-
-            sql = f"""
-            INSERT INTO tb_alunos (nome_aluno, endereco, cidade, idade, nome_responsavel, tel_responsavel)
-            VALUES ('{nome_aluno}', '{endereco}', '{cidade}', '{idade}', '{nome_responsavel}', '{tel_responsavel}')
-            """
-            mycursor.execute(sql)
-
-            self.nome_aluno = nome_aluno
-            self.endereco = endereco
-            self.cidade = cidade
-            self.idade = idade
-            self.nome_responsavel = nome_responsavel
-            self.tel_responsavel = tel_responsavel
-
-
-            mydb.commit()
-            mydb.close()
-            return True
-        except:
+        except Exception as e:
+            print(f"Erro ao cadastrar motorista: {e}")
             return False
 
-    def listar_usuario():
+    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"SELECT  FROM tb_alunos"
+            sql_responsavel = """
+            INSERT INTO tb_responsavel (nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            """
+            values_responsavel = (nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel)
+            mycursor.execute(sql_responsavel, values_responsavel)
 
-            mycursor.execute(sql)
-            mycursor.fetchall()
-            resultados = mycursor.fetchall()
-            alunos = []
-            for linha in resultados:
-                alunos.append({"id_aluno":linha[0],
-                               })
-                for dados in linha:
-                    print(dados)
-                    mycursor.close()
-                    mydb.close()
+            sql_aluno = """
+            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, idade, responsavel_aluno)
+            VALUES (%s, %s, %s, 0, %s)
+            """
+            values_aluno = (nome_aluno, foto_aluno, condicao_medica, cpf_responsavel)
+            mycursor.execute(sql_aluno, values_aluno)
+
+            mydb.commit()
+            mycursor.close()
             return True
-        except:
+        except Exception as e:
+            print(f"Erro ao cadastrar aluno: {e}")
+            return False
+
+    def logar(self, email, senha):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+
+            sql = "SELECT nome_motorista, cpf_motorista, email_motorista FROM tb_motoristas WHERE email_motorista = %s AND senha_motorista = %s"
+            values = (email, senha)
+            mycursor.execute(sql, values)
+
+            resultado = mycursor.fetchone()
+            if resultado:
+                self.nome = resultado[0]
+                self.cpf = resultado[1]
+                self.email = resultado[2]
+                self.logado = True
+            else:
+                self.logado = False
+
+            mycursor.close()
+            mydb.close()
+            return self.logado
+        except Exception as e:
+            print(f"Erro ao logar: {e}")
             return False
