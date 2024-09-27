@@ -49,68 +49,6 @@ header {
 }
 
 /* Estilo do menu lateral oculto inicialmente */
-.menu {
-    position: fixed; /* Mantém o menu fixo na tela */
-    top: 20%; /* Posição do menu em relação ao topo */
-    right: -400px; /* Inicialmente fora da tela */
-    height: 60%; /* Altura do menu */
-    width: 170px;
-    background-color: #00000086; /* Fundo preto com opacidade */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo dentro do menu */
-    border-radius: 10px 0 0 10px; /* Bordas arredondadas do menu */
-    transition: right 0.5s ease; /* Transição suave quando o menu abre */
-    z-index: 1001; /* Sobreposição para garantir que o menu fique acima do conteúdo */
-}
-
-/* Classe que exibe o menu quando ativada */
-.menu.show {
-    right: 0; /* Move o menu para dentro da tela */
-    opacity: 1; /* Faz o menu aparecer */
-}
-
-/* Estilo dos cards dentro do menu */
-.card {
-    background-color: black;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    border: none;
-    padding: 40px;
-    transition: transform 0.2s; /* Transição ao passar o mouse */
-    width: 150px;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-}
-
-/* Estilo para as imagens dentro dos cards */
-.card img {
-    width: 80px;
-    height: 80px;
-    
-}
-
-/* Texto dentro dos cards */
-.card p {
-    margin-top: 10px;
-    font-size: 1.2rem; /* Tamanho da fonte */
-}
-
-/* Efeito ao passar o mouse sobre o card */
-.card:hover {
-    transform: scale(1.05); /* Aumenta o tamanho ligeiramente */
-    background-color: #ffcc00; /* Muda o fundo para amarelo */
-}
-
-/* Efeito ao clicar no card */
-.card:active {
-    transform: scale(0.98); /* Leve redução ao clicar */
-}
 
 /* Estilos principais do conteúdo */
 main {

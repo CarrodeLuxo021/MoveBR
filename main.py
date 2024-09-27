@@ -36,7 +36,7 @@ def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
-        nome_aluno = request.form["nome-aluno"]
+        nome_aluno = request.form["nome-aluno"] 
         escola = request.form["escola"]
         foto_aluno = request.form["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
