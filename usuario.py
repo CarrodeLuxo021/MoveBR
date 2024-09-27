@@ -70,3 +70,18 @@ class Usuario():
         except Exception as e:
             print(f"Erro ao logar: {e}")
             return False
+
+
+    def excluir_aluno(self, id_aluno):
+    try:
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+        sql = "DELETE FROM tb_alunos WHERE id_aluno = %s"
+        values = (id_aluno,)
+        mycursor.execute(sql, values)
+        mydb.commit()
+        mycursor.close()
+        return True
+    except Exception as e:
+        print(f"Erro ao excluir aluno: {e}")
+        return False

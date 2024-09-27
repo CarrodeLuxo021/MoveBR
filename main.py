@@ -92,4 +92,21 @@ def listar_alunos():
         lista_alunos = usuario.listar_aluno()
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
+@app.route("/excluir-aluno", methods=['GET', 'POST'])
+def excluir_aluno():
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()
+        return render_template("listar-aluno.html", alunos=lista_alunos)
+    else:
+        id_aluno = request.form["id_aluno"]
+        usuario = Usuario()
+        if usuario.excluir_aluno(id_aluno):
+            flash("Aluno excluído com sucesso!")
+            return redirect(url_for("listar_alunos"))
+        else:
+            flash("Erro ao excluir aluno!")
+            return redirect(url_for("listar_alunos"))
+
+
 app.run(debug=True)
