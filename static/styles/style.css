@@ -7,8 +7,8 @@
 
 /* Estilização do cabeçalho */
 header {
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: #fff; /* Texto em bege claro para contraste elegante */
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
 }
 
@@ -20,8 +20,8 @@ header {
 
 /* Estilização do rodapé */
 footer {
-    background-image: linear-gradient(to right, #346D7E 0%, #6DA6B1 100%);
-    color: #fff; /* Texto claro para contraste */
+    background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
+    color: var(--cor-03); /* Texto claro para contraste */
     padding: 30px; /* Espaçamento interno */
     text-align: center; /* Centralizar o conteúdo */
     position: fixed; /* Manter o rodapé fixo na parte inferior */
