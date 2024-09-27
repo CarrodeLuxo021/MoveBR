@@ -13,11 +13,11 @@ def pag_cadastro_motorista():
     if request.method == 'GET':
         return render_template('cadastro-motorista.html')
     else:
-        nome = request.form["nome"]
+        nome = request.form["name"]
         cpf = request.form["cpf"]
         cnpj = request.form["cnpj"]
         cnh = request.form["cnh"]
-        telefone = request.form["telefone"]
+        telefone = request.form["phone"]
         email = request.form["email"]
         senha = request.form["senha"]
         cidade = request.form["cidade"]

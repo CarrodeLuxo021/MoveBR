@@ -4,6 +4,7 @@ class Usuario():
     def __init__(self):
         self.nome = None
         self.cpf = None
+        self.cidade = None
         self.email = None
         self.logado = False
 
