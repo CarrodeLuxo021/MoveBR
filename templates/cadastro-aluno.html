@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro do Aluno</title>
     <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
 </head>
 <body>
@@ -15,39 +16,44 @@
     </header>
 
     <main>
-        <form class="container-form" action="#" method="post">
+        <form class="container-form" action="/cadastrar-aluno.html" method="post">
             <div class="itens-form">
                 <section class="lado-esquerdo-container">
-                    <label for="nome-aluno">Nome:</label>
-                    <input type="text" id="nome-aluno" name="nome-aluno" placeholder="ex: João da Silva">
+                    <label for="nomeAluno">Nome:</label>
+                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva">
                     
-                    <label for="nome-responsavel">Nome do responsável:</label>
-                    <input type="text" id="nome-responsavel" name="nome-responsavel" placeholder="ex: Maria de Souza">
+                    <label for="nomeResponsavel">Nome do responsável:</label>
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza">
                     
-                    <label for="telefone-responsavel">Telefone do responsável:</label>
-                    <input type="text" id="telefone-responsavel" name="telefone-responsavel" placeholder="ex: (00) 0000-0000">
+                    <label for="telefoneResponsavel">Telefone do responsável:</label>
+                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000">
+                    
+                    <label for="cpfResponsavel">CPF do responsável:</label>
+                    <input type="text" id="cpfResponsavel" placeholder="ex: 000.000.000-00">
 
-                    <label for="condicao-medica">Condição medica:</label>
-                    <input type="text" id="condicao-medica" name="condicao-medica" placeholder="ex: diabetes">
+                    <label for="cnh">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="ex: Araraquara">
                 </section>
                 
                 <section class="lado-direito-container">
                     <label for="escola">Escola:</label>
-                    <input type="text" id="escola" name="escola" placeholder="ex: Escola Horizonte Azul">
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul">
                     
-                    <label for="email-aluno">Email:</label>
-                    <input type="email" id="email-aluno" name="email-aluno" placeholder="ex: nome@exemplo.com">
+                    <label for="emailAluno">Email:</label>
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
                     
-                    <label for="endereco-aluno">Endereço:</label>
-                    <input type="text" id="endereco-aluno" name="endereco-aluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
+                    <label for="endereçoAluno">Endereço:</label>
+                    <input type="text" id="endereçoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
+                    
+                    <label for="senhaAluno">Senha:</label>
+                    <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
 
-                    
-                    <label for="foto-aluno">Foto aluno:</label>
-                    <input type="text" id="foto-aluno" name="foto-aluno" placeholder="anexe a foto do aluno">
-                
+                    <div class="btn-container">
+                        <a href="/cadastrar-aluno"><button type="submit" class="cadastrar">Cadastrar</button></a></button>
+                    </div>
+
                 </section>
             </div>
-            <button type="submit" class="cadastrar">Cadastrar</button>
         </form>
     </main>
 </body>

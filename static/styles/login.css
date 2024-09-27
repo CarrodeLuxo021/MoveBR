@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
+    line-height: 1.6; /* Melhora a legibilidade */
+    background-color: var(--cor-04); /* Cor de fundo clara */
+    color: var(--cor-01); /* Cor do texto */ 
+}
+
 /* Estilização do cabeçalho */
 header {
     background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
