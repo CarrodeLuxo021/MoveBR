@@ -17,23 +17,37 @@ main {
     align-items: center;
 }
 
-.search-container {
-    display: flex;
-    align-items: center;
+.container-busca {
+    position: relative;
 }
 
-.search-container button {
-    padding: 8px 12px;
-    background-color: #e0e0e0;
+.container-busca button{
+    background-color: transparent; /* Remove o fundo */
+    cursor: pointer; /* Mantém o cursor de mão */
+    font-size: 18px; /* Tamanho do ícone */
     border: none;
-    border-radius: 10px;
-    font-size: 14px;
-    cursor: pointer;
 }
 
-.search-container button img {
-    width: 15px;
-    height: 15px;
+.input-busca {
+    width: 200px;
+    padding: 10px 40px 10px 20px;
+    border: 2px solid var(--cor-05);
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-busca:focus {
+    border-color: var(--cor-06);
+}
+
+.icone-busca {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
 }
 
 .alunos-listados {
@@ -143,23 +157,22 @@ td{
     position: absolute;
     right: 0;
     background-color: transparent;
-    color: #346D7E;
+    color: var(--cor-06);
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
 }
 
 .container-btn-excluir {
-    margin-left: 77%;
+    margin-left: 87%;
 }
 
 .container-btn-excluir button {
-    background-color: #346D7E; /* Cor de fundo */
-    color: #fff; /* Cor do texto */
+    background-color: var(--cor-06); /* Cor de fundo */
+    color: var(--cor-03); /* Cor do texto */
     border: none; /* Remove borda padrão */
-    padding: 12px 24px; /* Espaçamento interno */
+    padding: 12px; /* Espaçamento interno */
     border-radius: 6px; /* Bordas arredondadas */
     cursor: pointer; /* Cursor de mão */
-    font-size: 16px; /* Tamanho da fonte */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
 }
