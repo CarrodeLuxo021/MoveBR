@@ -13,21 +13,17 @@ def pag_cadastro_motorista():
     if request.method == 'GET':
         return render_template('cadastro-motorista.html')
     else:
-        nome = request.form["name"]
+        nome = request.form["nome"]
         cpf = request.form["cpf"]
         cnpj = request.form["cnpj"]
         cnh = request.form["cnh"]
-        telefone = request.form["phone"]
+        telefone = request.form["telefone"]
         email = request.form["email"]
         senha = request.form["senha"]
-        cidade = request.form["cidade"]
-        endereco = request.form["endereço"]
-        foto_motorista = request.form["ft_motorista"]
-        foto_van = request.form["ft_veiculo"]
-        valor_mensalidade = request.form["valor_cobrado"]
+
 
         usuario = Usuario()
-        if usuario.cadastrar_motorista(nome, cpf, cnh, cnpj, telefone, email, senha, cidade, endereco, foto_motorista, foto_van, valor_mensalidade):
+        if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
             return render_template('login-motorista.html') 
         
         else:
@@ -40,19 +36,17 @@ def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
-        nome_aluno = request.form["nomeAluno"]
+        nome_aluno = request.form["nome-aluno"]
         escola = request.form["escola"]
-        foto_aluno = request.form["ft_aluno"]
-        condicao_medica = request.form["condicao_medica"]
-        nome_responsavel = request.form["nomeResponsavel"]
-        cpf_responsavel = request.form["cpfResponsavel"]
-        endereco_responsavel = request.form["endereço"]
-        tel_responsavel = request.form["telefoneResponsavel"]
-        email_responsavel = request.form["emailAluno"]
-        senha_responsavel = request.form["senhaAluno"]
+        foto_aluno = request.form["foto-aluno"]
+        condicao_medica = request.form["condicao-medica"]
+        nome_responsavel = request.form["nome-responsavel"]
+        endereco_responsavel = request.form["endereco-aluno"]
+        tel_responsavel = request.form["telefone-responsavel"]
+        email_responsavel = request.form["email-aluno"]
 
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel):
+        if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
              return render_template('login-aluno.html') 
         else:
            return render_template('cadastro-aluno.html')
@@ -84,12 +78,18 @@ def logar():
             session.clear()
             return redirect("/logar")
 
+@app.route("/listar-motorista", methods=['GET', 'POST'])
+def listar_motorista():
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_usuarios = usuario.listar_usuario()
+        return render_template("listar-motorista.html", usuarios=lista_usuarios)
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     if request.method == 'GET':
         usuario = Usuario()
-        lista_alunos = usuario.listar_alunos()
+        lista_alunos = usuario.listar_aluno()
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 app.run(debug=True)

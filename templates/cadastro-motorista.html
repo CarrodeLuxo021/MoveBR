@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro do Motorista</title>
+        <link rel="stylesheet" href="/static/styles/cadastro-motorista.css">
+        <link rel="stylesheet" href="/static/styles/style.css">
+        <link rel="stylesheet" href="/static/styles/variaveis.css">
+    </head>
+    <body> 
+        <header>
+            <figure>
+                <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+            </figure>
+        </header>
+        <main>
+            <form class="container-form" action="#" method="post">
+                <div class="itens-form">
+                    <!-- RF001 – Cadastro do motorista -->
+                    <section class="lado-esquerdo-container">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" placeholder="ex: João da Silva">
+                        
+                            <label for="cpf">CPF:</label>
+                            <input type="text" id="cpf" name="cpf" placeholder="ex: 000.000.000-00">
+                        
+                            <label for="cnpj">CNPJ:</label>
+                            <input type="text" id="cnpj" name="cnpj" placeholder="ex: XX.XXX.XXX/0001-AA">
+                        
+                            <label for="cnh">CNH D:</label>
+                            <input type="text" id="cnh" name="cnh" placeholder="ex: 12345678900">
+
+                            <label for="cnh">Cidade:</label>
+                            <input type="text" id="cidade" name="cidade" placeholder="ex: Araraquara">
+                    </section>
+                    
+
+                    <section class="lado-direito-container">
+                            <label for="telefone">Telefone:</label>
+                            <input type="text" id="telefone" name="telefone" placeholder="ex: (00) 0000-0000">
+                        
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="ex: nome@exemplo.com">
+                        
+                            <label for="endereço">Endereço:</label>
+                            <input type="text" id="endereco" name="endereco" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
+                        
+                            <label for="senha">Senha:</label>
+                            <input type="password" id="senha" name="senha" placeholder="ex: mínimo 8 caracteres">
+
+                            <div class="btn-container">
+                                <button type="submit" class="cadastrar">Cadastrar</button>
+                            </div>
+                    </section>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>

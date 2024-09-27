@@ -1,0 +1,76 @@
+-- Criação da tabela tb_alunos
+CREATE TABLE tb_alunos (
+    id_aluno  int AUTO_INCREMENT,
+    nome_aluno VARCHAR(100),
+    foto_aluno VARCHAR(300),
+    condicao_medica varchar(300),
+    idade int,
+    responsavel_aluno int,
+	FOREIGN KEY (responsavel_aluno) REFERENCES tb_responsavel(cpf_responsavel),
+    PRIMARY KEY (id_aluno)
+);
+
+-- Criação da tabela tb_motoristas
+CREATE TABLE tb_motoristas (
+    nome_motorista varchar(60),
+    cpf_motorista INT PRIMARY KEY,
+    cnh VARCHAR(100),
+    cnpj int,
+    cidade_motorista VARCHAR(100),
+    endereco_motorista VARCHAR(100),
+    tel_motorista VARCHAR(15),
+    email_motorista VARCHAR(50),
+    senha_motorista varchar(50),
+    foto_van varchar(50),
+    foto_motorista varchar(50),
+    valor_cobrado int
+);
+
+-- Criação da tabela tb_alunos_registrados
+CREATE TABLE tb_alunos_clientes (
+    id_aluno INT,
+    cpf_motorista int,
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
+);
+
+-- Criação da tabela historico_pagamento
+CREATE TABLE historico_pagamentos (
+    id_pagamento INT AUTO_INCREMENT,
+    valor_pagamento FLOAT,
+    mes_pagamento INT,
+    data_pagamento date,
+    id_aluno INT,
+    cpf_responsavel INT,
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf_responsavel) REFERENCES tb_responsavel(cpf_responsavel),
+    PRIMARY KEY (id_pagamento)
+);
+
+-- Criação da tabela tb_faltas
+CREATE TABLE verificacao_pagamento(
+    cpf_responsavel int,
+    id_aluno INT,
+    valor_pagamento int,
+    mes_pagamento int,
+    data_pagamento date,
+    estado_pagamento int,
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf_responsavel) REFERENCES tb_responsavel(cpf_responsavel)
+);
+
+-- Criação da tabela tb_alunos_registrados
+CREATE TABLE contratos_fechados (
+    id_contrato INT AUTO_INCREMENT PRIMARY KEY,
+    id_aluno INT,
+    cpf_motorista int,
+    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
+    FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
+);
+
+-- Criação do usuário e concessão de privilégios
+CREATE USER 'movebr'@'%' IDENTIFIED BY '123456789';
+
+GRANT ALL PRIVILEGES ON movebr.* TO 'movebr'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;

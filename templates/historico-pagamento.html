@@ -1,11 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "index.html" %}
+
+{% block content %}
+    <title>Histórico de Pagamentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/static/styles/variaveis.css">
+
+    <header>
+        <div class="menu-icon" id="menu-icon">
+            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+        </div>
+    </header>
     
-</body>
-</html>
+    <nav id="menu" class="menu">
+
+        <button class="card" id="Cash" aria-label="Pagamentos">
+            <img src="/static/icones/Cash.png" alt="Ícone de pagamentos" />
+            <p>Pagamentos</p>
+        </button>
+
+        <button class="card" id="Rotas" aria-label="Rotas">
+            <img src="/static/icones/Road.png" alt="Ícone de rotas" />
+            <p>Rotas</p>
+        </button>
+     
+        <button class="card" id="escola">
+                <img src="/static/icones/escola.png" alt="escola" />
+                <p>Escolas</p>
+        </button>
+    </nav>
+
+    <div class="container1">
+        <div class="header1">
+            <img src="/static/icones/Cash.png" alt="Perfil do Usuário" class="user-photo">
+            <h1>Histórico de Pagamentos</h1>
+            <button id="toggleBtn" class="toggle-btn">&#9650;</button>
+        </div>
+        
+        <div id="menu1" class="menu1">
+            <button class="month" data-month="Janeiro"><i class="fas fa-calendar-alt"></i> Janeiro</button>
+            <button class="month" data-month="Fevereiro"><i class="fas fa-calendar-alt"></i> Fevereiro</button>
+            <button class="month" data-month="Março"><i class="fas fa-calendar-alt"></i> Março</button>
+            <button class="month" data-month="Abril"><i class="fas fa-calendar-alt"></i> Abril</button>
+            <button class="month" data-month="Maio"><i class="fas fa-calendar-alt"></i> Maio</button>
+            <button class="month" data-month="Junho"><i class="fas fa-calendar-alt"></i> Junho</button>
+            <button class="month" data-month="Julho"><i class="fas fa-calendar-alt"></i> Julho</button>
+            <button class="month" data-month="Agosto"><i class="fas fa-calendar-alt"></i> Agosto</button>
+            <button class="month" data-month="Setembro"><i class="fas fa-calendar-alt"></i> Setembro</button>
+            <button class="month" data-month="Outubro"><i class="fas fa-calendar-alt"></i> Outubro</button>
+            <button class="month" data-month="Novembro"><i class="fas fa-calendar-alt"></i> Novembro</button>
+            <button class="month" data-month="Dezembro"><i class="fas fa-calendar-alt"></i> Dezembro</button>
+        </div>
+
+        <!-- Details será mostrado ao clicar em um mês -->
+        <div id="details" class="details" style="display: none;">
+            <p><strong>Mês:</strong> <span id="selectedMonth"></span></p>
+            <p><strong>Período:</strong> Tarde</p>
+            <p><strong>Prazo de pagamento:</strong> 10/12/2024</p>
+            <p><strong>Valor:</strong> R$210,00 (ida e volta)</p>
+        </div>
+    </div>
+
+    <script src="../static/js/historico-pagamento.js"></script>
+
+{% endblock %}
