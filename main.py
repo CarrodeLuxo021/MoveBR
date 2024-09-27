@@ -6,7 +6,7 @@ app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('pag-inicial.html')
+    return render_template('login-motorista.html')
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
@@ -27,10 +27,9 @@ def pag_cadastro_motorista():
             return render_template('login-motorista.html') 
         
         else:
-            return render_template('cadastro-motorista.html')
+            return render_template('pag-inicial-motorista.html')
         
         
-
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
@@ -51,14 +50,6 @@ def pag_cadastro_aluno():
         else:
            return render_template('cadastro-aluno.html')
         
-@app.route("/logar_get_aluno", methods=['GET'])
-def logar_get_aluno():
-    return render_template("login-aluno.html")
-
-@app.route("/logar_get_motorista", methods=['GET'])
-def logar_get_motorista():
-    return render_template("login-motorista.html")
-
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
     if request.method == 'GET':
@@ -77,6 +68,7 @@ def logar():
         else:
             session.clear()
             return redirect("/logar")
+            
 
 @app.route("/listar-motorista", methods=['GET', 'POST'])
 def listar_motorista():
