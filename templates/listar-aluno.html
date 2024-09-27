@@ -23,56 +23,58 @@
             </div>
         </section>
 
-        <!-- Tabela de alunos -->
-        <table class="alunos-listados">
-            <div class="container-tabela">
-                <tbody>
-                    <!-- Estrutura de cada linha de aluno na tabela -->
-                    <tr class="aluno">
-                        <td>
-                            <!-- Perfil do Aluno -->
-                            <div class="perfil-aluno">
-                                <!-- Foto do Aluno -->
-                                <div class="foto-aluno">
-                                    <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
-                                    <img src="{{}}" alt="Foto do Aluno">
+        {% for produto in produtos %}
+            <!-- Tabela de alunos -->
+            <table class="alunos-listados">
+                <div class="container-tabela">
+                    <tbody>
+                        <!-- Estrutura de cada linha de aluno na tabela -->
+                        <tr class="aluno">
+                            <td>
+                                <!-- Perfil do Aluno -->
+                                <div class="perfil-aluno">
+                                    <!-- Foto do Aluno -->
+                                    <div class="foto-aluno">
+                                        <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
+                                        <img src="{{}}" alt="Foto do Aluno">
+                                    </div>
+                                    <!-- Informações básicas do aluno -->
+                                    <div class="info-aluno">
+                                        <h2> {{nome}} </h2> <!-- Nome do aluno -->
+                                        <p><strong>Nome resposável:</strong> {{nome_responsavel}} </p> <!-- Nome do responsável -->
+                                        <p><strong>Telefone resposável:</strong> {{tel_responsavel}} </p> <!-- Telefone do responsável -->
+                                        <p><strong>Cidade:</strong> {{cidade_responsavel}} </p> <!-- Cidade do aluno -->
+                                    </div>
                                 </div>
-                                <!-- Informações básicas do aluno -->
-                                <div class="info-aluno">
-                                    <h2> {{}} </h2> <!-- Nome do aluno -->
-                                    <p><strong>Nome resposável:</strong> {{}} </p> <!-- Nome do responsável -->
-                                    <p><strong>Telefone resposável:</strong> {{}} </p> <!-- Telefone do responsável -->
-                                    <p><strong>Cidade:</strong> {{}} </p> <!-- Cidade do aluno -->
-                                </div>
-                            </div>
 
-                            <!-- Container para informações adicionais, inicialmente ocultas -->
-                            <div class="detalhes" style="display: none;">
-                                <!-- Informações de transporte -->
-                                <div class="info-transporte">
-                                    <h3>Informações de Transporte</h3>
-                                    <p><strong>Endereço:</strong> {{}} </p> <!-- Endereço do aluno -->
-                                    <p><strong>Escola:</strong> {{}} </p> <!-- Escola que o aluno frequenta -->
+                                <!-- Container para informações adicionais, inicialmente ocultas -->
+                                <div class="detalhes" style="display: none;">
+                                    <!-- Informações de transporte -->
+                                    <div class="info-transporte">
+                                        <h3>Informações de Transporte</h3>
+                                        <p><strong>Endereço:</strong> {{endereco}} </p> <!-- Endereço do aluno -->
+                                        <p><strong>Escola:</strong> {{escola}} </p> <!-- Escola que o aluno frequenta -->
+                                    </div>
+                            
+                                    <!-- Informações extras do aluno -->
+                                    <div class="info-extra">
+                                        <h3>Informações Extras</h3>
+                                        <p> {{condicao_medica}} </p> <!-- Qualquer informação adicional relevante -->
+                                    </div>
                                 </div>
-                        
-                                <!-- Informações extras do aluno -->
-                                <div class="info-extra">
-                                    <h3>Informações Extras</h3>
-                                    <p> {{}} </p> <!-- Qualquer informação adicional relevante -->
+
+                                <!-- Botão para expandir/ocultar os detalhes do aluno -->
+                                <div class="button-container">
+                                    <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button> <!-- Ícone de seta para expandir -->
                                 </div>
-                            </div>
+                            </td>
+                        </tr>
 
-                            <!-- Botão para expandir/ocultar os detalhes do aluno -->
-                            <div class="button-container">
-                                <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button> <!-- Ícone de seta para expandir -->
-                            </div>
-                        </td>
-                    </tr>
-
-                    <!-- Adicione mais alunos aqui -->
-                </tbody>
-            </div>
-        </table>
+                        <!-- Adicione mais alunos aqui -->
+                    </tbody>
+                </div>
+            </table>
+        {% endfor %}
     </main>
 
     <!-- Script para manipulação de interações e animações -->
