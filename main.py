@@ -84,18 +84,12 @@ def logar():
             session.clear()
             return redirect("/logar")
 
-@app.route("/listar-motorista", methods=['GET', 'POST'])
-def listar_motorista():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_usuarios = usuario.listar_usuario()
-        return render_template("listar-motorista.html", usuarios=lista_usuarios)
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     if request.method == 'GET':
         usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
+        lista_alunos = usuario.listar_alunos()
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 app.run(debug=True)
