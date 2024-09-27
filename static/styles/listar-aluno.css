@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
     line-height: 1.6; /* Melhora a legibilidade */
@@ -23,23 +17,37 @@ main {
     align-items: center;
 }
 
-.search-container {
+.container-busca {
     display: flex;
     align-items: center;
+    position: relative; /* Para posicionar o botão corretamente */
 }
 
-.search-container button {
-    padding: 8px 12px;
-    background-color: #e0e0e0;
-    border: none;
+.input-busca {
+    padding: 10px 40px 10px 12px; /* Adiciona espaço para o ícone */
+    border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 14px;
-    cursor: pointer;
+    width: 100%; /* Preencher o espaço disponível */
+    transition: border-color 0.3s; /* Efeito de transição */
 }
 
-.search-container button img {
-    width: 15px;
-    height: 15px;
+.input-busca:focus {
+    border-color: var(--cor-06); /* Cor ao focar */
+    outline: none; /* Remove contorno padrão */
+}
+
+.icone-busca {
+    position: absolute;
+    right: 10px; /* Espaço à direita */
+    background: transparent; /* Fundo transparente */
+    border: none; /* Remove borda */
+    cursor: pointer; /* Mão ao passar o mouse */
+    font-size: 16px; /* Tamanho do ícone */
+}
+
+.icone-busca:hover {
+    color: var(--cor-06); /* Muda a cor ao passar o mouse */
 }
 
 .alunos-listados {
@@ -63,7 +71,7 @@ main {
     transform: translateY(-50%);
 }
 
-td{
+td {
     padding: 12px 20px;
     font-weight: bold;
 }

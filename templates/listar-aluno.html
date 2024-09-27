@@ -7,23 +7,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
-    <link rel="stylesheet" href="/static/styles/listar-aluno.css">
-    <link rel="stylesheet" href="/static/styles/style.css">
-    <link rel="stylesheet" href="/static/styles/variaveis.css">
+    <link rel="stylesheet" href="../static/styles/listar-aluno.css">
+    <link rel="stylesheet" href="../static/styles/variaveis.css">
 
     <!-- Conteúdo principal da página -->
     <main>
         <section class="c-table">
             <!-- Área de busca -->
-            <div class="search-container">
-                <button> Buscar 
-                    <!-- Ícone de busca importado de um serviço externo (icons8) -->
-                    <img src="https://img.icons8.com/?size=100&id=7695&format=png&color=000000" alt="Ícone de busca">
-                </button>
+
+            <div class="a">
+                <h1>Alunos</h1>
             </div>
+
+            <div class="container-busca">
+                <button class="icone-busca">🔍</button>
+                <input type="text" class="input-busca" placeholder="Buscar...">
+            </div>                
         </section>
 
-        {% for produto in produtos %}
+        {% for aluno in alunos %}
             <!-- Tabela de alunos -->
             <table class="alunos-listados">
                 <div class="container-tabela">
@@ -40,11 +42,9 @@
                                     </div>
                                     <!-- Informações básicas do aluno -->
                                     <div class="info-aluno">
-                                        <h2> {{nome}} </h2> <!-- Nome do aluno -->
-                                        <p><strong>Nome resposável:</strong> {{nome_responsavel}} </p> <!-- Nome do responsável -->
-                                        <p><strong>Telefone resposável:</strong> {{tel_responsavel}} </p> <!-- Telefone do responsável -->
-                                        <p><strong>Cidade:</strong> {{cidade_responsavel}} </p> <!-- Cidade do aluno -->
-                                    </div>
+                                        <h2> {{}} </h2> <!-- Nome do aluno -->
+                                        <p><strong>Nome do resposável:</strong> {{}} </p> <!-- Nome do responsável -->
+                                        <p><strong>Telefone do resposável:</strong> {{}} </p> <!-- Telefone do responsável -->                                </div>
                                 </div>
 
                                 <!-- Container para informações adicionais, inicialmente ocultas -->
@@ -52,14 +52,18 @@
                                     <!-- Informações de transporte -->
                                     <div class="info-transporte">
                                         <h3>Informações de Transporte</h3>
-                                        <p><strong>Endereço:</strong> {{endereco}} </p> <!-- Endereço do aluno -->
-                                        <p><strong>Escola:</strong> {{escola}} </p> <!-- Escola que o aluno frequenta -->
+                                        <p><strong>Endereço:</strong> {{}} </p> <!-- Endereço do aluno -->
+                                        <p><strong>Escola:</strong> {{}} </p> <!-- Escola que o aluno frequenta -->
                                     </div>
                             
                                     <!-- Informações extras do aluno -->
                                     <div class="info-extra">
-                                        <h3>Informações Extras</h3>
-                                        <p> {{condicao_medica}} </p> <!-- Qualquer informação adicional relevante -->
+                                        <h3>Condição Médica</h3>
+                                        <p> {{}} </p> <!-- Qualquer informação adicional relevante -->
+                                    </div>
+
+                                    <div class="container-btn-excluir">
+                                        <button>Excluir Aluno</button>
                                     </div>
                                 </div>
 
@@ -76,7 +80,7 @@
             </table>
         {% endfor %}
     </main>
-
+        
     <!-- Script para manipulação de interações e animações -->
     <script>
         // Função para expandir/ocultar detalhes do aluno
