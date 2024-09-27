@@ -162,3 +162,17 @@ td {
     cursor: pointer;
     font-size: 0.9rem;
 }
+
+.container-btn-excluir {
+    margin-left: 87%;
+}
+
+.container-btn-excluir button {
+    background-color: var(--cor-06); /* Cor de fundo */
+    color: var(--cor-03); /* Cor do texto */
+    border: none; /* Remove borda padrão */
+    padding: 12px; /* Espaçamento interno */
+    border-radius: 6px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+}
