@@ -47,17 +47,10 @@ def pag_cadastro_aluno():
 
         usuario = Usuario()
         if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return render_template('login-aluno.html') 
+             return render_template('pag-inicial-motorista.html') 
         else:
            return render_template('cadastro-aluno.html')
-        
-@app.route("/logar_get_aluno", methods=['GET'])
-def logar_get_aluno():
-    return render_template("login-aluno.html")
-
-@app.route("/logar_get_motorista", methods=['GET'])
-def logar_get_motorista():
-    return render_template("login-motorista.html")
+    
 
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
