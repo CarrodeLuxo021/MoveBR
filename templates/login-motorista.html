@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles/login.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <figure>
-            <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
-        </figure>
-    </header>
-    <main>
-        <form class="container-form">
-            <div class="itens-form">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/styles/login.css">
+        <link rel="stylesheet" href="/static/styles/variaveis.css">
+        <link rel="stylesheet" href="/static/styles/style.css">
+        <title>Login</title>
+    </head>
+    <body>
+        <header>
+            <figure>
+                <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+            </figure>
+        </header>
+        <main>
+            <form class="container-form">
+                <div class="itens-form">
 
-                <div class="cima-container">
-                    <label for="emailAluno">Email:</label>
-                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
+                    <div class="cima-container">
+                        <label for="emailAluno">Email:</label>
+                        <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
+                        
+                        <label for="senhaAluno">Senha:</label>
+                        <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
+                        <a href="#" class="link-senha">Esqueceu sua senha?</a>
+                    </div>
                     
-                    <label for="senhaAluno">Senha:</label>
-                    <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
-                    <a href="#" class="link-senha">Esqueceu sua senha?</a>
-                </div>
-                
-                <div class="btn-container">
-                    <a href="/logar"><button type="submit" class="login">Login</button></a>
-                </div>
+                    <div class="btn-container">
+                        <form action="/logar" method="post"><button type="submit" class="login">Login</button></form>
+                    </div>
 
-                <div class="baixo-container">
-                    <hr>
-                    <p>Ainda não possui cadastro? <a href="/templates/cadastro-motorista.html">Cadastrar-se!</a></p>
+                    <div class="baixo-container">
+                        <hr>
+                        <p>Ainda não possui cadastro? <a href="/cadastrar-motorista">Cadastrar-se!</a></p>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </main>
-        
-</body>
+            </form>
+        </main>
+            
+    </body>
+</html>

@@ -4,48 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro do Aluno</title>
-    <link rel="stylesheet" href="../static/styles/cadastro-aluno.css">
-    <link rel="stylesheet" href="../static/styles/variaveis.css">
+    <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/static/styles/variaveis.css">
 </head>
 <body>
     <header>
         <figure>
-            <div class="logo"><img src="../static/icones/logo.png" alt=""></div>
+            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
         </figure>
     </header>
 
     <main>
-        <form class="container-form">
+        <form class="container-form" action="/cadastrar-aluno.html" method="post">
             <div class="itens-form">
                 <section class="lado-esquerdo-container">
                     <label for="nomeAluno">Nome:</label>
-                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva">
+                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva" name="nomeAluno">
                     
                     <label for="nomeResponsavel">Nome do responsável:</label>
-                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza">
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nomeResponsavel">
                     
                     <label for="telefoneResponsavel">Telefone do responsável:</label>
-                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000">
+                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefoneResponsavel">
                     
-                    <label for="cpfResponsavel">CPF do responsável:</label>
-                    <input type="text" id="cpfResponsavel" placeholder="ex: 000.000.000-00">
+                    <label for="escola">Escola:</label>
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola">
 
-                    <label for="cnh">Cidade:</label>
-                    <input type="text" id="cidade" name="cidade" placeholder="ex: Araraquara">
                 </section>
                 
                 <section class="lado-direito-container">
-                    <label for="escola">Escola:</label>
-                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul">
-                    
+
                     <label for="emailAluno">Email:</label>
-                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="emailAluno">
+
+                    <label for="fotoAluno">Foto Aluno:</label>
+                    <input type="text" id="fotoAluno" placeholder="Insira o link da foto aqui" name="fotoAluno">
                     
-                    <label for="endereçoAluno">Endereço:</label>
-                    <input type="text" id="endereçoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
-                    
-                    <label for="senhaAluno">Senha:</label>
-                    <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
+                    <label for="condicaoMedica">Condição Médica:</label>
+                    <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre, se não tem escreva 'Não tem'" name="condicaoMedica">
+
+                    <label for="enderecoAluno">Endereço:</label>
+                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="enderecoAluno">
 
                     <div class="btn-container">
                         <a href="/cadastrar-aluno"><button type="submit" class="cadastrar">Cadastrar</button></a></button>

@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
     line-height: 1.6; /* Melhora a legibilidade */
@@ -143,7 +149,7 @@ td{
     position: absolute;
     right: 0;
     background-color: transparent;
-    color: #346D7E;
+    color: var(--cor-06);
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
