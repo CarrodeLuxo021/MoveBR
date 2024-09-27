@@ -8,7 +8,7 @@ class Usuario():
         self.logado = False
 
     def cadastrar_motorista(self,nome, cpf, cnh, cnpj, telefone, email, senha):
-        # try:
+        try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
@@ -22,36 +22,29 @@ class Usuario():
 
             return True
         
-        # except Exception as e:
+        except Exception as e:
 
-        #     print(f"Erro ao cadastrar motorista: {e}")
-        #     return False
+            print(f"Erro ao cadastrar motorista: {e}")
+            return False
 
-    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel):
-        try:
+    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
+        # try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql_responsavel = """
-            INSERT INTO tb_responsavel (nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel)
-            VALUES (%s, %s, %s, %s, %s, %s)
-            """
-            values_responsavel = (nome_responsavel, cpf_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, senha_responsavel)
-            mycursor.execute(sql_responsavel, values_responsavel)
+            sql = f"""
+            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola,  nome_responsavel, endereco, telefone_responsavel, email_responsavel)          
+            VALUES ('{nome_aluno}', '{foto_aluno}',  '{condicao_medica}',  '{escola}',  '{nome_responsavel}',  '{endereco_responsavel}',  '{tel_responsavel}',  '{email_responsavel}');
 
-            sql_aluno = """
-            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, idade, responsavel_aluno)
-            VALUES (%s, %s, %s, 0, %s)
             """
-            values_aluno = (nome_aluno, foto_aluno, condicao_medica, cpf_responsavel)
-            mycursor.execute(sql_aluno, values_aluno)
-
+    
+            mycursor.execute(sql)
             mydb.commit()
             mycursor.close()
             return True
-        except Exception as e:
-            print(f"Erro ao cadastrar aluno: {e}")
-            return False
+        # except Exception as e:
+        #     print(f"Erro ao cadastrar aluno: {e}")
+        #     return False
 
     def logar(self, email, senha):
         try:
