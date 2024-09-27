@@ -21,9 +21,9 @@ def pag_cadastro_motorista():
         email = request.form["email"]
         senha = request.form["senha"]
         cidade = request.form["cidade"]
-        endereco = request.form["endereço"]
+        endereco = request.form["endereco"]
         foto_motorista = request.form["ft_motorista"]
-        foto_van = request.form["ft_veiculo"]
+        foto_van = request.form["ft_van"]
         valor_mensalidade = request.form["valor_cobrado"]
 
         usuario = Usuario()
