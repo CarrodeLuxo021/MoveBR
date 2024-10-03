@@ -23,8 +23,8 @@ def pag_cadastro_motorista():
 
 
         usuario = Usuario()
-        if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
-            return render_template('login-motorista.html') 
+        if usuario.cadastrar_motorista(nome, cpf, cnh, cnpj, telefone, email, senha):
+            return redirect('/logar') 
         
         else:
             return render_template('pag-inicial-motorista.html')
@@ -33,7 +33,11 @@ def pag_cadastro_motorista():
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
-        return render_template('cadastro-aluno.html')
+        if 'usuario_logado' in  session:
+
+            return render_template('cadastro-aluno.html')
+        else:
+            return redirect('/logar')
     else:
         nome_aluno = request.form["nome-aluno"] 
         escola = request.form["escola"]
@@ -45,10 +49,10 @@ def pag_cadastro_aluno():
         email_responsavel = request.form["email-aluno"]
 
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return render_template('login-aluno.html') 
-        else:
-           return render_template('cadastro-aluno.html')
+        usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel)
+        return  render_template('pag-inicial-motorista.html')
+
+
         
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
@@ -80,8 +84,12 @@ def listar_motorista():
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     if request.method == 'GET':
-        usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
-        return render_template("listar-aluno.html", alunos=lista_alunos)
+        if 'usuario_logado' in  session:
+            usuario = Usuario()
+            lista_alunos = usuario.listar_aluno()
+            return render_template("listar-aluno.html", alunos=lista_alunos)
+        else:
+            return redirect('/logar')
+        
 
 app.run(debug=True)

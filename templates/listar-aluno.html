@@ -1,104 +1,51 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <title>Listar Aluno</title>
+  <title>Listar Aluno</title>
 
-    <!-- Importa o FontAwesome para os ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Importa o FontAwesome para os ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
-    <link rel="stylesheet" href="../static/styles/listar-aluno.css">
-    <link rel="stylesheet" href="../static/styles/variaveis.css">
+  <!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
+  <link rel="stylesheet" href="../static/styles/listar-aluno.css">
+  <link rel="stylesheet" href="../static/styles/variaveis.css">
 
-    <!-- Conteúdo principal da página -->
-    <main>
-        <section class="c-table">
-            <!-- Área de busca -->
+  <!-- Conteúdo principal da página -->
+  <main>
+    <h1>Lista de Alunos</h1>
+    khtuytfitgfiugiut
+    <ul>
+      {% for aluno in alunos %}
+        <li class="aluno">
+          foto: {{ aluno['foto_aluno'] }}<br>
+          Nome: {{ aluno['nome_aluno'] }}<br>
+          condição medica: {{ aluno['condicoes_medicas'] }}<br>
+          <button onclick="toggleExpandir(this)">▼</button>
+          <div class="detalhes" style="display: none;">
+            <!-- Aqui você pode adicionar mais detalhes do aluno -->
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </main>
 
-            <div class="a">
-                <h1>Alunos</h1>
-            </div>
+  <!-- Script para manipulação de interações e animações -->
+  <script>
+    // Função para expandir/ocultar detalhes do aluno
+    function toggleExpandir(button) {
+      // Encontra a linha do aluno correspondente ao botão clicado
+      const alunoRow = button.closest('.aluno');
+      // Seleciona o container de detalhes do aluno
+      const detalhesContainer = alunoRow.querySelector('.detalhes');
 
-            <div class="container-busca">
-                <button class="icone-busca">🔍</button>
-                <input type="text" class="input-busca" placeholder="Buscar...">
-            </div>                
-        </section>
-
-        {% for aluno in alunos %}
-            <!-- Tabela de alunos -->
-            <table class="alunos-listados">
-                <div class="container-tabela">
-                    <tbody>
-                        <!-- Estrutura de cada linha de aluno na tabela -->
-                        <tr class="aluno">
-                            <td>
-                                <!-- Perfil do Aluno -->
-                                <div class="perfil-aluno">
-                                    <!-- Foto do Aluno -->
-                                    <div class="foto-aluno">
-                                        <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
-                                        <img src="{{}}" alt="Foto do Aluno">
-                                    </div>
-                                    <!-- Informações básicas do aluno -->
-                                    <div class="info-aluno">
-                                        <h2> {{}} </h2> <!-- Nome do aluno -->
-                                        <p><strong>Nome do resposável:</strong> {{}} </p> <!-- Nome do responsável -->
-                                        <p><strong>Telefone do resposável:</strong> {{}} </p> <!-- Telefone do responsável -->                                </div>
-                                </div>
-
-                                <!-- Container para informações adicionais, inicialmente ocultas -->
-                                <div class="detalhes" style="display: none;">
-                                    <!-- Informações de transporte -->
-                                    <div class="info-transporte">
-                                        <h3>Informações de Transporte</h3>
-                                        <p><strong>Endereço:</strong> {{}} </p> <!-- Endereço do aluno -->
-                                        <p><strong>Escola:</strong> {{}} </p> <!-- Escola que o aluno frequenta -->
-                                    </div>
-                            
-                                    <!-- Informações extras do aluno -->
-                                    <div class="info-extra">
-                                        <h3>Condição Médica</h3>
-                                        <p> {{}} </p> <!-- Qualquer informação adicional relevante -->
-                                    </div>
-
-                                    <div class="container-btn-excluir">
-                                        <button>Excluir Aluno</button>
-                                    </div>
-                                </div>
-
-                                <!-- Botão para expandir/ocultar os detalhes do aluno -->
-                                <div class="button-container">
-                                    <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button> <!-- Ícone de seta para expandir -->
-                                </div>
-                            </td>
-                        </tr>
-
-                        <!-- Adicione mais alunos aqui -->
-                    </tbody>
-                </div>
-            </table>
-        {% endfor %}
-    </main>
-        
-    <!-- Script para manipulação de interações e animações -->
-    <script>
-        // Função para expandir/ocultar detalhes do aluno
-        function toggleExpandir(button) {
-            // Encontra a linha do aluno correspondente ao botão clicado
-            const alunoRow = button.closest('.aluno');
-            // Seleciona o container de detalhes do aluno
-            const detalhesContainer = alunoRow.querySelector('.detalhes');
-
-            // Alterna entre mostrar e ocultar os detalhes
-            if (detalhesContainer.style.display === 'none') {
-                detalhesContainer.style.display = 'block';  // Mostra os detalhes
-                button.textContent = '▲';  // Muda o ícone do botão para uma seta para cima
-            } else {
-                detalhesContainer.style.display = 'none';  // Oculta os detalhes
-                button.textContent = '▼';  // Muda o ícone do botão para uma seta para baixo
-            }
-        }
-    </script>
-
+      // Alterna entre mostrar e ocultar os detalhes
+      if (detalhesContainer.style.display === 'none') {
+        detalhesContainer.style.display = 'block';  // Mostra os detalhes
+        button.textContent = '▲';  // Muda o ícone do botão para uma seta para cima
+      } else {
+        detalhesContainer.style.display = 'none';  // Oculta os detalhes
+        button.textContent = '▼';  // Muda o ícone do botão para uma seta para baixo
+      }
+    }
+  </script>
 {% endblock %}

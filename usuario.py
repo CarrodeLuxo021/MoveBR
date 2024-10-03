@@ -28,7 +28,7 @@ class Usuario():
             return False
 
     def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-        # try:
+        try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
@@ -42,9 +42,9 @@ class Usuario():
             mydb.commit()
             mycursor.close()
             return True
-        # except Exception as e:
-        #     print(f"Erro ao cadastrar aluno: {e}")
-        #     return False
+        except Exception as e:
+            print(f"Erro ao cadastrar aluno: {e}")
+            return False
 
     def logar(self, email, senha):
         try:
@@ -69,4 +69,26 @@ class Usuario():
             return self.logado
         except Exception as e:
             print(f"Erro ao logar: {e}")
+            return False
+        
+        
+    def listar_aluno(self):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+
+            sql = f"SELECT nome_aluno, foto_aluno, condicao_medica FROM tb_alunos"
+
+            mycursor.execute(sql)
+            resultados = mycursor.fetchall()
+            alunos = []
+            for linha in resultados:
+                alunos.append({"nome_aluno":linha[0],
+                               "foto_aluno": linha[1],
+                               "condicao_medica": linha[2]
+                })
+    
+            mydb.close()
+            return alunos
+        except:
             return False
