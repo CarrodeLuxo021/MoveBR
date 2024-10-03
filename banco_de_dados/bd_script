@@ -41,9 +41,9 @@ CREATE TABLE historico_pagamentos (
     mes_pagamento INT,
     data_pagamento date,
     id_aluno INT,
-    cpf_responsavel INT,
+    cpf_motorista INT,
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
-    FOREIGN KEY (cpf_responsavel) REFERENCES tb_responsavel(cpf_responsavel),
+    FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista),
     PRIMARY KEY (id_pagamento)
 );
 

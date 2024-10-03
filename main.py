@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from usuario import Usuario
+from pagamentos import Pagamentos
 
 app = Flask(__name__)
 app.secret_key = "banana"
@@ -83,5 +84,15 @@ def listar_alunos():
         usuario = Usuario()
         lista_alunos = usuario.listar_aluno()
         return render_template("listar-aluno.html", alunos=lista_alunos)
+
+@app.route("/gerar_pagamento", methods=['POST'])
+def gerar_pagamento():
+    nome_aluno = request.values["nome_aluno"]
+    data = request.form["data"]
+    mes = request.values["mes"]
+    valor = request.form["valor"]
+    pagamento = Pagamentos()
+    if pagamento.gerar_pagamento(nome_aluno, data, mes, valor):
+        return render_template("gerar_pagamento.html")
 
 app.run(debug=True)
