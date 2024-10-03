@@ -4,27 +4,26 @@
     margin: 0;
 }
 
-.logo img{
-    width: 100px;
-}
-
-.header h1 {
-    color: #ffcc00; /* Amarelo */
-    font-size: 2rem;
-}
-
 header {
     display: flex;
+    height: 85px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 20px;
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Verde mais escuro */
+}
+
+figure{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .menu-icon {
     cursor: pointer;
-    color: #ffcc00; /* Amarelo */
+    
 }
 
 .menu-icon img {
@@ -82,12 +81,11 @@ header {
 .card p {
     margin-top: 10px;
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--cor-03);
 }
 
 /* Efeitos de hover */
 .card:hover {
-    background-color: #ffcc00; /* Amarelo */
     transform: scale(1.05);
 }
 
@@ -101,7 +99,31 @@ header {
     align-items: center;
     width: 100%;
     height: calc(100vh - 80px); /* Altura restante após o header */
-    background-color: #004400;
+}
+
+/* Estilização dos botões */
+.btn-container {
+    text-align: right; /* Alinha à direita */
+}
+
+.btn-container button {
+    background-color: var(--cor-06); /* Cor de fundo */
+    color: var(--cor-03); /* Cor do texto */
+    border: none; /* Remove borda padrão */
+    padding: 12px 24px; /* Espaçamento interno */
+    border-radius: 6px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão */
+    font-size: 16px; /* Tamanho da fonte */
+    margin-top: 40px; /* Espaço acima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+}
+
+.btn-container button:hover {
+    background-color: var(--cor-05); /* Cor ao passar o mouse */
+}
+
+.btn-container button:active {
+    transform: scale(0.98); /* Efeito de clique */
 }
 
 @media screen and (min-width: 600px) {
@@ -117,22 +139,22 @@ header {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--cor-04);
 }
 
 .container1 {
     width: 80%;
     max-width: 800px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: var(--cor-03);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .header1 {
-    background-color:  #346D7E;
-    color: #ffffff;
+    background-color: var(--cor-06);
+    color: var(--cor-03);
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -156,8 +178,8 @@ body {
 .month {
     padding: 10px;
     border: none;
-    background-color:  #6DA6B1;
-    color: #ffffff;
+    background-color:  var(--cor-05);
+    color: var(--cor-03);
     border-radius: 5px;
     cursor: pointer;
     display: flex;
@@ -172,7 +194,7 @@ body {
 }
 
 .month:hover {
-    background-color: #0056b3;
+    background-color: var(--cor-06);
 }
 
 .details {
@@ -186,7 +208,7 @@ body {
 .toggle-btn {
     background: none;
     border: none;
-    color: #ffffff;
+    color: var(--cor-03);
     font-size: 24px;
     cursor: pointer;
 }
