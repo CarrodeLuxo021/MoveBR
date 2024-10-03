@@ -13,27 +13,9 @@
             </div>
         </figure>
     </header>
-    
-    <nav id="menu" class="menu">
-
-        <button class="card" id="Cash" aria-label="Pagamentos">
-            <img src="/static/icones/Cash.png" alt="Ícone de pagamentos" />
-            <p>Pagamentos</p>
-        </button>
-
-        <button class="card" id="Rotas" aria-label="Rotas">
-            <img src="/static/icones/Road.png" alt="Ícone de rotas" />
-            <p>Rotas</p>
-        </button>
-    </nav>
-
-    <div class="container1">
-        <div class="header1">
-            <img src="/static/icones/Cash.png" alt="Perfil do Usuário" class="user-photo">
-            <h1>Histórico de Pagamentos</h1>
-            <button id="toggleBtn" class="toggle-btn">&#9650;</button>
-        </div>
-        
+    <main>
+        <center><h1>Histórico de pagamento</h1></center>
+        <a href="/gerar_pagamento"><button type="submit" class="botao">Gerar novo pagamento</button></a>    
         <div id="menu1" class="menu1">
             <button class="month" data-month="Janeiro"><i class="fas fa-calendar-alt"></i> Janeiro</button>
             <button class="month" data-month="Fevereiro"><i class="fas fa-calendar-alt"></i> Fevereiro</button>
@@ -56,6 +38,7 @@
                 <button class="somapag"> Somar Pagamentos </button>
             </div>
         </div>
-    </div>
+    </main>
+    
 
     <script src="../static/js/historico-pagamento.js"></script>

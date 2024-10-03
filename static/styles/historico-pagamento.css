@@ -25,6 +25,16 @@ figure{
     cursor: pointer;
     
 }
+.botao {
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
+}
 
 .menu-icon img {
     width: 50px;

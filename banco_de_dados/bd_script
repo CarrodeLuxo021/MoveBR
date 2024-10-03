@@ -5,8 +5,8 @@ CREATE TABLE tb_alunos (
     foto_aluno VARCHAR(300),
     condicao_medica varchar(300),
     idade int,
-    responsavel_aluno int,
-	FOREIGN KEY (responsavel_aluno) REFERENCES tb_responsavel(cpf_responsavel),
+    id_motorista int,
+	FOREIGN KEY (id_motorista) REFERENCES tb_motoristas(id_motoristal),
     PRIMARY KEY (id_aluno)
 );
 
@@ -16,14 +16,9 @@ CREATE TABLE tb_motoristas (
     cpf_motorista INT PRIMARY KEY,
     cnh VARCHAR(100),
     cnpj int,
-    cidade_motorista VARCHAR(100),
-    endereco_motorista VARCHAR(100),
     tel_motorista VARCHAR(15),
     email_motorista VARCHAR(50),
-    senha_motorista varchar(50),
-    foto_van varchar(50),
-    foto_motorista varchar(50),
-    valor_cobrado int
+    senha_motorista varchar(50)
 );
 
 -- Criação da tabela tb_alunos_registrados
