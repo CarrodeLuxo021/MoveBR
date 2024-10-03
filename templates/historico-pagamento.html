@@ -1,6 +1,4 @@
-{% extends "index.html" %}
 
-{% block content %}
     <title>Histórico de Pagamentos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
@@ -8,9 +6,12 @@
     <link rel="stylesheet" href="/static/styles/variaveis.css">
 
     <header>
-        <div class="menu-icon" id="menu-icon">
-            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
-        </div>
+        <figure>
+            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+            <div class="menu-icon" id="menu-icon">
+                <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+            </div>
+        </figure>
     </header>
     
     <nav id="menu" class="menu">
@@ -23,11 +24,6 @@
         <button class="card" id="Rotas" aria-label="Rotas">
             <img src="/static/icones/Road.png" alt="Ícone de rotas" />
             <p>Rotas</p>
-        </button>
-     
-        <button class="card" id="escola">
-                <img src="/static/icones/escola.png" alt="escola" />
-                <p>Escolas</p>
         </button>
     </nav>
 
@@ -55,13 +51,11 @@
 
         <!-- Details será mostrado ao clicar em um mês -->
         <div id="details" class="details" style="display: none;">
-            <p><strong>Mês:</strong> <span id="selectedMonth"></span></p>
-            <p><strong>Período:</strong> Tarde</p>
-            <p><strong>Prazo de pagamento:</strong> 10/12/2024</p>
-            <p><strong>Valor:</strong> R$210,00 (ida e volta)</p>
+            <p> Alunos que pagam naquele mês e o dia que pagam. </p>
+            <div class="btn-container">
+                <button class="somapag"> Somar Pagamentos </button>
+            </div>
         </div>
     </div>
 
     <script src="../static/js/historico-pagamento.js"></script>
-
-{% endblock %}

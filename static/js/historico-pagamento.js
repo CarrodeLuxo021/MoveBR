@@ -12,9 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
-
 // Função para abrir e fechar o menu
 document.getElementById('toggleBtn').addEventListener('click', function() {
     var menu = document.getElementById('menu1');
@@ -36,4 +33,3 @@ monthButtons.forEach(button => {
         selectedMonth.textContent = this.getAttribute('data-month');
     });
 });
-
