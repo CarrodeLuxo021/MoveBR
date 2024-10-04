@@ -66,6 +66,7 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .alunos-listados td {
@@ -216,7 +217,6 @@ figure{
 .menu-icon img {
     width: 50px;
     height: 50px;
-    filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
 }
 
 /* Inicialmente, o menu estará fora da tela (à direita) */
