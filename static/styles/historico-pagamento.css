@@ -4,7 +4,7 @@
     margin: 0;
 }
 
-.logo img{
+.logo img {
     width: 100px;
 }
 
@@ -21,6 +21,7 @@ header {
     padding: 20px;
     background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
 }
+
 .navegacao {
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
@@ -134,14 +135,69 @@ header {
     background-color: #004400;
 }
 
-@media screen and (min-width: 600px) {
-    .menu {
-        flex-direction: column;
-        justify-content: center;
+/* Media Queries */
+@media (max-width: 1200px) {
+    .logo img {
+        width: 80px; /* Reduzir o tamanho do logo em telas menores */
     }
 
-    .container p {
-        font-size: 1.5rem;
+    .header h1 {
+        font-size: 1.8rem; /* Diminuir o tamanho do título */
+    }
+
+    .botao {
+        width: 180px; /* Ajustar largura dos botões */
+    }
+
+    .card {
+        width: 120px; /* Diminuir largura dos cards */
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        flex-direction: column; /* Colocar elementos do cabeçalho em coluna */
+        align-items: flex-start; /* Alinhar à esquerda */
+    }
+
+    .navegacao {
+        flex-direction: column; /* Colocar botões em coluna */
+        align-items: stretch; /* Esticar botões */
+    }
+
+    .botao {
+        margin: 10px 0; /* Margem entre botões */
+        width: 100%; /* Botões ocupam 100% da largura */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        width: 60px; /* Reduzir o tamanho do logo ainda mais */
+    }
+
+    .header h1 {
+        font-size: 1.5rem; /* Diminuir ainda mais o tamanho do título */
+    }
+
+    .container {
+        flex-direction: column; /* Mudança para coluna em telas menores */
+        height: auto; /* Altura automática */
+        padding: 20px; /* Padding para melhor aparência */
+    }
+}
+
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 1.2rem; /* Tamanho menor para telas muito pequenas */
+    }
+
+    .menu {
+        width: 150px; /* Ajustar largura do menu */
+    }
+
+    .card p {
+        font-size: 1rem; /* Ajustar tamanho do texto do card */
     }
 }
 
