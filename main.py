@@ -99,6 +99,16 @@ def historico_pagamento():
 @app.route("/historico_pagamento/<mes>")
 def historico_pagamento_filtro(mes):
     mes = request.args.get('mes')
+     # Recupera o id do motorista logado a partir da sessão
+    cpf_motorista = session.get("cpf_motorista")
+    
+    # Verifica se o motorista está logado
+    if not cpf_motorista:
+        return "Motorista não está logado", 401  # Retorna erro se não estiver logado
+    
     pagamento = Pagamentos()
+    if pagamento.listar_historico(mes, cpf_motorista):
+        return render_template("historico-pagamento.html", )
+
 
 app.run(debug=True)

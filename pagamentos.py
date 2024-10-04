@@ -26,3 +26,29 @@ class Pagamentos():
 
             print(f"Erro ao cadastrar aluno: {e}")
             return False
+        
+    def listar_historico(self, mes, cpf_motorista):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+
+            sql = f"SELECT * from historico_pagamentos where mes_pagamento = {mes} and cpf_motorista = {cpf_motorista} "
+
+            mycursor.execute(sql)
+            resultados = mycursor.fetchall()
+            historico = []
+            for linha in resultados:
+                historico.append({"valor_pagamento":linha[0],
+                               "mes_pagamento": linha[1],
+                               "data_pagamento": linha[2],
+                               "escola": linha[3],
+                               "telefone_responsavel": linha[4],
+                               "nome_responsavel": linha[5],
+                               "endereco": linha[6]
+
+                })
+    
+            mydb.close()
+            return alunos
+        except:
+            return False
