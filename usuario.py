@@ -70,3 +70,32 @@ class Usuario():
         except Exception as e:
             print(f"Erro ao logar: {e}")
             return False
+        
+
+           
+        
+    def listar_aluno(self):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+
+            sql = f"SELECT nome_aluno, foto_aluno, condicao_medica, escola, telefone_responsavel, nome_responsavel, endereco FROM tb_alunos"
+
+            mycursor.execute(sql)
+            resultados = mycursor.fetchall()
+            alunos = []
+            for linha in resultados:
+                alunos.append({"nome_aluno":linha[0],
+                               "foto_aluno": linha[1],
+                               "condicao_medica": linha[2],
+                               "escola": linha[3],
+                               "telefone_responsavel": linha[4],
+                               "nome_responsavel": linha[5],
+                               "endereco": linha[6]
+
+                })
+    
+            mydb.close()
+            return alunos
+        except:
+            return False

@@ -7,7 +7,7 @@ app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('login-motorista.html')
+    return render_template('pag-inicial-motorista.html')
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
@@ -25,10 +25,9 @@ def pag_cadastro_motorista():
 
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
-            return render_template('login-motorista.html') 
-        
+            return redirect('/logar') 
         else:
-            return render_template('pag-inicial-motorista.html')
+            return redirect('/')
         
         
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
@@ -47,9 +46,9 @@ def pag_cadastro_aluno():
 
         usuario = Usuario()
         if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return render_template('login-aluno.html') 
+             return redirect('/') 
         else:
-           return render_template('cadastro-aluno.html')
+           return redirect('/cadastrar-aluno')
         
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
@@ -65,25 +64,22 @@ def logar():
                 "email": usuario.email,
                 "cpf": usuario.cpf
             }
-            return render_template("pag-inicial-motorista.html")
+            return redirect("/")
         else:
             session.clear()
             return redirect("/logar")
             
 
-@app.route("/listar-motorista", methods=['GET', 'POST'])
-def listar_motorista():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_usuarios = usuario.listar_usuario()
-        return render_template("listar-motorista.html", usuarios=lista_usuarios)
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     if request.method == 'GET':
-        usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
-        return render_template("listar-aluno.html", alunos=lista_alunos)
+        if 'usuario_logado' in  session:
+            usuario = Usuario()
+            lista_alunos = usuario.listar_aluno()
+            return render_template("listar-aluno.html", alunos=lista_alunos)
+        else:
+            return redirect('/logar')
 
 @app.route("/gerar_pagamento", methods=['POST'])
 def gerar_pagamento():
@@ -94,6 +90,11 @@ def gerar_pagamento():
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
         return render_template("gerar_pagamento.html")
+    
+
+@app.route("/historico_pagamento")
+def historico_pagamento():
+    return render_template("historico-pagamento.html")
 
 @app.route("/historico_pagamento/<mes>")
 def historico_pagamento_filtro(mes):
