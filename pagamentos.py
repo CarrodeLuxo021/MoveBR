@@ -38,17 +38,13 @@ class Pagamentos():
             resultados = mycursor.fetchall()
             historico = []
             for linha in resultados:
-                historico.append({"valor_pagamento":linha[0],
+                historico.append({"nome_aluno":linha[0],
                                "mes_pagamento": linha[1],
                                "data_pagamento": linha[2],
-                               "escola": linha[3],
-                               "telefone_responsavel": linha[4],
-                               "nome_responsavel": linha[5],
-                               "endereco": linha[6]
-
+                               "valor_pagamento": linha[3]
                 })
     
             mydb.close()
-            return alunos
+            return historico
         except:
             return False
