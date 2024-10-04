@@ -85,14 +85,25 @@ def listar_alunos():
         lista_alunos = usuario.listar_aluno()
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
+
 @app.route("/gerar_pagamento", methods=['POST'])
 def gerar_pagamento():
     id_aluno = request.values["id_aluno"]
     data = request.form["data"]
     mes = request.values["mes"]
     valor = request.form["valor"]
+
+    # Recupera o id do motorista logado a partir da sessão
+    id_motorista = session.get("id_motorista")
+    
+    # Verifica se o motorista está logado
+    if not id_motorista:
+        return "Motorista não está logado", 401  # Retorna erro se não estiver logado
+
     pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
+    if pagamento.gerar_pagamento(id_aluno, data, mes, valor, id_motorista):
         return render_template("gerar_pagamento.html")
+    else:
+        return "Erro ao gerar pagamento", 500
 
 app.run(debug=True)
