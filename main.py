@@ -90,5 +90,13 @@ def gerar_pagamento():
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
         return render_template("gerar_pagamento.html")
+    
+@app.route("/inicial_motorista")
+def pag_motorista():
+    return render_template("pag-inicial-motorista.html")
+
+@app.route("/historico_pagamento")
+def historico_pagamento():
+    return render_template("historico-pagamento.html")
 
 app.run(debug=True)

@@ -1,6 +1,4 @@
-{% extends "index.html" %}
 
-{% block content %}
     <title>Listar Aluno</title>
 
     <!-- Importa o FontAwesome para os ícones -->
@@ -12,6 +10,34 @@
 
     <!-- Conteúdo principal da página -->
     <main>
+        
+        <header>
+            <figure>
+                <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+                <div class="menu-icon" id="menu-icon">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+                </div>
+            </figure>
+        </header>
+        
+        <nav id="menu" class="menu">
+    
+            <a href="/inicio_motorista"><button class="card" id="pagInicial" aria-label="pagInicial">
+                <img src="/static/icones/inicio.png" alt="Ícone de início" />
+                <p>Início</p>
+            </button></a>
+    
+            <a href="/historico_pagamento"><button class="card" id="Cash" aria-label="Pagamentos">
+                <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
+                <p>Pagamentos</p>
+            </button></a>
+    
+            <!-- <button class="card" id="Cash" aria-label="Pagamentos">
+                <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
+                <p>Pagamentos</p>
+            </button> -->
+        </nav>
+
         <section class="c-table">
             <!-- Área de busca -->
 
@@ -99,6 +125,30 @@
                 button.textContent = '▼';  // Muda o ícone do botão para uma seta para baixo
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const menu = document.getElementById('menu');
+
+            menuIcon.addEventListener('click', function() {
+                // Adiciona ou remove a classe 'show' para mostrar/esconder o menu
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show'); // Esconde o menu (desliza para fora)
+                } else {
+                    menu.classList.add('show'); // Mostra o menu (desliza para dentro)
+                }
+            });
+        });
+
+        // Função para abrir e fechar o menu
+        document.getElementById('toggleBtn').addEventListener('click', function() {
+            var menu = document.getElementById('menu1');
+            menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
+            this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
+        });
+
+
+        const details = document.getElementById('details');
     </script>
 
-{% endblock %}
+

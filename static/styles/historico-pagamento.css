@@ -23,7 +23,6 @@ figure{
 
 .menu-icon {
     cursor: pointer;
-    
 }
 
 .menu-icon img {
@@ -55,6 +54,10 @@ figure{
     right: 0; /* Move o menu para dentro da tela */
     transform: scale(0.9); /* Reduz o tamanho um pouco */
     opacity: 1;
+}
+
+.menu a{
+    text-decoration: none;
 }
 
 /* Estilo dos cards */
