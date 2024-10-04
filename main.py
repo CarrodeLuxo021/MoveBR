@@ -46,7 +46,7 @@ def pag_cadastro_aluno():
 
         usuario = Usuario()
         if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return redirect('/logar') 
+             return redirect('/') 
         else:
            return redirect('/cadastrar-aluno')
         
@@ -91,9 +91,6 @@ def gerar_pagamento():
     if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
         return render_template("gerar_pagamento.html")
     
-@app.route("/inicial_motorista")
-def pag_motorista():
-    return render_template("pag-inicial-motorista.html")
 
 @app.route("/historico_pagamento")
 def historico_pagamento():
