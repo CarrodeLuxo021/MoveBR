@@ -111,3 +111,23 @@ class Usuario():
         mydb.commit()
         mydb.close()
         return True
+    
+    def pesquisar_aluno(self, pesquisa):
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+
+        sql = f"SELECT nome_aluno, escola, foto_Aluno FROM tb_alunos WHERE escola = '{pesquisa}'"
+
+        mycursor.execute(sql)
+        resultados = mycursor.fetchall()
+        alunosf = []
+
+        for aluno in resultados:
+            alunosf.append({
+                "nome_aluno": aluno[0],
+                "escola": aluno[1],
+                "foto_aluno": aluno[2]
+
+            })
+        mydb.close()
+        return alunosf       
