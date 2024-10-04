@@ -87,9 +87,9 @@ def listar_alunos():
 
 @app.route("/gerar_pagamento", methods=['POST'])
 def gerar_pagamento():
-    id_aluno = request.values["id_aluno"]
+    id_aluno = request.form["id_aluno"]
     data = request.form["data"]
-    mes = request.values["mes"]
+    mes = request.form["mes"]
     valor = request.form["valor"]
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
