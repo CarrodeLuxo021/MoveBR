@@ -42,7 +42,8 @@ CREATE TABLE tb_alunos_clientes (
 
 -- Criação da tabela historico_pagamento
 CREATE TABLE historico_pagamentos (
-    id_pagamento INT AUTO_INCREMENT,
+    nome_aluno VARCHAR(50),
+    id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
     valor_pagamento FLOAT,
     mes_pagamento INT,
     data_pagamento date,
