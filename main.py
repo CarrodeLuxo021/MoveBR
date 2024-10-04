@@ -76,7 +76,12 @@ def listar_alunos():
     if request.method == 'GET':
         if 'usuario_logado' in  session:
             usuario = Usuario()
-            lista_alunos = usuario.listar_aluno()
+            query = request.args.get('query')
+            if query:
+                lista_alunos = usuario.pesquisar_aluno(query)
+            else:
+                lista_alunos = usuario.listar_aluno()
+
             return render_template("listar-aluno.html", alunos=lista_alunos)
         else:
             return redirect('/logar')

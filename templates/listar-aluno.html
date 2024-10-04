@@ -44,11 +44,14 @@
             <div class="a">
                 <h1>Alunos</h1>
             </div>
-
+            
             <div class="container-busca">
-                <button class="icone-busca">🔍</button>
-                <input type="text" class="input-busca" placeholder="Buscar...">
-            </div>                
+              <form action="/listar-alunos" method='get'> 
+                  <input type="text" name="query" class="input-busca" placeholder="Buscar...">
+                  <button class="icone-busca" type="submit">🔍</button>
+              </form>
+          </div>
+                           
         </section>
 
         {% for aluno in alunos %}

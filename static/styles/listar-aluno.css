@@ -28,7 +28,11 @@ main {
     display: flex;
     align-items: center;
     position: relative; /* Para posicionar o botão corretamente */
-    z-index: -1;
+  
+}
+
+.container-tabela{
+    margin: 2rem 0 0 0 ;
 }
 
 .input-busca {
@@ -38,6 +42,7 @@ main {
     font-size: 14px;
     width: 100%; /* Preencher o espaço disponível */
     transition: border-color 0.3s; /* Efeito de transição */
+    z-index: 1;
 }
 
 .input-busca:focus {
@@ -242,6 +247,7 @@ figure{
     right: 0; /* Move o menu para dentro da tela */
     transform: scale(0.9); /* Reduz o tamanho um pouco */
     opacity: 1;
+    z-index: 2;
 }
 
 .menu a{
