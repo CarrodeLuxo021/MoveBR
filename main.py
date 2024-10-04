@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from usuario import Usuario
 from pagamentos import Pagamentos
+from upload_file import upload_file
 
 app = Flask(__name__)
 app.secret_key = "banana"
@@ -37,15 +38,16 @@ def pag_cadastro_aluno():
     else:
         nome_aluno = request.form["nome-aluno"] 
         escola = request.form["escola"]
-        foto_aluno = request.form["foto-aluno"]
+        foto_aluno = request.files["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
         nome_responsavel = request.form["nome-responsavel"]
         endereco_responsavel = request.form["endereco-aluno"]
         tel_responsavel = request.form["telefone-responsavel"]
         email_responsavel = request.form["email-aluno"]
 
+        link_foto = upload_file(foto_aluno)
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
+        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
              return redirect('/') 
         else:
            return redirect('/cadastrar-aluno')
