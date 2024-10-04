@@ -116,7 +116,7 @@ class Usuario():
         mydb = Conexao.conectar()
         mycursor = mydb.cursor()
 
-        sql = f"SELECT nome_aluno, escola, foto_Aluno FROM tb_alunos WHERE escola = '{pesquisa}'"
+        sql = f"SELECT  nome_aluno, foto_aluno, condicao_medica, escola, telefone_responsavel, nome_responsavel, endereco FROM tb_alunos WHERE escola = '{pesquisa}'"
 
         mycursor.execute(sql)
         resultados = mycursor.fetchall()
@@ -124,10 +124,13 @@ class Usuario():
 
         for aluno in resultados:
             alunosf.append({
-                "nome_aluno": aluno[0],
-                "escola": aluno[1],
-                "foto_aluno": aluno[2]
-
+                            "nome_aluno":aluno[0],
+                            "foto_aluno": aluno[1],
+                            "condicao_medica": aluno[2],
+                            "escola": aluno[3],
+                            "telefone_responsavel": aluno[4],
+                            "nome_responsavel": aluno[5],
+                            "endereco": aluno[6]
             })
         mydb.close()
         return alunosf       
