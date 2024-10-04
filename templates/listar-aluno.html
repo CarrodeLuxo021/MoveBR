@@ -15,7 +15,7 @@
             <figure>
                 <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
                 <div class="menu-icon" id="menu-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
+                    <img src="/static/icones/menu.png" alt="Perfil" id="profile-icon"/>
                 </div>
             </figure>
         </header>
@@ -44,11 +44,14 @@
             <div class="a">
                 <h1>Alunos</h1>
             </div>
-
+            
             <div class="container-busca">
-                <button class="icone-busca">🔍</button>
-                <input type="text" class="input-busca" placeholder="Buscar...">
-            </div>                
+              <form action="/listar-alunos" method='get'> 
+                  <input type="text" name="query" class="input-busca" placeholder="Buscar...">
+                  <button class="icone-busca" type="submit">🔍</button>
+              </form>
+          </div>
+                           
         </section>
 
         {% for aluno in alunos %}
@@ -89,7 +92,7 @@
                                     </div>
 
                                     <div class="container-btn-excluir">
-                                        <a href="/excluir-aluno"><button>Excluir Aluno</button></a>
+                                        <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
                                     </div>
                                 </div>
 
