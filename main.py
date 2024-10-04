@@ -95,5 +95,9 @@ def gerar_pagamento():
     if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
         return render_template("gerar_pagamento.html")
 
-@app.route("/historico_pagamento/")
+@app.route("/historico_pagamento/<mes>")
+def historico_pagamento_filtro(mes):
+    mes = request.args.get('mes')
+    pagamento = Pagamentos()
+
 app.run(debug=True)
