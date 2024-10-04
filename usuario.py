@@ -77,7 +77,7 @@ class Usuario():
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"SELECT nome_aluno, foto_aluno, condicao_medica escola FROM tb_alunos"
+            sql = f"SELECT nome_aluno, foto_aluno, condicao_medica, escola, id_aluno FROM tb_alunos"
 
             mycursor.execute(sql)
             resultados = mycursor.fetchall()
@@ -86,10 +86,23 @@ class Usuario():
                 alunos.append({"nome_aluno":linha[0],
                                "foto_aluno": linha[1],
                                "condicao_medica": linha[2],
-                               "escola": linha[3]
+                               "escola": linha[3],
+                               "id_aluno": linha[4]
                 })
     
             mydb.close()
             return alunos
         except:
             return False
+        
+
+    def excluir_aluno(self, id_aluno):
+
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+
+        sql = f"DELETE  FROM tb_alunos WHERE id_aluno = {id_aluno}"
+        mycursor.execute(sql)
+        mydb.commit()
+        mydb.close()
+        return True

@@ -82,5 +82,13 @@ def listar_alunos():
             return render_template("listar-aluno.html", alunos=lista_alunos)
         else:
             return redirect('/logar')
+        
+@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
+def excluir_aluno(id_aluno):
+    if request.method == 'GET':
+        if 'usuario_logado' in session:
+            usuario = Usuario()
+            usuario.excluir_aluno(id_aluno)
+            return redirect('/listar-alunos')
 
 app.run(debug=True)
