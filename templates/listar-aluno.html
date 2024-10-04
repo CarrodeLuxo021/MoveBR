@@ -13,15 +13,15 @@
   <!-- Conteúdo principal da página -->
   <main>
     <h1>Lista de Alunos</h1>
-    khtuytfitgfiugiut
     <ul>
       {% for aluno in alunos %}
         <li class="aluno">
+          <a href="/excluir-aluno/{{aluno['id_aluno']}}"><button >EXCLUIR</button></a>
           foto: <img src="{{ aluno['foto_aluno'] }}" alt=""><br>  
           Nome: {{ aluno['nome_aluno'] }}<br>
           condição medica: {{ aluno['condicoes_medicas'] }}<br>
           escola: {{ aluno['escola'] }}
-          <button onclick="toggleExpandir(this)">▼</button>
+          
           <div class="detalhes" style="display: none;">
             <!-- Aqui você pode adicionar mais detalhes do aluno -->
           </div>
