@@ -1,6 +1,4 @@
-{% extends "index.html" %}
 
-{% block content %}
     <title>Histórico de Pagamentos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
@@ -8,9 +6,12 @@
     <link rel="stylesheet" href="/static/styles/variaveis.css">
 
     <header>
-        <div class="menu-icon" id="menu-icon">
-            <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Perfil" id="profile-icon"/>
-        </div>
+        <figure>
+            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+            <div class="menu-icon" id="menu-icon">
+                <img src="/static/icones/menu.png" alt="Perfil" id="profile-icon"/>
+            </div>
+        </figure>
     </header>
 
     <div class="navegacao">
@@ -22,53 +23,83 @@
     
     <nav id="menu" class="menu">
 
-        <button class="card" id="Cash" aria-label="Pagamentos">
-            <img src="/static/icones/Cash.png" alt="Ícone de pagamentos" />
-            <p>Pagamentos</p>
-        </button>
+        <a href="/"><button class="card" id="pagInicial" aria-label="pagInicial">
+            <img src="/static/icones/inicio.png" alt="Ícone de início" />
+            <p>Início</p>
+        </button></a>
 
-        <button class="card" id="Rotas" aria-label="Rotas">
-            <img src="/static/icones/Road.png" alt="Ícone de rotas" />
-            <p>Rotas</p>
-        </button>
-     
-        <button class="card" id="escola">
-                <img src="/static/icones/escola.png" alt="escola" />
-                <p>Escolas</p>
-        </button>
+        <a href="/listar-aluno"><button class="card" id="Rotas" aria-label="Rotas">
+            <img src="/static/icones/estudantes.png" alt="Ícone de alunos" />
+            <p>Alunos</p>
+        </button></a>
+        
     </nav>
 
     <div class="container1">
         <div class="header1">
-            <img src="/static/icones/Cash.png" alt="Perfil do Usuário" class="user-photo">
+            <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="user-photo">
             <h1>Histórico de Pagamentos</h1>
             <button id="toggleBtn" class="toggle-btn">&#9650;</button>
         </div>
         
         <div id="menu1" class="menu1">
-            <button class="month" data-month="Janeiro"><i class="fas fa-calendar-alt"></i> Janeiro</button>
-            <button class="month" data-month="Fevereiro"><i class="fas fa-calendar-alt"></i> Fevereiro</button>
-            <button class="month" data-month="Março"><i class="fas fa-calendar-alt"></i> Março</button>
-            <button class="month" data-month="Abril"><i class="fas fa-calendar-alt"></i> Abril</button>
-            <button class="month" data-month="Maio"><i class="fas fa-calendar-alt"></i> Maio</button>
-            <button class="month" data-month="Junho"><i class="fas fa-calendar-alt"></i> Junho</button>
-            <button class="month" data-month="Julho"><i class="fas fa-calendar-alt"></i> Julho</button>
-            <button class="month" data-month="Agosto"><i class="fas fa-calendar-alt"></i> Agosto</button>
-            <button class="month" data-month="Setembro"><i class="fas fa-calendar-alt"></i> Setembro</button>
-            <button class="month" data-month="Outubro"><i class="fas fa-calendar-alt"></i> Outubro</button>
-            <button class="month" data-month="Novembro"><i class="fas fa-calendar-alt"></i> Novembro</button>
-            <button class="month" data-month="Dezembro"><i class="fas fa-calendar-alt"></i> Dezembro</button>
+            <form action="/listar_historico" method="post">
+                <a href="/historico_pagamento/Janeiro">
+                    <button class="month" data-month="Janeiro" type="submit" ><i class="fas fa-calendar-alt"></i> Janeiro</button>
+                </a>
+
+                <a href="/historico_pagamento/Fevereiro">
+                    <button class="month" data-month="Fevereiro" type="submit"><i class="fas fa-calendar-alt"></i> Fevereiro</button>
+                </a>
+                
+                <a href="/historico_pagamento/Março">
+                    <button class="month" data-month="Março" type="submit"><i class="fas fa-calendar-alt"></i> Março</button>
+                </a>
+
+                <a href="/historico_pagamento/Abril">
+                    <button class="month" data-month="Abril" type="submit"><i class="fas fa-calendar-alt"></i> Abril</button>
+                </a>
+
+                <a href="/historico_pagamento/Maio">
+                    <button class="month" data-month="Maio" type="submit"><i class="fas fa-calendar-alt"></i> Maio</button>
+                </a>
+
+                <a href="/historico_pagamento/Junho"></a>
+                    <button class="month" data-month="Junho" type="submit"><i class="fas fa-calendar-alt"></i> Junho</button>
+
+                <a href="/historico_pagamento/Julho"></a>
+                    <button class="month" data-month="Julho" type="submit"><i class="fas fa-calendar-alt"></i> Julho</button>
+                </a>
+
+                <a href="/historico_pagamento/Agosto"></a>
+                    <button class="month" data-month="Agosto" type="submit"><i class="fas fa-calendar-alt"></i> Agosto</button>
+                </a>
+
+                <a href="/historico_pagamento/Setembro"></a>
+                    <button class="month" data-month="Setembro" type="submit"><i class="fas fa-calendar-alt"></i> Setembro</button>
+                </a>
+
+                <a href="/historico_pagamento/Outubro"></a>
+                    <button class="month" data-month="Outubro" type="submit"><i class="fas fa-calendar-alt"></i> Outubro</button>
+                </a>
+
+                <a href="/historico_pagamento/Novembro"></a>
+                    <button class="month" data-month="Novembro" type="submit"><i class="fas fa-calendar-alt"></i> Novembro</button>
+                </a>
+
+                <a href="/historico_pagamento/Dezembro"></a>
+                    <button class="month" data-month="Dezembro" type="submit"><i class="fas fa-calendar-alt"></i> Dezembro</button>
+                </a>
+            </form>
         </div>
 
         <!-- Details será mostrado ao clicar em um mês -->
         <div id="details" class="details" style="display: none;">
-            <p><strong>Mês:</strong> <span id="selectedMonth"></span></p>
-            <p><strong>Período:</strong> Tarde</p>
-            <p><strong>Prazo de pagamento:</strong> 10/12/2024</p>
-            <p><strong>Valor:</strong> R$210,00 (ida e volta)</p>
+            <p> Alunos que pagam naquele mês e o dia que pagam. </p>
+            <div class="btn-container">
+                <button class="somapag"> Somar Pagamentos </button>
+            </div>
         </div>
     </div>
 
     <script src="../static/js/historico-pagamento.js"></script>
-
-{% endblock %}

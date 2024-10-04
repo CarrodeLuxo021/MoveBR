@@ -15,6 +15,7 @@
 
 header {
     display: flex;
+    height: 85px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -55,13 +56,11 @@ header {
 
 .menu-icon {
     cursor: pointer;
-    color: #ffcc00; /* Amarelo */
 }
 
 .menu-icon img {
     width: 50px;
     height: 50px;
-    filter: invert(99%) sepia(1%) saturate(74%) hue-rotate(354deg) brightness(114%) contrast(100%);
 }
 
 /* Inicialmente, o menu estará fora da tela (à direita) */
@@ -89,6 +88,10 @@ header {
     opacity: 1;
 }
 
+.menu a{
+    text-decoration: none;
+}
+
 /* Estilo dos cards */
 .card {
     background-color: #d3d3d300;
@@ -113,12 +116,11 @@ header {
 .card p {
     margin-top: 10px;
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--cor-03);
 }
 
 /* Efeitos de hover */
 .card:hover {
-    background-color: #ffcc00; /* Amarelo */
     transform: scale(1.05);
 }
 
@@ -203,22 +205,22 @@ header {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--cor-04);
 }
 
 .container1 {
     width: 80%;
     max-width: 800px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: var(--cor-03);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .header1 {
-    background-color:  #346D7E;
-    color: #ffffff;
+    background-color: var(--cor-06);
+    color: var(--cor-03);
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -242,8 +244,8 @@ body {
 .month {
     padding: 10px;
     border: none;
-    background-color:  #6DA6B1;
-    color: #ffffff;
+    background-color:  var(--cor-05);
+    color: var(--cor-03);
     border-radius: 5px;
     cursor: pointer;
     display: flex;
@@ -258,7 +260,7 @@ body {
 }
 
 .month:hover {
-    background-color: #0056b3;
+    background-color: var(--cor-06);
 }
 
 .details {
@@ -272,7 +274,7 @@ body {
 .toggle-btn {
     background: none;
     border: none;
-    color: #ffffff;
+    color: var(--cor-03);
     font-size: 24px;
     cursor: pointer;
 }

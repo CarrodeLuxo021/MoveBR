@@ -70,3 +70,67 @@ class Usuario():
         except Exception as e:
             print(f"Erro ao logar: {e}")
             return False
+        
+
+           
+        
+    def listar_aluno(self):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+
+            sql = f"SELECT nome_aluno, foto_aluno, condicao_medica, escola, telefone_responsavel, nome_responsavel, endereco, id_aluno FROM tb_alunos"
+
+            mycursor.execute(sql)
+            resultados = mycursor.fetchall()
+            alunos = []
+            for linha in resultados:
+                alunos.append({"nome_aluno":linha[0],
+                               "foto_aluno": linha[1],
+                               "condicao_medica": linha[2],
+                               "escola": linha[3],
+                               "telefone_responsavel": linha[4],
+                               "nome_responsavel": linha[5],
+                               "endereco": linha[6],
+                               "id_aluno": linha[7]
+
+                })
+    
+            mydb.close()
+            return alunos
+        except:
+            return False
+    
+    def excluir_aluno(self, id_aluno):
+
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+
+        sql = f"DELETE  FROM tb_alunos WHERE id_aluno = {id_aluno}"
+        mycursor.execute(sql)
+        mydb.commit()
+        mydb.close()
+        return True
+    
+    def pesquisar_aluno(self, pesquisa):
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+
+        sql = f"SELECT  nome_aluno, foto_aluno, condicao_medica, escola, telefone_responsavel, nome_responsavel, endereco FROM tb_alunos WHERE escola = '{pesquisa}'"
+
+        mycursor.execute(sql)
+        resultados = mycursor.fetchall()
+        alunosf = []
+
+        for aluno in resultados:
+            alunosf.append({
+                            "nome_aluno":aluno[0],
+                            "foto_aluno": aluno[1],
+                            "condicao_medica": aluno[2],
+                            "escola": aluno[3],
+                            "telefone_responsavel": aluno[4],
+                            "nome_responsavel": aluno[5],
+                            "endereco": aluno[6]
+            })
+        mydb.close()
+        return alunosf       

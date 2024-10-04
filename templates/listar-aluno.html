@@ -1,6 +1,4 @@
-{% extends "index.html" %}
 
-{% block content %}
     <title>Listar Aluno</title>
 
     <!-- Importa o FontAwesome para os ícones -->
@@ -12,17 +10,48 @@
 
     <!-- Conteúdo principal da página -->
     <main>
+        
+        <header>
+            <figure>
+                <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+                <div class="menu-icon" id="menu-icon">
+                    <img src="/static/icones/menu.png" alt="Perfil" id="profile-icon"/>
+                </div>
+            </figure>
+        </header>
+        
+        <nav id="menu" class="menu">
+    
+            <a href="/"><button class="card" id="pagInicial" aria-label="pagInicial">
+                <img src="/static/icones/inicio.png" alt="Ícone de início" />
+                <p>Início</p>
+            </button></a>
+    
+            <a href="/historico_pagamento"><button class="card" id="Cash" aria-label="Pagamentos">
+                <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
+                <p>Pagamentos</p>
+            </button></a>
+    
+            <!-- <button class="card" id="Cash" aria-label="Pagamentos">
+                <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
+                <p>Pagamentos</p>
+            </button> -->
+        </nav>
+
         <section class="c-table">
             <!-- Área de busca -->
 
             <div class="a">
                 <h1>Alunos</h1>
             </div>
-
+            
             <div class="container-busca">
-                <button class="icone-busca">🔍</button>
-                <input type="text" class="input-busca" placeholder="Buscar...">
-            </div>                
+              <form action="/listar-alunos" method='get'> 
+                  <input type="text" name="query" class="input-busca" placeholder="Buscar...">
+                  <button class="icone-busca" type="submit">🔍</button>
+              </form>
+          </div>
+                           
         </section>
 
         {% for aluno in alunos %}
@@ -38,13 +67,13 @@
                                     <!-- Foto do Aluno -->
                                     <div class="foto-aluno">
                                         <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
-                                        <img src="{{}}" alt="Foto do Aluno">
+                                        <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
                                     </div>
                                     <!-- Informações básicas do aluno -->
                                     <div class="info-aluno">
-                                        <h2> {{}} </h2> <!-- Nome do aluno -->
-                                        <p><strong>Nome do resposável:</strong> {{}} </p> <!-- Nome do responsável -->
-                                        <p><strong>Telefone do resposável:</strong> {{}} </p> <!-- Telefone do responsável -->                                </div>
+                                        <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
+                                        <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p> <!-- Nome do responsável -->
+                                        <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p> <!-- Telefone do responsável -->                                </div>
                                 </div>
 
                                 <!-- Container para informações adicionais, inicialmente ocultas -->
@@ -52,18 +81,18 @@
                                     <!-- Informações de transporte -->
                                     <div class="info-transporte">
                                         <h3>Informações de Transporte</h3>
-                                        <p><strong>Endereço:</strong> {{}} </p> <!-- Endereço do aluno -->
-                                        <p><strong>Escola:</strong> {{}} </p> <!-- Escola que o aluno frequenta -->
+                                        <p><strong>Endereço:</strong> {{aluno['endereco']}} </p> <!-- Endereço do aluno -->
+                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p> <!-- Escola que o aluno frequenta -->
                                     </div>
                             
                                     <!-- Informações extras do aluno -->
                                     <div class="info-extra">
                                         <h3>Condição Médica</h3>
-                                        <p> {{}} </p> <!-- Qualquer informação adicional relevante -->
+                                        <p> {{aluno['condicao_medica']}} </p> <!-- Qualquer informação adicional relevante -->
                                     </div>
 
                                     <div class="container-btn-excluir">
-                                        <button>Excluir Aluno</button>
+                                        <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
                                     </div>
                                 </div>
 
@@ -99,6 +128,30 @@
                 button.textContent = '▼';  // Muda o ícone do botão para uma seta para baixo
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const menu = document.getElementById('menu');
+
+            menuIcon.addEventListener('click', function() {
+                // Adiciona ou remove a classe 'show' para mostrar/esconder o menu
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show'); // Esconde o menu (desliza para fora)
+                } else {
+                    menu.classList.add('show'); // Mostra o menu (desliza para dentro)
+                }
+            });
+        });
+
+        // Função para abrir e fechar o menu
+        document.getElementById('toggleBtn').addEventListener('click', function() {
+            var menu = document.getElementById('menu1');
+            menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
+            this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
+        });
+
+
+        const details = document.getElementById('details');
     </script>
 
-{% endblock %}
+
