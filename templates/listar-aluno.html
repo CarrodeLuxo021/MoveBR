@@ -17,9 +17,10 @@
     <ul>
       {% for aluno in alunos %}
         <li class="aluno">
-          foto: {{ aluno['foto_aluno'] }}<br>
+          foto: <img src="{{ aluno['foto_aluno'] }}" alt=""><br>  
           Nome: {{ aluno['nome_aluno'] }}<br>
           condição medica: {{ aluno['condicoes_medicas'] }}<br>
+          escola: {{ aluno['escola'] }}
           <button onclick="toggleExpandir(this)">▼</button>
           <div class="detalhes" style="display: none;">
             <!-- Aqui você pode adicionar mais detalhes do aluno -->

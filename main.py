@@ -6,7 +6,7 @@ app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('login-motorista.html')
+    return render_template('pag-inicial-motorista.html')
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
@@ -25,9 +25,8 @@ def pag_cadastro_motorista():
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, cnh, cnpj, telefone, email, senha):
             return redirect('/logar') 
-        
         else:
-            return render_template('pag-inicial-motorista.html')
+            return redirect('/cadastrar-motorista')
         
         
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
@@ -50,7 +49,7 @@ def pag_cadastro_aluno():
 
         usuario = Usuario()
         usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel)
-        return  render_template('pag-inicial-motorista.html')
+        return  redirect('/')
 
 
         
@@ -74,13 +73,6 @@ def logar():
             return redirect("/logar")
             
 
-@app.route("/listar-motorista", methods=['GET', 'POST'])
-def listar_motorista():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_usuarios = usuario.listar_usuario()
-        return render_template("listar-motorista.html", usuarios=lista_usuarios)
-
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     if request.method == 'GET':
@@ -90,6 +82,5 @@ def listar_alunos():
             return render_template("listar-aluno.html", alunos=lista_alunos)
         else:
             return redirect('/logar')
-        
 
 app.run(debug=True)
