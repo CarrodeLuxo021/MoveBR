@@ -96,4 +96,17 @@ def gerar_pagamento():
 def historico_pagamento():
     return render_template("historico-pagamento.html")
 
+
+@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
+def excluir_aluno(id_aluno):
+    if request.method == 'GET':
+        if 'usuario_logado' in session:
+            usuario = Usuario()
+            usuario.excluir_aluno(id_aluno)
+            return redirect('/listar-alunos')
+        
+@app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
+def quebra_foto(id_aluno):
+    return render_template("quebra-contrato.html", id_aluno = id_aluno)
+
 app.run(debug=True)
