@@ -38,13 +38,13 @@
                                     <!-- Foto do Aluno -->
                                     <div class="foto-aluno">
                                         <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
-                                        <img src="{{}}" alt="Foto do Aluno">
+                                        <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
                                     </div>
                                     <!-- Informações básicas do aluno -->
                                     <div class="info-aluno">
-                                        <h2> {{}} </h2> <!-- Nome do aluno -->
-                                        <p><strong>Nome do resposável:</strong> {{}} </p> <!-- Nome do responsável -->
-                                        <p><strong>Telefone do resposável:</strong> {{}} </p> <!-- Telefone do responsável -->                                </div>
+                                        <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
+                                        <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p> <!-- Nome do responsável -->
+                                        <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p> <!-- Telefone do responsável -->                                </div>
                                 </div>
 
                                 <!-- Container para informações adicionais, inicialmente ocultas -->
@@ -52,18 +52,18 @@
                                     <!-- Informações de transporte -->
                                     <div class="info-transporte">
                                         <h3>Informações de Transporte</h3>
-                                        <p><strong>Endereço:</strong> {{}} </p> <!-- Endereço do aluno -->
-                                        <p><strong>Escola:</strong> {{}} </p> <!-- Escola que o aluno frequenta -->
+                                        <p><strong>Endereço:</strong> {{aluno['endereco']}} </p> <!-- Endereço do aluno -->
+                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p> <!-- Escola que o aluno frequenta -->
                                     </div>
                             
                                     <!-- Informações extras do aluno -->
                                     <div class="info-extra">
                                         <h3>Condição Médica</h3>
-                                        <p> {{}} </p> <!-- Qualquer informação adicional relevante -->
+                                        <p> {{aluno['condicao_medica']}} </p> <!-- Qualquer informação adicional relevante -->
                                     </div>
 
                                     <div class="container-btn-excluir">
-                                        <button>Excluir Aluno</button>
+                                        <a href="/excluir-aluno"><button>Excluir Aluno</button></a>
                                     </div>
                                 </div>
 
