@@ -27,9 +27,20 @@ const selectedMonth = document.getElementById('selectedMonth');
 // Adicionar evento de clique para cada botão
 monthButtons.forEach(button => {
     button.addEventListener('click', function() {
-        // Exibir os detalhes
-        details.style.display = 'block';
-        // Atualizar o nome do mês nos detalhes
-        selectedMonth.textContent = this.getAttribute('data-month');
+        // Obter o mês atual a partir do botão clicado
+        const currentMonth = this.getAttribute('data-month');
+
+        // Verificar se o mês já está selecionado
+        if (selectedMonth.textContent === currentMonth) {
+            // Se o mês atual já estiver selecionado, ocultar os detalhes
+            details.style.display = 'none';
+            selectedMonth.textContent = ''; // Limpar o texto do mês selecionado
+        } else {
+            // Caso contrário, exibir os detalhes
+            details.style.display = 'block';
+            selectedMonth.textContent = currentMonth; // Atualizar o nome do mês nos detalhes
+        }
     });
 });
+
+

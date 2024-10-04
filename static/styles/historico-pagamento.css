@@ -4,6 +4,15 @@
     margin: 0;
 }
 
+.logo img {
+    width: 100px;
+}
+
+.header h1 {
+    color: #ffcc00; /* Amarelo */
+    font-size: 2rem;
+}
+
 header {
     display: flex;
     height: 85px;
@@ -11,14 +20,38 @@ header {
     align-items: center;
     width: 100%;
     padding: 20px;
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Verde mais escuro */
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
 }
 
-figure{
-    width: 100%;
+.navegacao {
     display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
     align-items: center;
-    justify-content: space-between;
+    margin-top: 20px; /* Ajusta a margem para dar espaçamento */
+    margin-bottom: 60px;
+}
+
+/* Estilos dos botões */
+.botao {
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
+}
+
+/* Último botão sem margem à direita */
+.navegacao a:last-child .botao {
+    margin-right: 0;
+}
+
+/* Efeito hover para mudar a cor da letra */
+.botao:hover {
+    color: var(--cor-03); /* Texto branco */
+    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
 }
 
 .menu-icon {
@@ -101,41 +134,72 @@ figure{
     align-items: center;
     width: 100%;
     height: calc(100vh - 80px); /* Altura restante após o header */
+    background-color: #004400;
 }
 
-/* Estilização dos botões */
-.btn-container {
-    text-align: right; /* Alinha à direita */
-}
-
-.btn-container button {
-    background-color: var(--cor-06); /* Cor de fundo */
-    color: var(--cor-03); /* Cor do texto */
-    border: none; /* Remove borda padrão */
-    padding: 12px 24px; /* Espaçamento interno */
-    border-radius: 6px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão */
-    font-size: 16px; /* Tamanho da fonte */
-    margin-top: 40px; /* Espaço acima */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
-}
-
-.btn-container button:hover {
-    background-color: var(--cor-05); /* Cor ao passar o mouse */
-}
-
-.btn-container button:active {
-    transform: scale(0.98); /* Efeito de clique */
-}
-
-@media screen and (min-width: 600px) {
-    .menu {
-        flex-direction: column;
-        justify-content: center;
+/* Media Queries */
+@media (max-width: 1200px) {
+    .logo img {
+        width: 80px; /* Reduzir o tamanho do logo em telas menores */
     }
 
-    .container p {
-        font-size: 1.5rem;
+    .header h1 {
+        font-size: 1.8rem; /* Diminuir o tamanho do título */
+    }
+
+    .botao {
+        width: 180px; /* Ajustar largura dos botões */
+    }
+
+    .card {
+        width: 120px; /* Diminuir largura dos cards */
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        flex-direction: column; /* Colocar elementos do cabeçalho em coluna */
+        align-items: flex-start; /* Alinhar à esquerda */
+    }
+
+    .navegacao {
+        flex-direction: column; /* Colocar botões em coluna */
+        align-items: stretch; /* Esticar botões */
+    }
+
+    .botao {
+        margin: 10px 0; /* Margem entre botões */
+        width: 100%; /* Botões ocupam 100% da largura */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        width: 60px; /* Reduzir o tamanho do logo ainda mais */
+    }
+
+    .header h1 {
+        font-size: 1.5rem; /* Diminuir ainda mais o tamanho do título */
+    }
+
+    .container {
+        flex-direction: column; /* Mudança para coluna em telas menores */
+        height: auto; /* Altura automática */
+        padding: 20px; /* Padding para melhor aparência */
+    }
+}
+
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 1.2rem; /* Tamanho menor para telas muito pequenas */
+    }
+
+    .menu {
+        width: 150px; /* Ajustar largura do menu */
+    }
+
+    .card p {
+        font-size: 1rem; /* Ajustar tamanho do texto do card */
     }
 }
 

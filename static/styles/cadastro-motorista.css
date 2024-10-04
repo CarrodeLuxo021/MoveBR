@@ -1,3 +1,4 @@
+/* Reset geral */
 * {
     margin: 0;
     padding: 0;
@@ -6,83 +7,151 @@
 
 /* Estilização do corpo da página */
 body {
-    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
-    line-height: 1.6; /* Melhora a legibilidade */
-    background-color: #f4f4f4; /* Cor de fundo clara */
-    color: var(--cor-01); /* Cor do texto */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: var(--cor-01);
 }
 
 /* Estilização do main */
 main {
-    display: flex; /* Layout flexível */
-    justify-content: center; /* Centraliza horizontalmente */
-    padding: 20px; /* Espaçamento interno */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
 /* Estilização do container-form */
 .container-form {
-    max-width: 1000px; /* Largura máxima */
-    margin: 0 auto; /* Centraliza horizontalmente */
-    padding: 30px; /* Espaçamento interno */
-    background-color: var(--cor-03); /* Cor de fundo branca */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--cor-03);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Layout dos itens do formulário */
 .itens-form {
-    display: flex; /* Layout flexível */
-    gap: 20px; /* Espaçamento entre containers */
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Para telas menores, os itens se ajustam */
 }
 
 /* Estilização dos containers de lado */
 .lado-esquerdo-container,
 .lado-direito-container {
-    min-width: 450px; /* Largura mínima */
+    min-width: 100%; /* Ocupa 100% da largura em telas pequenas */
 }
 
 /* Estilização dos labels */
 .container-form label {
-    display: block; /* Ocupa uma linha inteira */
-    margin-bottom: 8px; /* Espaço abaixo do label */
-    font-weight: 600; /* Texto em negrito */
-    color: var(--cor-06); /* Cor do texto */
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--cor-06);
 }
 
 /* Estilização dos campos de entrada */
 .container-form input[type="text"],
 .container-form input[type="email"],
 .container-form input[type="password"] {
-    width: 100%; /* Largura total */
-    padding: 12px; /* Espaçamento interno */
-    margin-bottom: 15px; /* Espaço abaixo dos campos */
-    border: 1px solid #ddd; /* Borda leve */
-    border-radius: 6px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho da fonte */
-    background-color: #f9f9f9; /* Fundo claro */
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #f9f9f9;
 }
 
 /* Estilização dos botões */
 .btn-container {
-    text-align: right; /* Alinha à direita */
+    text-align: right;
 }
 
 .btn-container button {
-    background-color: var(--cor-06); /* Cor de fundo */
-    color: var(--cor-03); /* Cor do texto */
-    border: none; /* Remove borda padrão */
-    padding: 12px 24px; /* Espaçamento interno */
-    border-radius: 6px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão */
-    font-size: 16px; /* Tamanho da fonte */
-    margin-top: 40px; /* Espaço acima */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    background-color: var(--cor-06);
+    color: var(--cor-03);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 40px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-container button:hover {
-    background-color: var(--cor-05); /* Cor ao passar o mouse */
+    background-color: var(--cor-05);
 }
 
 .btn-container button:active {
-    transform: scale(0.98); /* Efeito de clique */
+    transform: scale(0.98);
+}
+
+/* Media Queries */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container-form {
+        max-width: 540px; /* Ajuste da largura para dispositivos pequenos */
+    }
+
+    .lado-esquerdo-container,
+    .lado-direito-container {
+        min-width: 100%; /* Continua com 100% de largura em dispositivos pequenos */
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container-form {
+        max-width: 720px;
+    }
+
+    .itens-form {
+        flex-wrap: nowrap; /* Remove a quebra de linha para tablets */
+    }
+
+    .lado-esquerdo-container,
+    .lado-direito-container {
+        min-width: 300px; /* Largura mínima ajustada para tablets */
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container-form {
+        max-width: 960px;
+    }
+
+    .lado-esquerdo-container,
+    .lado-direito-container {
+        min-width: 450px; /* Ajusta a largura mínima para desktops */
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container-form {
+        max-width: 1000px; /* Usa a largura completa para desktops grandes */
+    }
+
+    .btn-container button {
+        font-size: 18px; /* Aumenta o tamanho da fonte do botão */
+        padding: 14px 28px; /* Aumenta o espaçamento do botão */
+    }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .container-form {
+        max-width: 1200px; /* Aumenta o tamanho máximo para telas muito grandes */
+        padding: 50px; /* Adiciona mais espaçamento interno */
+    }
+
+    .btn-container button {
+        font-size: 20px; /* Tamanho maior para o botão */
+        padding: 16px 32px; /* Ajusta o padding do botão */
+    }
 }
