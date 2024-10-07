@@ -15,6 +15,9 @@
             <figure>
                 <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
             </figure>
+            <div class="usuario-content">
+
+            </div>
         </div>
     </header>
 
@@ -27,7 +30,11 @@
 
     <main>
         <section class="section01-pag_motorista">
-            <h1>Bem-vindo, {Nome do motorista}!</h1>
+            {% if session.usuario_logado %}
+                <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
+            {% else %}
+                <p>Por favor, faça login para acessar essa página.</p>
+{% endif %}
             <p class="slogan">Transporte Escolar com Segurança, Confiabilidade e Praticidade no seu dia a dia!</p>
         </section>
         <section class="section02-pag_motorista">

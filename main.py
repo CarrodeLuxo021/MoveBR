@@ -7,7 +7,9 @@ app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('pag-inicial-motorista.html')
+
+    return render_template("pag-inicial-motorista.html", session=session)
+
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
