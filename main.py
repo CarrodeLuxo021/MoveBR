@@ -10,6 +10,10 @@ app.secret_key = "banana"
 def pag_inicio():
     return redirect('/logar')
 
+@app.route("/pag-inicial-motorista")
+def pag_inicial():
+    return render_template("pag-inicial-motorista.html", session=session)
+
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
     if request.method == 'GET':
@@ -66,7 +70,7 @@ def logar():
                 "email": usuario.email,
                 "cpf": usuario.cpf
             }
-            return render_template('pag-inicial-motorista.html', session=session)
+            return redirect('/pag-inicial-motorista')
         else:
             session.clear()
             return redirect("/logar")
