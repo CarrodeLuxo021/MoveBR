@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,19 +15,26 @@
             <figure>
                 <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
             </figure>
+            <div class="usuario-content">
+
+            </div>
         </div>
     </header>
 
     <nav>
-         
-        <a href="/listar-aluno"><button class="botao">Alunos clientes</button></a> 
-        <a href="/listar-responsavel"><button class="botao">Gerenciamento de clientes</button></a> 
-        <a href="/templates/historico-pagamento.html"><button class="botao">Histórico de pagamentos</button></a> 
+        <a href="/motorista-inicio"><button class="botao">Início</button></a> 
+        <a href="/listar-alunos"><button class="botao">Alunos clientes</button></a>
+        <a href="/historico-pagamento"><button class="botao">Histórico de pagamentos</button></a> 
+        <a href="/cadastrar-aluno"><button class="botao">Cadastrar Aluno</button></a> 
     </nav>
 
     <main>
         <section class="section01-pag_motorista">
-            <h1>Bem-vindo(a)!</h1>
+            {% if session.usuario_logado %}
+                <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
+            {% else %}
+                <p>Por favor, faça login para acessar essa página.</p>
+{% endif %}
             <p class="slogan">Transporte Escolar com Segurança, Confiabilidade e Praticidade no seu dia a dia!</p>
         </section>
         <section class="section02-pag_motorista">
@@ -46,7 +53,7 @@
                         <img src="/static/icones/icon-gerenciamento.png" alt="Transfer para Aeroporto">
                     </div>
                     <h2>Gerencie seus pagamentos!</h2>
-                    <p> Organize seus pagamentos com mais facilidade e praticidade! No nosso aplicativo você terá acesso a todos os alunos que te pagaram e quando realizaram o pagamento, trazendo mais segurança na hora de confirmar seus pagamentos. </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque culpa consequatur, molestiae ad quod cupiditate ducimus sapiente ut, laborum totam, nam quia?</p>
                 </div>
 
                 <div class="card-pag-inicio-motorista">
