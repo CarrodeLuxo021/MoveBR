@@ -52,7 +52,7 @@ def pag_cadastro_aluno():
         link_foto = upload_file(foto_aluno)
         usuario = Usuario()
         if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return redirect('/') 
+             return redirect('/pag-inicial-motorista') 
         else:
            return redirect('/cadastrar-aluno')
         
