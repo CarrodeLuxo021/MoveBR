@@ -76,62 +76,35 @@ def logar():
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     if request.method == 'GET':
-        if 'usuario_logado' in  session:
-            usuario = Usuario()
-            query = request.args.get('query')
-            if query:
-                lista_alunos = usuario.pesquisar_aluno(query)
-            else:
-                lista_alunos = usuario.listar_aluno()
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()
+        return render_template("listar-aluno.html", alunos=lista_alunos)
 
-            return render_template("listar-aluno.html", alunos=lista_alunos)
-        else:
-            return redirect('/logar')
+
+@app.route("/gerar_pagamento", methods=['GET'])
+def gerar_pagamento_get():
+    usuario = Usuario()
+    lista_alunos = usuario.listar_aluno()
+    return render_template("gerar_pagamento.html", alunos=lista_alunos)
 
 @app.route("/gerar_pagamento", methods=['POST'])
-def gerar_pagamento():
-    id_aluno = request.form["id_aluno"]
+def gerar_pagamento_post():
+    id_aluno = request.values["id_aluno"]
     data = request.form["data"]
     mes = request.form["mes"]
     valor = request.form["valor"]
-    pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
-        return render_template("gerar_pagamento.html")
-    
 
-@app.route("/historico-pagamento")
-def historico_pagamento():
-    return render_template("historico-pagamento.html")
-
-
-@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
-def excluir_aluno(id_aluno):
-    if request.method == 'GET':
-        if 'usuario_logado' in session:
-            usuario = Usuario()
-            usuario.excluir_aluno(id_aluno)
-            return redirect('/listar-alunos')
-        
-@app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
-def quebra_foto(id_aluno):
-    return render_template("quebra-contrato.html", id_aluno = id_aluno)
-
-@app.route("/historico_pagamento/<mes>")
-def historico_pagamento_filtro(mes):
-    mes = request.args.get('mes')
-     # Recupera o id do motorista logado a partir da sessão
-    cpf_motorista = session.get("cpf_motorista")
+    # Recupera o id do motorista logado a partir da sessão
+    id_motorista = session.get("id_motorista")
     
     # Verifica se o motorista está logado
-    if not cpf_motorista:
+    if not id_motorista:
         return "Motorista não está logado", 401  # Retorna erro se não estiver logado
-    
+
     pagamento = Pagamentos()
-    if pagamento.listar_historico(mes, cpf_motorista):
-        return render_template("historico-pagamento.html", )
-
-# @app.route("/somar-pagamento" methods=['GET', 'POST'])
-# def somar_pagamento():
-
+    if pagamento.gerar_pagamento(id_aluno, data, mes, valor, id_motorista):
+        return render_template("historico_pagamento.html")
+    else:
+        return "Erro ao gerar pagamento", 500
 
 app.run(debug=True)
