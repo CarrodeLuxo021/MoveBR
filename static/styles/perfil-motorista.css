@@ -98,4 +98,30 @@ section{
 
 .botao-contrato:hover {
     background-color: #2c717f;
+}nav {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    margin-top: 20px; /* Ajusta a margem para dar espaçamento */
+    margin-bottom: 60px;
+}
+nav a:last-child .botao {
+    margin-right: 0;
+}
+
+/* Efeito hover para mudar a cor da letra */
+.botao:hover {
+    color: var(--cor-03); /* Texto branco */
+    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
+    transform: scale(1.05); /* Pequeno zoom no botão */
+}
+.botao {
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
 }

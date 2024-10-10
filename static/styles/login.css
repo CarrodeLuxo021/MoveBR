@@ -25,13 +25,6 @@ header {
     margin-left: 10px;
 }
 
-
-.logo img {
-    width: 80px; /* Tamanho da imagem do logo */
-    height: auto; /* Manter a proporção da imagem */
-    margin-left: 10px;
-}
-
 /* Estilização do main */
 main {
     display: flex;
@@ -65,17 +58,17 @@ main {
     min-width: 450px; /* Garantir que os containers não fiquem muito estreitos */
 }
 
-.cima-container{
+.cima-container {
     margin-bottom: 20px;
 }
 
-.baixo-container p{
+.baixo-container p {
     color: var(--cor-02);
     text-align: center;
     margin-top: 10px;
 }
 
-.baixo-container a{
+.baixo-container a {
     color: var(--cor-06);
 }
 
@@ -88,7 +81,8 @@ main {
 }
 
 /* Estilização dos campos de entrada */
-.container-form input[type="email"] {
+.container-form input[type="email"],
+.container-form input[type="password"] {
     width: 100%; /* Ocupa toda a largura disponível */
     padding: 12px; /* Espaçamento interno aumentado para conforto */
     margin-bottom: 15px; /* Espaço entre os campos de entrada */
@@ -98,16 +92,7 @@ main {
     background-color: #f9f9f9; /* Fundo claro e suave para os campos de entrada */
 }
 
-.container-form input[type="password"] {
-    width: 100%; /* Ocupa toda a largura disponível */
-    padding: 12px; /* Espaçamento interno aumentado para conforto */
-    border: 1px solid #ddd; /* Borda leve para os campos */
-    border-radius: 6px; /* Bordas arredondadas para um visual mais moderno */
-    font-size: 16px; /* Tamanho de fonte adequado para leitura */
-    background-color: #f9f9f9; /* Fundo claro e suave para os campos de entrada */ 
-}
-
-.link-senha{
+.link-senha {
     color: var(--cor-02);
     font-size: 13px;
 }
@@ -151,3 +136,88 @@ footer {
     width: 100%; /* Ocupa toda a largura da página */
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
 }
+
+/* Media Queries */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container-form {
+        padding: 25px; /* Ajustar padding para dispositivos pequenos */
+    }
+
+    .logo img {
+        width: 70px; /* Reduzir o tamanho do logo */
+    }
+
+    .container-form input[type="email"],
+    .container-form input[type="password"] {
+        padding: 10px; /* Reduzir o padding nos campos de entrada */
+    }
+
+    .btn-container {
+        justify-content: center; /* Centralizar os botões */
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container-form {
+        padding: 30px; /* Padding para tablets */
+    }
+
+    .logo img {
+        width: 80px; /* Tamanho padrão do logo */
+    }
+
+    .btn-container {
+        justify-content: flex-end; /* Restaurar alinhamento à direita para tablets */
+    }
+
+    
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container-form {
+        max-width: 800px; /* Tamanho máximo para desktops */
+    }
+
+ 
+
+    .logo img {
+        width: 100px; /* Aumentar tamanho do logo em desktops */
+    }
+
+  
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container-form {
+        max-width: 1000px; /* Tamanho máximo para telas grandes */
+    }
+
+    .logo img {
+        width: 110px; /* Aumentar tamanho do logo em telas grandes */
+    }
+
+
+
+   
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .container-form {
+        max-width: 1200px; /* Tamanho máximo para telas extra grandes */
+    }
+
+    .logo img {
+        width: 120px; /* Aumentar tamanho do logo em telas muito grandes */
+    }
+
+  
+
+    
+}
+

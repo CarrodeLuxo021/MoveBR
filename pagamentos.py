@@ -1,5 +1,4 @@
 from conexao import Conexao
-
 class Pagamentos():
     def __init__(self):
         self.nome = None

@@ -1,157 +1,157 @@
 
-    <title>Listar Aluno</title>
+<title>Listar Aluno</title>
 
-    <!-- Importa o FontAwesome para os ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Importa o FontAwesome para os ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
-    <link rel="stylesheet" href="../static/styles/listar-aluno.css">
-    <link rel="stylesheet" href="../static/styles/variaveis.css">
+<!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
+<link rel="stylesheet" href="../static/styles/listar-aluno.css">
+<link rel="stylesheet" href="../static/styles/variaveis.css">
 
-    <!-- Conteúdo principal da página -->
-    <main>
-        
-        <header>
-            <figure>
-                <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
-                <div class="menu-icon" id="menu-icon">
-                    <img src="/static/icones/menu.png" alt="Perfil" id="profile-icon"/>
-                </div>
-            </figure>
-        </header>
-        
-        <nav id="menu" class="menu">
+<!-- Conteúdo principal da página -->
+<main>
     
-            <a href="/"><button class="card" id="pagInicial" aria-label="pagInicial">
-                <img src="/static/icones/inicio.png" alt="Ícone de início" />
-                <p>Início</p>
-            </button></a>
-    
-            <a href="/historico_pagamento"><button class="card" id="Cash" aria-label="Pagamentos">
-                <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
-                <p>Pagamentos</p>
-            </button></a>
-    
-            <!-- <button class="card" id="Cash" aria-label="Pagamentos">
-                <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
-                <p>Pagamentos</p>
-            </button> -->
-        </nav>
-
-        <section class="c-table">
-            <!-- Área de busca -->
-
-            <div class="a">
-                <h1>Alunos</h1>
+    <header>
+        <figure>
+            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+            <div class="menu-icon" id="menu-icon">
+                <img src="/static/icones/menu.png" alt="Perfil" id="profile-icon"/>
             </div>
-            
-            <div class="container-busca">
-              <form action="/listar-alunos" method='get'> 
-                  <input type="text" name="query" class="input-busca" placeholder="Buscar...">
-                  <button class="icone-busca" type="submit">🔍</button>
-              </form>
-          </div>
-                           
-        </section>
+        </figure>
+    </header>
+    
+    <nav id="menu" class="menu">
 
-        {% for aluno in alunos %}
-            <!-- Tabela de alunos -->
-            <table class="alunos-listados">
-                <div class="container-tabela">
-                    <tbody>
-                        <!-- Estrutura de cada linha de aluno na tabela -->
-                        <tr class="aluno">
-                            <td>
-                                <!-- Perfil do Aluno -->
-                                <div class="perfil-aluno">
-                                    <!-- Foto do Aluno -->
-                                    <div class="foto-aluno">
-                                        <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
-                                        <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
-                                    </div>
-                                    <!-- Informações básicas do aluno -->
-                                    <div class="info-aluno">
-                                        <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
-                                        <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p> <!-- Nome do responsável -->
-                                        <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p> <!-- Telefone do responsável -->                                </div>
-                                </div>
+        <a href="/"><button class="card" id="pagInicial" aria-label="pagInicial">
+            <img src="/static/icones/inicio.png" alt="Ícone de início" />
+            <p>Início</p>
+        </button></a>
 
-                                <!-- Container para informações adicionais, inicialmente ocultas -->
-                                <div class="detalhes" style="display: none;">
-                                    <!-- Informações de transporte -->
-                                    <div class="info-transporte">
-                                        <h3>Informações de Transporte</h3>
-                                        <p><strong>Endereço:</strong> {{aluno['endereco']}} </p> <!-- Endereço do aluno -->
-                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p> <!-- Escola que o aluno frequenta -->
-                                    </div>
-                            
-                                    <!-- Informações extras do aluno -->
-                                    <div class="info-extra">
-                                        <h3>Condição Médica</h3>
-                                        <p> {{aluno['condicao_medica']}} </p> <!-- Qualquer informação adicional relevante -->
-                                    </div>
+        <a href="/historico_pagamento"><button class="card" id="Cash" aria-label="Pagamentos">
+            <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
+            <p>Pagamentos</p>
+        </button></a>
 
-                                    <div class="container-btn-excluir">
-                                        <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
-                                    </div>
-                                </div>
+        <!-- <button class="card" id="Cash" aria-label="Pagamentos">
+            <img src="/static/icones/dinheiro.png" alt="Ícone de pagamentos" />
+            <p>Pagamentos</p>
+        </button> -->
+    </nav>
 
-                                <!-- Botão para expandir/ocultar os detalhes do aluno -->
-                                <div class="button-container">
-                                    <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button> <!-- Ícone de seta para expandir -->
-                                </div>
-                            </td>
-                        </tr>
+    <section class="c-table">
+        <!-- Área de busca -->
 
-                        <!-- Adicione mais alunos aqui -->
-                    </tbody>
-                </div>
-            </table>
-        {% endfor %}
-    </main>
+        <div class="a">
+            <h1>Alunos</h1>
+        </div>
         
-    <!-- Script para manipulação de interações e animações -->
-    <script>
-        // Função para expandir/ocultar detalhes do aluno
-        function toggleExpandir(button) {
-            // Encontra a linha do aluno correspondente ao botão clicado
-            const alunoRow = button.closest('.aluno');
-            // Seleciona o container de detalhes do aluno
-            const detalhesContainer = alunoRow.querySelector('.detalhes');
+        <div class="container-busca">
+          <form action="/listar-alunos" method='get'> 
+              <input type="text" name="query" class="input-busca" placeholder="Buscar...">
+              <button class="icone-busca" type="submit">🔍</button>
+          </form>
+      </div>
+                       
+    </section>
 
-            // Alterna entre mostrar e ocultar os detalhes
-            if (detalhesContainer.style.display === 'none') {
-                detalhesContainer.style.display = 'block';  // Mostra os detalhes
-                button.textContent = '▲';  // Muda o ícone do botão para uma seta para cima
-            } else {
-                detalhesContainer.style.display = 'none';  // Oculta os detalhes
-                button.textContent = '▼';  // Muda o ícone do botão para uma seta para baixo
-            }
+    {% for aluno in alunos %}
+        <!-- Tabela de alunos -->
+        <table class="alunos-listados">
+            <div class="container-tabela">
+                <tbody>
+                    <!-- Estrutura de cada linha de aluno na tabela -->
+                    <tr class="aluno">
+                        <td>
+                            <!-- Perfil do Aluno -->
+                            <div class="perfil-aluno">
+                                <!-- Foto do Aluno -->
+                                <div class="foto-aluno">
+                                    <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
+                                    <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
+                                </div>
+                                <!-- Informações básicas do aluno -->
+                                <div class="info-aluno">
+                                    <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
+                                    <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p> <!-- Nome do responsável -->
+                                    <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p> <!-- Telefone do responsável -->                                </div>
+                            </div>
+
+                            <!-- Container para informações adicionais, inicialmente ocultas -->
+                            <div class="detalhes" style="display: none;">
+                                <!-- Informações de transporte -->
+                                <div class="info-transporte">
+                                    <h3>Informações de Transporte</h3>
+                                    <p><strong>Endereço:</strong> {{aluno['endereco']}} </p> <!-- Endereço do aluno -->
+                                    <p><strong>Escola:</strong> {{aluno['escola']}} </p> <!-- Escola que o aluno frequenta -->
+                                </div>
+                        
+                                <!-- Informações extras do aluno -->
+                                <div class="info-extra">
+                                    <h3>Condição Médica</h3>
+                                    <p> {{aluno['condicao_medica']}} </p> <!-- Qualquer informação adicional relevante -->
+                                </div>
+
+                                <div class="container-btn-excluir">
+                                    <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
+                                </div>
+                            </div>
+
+                            <!-- Botão para expandir/ocultar os detalhes do aluno -->
+                            <div class="button-container">
+                                <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button> <!-- Ícone de seta para expandir -->
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Adicione mais alunos aqui -->
+                </tbody>
+            </div>
+        </table>
+    {% endfor %}
+</main>
+    
+<!-- Script para manipulação de interações e animações -->
+<script>
+    // Função para expandir/ocultar detalhes do aluno
+    function toggleExpandir(button) {
+        // Encontra a linha do aluno correspondente ao botão clicado
+        const alunoRow = button.closest('.aluno');
+        // Seleciona o container de detalhes do aluno
+        const detalhesContainer = alunoRow.querySelector('.detalhes');
+
+        // Alterna entre mostrar e ocultar os detalhes
+        if (detalhesContainer.style.display === 'none') {
+            detalhesContainer.style.display = 'block';  // Mostra os detalhes
+            button.textContent = '▲';  // Muda o ícone do botão para uma seta para cima
+        } else {
+            detalhesContainer.style.display = 'none';  // Oculta os detalhes
+            button.textContent = '▼';  // Muda o ícone do botão para uma seta para baixo
         }
+    }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuIcon = document.getElementById('menu-icon');
-            const menu = document.getElementById('menu');
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuIcon = document.getElementById('menu-icon');
+        const menu = document.getElementById('menu');
 
-            menuIcon.addEventListener('click', function() {
-                // Adiciona ou remove a classe 'show' para mostrar/esconder o menu
-                if (menu.classList.contains('show')) {
-                    menu.classList.remove('show'); // Esconde o menu (desliza para fora)
-                } else {
-                    menu.classList.add('show'); // Mostra o menu (desliza para dentro)
-                }
-            });
+        menuIcon.addEventListener('click', function() {
+            // Adiciona ou remove a classe 'show' para mostrar/esconder o menu
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show'); // Esconde o menu (desliza para fora)
+            } else {
+                menu.classList.add('show'); // Mostra o menu (desliza para dentro)
+            }
         });
+    });
 
-        // Função para abrir e fechar o menu
-        document.getElementById('toggleBtn').addEventListener('click', function() {
-            var menu = document.getElementById('menu1');
-            menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
-            this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
-        });
+    // Função para abrir e fechar o menu
+    document.getElementById('toggleBtn').addEventListener('click', function() {
+        var menu = document.getElementById('menu1');
+        menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
+        this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
+    });
 
 
-        const details = document.getElementById('details');
-    </script>
+    const details = document.getElementById('details');
+</script>
 
 
