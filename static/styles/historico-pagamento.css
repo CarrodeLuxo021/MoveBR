@@ -4,6 +4,14 @@
     margin: 0;
 }
 
+<<<<<<< HEAD
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-04);
+}
+
+/* Estilo do header */
+=======
 .logo img {
     width: 100px;
 }
@@ -13,6 +21,7 @@
     font-size: 2rem;
 }
 
+>>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
 header {
     display: flex;
     height: 85px;
@@ -20,10 +29,18 @@ header {
     align-items: center;
     width: 100%;
     padding: 20px;
+<<<<<<< HEAD
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+}
+
+figure {
+    width: 100%;
+=======
     background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
 }
 
 .navegacao {
+>>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;
@@ -54,6 +71,11 @@ header {
     background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
 }
 
+.logo img {
+    width: 80px;
+    height: 80px;
+}
+
 .menu-icon {
     cursor: pointer;
 }
@@ -73,11 +95,11 @@ header {
     height: 50px;
 }
 
-/* Inicialmente, o menu estará fora da tela (à direita) */
+/* Estilo do menu lateral */
 .menu {
     position: fixed;
     top: 10%;
-    right: -400px; /* Mover para fora da tela */
+    right: -400px;
     height: 80%;
     width: 170px;
     background-color: #00000086;
@@ -87,22 +109,31 @@ header {
     align-items: center;
     border-radius: 10px 0 0 10px;
     transition: right 0.5s ease, transform 0.5s ease;
-    transform: scale(1); /* Sem redimensionamento inicialmente */
-    opacity: 1; 
-}
-
-/* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
-.menu.show {
-    right: 0; /* Move o menu para dentro da tela */
-    transform: scale(0.9); /* Reduz o tamanho um pouco */
+    transform: scale(1);
     opacity: 1;
 }
 
-.menu a{
+.menu.show {
+    right: 0;
+    transform: scale(0.9);
+    opacity: 1;
+}
+
+.menu a {
     text-decoration: none;
 }
 
-/* Estilo dos cards */
+/* Estilização dos cards */
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 cards por linha */
+    gap: 20px; /* Espaçamento entre os cards */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 80px); /* Altura restante após o header */
+}
+
 .card {
     background-color: #d3d3d300;
     border: none;
@@ -112,10 +143,10 @@ header {
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
     width: 130px;
-    margin: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .alunos-listados {
     background-color: var(--cor-03);
@@ -207,6 +238,38 @@ td {
     transform: scale(0.98);
 }
 
+<<<<<<< HEAD
+/* Estilização dos botões */
+.btn-container {
+    text-align: right;
+}
+
+.btn-container button {
+    background-color: var(--cor-06);
+    color: var(--cor-03);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 40px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-container button:hover {
+    background-color: var(--cor-05);
+}
+
+.btn-container button:active {
+    transform: scale(0.98);
+}
+
+/* Estilo responsivo */
+@media screen and (min-width: 600px) {
+    .menu {
+        flex-direction: column;
+        justify-content: center;
+=======
 .container {
     display: flex;
     justify-content: center;
@@ -220,6 +283,7 @@ td {
 @media (max-width: 1200px) {
     .logo img {
         width: 80px; /* Reduzir o tamanho do logo em telas menores */
+>>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
     }
 
     .header h1 {
@@ -282,11 +346,7 @@ td {
     }
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: var(--cor-04);
-}
-
+/* Estilos adicionais para container1 e header1 */
 .container1 {
     width: 80%;
     max-width: 800px;
@@ -294,7 +354,7 @@ body {
     background-color: var(--cor-03);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header1 {
@@ -317,13 +377,13 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     padding: 10px;
-    display: none; /* Menu começa oculto */
+    display: none;
 }
 
 .month {
     padding: 10px;
     border: none;
-    background-color:  var(--cor-05);
+    background-color: var(--cor-05);
     color: var(--cor-03);
     border-radius: 5px;
     cursor: pointer;
@@ -361,3 +421,4 @@ body {
 .toggle-btn:focus {
     outline: none;
 }
+
