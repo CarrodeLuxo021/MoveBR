@@ -85,26 +85,6 @@ def listar_alunos():
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 
-@app.route("/gerar_pagamento", methods=['GET'])
-def gerar_pagamento_get():
-    usuario = Usuario()
-    lista_alunos = usuario.listar_aluno()
-    return render_template("gerar_pagamento.html", alunos=lista_alunos)
-
-@app.route("/gerar_pagamento", methods=['POST'])
-def gerar_pagamento_post():
-    id_aluno = request.values["id_aluno"]
-    data = request.form["data"]
-    mes = request.form["mes"]
-    valor = request.form["valor"]
-    pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(id_aluno, data, mes, valor):
-        return render_template("gerar_pagamento.html")
-    
-
-
-
-
 @app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
 def excluir_aluno(id_aluno):
     if request.method == 'GET':
@@ -136,5 +116,30 @@ def historico_pagamento_filtro(mes):
         return render_template("historico_pagamento.html")
     else:
         return "Erro ao gerar pagamento", 500
+
+@app.route("/gerar-pagamento", methods=['GET'])
+def gerar_pagamento_get():
+    usuario = Usuario()
+    lista_alunos = usuario.listar_aluno()
+    return render_template("gerar_pagamento.html", alunos=lista_alunos)
+
+@app.route("/gerar-pagamento", methods=['POST'])
+def gerar_pagamento_post():
+    try:
+        # Pega os valores do formulário
+        id_aluno = request.form["id_aluno"]
+        data_pagamento = request.form["data_pagamento"]
+        mes_pagamento = request.form["mes_pagamento"]
+        valor_pagamento = request.form["valor_pagamento"]
+
+        # Instancia a classe Pagamentos e chama a função gerar_pagamento
+        pagamento = Pagamentos()
+        if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
+            return render_template("historico_pagamento.html")
+        else:
+            return "Erro ao gerar o pagamento", 500
+    except Exception as e:
+        print(f"Erro: {e}")
+        return "Erro no processamento", 500
 
 app.run(debug=True)

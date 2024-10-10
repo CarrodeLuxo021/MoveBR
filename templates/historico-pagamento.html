@@ -40,7 +40,7 @@
             <h1>Histórico de Pagamentos</h1>
             <button id="toggleBtn" class="toggle-btn">&#9650;</button>
         </div>
-        <form action="/gerar_pagamento" method="get">
+        <form action="/gerar-pagamento" method="get">
             <button type="submit">Gerar novo pagamento</button>
         </form>
         
@@ -95,6 +95,7 @@
             </form>
         </div>
 
+        
         <!-- Details será mostrado ao clicar em um mês -->
         <div id="details" class="details" style="display: none;">
             <p> Alunos que pagam naquele mês e o dia que pagam. </p>
@@ -103,5 +104,35 @@
             </div>
         </div>
     </div>
+    {% for pagamento in pagamento %}
+        <!-- Tabela de alunos -->
+        <table class="alunos-listados">
+            <div class="container-tabela">
+                <tbody>
+                    <!-- Estrutura de cada linha de aluno na tabela -->
+                    <tr class="aluno">
+                        <td>
+                            <!-- Perfil do Aluno -->
+                            <div class="perfil-aluno">
+                                <!-- Foto do Aluno -->
+                                <div class="foto-aluno">
+                                    <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
+                                    <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
+                                </div>
+                                <!-- Informações básicas do aluno -->
+                                <div class="info-aluno">
+                                    <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
+                                    <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p> <!-- Nome do responsável -->
+                                    <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p> <!-- Telefone do responsável -->                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                    <!-- Adicione mais alunos aqui -->
+                </tbody>
+            </div>
+        </table>
+    {% endfor %}
 
     <script src="../static/js/historico-pagamento.js"></script>

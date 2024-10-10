@@ -117,7 +117,76 @@ header {
     flex-direction: column;
     align-items: center;
 }
+.alunos-listados {
+    background-color: var(--cor-03);
+    margin: 0 auto;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
+.alunos-listados td {
+    position: relative;
+}
+
+.alunos-listados td .button-container {
+    position: absolute;
+    right: 0;
+    top: 15%;
+    transform: translateY(-50%);
+}
+
+td {
+    padding: 12px 20px;
+    font-weight: bold;
+}
+
+.perfil-aluno {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.foto-aluno img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cor-06);
+}
+
+.info-aluno {
+    margin-left: 20px;
+}
+
+.info-aluno h2 {
+    font-size: 24px;
+    color: var(--cor-06);
+    margin: 0;
+    padding: 0;
+}
+
+.info-aluno p {
+    font-size: 16px;
+    color: var(--cor-02);
+}
+
+.info-aluno {
+    margin-left: 20px;
+}
+
+.info-aluno h2 {
+    font-size: 24px;
+    color: var(--cor-01);
+}
+
+.info-aluno p {
+    font-size: 16px;
+    color: var(--cor-02);
+}
 .card img {
     width: 80px;
     height: 80px;
