@@ -1,13 +1,14 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from usuario import Usuario
 from pagamentos import Pagamentos
+from upload_file import upload_file
 
 app = Flask(__name__)
 app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('login-motorista.html')
+    return render_template('pag-inicial-motorista.html', session=session)
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
@@ -25,10 +26,9 @@ def pag_cadastro_motorista():
 
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
-            return render_template('login-motorista.html') 
-        
+            return redirect('/logar') 
         else:
-            return render_template('pag-inicial-motorista.html')
+            return redirect('/')
         
         
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
@@ -38,18 +38,19 @@ def pag_cadastro_aluno():
     else:
         nome_aluno = request.form["nome-aluno"] 
         escola = request.form["escola"]
-        foto_aluno = request.form["foto-aluno"]
+        foto_aluno = request.files["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
         nome_responsavel = request.form["nome-responsavel"]
         endereco_responsavel = request.form["endereco-aluno"]
         tel_responsavel = request.form["telefone-responsavel"]
         email_responsavel = request.form["email-aluno"]
 
+        link_foto = upload_file(foto_aluno)
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return render_template('login-aluno.html') 
+        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
+             return redirect('/') 
         else:
-           return render_template('cadastro-aluno.html')
+           return redirect('/cadastrar-aluno')
         
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
@@ -65,18 +66,12 @@ def logar():
                 "email": usuario.email,
                 "cpf": usuario.cpf
             }
-            return render_template("pag-inicial-motorista.html")
+            return redirect("/")
         else:
             session.clear()
             return redirect("/logar")
             
 
-@app.route("/listar-motorista", methods=['GET', 'POST'])
-def listar_motorista():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_usuarios = usuario.listar_usuario()
-        return render_template("listar-motorista.html", usuarios=lista_usuarios)
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
@@ -96,7 +91,7 @@ def gerar_pagamento_get():
 def gerar_pagamento_post():
     id_aluno = request.values["id_aluno"]
     data = request.form["data"]
-    mes = request.values["mes"]
+    mes = request.form["mes"]
     valor = request.form["valor"]
 
     # Recupera o id do motorista logado a partir da sessão

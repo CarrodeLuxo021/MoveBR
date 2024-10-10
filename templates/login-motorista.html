@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
         <title>Login</title>
     </head>
     <body>
-        <header>
+        <header class="global-header">
             <figure>
                 <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
             </figure>
@@ -17,7 +17,6 @@
         <main>
             <form class="container-form">
                 <div class="itens-form">
-
                     <div class="cima-container">
                         <label for="emailAluno">Email:</label>
                         <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
@@ -33,11 +32,13 @@
 
                     <div class="baixo-container">
                         <hr>
-                        <p>Ainda não possui cadastro? <a href="/cadastrar-motorista">Cadastrar-se!</a></p>
+                        <p>Ainda não possui cadastro? <a href="/templates/cadastro-motorista.html">Cadastrar-se!</a></p>
                     </div>
                 </div>
             </form>
         </main>
-            
+        <footer class="global-footer">
+            <!-- Conteúdo do rodapé global -->
+        </footer>
     </body>
 </html>
