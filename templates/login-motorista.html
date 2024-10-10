@@ -15,19 +15,19 @@
             </figure>
         </header>
         <main>
-            <form class="container-form">
+            <form class="container-form" action="#" method="post">
                 <div class="itens-form">
                     <div class="cima-container">
                         <label for="emailAluno">Email:</label>
-                        <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com">
+                        <input type="email" id="emailAluno" name="email" placeholder="ex: nome@exemplo.com">
                         
                         <label for="senhaAluno">Senha:</label>
-                        <input type="password" id="senhaAluno" placeholder="ex: mínimo 8 caracteres">
+                        <input type="password" id="senhaAluno" name="senha" placeholder="ex: mínimo 8 caracteres">
                         <a href="#" class="link-senha">Esqueceu sua senha?</a>
                     </div>
                     
                     <div class="btn-container">
-                        <form action="/logar" method="post"><button type="submit" class="login">Login</button></form>
+                        <button type="submit" class="login">Login</button>
                     </div>
 
                     <div class="baixo-container">

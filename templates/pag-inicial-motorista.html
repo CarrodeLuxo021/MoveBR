@@ -22,7 +22,6 @@
     </header>
 
     <nav>
-        <a href="/motorista-inicio"><button class="botao">Início</button></a> 
         <a href="/listar-alunos"><button class="botao">Alunos clientes</button></a>
         <a href="/historico-pagamento"><button class="botao">Histórico de pagamentos</button></a> 
         <a href="/cadastrar-aluno"><button class="botao">Cadastrar Aluno</button></a> 
@@ -31,7 +30,7 @@
     <main>
         <section class="section01-pag_motorista">
             {% if session.usuario_logado %}
-                <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
+                <h1>Olá {{ session.usuario_logado.nome }}!</h1>
             {% else %}
                 <p>Por favor, faça login para acessar essa página.</p>
 {% endif %}
