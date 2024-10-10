@@ -99,7 +99,7 @@ def gerar_pagamento():
         return render_template("gerar_pagamento.html")
     
 
-@app.route("/historico_pagamento")
+@app.route("/historico-pagamento")
 def historico_pagamento():
     return render_template("historico-pagamento.html")
 
@@ -129,6 +129,9 @@ def historico_pagamento_filtro(mes):
     pagamento = Pagamentos()
     if pagamento.listar_historico(mes, cpf_motorista):
         return render_template("historico-pagamento.html", )
+
+# @app.route("/somar-pagamento" methods=['GET', 'POST'])
+# def somar_pagamento():
 
 
 app.run(debug=True)

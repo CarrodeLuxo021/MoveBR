@@ -30,7 +30,7 @@
     <main>
         <section class="section01-pag_motorista">
             {% if session.usuario_logado %}
-                <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
+                <h1>Olá {{ session.usuario_logado.nome }}!</h1>
             {% else %}
                 <p>Por favor, faça login para acessar essa página.</p>
 {% endif %}
