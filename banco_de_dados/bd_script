@@ -13,6 +13,8 @@ CREATE TABLE tb_alunos (
     telefone_responsavel varchar(100),
     email_responsavel varchar(100),
     idade int,
+    cpf_motorista int,
+	FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista),
     PRIMARY KEY (id_aluno)
 );
 
@@ -24,12 +26,10 @@ CREATE TABLE tb_motoristas (
     cnpj VARCHAR(100),
     cidade_motorista VARCHAR(100),
     endereco_motorista VARCHAR(100),
+    cnpj int,
     tel_motorista VARCHAR(15),
     email_motorista VARCHAR(50),
-    senha_motorista varchar(50),
-    foto_van varchar(50),
-    foto_motorista varchar(50),
-    valor_cobrado int
+    senha_motorista varchar(50)
 );
 
 -- Criação da tabela tb_alunos_registrados
