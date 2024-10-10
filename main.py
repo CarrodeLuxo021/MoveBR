@@ -86,8 +86,14 @@ def listar_alunos():
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 
+@app.route("/gerar_pagamento", methods=['GET'])
+def gerar_pagamento_get():
+    usuario = Usuario()
+    lista_alunos = usuario.listar_aluno()
+    return render_template("gerar_pagamento.html", alunos=lista_alunos)
+
 @app.route("/gerar_pagamento", methods=['POST'])
-def gerar_pagamento():
+def gerar_pagamento_post():
     id_aluno = request.values["id_aluno"]
     data = request.form["data"]
     mes = request.values["mes"]
@@ -102,7 +108,7 @@ def gerar_pagamento():
 
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(id_aluno, data, mes, valor, id_motorista):
-        return render_template("gerar_pagamento.html")
+        return render_template("historico_pagamento.html")
     else:
         return "Erro ao gerar pagamento", 500
 
