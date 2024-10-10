@@ -1,6 +1,21 @@
 CREATE DATABASE movebr;
 USE movebr;
 
+
+
+-- Criação da tabela tb_motoristas
+CREATE TABLE tb_motoristas (
+    nome_motorista varchar(60),
+    cpf_motorista VARCHAR(100) PRIMARY KEY,
+    cnh VARCHAR(100),
+    cnpj VARCHAR(100),
+    cidade_motorista VARCHAR(100),
+    endereco_motorista VARCHAR(100),
+    tel_motorista VARCHAR(15),
+    email_motorista VARCHAR(50),
+    senha_motorista varchar(50)
+);
+
 -- Criação da tabela tb_alunos
 CREATE TABLE tb_alunos (
     id_aluno  int AUTO_INCREMENT,
@@ -13,25 +28,10 @@ CREATE TABLE tb_alunos (
     telefone_responsavel varchar(100),
     email_responsavel varchar(100),
     idade int,
-    cpf_motorista int,
+    cpf_motorista varchar(100),
 	FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista),
     PRIMARY KEY (id_aluno)
 );
-
--- Criação da tabela tb_motoristas
-CREATE TABLE tb_motoristas (
-    nome_motorista varchar(60),
-    cpf_motorista VARCHAR(100) PRIMARY KEY,
-    cnh VARCHAR(100),
-    cnpj VARCHAR(100),
-    cidade_motorista VARCHAR(100),
-    endereco_motorista VARCHAR(100),
-    cnpj int,
-    tel_motorista VARCHAR(15),
-    email_motorista VARCHAR(50),
-    senha_motorista varchar(50)
-);
-
 -- Criação da tabela tb_alunos_registrados
 CREATE TABLE tb_alunos_clientes (
     id_aluno INT,
@@ -50,8 +50,8 @@ CREATE TABLE historico_pagamentos (
     id_aluno INT,
     cpf_motorista varchar(100),
     FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
-    FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista),
-    PRIMARY KEY (id_pagamento)
+    FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
+    
 );
 
 -- Criação da tabela tb_faltas
