@@ -23,7 +23,7 @@
                     <select id="nomeAluno" name="id_aluno">
                         <!-- Aqui a lista de alunos será preenchida dinamicamente pelo backend -->
                         {% for aluno in alunos %}
-                        <option value="{{ aluno.id }}">{{aluno.nome}}</option>
+                        <option value="{{aluno.id_aluno}}">{{aluno.nome_aluno}}</option>
                         {% endfor %}
                     </select>
                     
