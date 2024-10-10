@@ -1,13 +1,18 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from usuario import Usuario
 from pagamentos import Pagamentos
+from upload_file import upload_file
 
 app = Flask(__name__)
 app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('pag-inicial-motorista.html')
+    return redirect('/logar')
+
+@app.route("/pag-inicial-motorista")
+def pag_inicial():
+    return render_template("pag-inicial-motorista.html", session=session)
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
@@ -37,16 +42,17 @@ def pag_cadastro_aluno():
     else:
         nome_aluno = request.form["nome-aluno"] 
         escola = request.form["escola"]
-        foto_aluno = request.form["foto-aluno"]
+        foto_aluno = request.files["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
         nome_responsavel = request.form["nome-responsavel"]
         endereco_responsavel = request.form["endereco-aluno"]
         tel_responsavel = request.form["telefone-responsavel"]
         email_responsavel = request.form["email-aluno"]
 
+        link_foto = upload_file(foto_aluno)
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return redirect('/') 
+        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
+             return redirect('/pag-inicial-motorista') 
         else:
            return redirect('/cadastrar-aluno')
         
@@ -64,7 +70,7 @@ def logar():
                 "email": usuario.email,
                 "cpf": usuario.cpf
             }
-            return redirect("/")
+            return redirect('/pag-inicial-motorista')
         else:
             session.clear()
             return redirect("/logar")
@@ -74,21 +80,20 @@ def logar():
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     if request.method == 'GET':
-        if 'usuario_logado' in  session:
-            usuario = Usuario()
-            query = request.args.get('query')
-            if query:
-                lista_alunos = usuario.pesquisar_aluno(query)
-            else:
-                lista_alunos = usuario.listar_aluno()
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()
+        return render_template("listar-aluno.html", alunos=lista_alunos)
 
-            return render_template("listar-aluno.html", alunos=lista_alunos)
-        else:
-            return redirect('/logar')
+
+@app.route("/gerar_pagamento", methods=['GET'])
+def gerar_pagamento_get():
+    usuario = Usuario()
+    lista_alunos = usuario.listar_aluno()
+    return render_template("gerar_pagamento.html", alunos=lista_alunos)
 
 @app.route("/gerar_pagamento", methods=['POST'])
-def gerar_pagamento():
-    id_aluno = request.form["id_aluno"]
+def gerar_pagamento_post():
+    id_aluno = request.values["id_aluno"]
     data = request.form["data"]
     mes = request.form["mes"]
     valor = request.form["valor"]
@@ -97,9 +102,7 @@ def gerar_pagamento():
         return render_template("gerar_pagamento.html")
     
 
-@app.route("/historico_pagamento")
-def historico_pagamento():
-    return render_template("historico-pagamento.html")
+
 
 
 @app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
@@ -114,7 +117,11 @@ def excluir_aluno(id_aluno):
 def quebra_foto(id_aluno):
     return render_template("quebra-contrato.html", id_aluno = id_aluno)
 
-@app.route("/historico_pagamento/<mes>")
+@app.route("/historico-pagamento", methods=['GET'])
+def historico_pagamento():
+    return render_template("historico-pagamento.html")
+
+@app.route("/historico_pagamento/<mes>", methods=['post'])
 def historico_pagamento_filtro(mes):
     mes = request.args.get('mes')
      # Recupera o id do motorista logado a partir da sessão
@@ -123,10 +130,11 @@ def historico_pagamento_filtro(mes):
     # Verifica se o motorista está logado
     if not cpf_motorista:
         return "Motorista não está logado", 401  # Retorna erro se não estiver logado
-    
-    pagamento = Pagamentos()
-    if pagamento.listar_historico(mes, cpf_motorista):
-        return render_template("historico-pagamento.html", )
 
+    pagamento = Pagamentos()
+    if pagamento.gerar_pagamento(mes, cpf_motorista):
+        return render_template("historico_pagamento.html")
+    else:
+        return "Erro ao gerar pagamento", 500
 
 app.run(debug=True)

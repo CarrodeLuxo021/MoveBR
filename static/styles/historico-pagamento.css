@@ -4,12 +4,24 @@
     margin: 0;
 }
 
+<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     background-color: var(--cor-04);
 }
 
 /* Estilo do header */
+=======
+.logo img {
+    width: 100px;
+}
+
+.header h1 {
+    color: #ffcc00; /* Amarelo */
+    font-size: 2rem;
+}
+
+>>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
 header {
     display: flex;
     height: 85px;
@@ -17,14 +29,46 @@ header {
     align-items: center;
     width: 100%;
     padding: 20px;
+<<<<<<< HEAD
     background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
 }
 
 figure {
     width: 100%;
+=======
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
+}
+
+.navegacao {
+>>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
     display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
     align-items: center;
-    justify-content: space-between;
+    margin-top: 20px; /* Ajusta a margem para dar espaçamento */
+    margin-bottom: 60px;
+}
+
+/* Estilos dos botões */
+.botao {
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
+}
+
+/* Último botão sem margem à direita */
+.navegacao a:last-child .botao {
+    margin-right: 0;
+}
+
+/* Efeito hover para mudar a cor da letra */
+.botao:hover {
+    color: var(--cor-03); /* Texto branco */
+    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
 }
 
 .logo img {
@@ -34,6 +78,16 @@ figure {
 
 .menu-icon {
     cursor: pointer;
+}
+.botao {
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
 }
 
 .menu-icon img {
@@ -115,6 +169,7 @@ figure {
     transform: scale(0.98);
 }
 
+<<<<<<< HEAD
 /* Estilização dos botões */
 .btn-container {
     text-align: right;
@@ -145,10 +200,80 @@ figure {
     .menu {
         flex-direction: column;
         justify-content: center;
+=======
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 80px); /* Altura restante após o header */
+    background-color: #004400;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .logo img {
+        width: 80px; /* Reduzir o tamanho do logo em telas menores */
+>>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
     }
 
-    .container p {
-        font-size: 1.5rem;
+    .header h1 {
+        font-size: 1.8rem; /* Diminuir o tamanho do título */
+    }
+
+    .botao {
+        width: 180px; /* Ajustar largura dos botões */
+    }
+
+    .card {
+        width: 120px; /* Diminuir largura dos cards */
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        flex-direction: column; /* Colocar elementos do cabeçalho em coluna */
+        align-items: flex-start; /* Alinhar à esquerda */
+    }
+
+    .navegacao {
+        flex-direction: column; /* Colocar botões em coluna */
+        align-items: stretch; /* Esticar botões */
+    }
+
+    .botao {
+        margin: 10px 0; /* Margem entre botões */
+        width: 100%; /* Botões ocupam 100% da largura */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        width: 60px; /* Reduzir o tamanho do logo ainda mais */
+    }
+
+    .header h1 {
+        font-size: 1.5rem; /* Diminuir ainda mais o tamanho do título */
+    }
+
+    .container {
+        flex-direction: column; /* Mudança para coluna em telas menores */
+        height: auto; /* Altura automática */
+        padding: 20px; /* Padding para melhor aparência */
+    }
+}
+
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 1.2rem; /* Tamanho menor para telas muito pequenas */
+    }
+
+    .menu {
+        width: 150px; /* Ajustar largura do menu */
+    }
+
+    .card p {
+        font-size: 1rem; /* Ajustar tamanho do texto do card */
     }
 }
 

@@ -16,7 +16,7 @@
     </header>
 
     <main>
-        <form class="container-form" action="#" method="post">
+        <form class="container-form" action="#" method="post" enctype="multipart/form-data">
             <div class="itens-form">
                 <section class="lado-esquerdo-container">
                     <label for="nomeAluno">Nome:</label>
@@ -37,15 +37,15 @@
 
                     <label for="emailAluno">Email:</label>
                     <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno">
-
-                    <label for="fotoAluno">Foto Aluno:</label>
-                    <input type="text" id="fotoAluno" placeholder="Insira o link da foto aqui" name="foto-aluno">
                     
                     <label for="condicaoMedica">Condição Médica:</label>
                     <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre, se não tem escreva 'Não tem'" name="condicao-medica">
 
                     <label for="enderecoAluno">Endereço:</label>
                     <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno">
+
+                    <label for="fotoAluno">Foto Aluno:</label>
+                    <input type="file" id="fotoAluno" accept="image/*" placeholder="Insira o link da foto aqui" name="foto-aluno">
 
                     <div class="btn-container">
                         <button type="submit" class="cadastrar">Cadastrar</button>

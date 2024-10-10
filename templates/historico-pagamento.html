@@ -18,6 +18,12 @@
             </div>
         </figure>
     </header>
+
+    <div class="navegacao">
+        <a href="/pag-inicial-motorista"><button class="botao">Início</button></a> 
+        <a href="/listar-alunos"><button class="botao">Alunos clientes</button></a>  
+         
+    </div>
     
     <nav id="menu" class="menu">
 
@@ -39,6 +45,9 @@
             <h1>Histórico de Pagamentos</h1>
             <button id="toggleBtn" class="toggle-btn">&#9650;</button>
         </div>
+        <form action="/gerar_pagamento" method="get">
+            <button type="submit">Gerar novo pagamento</button>
+        </form>
         
         <div id="menu1" class="menu1">
             <form action="/listar_historico" method="post">
