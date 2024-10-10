@@ -8,7 +8,7 @@ app.secret_key = "banana"
 
 @app.route("/")
 def pag_inicio():
-    return render_template('pag-inicial-motorista.html', session=session)
+    return redirect('/logar')
 
 @app.route("/cadastrar-motorista", methods=['GET','POST'])
 def pag_cadastro_motorista():
@@ -66,7 +66,7 @@ def logar():
                 "email": usuario.email,
                 "cpf": usuario.cpf
             }
-            return redirect("/")
+            return render_template('pag-inicial-motorista.html', session=session)
         else:
             session.clear()
             return redirect("/logar")
