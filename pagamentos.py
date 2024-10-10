@@ -7,31 +7,31 @@ class Pagamentos():
         self.logado = False
 
     def gerar_pagamento(self, id_aluno, mes, data, valor):
-    try:
-        mydb = Conexao.conectar()
-        mycursor = mydb.cursor()
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
 
-        # Buscando o nome do aluno na tabela tb_alunos
-        sql_busca_nome = """
-        SELECT nome_aluno 
-        FROM tb_alunos 
-        WHERE id_aluno = %s;
-        """
-        mycursor.execute(sql_busca_nome, (id_aluno,))
-        nome_aluno = mycursor.fetchone()[0]  # Captura o nome do aluno
+            # Buscando o nome do aluno na tabela tb_alunos
+            sql_busca_nome = """
+            SELECT nome_aluno 
+            FROM tb_alunos 
+            WHERE id_aluno = %s;
+            """
+            mycursor.execute(sql_busca_nome, (id_aluno,))
+            nome_aluno = mycursor.fetchone()[0]  # Captura o nome do aluno
 
-        # Inserindo na tabela historico_pagamentos
-        sql = """
-        INSERT INTO historico_pagamentos (id_aluno, nome_aluno, data_pagamento, mes_pagamento, valor_pagamento)
-        VALUES (%s, %s, %s, %s, %s);
-        """
-        mycursor.execute(sql, (id_aluno, nome_aluno, data, mes, valor))
+            # Inserindo na tabela historico_pagamentos
+            sql = """
+            INSERT INTO historico_pagamentos (id_aluno, nome_aluno, data_pagamento, mes_pagamento, valor_pagamento)
+            VALUES (%s, %s, %s, %s, %s);
+            """
+            mycursor.execute(sql, (id_aluno, nome_aluno, data, mes, valor))
 
-        mydb.commit()
-        mycursor.close()
+            mydb.commit()
+            mycursor.close()
 
-        return True
+            return True
 
-    except Exception as e:
-        print(f"Erro ao cadastrar pagamento: {e}")
-        return False
+        except Exception as e:
+            print(f"Erro ao cadastrar pagamento: {e}")
+            return False

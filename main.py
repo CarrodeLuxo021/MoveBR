@@ -141,5 +141,4 @@ def gerar_pagamento_post():
     except Exception as e:
         print(f"Erro: {e}")
         return "Erro no processamento", 500
-
 app.run(debug=True)
