@@ -13,6 +13,20 @@ body {
     color: var(--cor-01);
 }
 
+header {
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+figure img {
+    width: 90px; /* Tamanho da imagem do logo */
+    height: auto; /* Manter a proporção da imagem */
+    margin-left: 10px;
+}
+
 /* Estilização do main */
 main {
     display: flex;
@@ -36,6 +50,7 @@ main {
     gap: 20px;
     flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
 }
+
 .botao {
     border: solid 1px var(--cor-06);
     border-radius: 10px;
@@ -46,6 +61,7 @@ main {
     width: 200px;
     margin-right: 30px;
 }
+
 /* Estilização dos containers de lado */
 .lado-esquerdo-container,
 .lado-direito-container {

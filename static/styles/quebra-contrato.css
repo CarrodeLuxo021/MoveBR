@@ -4,19 +4,8 @@ body {
     margin: 0;
    
 }
-header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
-}
-.logo img {
-    width: 80px; /* Tamanho da imagem do logo */
-    height: auto; /* Manter a proporção da imagem */
-    margin-left: 10px;
-}
 
-.container {
-    
+.container {    
     background: white;
     padding: 50px;
     border-radius: 5px;
@@ -24,6 +13,7 @@ header {
     max-width: 550px;
     margin: auto;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 h1 {
@@ -35,9 +25,8 @@ p {
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 20px;
 }
-
-  
 
 button {
     background-color: #d9534f;
@@ -47,18 +36,21 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #c9302c;
 }
+
 nav {
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;
     margin-top: 20px; /* Ajusta a margem para dar espaçamento */
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
+
 nav a:last-child .botao {
     margin-right: 0;
 }
@@ -69,6 +61,7 @@ nav a:last-child .botao {
     background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
     transform: scale(1.05); /* Pequeno zoom no botão */
 }
+
 .botao {
     border: solid 1px var(--cor-06);
     border-radius: 10px;
