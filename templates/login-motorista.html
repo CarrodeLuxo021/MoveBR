@@ -14,52 +14,54 @@
     <div class="container">
         <div class="content first-content">
             <div class="first-column">
-                <h2 class="title title-primary">welcome back!</h2>
-                <p class="description description-primary">To keep connected with us</p>
-                <p class="description description-primary">please login with your personal info</p>
-                <button id="signin" class="btn btn-primary">sign in</button>
+                <h2 class="title title-primary">Bem vindo(a) de volta!</h2>
+                <p class="description description-primary">Por favor faça o login para ficar conectado com nós!</p>
+                <button id="signin" class="btn btn-primary">Login</button>
             </div>    
             <div class="second-column">
-                <h2 class="title title-second">create account</h2>
-                <div class="social-media">
-                    <ul class="list-social-media">
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-facebook-f"></i>        
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-google-plus-g"></i>
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-linkedin-in"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div><!-- social media -->
-                <p class="description description-second">or use your email for registration:</p>
-                <form class="form">
-                    <label class="label-input" for="">
-                        <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Name">
-                    </label>
+                <h2 class="title title-second">Crie uma conta</h2>
+                <div class="form-container">
+
+                    <form class="form">
+                        <div class="itens-form">
+                            <!-- RF001 – Cadastro do motorista -->
+                            <section class="lado-esquerdo-container">
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" id="nome" name="nome" placeholder="ex: João da Silva">
                     
-                    <label class="label-input" for="">
-                        <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
-                    </label>
+                                    <label for="cpf">CPF:</label>
+                                    <input type="text" id="cpf" name="cpf" placeholder="ex: 000.000.000-00">
                     
-                    <label class="label-input" for="">
-                        <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Password">
-                    </label>
+                                    <label for="cnpj">CNPJ:</label>
+                                    <input type="text" id="cnpj" name="cnpj" placeholder="ex: XX.XXX.XXX/0001-AA">
                     
+                                    <label for="cnh">CNH D:</label>
+                                    <input type="text" id="cnh" name="cnh" placeholder="ex: 12345678900">
+                                    <label for="cnh">Cidade:</label>
+                                    <input type="text" id="cidade" name="cidade" placeholder="ex: Araraquara">
+                            </section>
                     
-                    <button class="btn btn-second">sign up</button>        
-                </form>
+                            <section class="lado-direito-container">
+                                    <label for="telefone">Telefone:</label>
+                                    <input type="text" id="telefone" name="telefone" placeholder="ex: (00) 0000-0000">
+                    
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" placeholder="ex: nome@exemplo.com">
+                    
+                                    <label for="endereço">Endereço:</label>
+                                    <input type="text" id="endereco" name="endereco" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado">
+                    
+                                    <label for="senha">Senha:</label>
+                                    <input type="password" id="senha" name="senha" placeholder="ex: mínimo 8 caracteres">
+                                    <div class="btn-container">
+                                        <button type="submit" class="cadastrar">Cadastrar</button>
+                                    </div>
+                            </section>
+                        </div>
+                    
+                        <button class="btn btn-second">sign up</button>
+                    </form>
+                </div>
             </div><!-- second column -->
         </div><!-- first content -->
         <div class="content second-content">
