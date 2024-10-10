@@ -17,10 +17,11 @@ header {
     background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
     color: var(--cor-03); /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    height: 90px;
 }
 
-.logo img {
-    width: 80px; /* Tamanho da imagem do logo */
+figure img {
+    width: 90px; /* Tamanho da imagem do logo */
     height: auto; /* Manter a proporção da imagem */
     margin-left: 10px;
 }
@@ -125,28 +126,12 @@ main {
     transform: scale(0.98); /* Efeito de clique para um feedback visual adicional */
 }
 
-/* Estilização do rodapé */
-footer {
-    background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
-    color: var(--cor-03); /* Texto claro para contraste */
-    padding: 30px; /* Espaçamento interno */
-    text-align: center; /* Centralizar o conteúdo */
-    position: fixed; /* Manter o rodapé fixo na parte inferior */
-    bottom: 0;
-    width: 100%; /* Ocupa toda a largura da página */
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
-}
-
 /* Media Queries */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .container-form {
         padding: 25px; /* Ajustar padding para dispositivos pequenos */
-    }
-
-    .logo img {
-        width: 70px; /* Reduzir o tamanho do logo */
     }
 
     .container-form input[type="email"],
@@ -165,15 +150,9 @@ footer {
         padding: 30px; /* Padding para tablets */
     }
 
-    .logo img {
-        width: 80px; /* Tamanho padrão do logo */
-    }
-
     .btn-container {
         justify-content: flex-end; /* Restaurar alinhamento à direita para tablets */
     }
-
-    
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -181,43 +160,18 @@ footer {
     .container-form {
         max-width: 800px; /* Tamanho máximo para desktops */
     }
-
- 
-
-    .logo img {
-        width: 100px; /* Aumentar tamanho do logo em desktops */
-    }
-
-  
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     .container-form {
         max-width: 1000px; /* Tamanho máximo para telas grandes */
-    }
-
-    .logo img {
-        width: 110px; /* Aumentar tamanho do logo em telas grandes */
-    }
-
-
-
-   
+    } 
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
     .container-form {
         max-width: 1200px; /* Tamanho máximo para telas extra grandes */
-    }
-
-    .logo img {
-        width: 120px; /* Aumentar tamanho do logo em telas muito grandes */
-    }
-
-  
-
-    
+    } 
 }
-
