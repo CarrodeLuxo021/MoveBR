@@ -117,7 +117,7 @@ def excluir_aluno(id_aluno):
 def quebra_foto(id_aluno):
     return render_template("quebra-contrato.html", id_aluno = id_aluno)
 
-@app.route("/historico_pagamento", methods=['GET'])
+@app.route("/historico-pagamento", methods=['GET'])
 def historico_pagamento():
     return render_template("historico-pagamento.html")
 
