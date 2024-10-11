@@ -45,11 +45,10 @@ CREATE TABLE historico_pagamentos (
     nome_aluno VARCHAR(50),
     id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
     valor_pagamento FLOAT,
-    mes_pagamento INT,
-    data_pagamento date,
+    mes_pagamento varchar(20),
+    data_pagamento varchar(10),
     id_aluno INT,
     cpf_motorista varchar(100),
-    FOREIGN KEY (id_aluno) REFERENCES tb_alunos(id_aluno),
     FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
     
 );

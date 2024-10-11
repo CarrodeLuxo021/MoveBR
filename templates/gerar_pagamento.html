@@ -16,34 +16,33 @@
     </header>
 
     <main>
-        <form class="container-form" action="/gerar_pagamento" method="post">
+        <form class="container-form" action="/gerar-pagamento" method="post">
             <div class="itens-form">
                 <section class="lado-esquerdo-container">
-                    <form action="/gerar_pagamento" method="post">
-                        <label for="nomeAluno">Aluno pagante:</label>
-                        <select id="nomeAluno" name="id_aluno">
-                            <!-- Aqui a lista de alunos será preenchida dinamicamente pelo backend -->
-                            {% for aluno in alunos %}
-                            <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
-                            {% endfor %}
-                        </select>
-                        
-                        <label for="mesPagamento">Mês do pagamento:</label>
-                        <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nomeResponsavel">
-                        
-                        <label for="telefoneResponsavel">Data exata do pagamento:</label>
-                        <input type="text" id="telefoneResponsavel" placeholder="ex: 17/10/2006" name="telefoneResponsavel">
-                        
-                        <label for="valorPagamento">Valor do pagamento:</label>
-                        <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola">
-                        
-                        <button type="submit" class="botao">Gerar pagamento</button></a></button>
-                    </form>
+                    <!-- Aluno pagante -->
+                    <label for="nomeAluno">Aluno pagante:</label>
+                    <select id="nomeAluno" name="id_aluno">
+                        <!-- Aqui a lista de alunos será preenchida dinamicamente pelo backend -->
+                        {% for aluno in alunos %}
+                        <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+                        {% endfor %}
+                    </select>
                     
-
+                    <!-- Mês do pagamento -->
+                    <label for="mesPagamento">Mês do pagamento:</label>
+                    <input type="text" id="mesPagamento" placeholder="ex: Janeiro" name="mes_pagamento">
+                    
+                    <!-- Data exata do pagamento -->
+                    <label for="dataPagamento">Data exata do pagamento:</label>
+                    <input type="text" id="dataPagamento" placeholder="ex: 17/10/2023" name="data_pagamento">
+                    
+                    <!-- Valor do pagamento -->
+                    <label for="valorPagamento">Valor do pagamento:</label>
+                    <input type="text" id="valorPagamento" placeholder="ex: 500.00" name="valor_pagamento">
+                    
+                    <!-- Botão de submit -->
+                    <button type="submit" class="botao">Gerar pagamento</button>
                 </section>
-                    
-
             </div>
         </form>
     </main>
