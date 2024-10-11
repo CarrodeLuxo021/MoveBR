@@ -92,17 +92,26 @@ def excluir_aluno(id_aluno):
             usuario = Usuario()
             usuario.excluir_aluno(id_aluno)
             return redirect('/listar-alunos')
-        
+
+
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
 def quebra_foto(id_aluno):
     return render_template("quebra-contrato.html", id_aluno = id_aluno)
 
-@app.route("/historico-pagamento", methods=['GET'])
+
+@app.route("/historico_pagamento", methods=['GET'])
 def historico_pagamento():
+    if request.method == 'GET':
+        pagamentos = Pagamentos()
+        historico = pagamentos.listar_historico()  # Chama o método listar_historico()
 
-    return render_template("historico-pagamento.html")
+        if historico:
+            return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
+        else:
+            return render_template("historico-pagamento.html", pagamentos=[])
 
-@app.route("/historico_pagamento/<mes>", methods=['post'])
+
+@app.route("/historico_pagamento_filtro/<mes>", methods=['post'])
 def historico_pagamento_filtro(mes):
     mes = request.args.get('mes')
      # Recupera o id do motorista logado a partir da sessão
@@ -123,6 +132,7 @@ def gerar_pagamento_get():
     usuario = Usuario()
     lista_alunos = usuario.listar_aluno()
     return render_template("gerar_pagamento.html", alunos=lista_alunos)
+
 
 @app.route("/gerar-pagamento", methods=['POST'])
 def gerar_pagamento_post():

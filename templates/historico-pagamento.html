@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Pagamentos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     
     <link rel="stylesheet" href="/static/styles/variaveis.css">
 </head>
@@ -45,95 +46,39 @@
             <h1>Histórico de Pagamentos</h1>
             <button id="toggleBtn" class="toggle-btn">&#9650;</button>
         </div>
+        
         <form action="/gerar-pagamento" method="get">
             <button type="submit">Gerar novo pagamento</button>
         </form>
-        
-        <div id="menu1" class="menu1">
-            <form action="/listar_historico" method="post">
-                <a href="/historico_pagamento/Janeiro">
-                    <button class="month" data-month="Janeiro" type="submit" ><i class="fas fa-calendar-alt"></i> Janeiro</button>
-                </a>
-
-                <a href="/historico_pagamento/Fevereiro">
-                    <button class="month" data-month="Fevereiro" type="submit"><i class="fas fa-calendar-alt"></i> Fevereiro</button>
-                </a>
-                
-                <a href="/historico_pagamento/Março">
-                    <button class="month" data-month="Março" type="submit"><i class="fas fa-calendar-alt"></i> Março</button>
-                </a>
-
-                <a href="/historico_pagamento/Abril">
-                    <button class="month" data-month="Abril" type="submit"><i class="fas fa-calendar-alt"></i> Abril</button>
-                </a>
-
-                <a href="/historico_pagamento/Maio">
-                    <button class="month" data-month="Maio" type="submit"><i class="fas fa-calendar-alt"></i> Maio</button>
-                </a>
-
-                <a href="/historico_pagamento/Junho"></a>
-                    <button class="month" data-month="Junho" type="submit"><i class="fas fa-calendar-alt"></i> Junho</button>
-
-                <a href="/historico_pagamento/Julho"></a>
-                    <button class="month" data-month="Julho" type="submit"><i class="fas fa-calendar-alt"></i> Julho</button>
-                </a>
-
-                <a href="/historico_pagamento/Agosto"></a>
-                    <button class="month" data-month="Agosto" type="submit"><i class="fas fa-calendar-alt"></i> Agosto</button>
-                </a>
-
-                <a href="/historico_pagamento/Setembro"></a>
-                    <button class="month" data-month="Setembro" type="submit"><i class="fas fa-calendar-alt"></i> Setembro</button>
-                </a>
-
-                <a href="/historico_pagamento/Outubro"></a>
-                    <button class="month" data-month="Outubro" type="submit"><i class="fas fa-calendar-alt"></i> Outubro</button>
-                </a>
-
-                <a href="/historico_pagamento/Novembro"></a>
-                    <button class="month" data-month="Novembro" type="submit"><i class="fas fa-calendar-alt"></i> Novembro</button>
-                </a>
-
-                <a href="/historico_pagamento/Dezembro"></a>
-                    <button class="month" data-month="Dezembro" type="submit"><i class="fas fa-calendar-alt"></i> Dezembro</button>
-                </a>
-            </form>
-        </div>
-
-        
-        <!-- Details será mostrado ao clicar em um mês -->
-        <div id="details" class="details" style="display: none;">
-            <p> Alunos que pagam naquele mês e o dia que pagam. </p>
-            <div class="btn-container">
-                <button class="somapag"> Somar Pagamentos </button>
-            </div>
-        </div>
+    
+        <!-- Verifica se existem pagamentos e itera sobre eles -->
+        {% if pagamentos %}
+            {% for pagamento in pagamentos %}
+                <table class="alunos-listados">
+                    <div class="container-tabela">
+                        <tbody>
+                            <tr class="aluno">
+                                <td>
+                                    <!-- Perfil do Aluno -->
+                                    <div class="perfil-aluno">
+                                        <!-- Informações básicas do Pagamento -->
+                                        <div class="info-aluno">
+                                            <h2>{{ pagamento.nome_aluno }}</h2> <!-- Nome do aluno -->
+                                            <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }} </p>
+                                            <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }} </p>
+                                            <p><strong>Valor do pagamento:</strong> {{ pagamento.valor_pagamento }} </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </table>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum pagamento encontrado.</p>
+        {% endif %}
     </div>
-    {% for pagamento in pagamento %}
-        <!-- Tabela de alunos -->
-        <table class="alunos-listados">
-            <div class="container-tabela">
-                <tbody>
-                    <!-- Estrutura de cada linha de aluno na tabela -->
-                    <tr class="aluno">
-                        <td>
-                            <!-- Perfil do Aluno -->
-                            <div class="perfil-aluno">
-                                <!-- Informações básicas do aluno -->
-                                <div class="info-aluno">
-                                    <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
-                                    <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p> <!-- Nome do responsável -->
-                                    <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p> <!-- Telefone do responsável -->                                </div>
-                            </div>
-
-                        </td>
-                    </tr>
-
-                    <!-- Adicione mais alunos aqui -->
-                </tbody>
-            </div>
-        </table>
-    {% endfor %}
 
     <script src="/static/js/historico-pagamento.js"></script>
 </body>
