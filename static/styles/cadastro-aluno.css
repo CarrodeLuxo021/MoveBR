@@ -26,13 +26,26 @@ header {
 }
 
 header h2{
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
+
+.button-back{
+    background-color: transparent;
+    border: none;
+}
+
+.button-back img{
+    width: 40px;
+    height: auto;
+    margin-left: 30px;
+}
+
+
 figure img {
-    width: 90px; /* Tamanho da imagem do logo */
+    width: 110px; /* Tamanho da imagem do logo */
     height: auto; /* Manter a proporção da imagem */
-    margin-left: 50px;
+    margin: 0 0 0 10rem;
 }
 
 /* Estilização do main */
