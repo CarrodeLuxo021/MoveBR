@@ -111,4 +111,12 @@ def gerar_pagamento_post():
         print(f"Erro: {e}")
         return "Erro no processamento", 500
     
+@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
+def excluir_aluno(id_aluno):
+    if request.method == 'GET':
+        if 'usuario_logado' in session:
+            usuario = Usuario()
+            usuario.excluir_aluno(id_aluno)
+            return redirect('/listar-alunos')
+    
 app.run(debug=True)
