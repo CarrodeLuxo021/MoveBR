@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
     <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
+    <link rel="stylesheet" href="/static/styles/foto-aluno-teste.css">
+    <script defer src="/static/js/mascara-telefone.js"></script>
+    <script defer src="/static/js/foto-aluno.js"></script>
 </head>
 <body>
     <header>
         <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+            <div class="logo"><a href="/pag-inicial-motorista"><img src="/static/icones/logo.png" alt="logo da movebr"></a></div>
         </figure>
+        <h2>CADASTRO DE ALUNO</h2>
     </header>
 
     <main>
@@ -27,7 +31,7 @@
                     <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel">
                     
                     <label for="telefoneResponsavel">Telefone do responsável:</label>
-                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel">
+                    <input  type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel">
                     
                     <label for="escola">Escola:</label>
                     <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola">
