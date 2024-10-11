@@ -52,8 +52,15 @@
               <button class="icone-busca" type="submit">🔍</button>
           </form>
       </div>
+
                        
     </section>
+        {% if alunos %}
+        <h2 class="AA">Alunos cadastrados:</h2>
+
+        {% else %}
+            <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
+        {% endif %}
 
     {% for aluno in alunos %}
         <!-- Tabela de alunos -->
