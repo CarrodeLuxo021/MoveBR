@@ -6,7 +6,7 @@ class Pagamentos():
         self.email = None
         self.logado = False
 
-    def gerar_pagamento(self, id_aluno, mes, data, valor):
+    def gerar_pagamento(self, id_aluno, mes, data, valor, cpf_motorista):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
@@ -28,10 +28,10 @@ class Pagamentos():
 
             # Inserindo na tabela historico_pagamentos
             sql = """
-            INSERT INTO historico_pagamentos (id_aluno, nome_aluno, data_pagamento, mes_pagamento, valor_pagamento)
-            VALUES (%s, %s, %s, %s, %s);
+            INSERT INTO historico_pagamentos (id_aluno, nome_aluno, data_pagamento, mes_pagamento, valor_pagamento, cpf_motorista)
+            VALUES (%s, %s, %s, %s, %s, %s);
             """
-            mycursor.execute(sql, (id_aluno, nome_aluno, data, mes, float(valor)))
+            mycursor.execute(sql, (id_aluno, nome_aluno, data, mes, float(valor), cpf_motorista))
 
             mydb.commit()
             mycursor.close()

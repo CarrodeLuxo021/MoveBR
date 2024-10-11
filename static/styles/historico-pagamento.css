@@ -4,24 +4,12 @@
     margin: 0;
 }
 
-<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     background-color: var(--cor-04);
 }
 
 /* Estilo do header */
-=======
-.logo img {
-    width: 100px;
-}
-
-.header h1 {
-    color: #ffcc00; /* Amarelo */
-    font-size: 2rem;
-}
-
->>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
 header {
     display: flex;
     height: 85px;
@@ -29,18 +17,11 @@ header {
     align-items: center;
     width: 100%;
     padding: 20px;
-<<<<<<< HEAD
     background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
 }
 
 figure {
     width: 100%;
-=======
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
-}
-
-.navegacao {
->>>>>>> 88859e5d7abeeca8e980f4c1ae9e88d868a89d2d
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;

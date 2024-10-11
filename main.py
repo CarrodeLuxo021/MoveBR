@@ -99,6 +99,7 @@ def quebra_foto(id_aluno):
 
 @app.route("/historico-pagamento", methods=['GET'])
 def historico_pagamento():
+
     return render_template("historico-pagamento.html")
 
 @app.route("/historico_pagamento/<mes>", methods=['post'])
@@ -131,10 +132,11 @@ def gerar_pagamento_post():
         data_pagamento = request.form["data_pagamento"]
         mes_pagamento = request.form["mes_pagamento"]
         valor_pagamento = float(request.form["valor_pagamento"])
+        cpf_motorista = session.get("cpf_motorista")
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
-        if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
+        if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
             return redirect("/historico-pagamento")
         else:
             return "Erro ao gerar o pagamento", 500
