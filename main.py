@@ -147,7 +147,7 @@ def gerar_pagamento_post():
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
         if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
-            return redirect("/historico-pagamento")
+            return redirect("/historico_pagamento")
         else:
             return "Erro ao gerar o pagamento", 500
     except Exception as e:
