@@ -22,21 +22,24 @@ body {
     border-radius: 15px;
     width: 90%;
     height: 70%;
-    justify-content: space-between;
     align-items: center;
     position: relative;
 }
 
-.itens-form {
-    margin-top: 20px;
-    display: flex;
-    gap: 20px;
-    border: 2px black solid;
+.lado-esquerdo-container,
+.lado-direito-container {
+    min-width: 70%; /* Em telas pequenas, ocupa 100% da largura */
 }
 
-.form-container{
-    width: 700px;
+.form{
+    width: 100%;
     height: auto;
+    margin-top: 20px;
+}
+
+.itens-form{
+    display: flex;
+    gap: 20px;
 }
 
 .content::before {
