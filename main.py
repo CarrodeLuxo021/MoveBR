@@ -4,7 +4,7 @@ from pagamentos import Pagamentos
 from upload_file import upload_file
 
 app = Flask(__name__)
-app.secret_key = "banana"
+app.secret_key = "123456789"
 
 @app.route("/")
 def pag_inicio():
@@ -130,12 +130,12 @@ def gerar_pagamento_post():
         id_aluno = request.form["id_aluno"]
         data_pagamento = request.form["data_pagamento"]
         mes_pagamento = request.form["mes_pagamento"]
-        valor_pagamento = request.form["valor_pagamento"]
+        valor_pagamento = float(request.form["valor_pagamento"])
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
         if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
-            return render_template("historico_pagamento.html")
+            return redirect("/historico-pagamento")
         else:
             return "Erro ao gerar o pagamento", 500
     except Exception as e:
