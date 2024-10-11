@@ -42,5 +42,12 @@
                 </div>
             </form>
         </main>
+        <script>
+            {% with mensagens = get_flashed_messages() %}
+                {% for alerta in mensagens %}
+                    {{ alerta|safe }}
+                {% endfor %}
+            {% endwith %}
+        </script>
     </body>
 </html>

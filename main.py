@@ -26,7 +26,7 @@ def pag_cadastro_motorista():
         telefone = request.form["telefone"]
         email = request.form["email"]
         senha = request.form["senha"]
-
+        flash("alert('Usuário cadastrado com sucesso!')")
 
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
@@ -34,7 +34,13 @@ def pag_cadastro_motorista():
         else:
             return redirect('/')
         
-        
+@app.route("/listar-alunos", methods=['GET', 'POST'])
+def listar_alunos():
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()
+        return render_template("listar-aluno.html", alunos=lista_alunos)            
+
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
@@ -52,7 +58,7 @@ def pag_cadastro_aluno():
         link_foto = upload_file(foto_aluno)
         usuario = Usuario()
         if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-             return redirect('/pag-inicial-motorista') 
+            return redirect('/listar-alunos') 
         else:
            return redirect('/cadastrar-aluno')
         
@@ -75,16 +81,6 @@ def logar():
             session.clear()
             return redirect("/logar")
             
-
-
-@app.route("/listar-alunos", methods=['GET', 'POST'])
-def listar_alunos():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
-        return render_template("listar-aluno.html", alunos=lista_alunos)
-
-
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento():
     if request.method == 'GET':
@@ -101,7 +97,7 @@ def gerar_pagamento():
             # Instancia a classe Pagamentos e chama a função gerar_pagamento
             pagamento = Pagamentos()
             if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
-                return render_template("historico_pagamento.html")
+                return render_template("historico-pagamento.html")
  
     
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])

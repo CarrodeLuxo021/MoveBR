@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/static/icones/aluna.png" type="image/x-icon">
     <title>Cadastro do Aluno</title>
-    <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
+    <link rel="stylesheet" href="/static/styles/cadastro.css">
     <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
     <link rel="stylesheet" href="/static/styles/foto-aluno-teste.css">
@@ -26,32 +26,31 @@
             <div class="itens-form">
                 <section class="lado-esquerdo-container">
                     <label for="nomeAluno">Nome:</label>
-                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva" name="nome-aluno">
+                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva" name="nome-aluno" required>
                     
                     <label for="nomeResponsavel">Nome do responsável:</label>
-                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel">
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel" required>
                     
                     <label for="telefoneResponsavel">Telefone do responsável:</label>
-                    <input  type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel">
+                    <input  type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel" required>
                     
                     <label for="escola">Escola:</label>
-                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola">
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola" required>
 
                 </section>
                 
                 <section class="lado-direito-container">
-
                     <label for="emailAluno">Email:</label>
-                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno">
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno" required>
                     
                     <label for="condicaoMedica">Condição Médica:</label>
-                    <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre, se não tem escreva 'Não tem'" name="condicao-medica">
+                    <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre, se não tem escreva 'Não tem'" name="condicao-medica" required>
 
                     <label for="enderecoAluno">Endereço:</label>
-                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno">
+                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno" required>
 
                     <label for="fotoAluno">Foto Aluno:</label>
-                    <input type="file" id="fotoAluno" accept="image/*" placeholder="Insira o link da foto aqui" name="foto-aluno">
+                    <input type="file" id="fotoAluno" accept="image/*" placeholder="Insira o link da foto aqui" name="foto-aluno" required>
 
                     <div class="btn-container">
                         <button type="submit" class="cadastrar">Cadastrar</button>
