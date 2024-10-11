@@ -111,6 +111,10 @@ def gerar_pagamento_post():
         print(f"Erro: {e}")
         return "Erro no processamento", 500
     
+@app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
+def quebra_foto(id_aluno):
+    return render_template("quebra-contrato.html", id_aluno = id_aluno)
+    
 @app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
 def excluir_aluno(id_aluno):
     if request.method == 'GET':
