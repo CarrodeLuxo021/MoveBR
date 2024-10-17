@@ -9,11 +9,13 @@
         <title>Login</title>
     </head>
     <body>
+        
         <header class="global-header">
             <figure>
                 <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
             </figure>
         </header>
+
         <main>
             <div class="titulo">
                 <h2>BEM VINDO(A) AO MOVEBR!</h2>
@@ -42,6 +44,7 @@
                 </div>
             </form>
         </main>
+
         <script>
             {% with mensagens = get_flashed_messages() %}
                 {% for alerta in mensagens %}
@@ -49,5 +52,6 @@
                 {% endfor %}
             {% endwith %}
         </script>
+
     </body>
 </html>

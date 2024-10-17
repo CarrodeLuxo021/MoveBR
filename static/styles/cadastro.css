@@ -17,15 +17,11 @@ header {
     background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
     color: var(--cor-03); /* Texto em bege claro para contraste elegante */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
-    height: 100px;
+    height: 90px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-header h2{
-    padding-right: 20px;
 }
 
 .button-back{
@@ -34,15 +30,15 @@ header h2{
 }
 
 .button-back img{
-    width: 30px;
+    width: 20px;
     height: auto;
     margin-left: 30px;
 }
 
 figure img {
-    width: 110px; /* Tamanho da imagem do logo */
+    width: 100px; /* Tamanho da imagem do logo */
     height: auto; /* Manter a proporção da imagem */
-    margin: 0 0 0 10rem;
+    margin: 0 20px 0 0;
 }
 
 /* Estilização do main */
@@ -60,6 +56,13 @@ main {
     background-color: var(--cor-03);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.container-form h3{
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--cor-06);
+    font-style: oblique;
 }
 
 /* Layout dos itens do formulário */
@@ -107,7 +110,7 @@ main {
     color: var(--cor-03);
     border: none;
     padding: 12px 24px;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 40px;
@@ -122,12 +125,14 @@ main {
     transform: scale(0.98);
 }
 
-
-
 /* Media Queries */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+    figure img {
+        margin: 0 10px 0 0;
+    }
+
     .container-form {
         max-width: 540px; /* Ajuste da largura para dispositivos pequenos */
     }
@@ -140,6 +145,10 @@ main {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    figure img {
+        margin: 0 10px 0 0;
+    }
+
     .container-form {
         max-width: 720px;
     }

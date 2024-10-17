@@ -54,7 +54,7 @@ main {
 
 /* Estilização do container-form */
 .container-form {
-    max-width: 1000px;
+    width: 500px;
     margin: 0 auto; /* Centraliza horizontalmente */
     padding: 30px;
     background-color: var(--cor-03);
@@ -144,50 +144,27 @@ main {
 
 /* Media Queries */
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+/* Small devices (portrait phones, less than 576px) */
+@media (max-width: 576.98px) {
     .container-form {
-        padding: 25px; /* Ajustar padding para dispositivos pequenos */
+        width: 300px;
     }
 
-    .container-form input[type="email"],
-    .container-form input[type="password"] {
-        padding: 10px; /* Reduzir o padding nos campos de entrada */
-    }
-
-    .btn-container {
-        justify-content: center; /* Centralizar os botões */
+    .cima-container,
+    .baixo-container {
+        flex: 1; /* Fazer os containers ocuparem espaço igual */
+        min-width: 250px; /* Garantir que os containers não fiquem muito estreitos */
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .container-form {
-        padding: 30px; /* Padding para tablets */
-    }
-
-    .btn-container {
-        justify-content: flex-end; /* Restaurar alinhamento à direita para tablets */
-    }
-}
+@media (min-width: 768px) {}
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .container-form {
-        max-width: 800px; /* Tamanho máximo para desktops */
-    }
-}
+@media (min-width: 992px) {}
 
 /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .container-form {
-        max-width: 1000px; /* Tamanho máximo para telas grandes */
-    } 
-}
+@media (min-width: 1200px) {}
 
 /* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
-    .container-form {
-        max-width: 1200px; /* Tamanho máximo para telas extra grandes */
-    } 
-}
+@media (min-width: 1400px) {}

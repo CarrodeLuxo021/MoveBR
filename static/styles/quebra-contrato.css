@@ -7,7 +7,7 @@ body {
 
 .container {    
     background: white;
-    padding: 50px;
+    padding: 40px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 550px;
@@ -22,7 +22,6 @@ h1 {
 
 p {
     color: #000000;
-    font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
@@ -71,4 +70,15 @@ nav a:last-child .botao {
     height: 50px;
     width: 200px;
     margin-right: 30px;
+}
+
+@media (max-width: 576px) {
+
+    h1{
+        font-size: 20px;
+    }
+
+    p{
+        font-size: 16px;
+    }
 }

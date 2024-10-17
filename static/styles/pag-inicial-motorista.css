@@ -166,6 +166,14 @@ h2 {
 
 /* Media Queries */
 @media (max-width: 1200px) {
+    nav {
+        height: 150px;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .card-pag-inicio-motorista {
         width: 220px; /* Reduzir a largura em telas menores */
     }
@@ -184,44 +192,24 @@ h2 {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 992px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 24px; /* Tamanho menor para telas muito pequenas */
+        text-align: center;
+    }
+
     nav {
         flex-direction: column; /* Mudar para coluna em telas menores */
         align-items: stretch; /* Alinhamento do conteúdo */
     }
 
-    .botao {
-        margin: 10px 0; /* Adicionar margem vertical entre botões */
-        width: 100%; /* Botões ocupam 100% da largura */
-    }
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 26px; /* Diminuir ainda mais o tamanho do título */
-    }
-
-    .section01-pag_motorista {
-        margin-bottom: 50px; /* Ajustar a margem inferior */
-    }
-
-    .cards-inicio-motorista {
-        flex-direction: column; /* Colocar cartões em coluna */
-        align-items: center; /* Centralizar os cartões */
-    }
-
-    .card-pag-inicio-motorista {
-        width: 90%; /* Ajustar a largura dos cartões para 90% */
-    }
-}
-
-@media (max-width: 576px) {
-    h1 {
-        font-size: 24px; /* Tamanho menor para telas muito pequenas */
-    }
-
     .slogan {
         font-size: 18px; /* Ajustar o tamanho do slogan */
+        text-align: center;
     }
 
     .footer {
