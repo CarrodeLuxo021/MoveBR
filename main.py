@@ -84,16 +84,21 @@ def listar_alunos():
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 
-@app.route("/historico_pagamento", methods=['GET'])
+@app.route("/historico-pagamento", methods=['GET'])
 def historico_pagamento():
     if request.method == 'GET':
         pagamentos = Pagamentos()
         historico = pagamentos.listar_historico()  # Chama o método listar_historico()
 
-        if historico:
-            return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
-        else:
-            return render_template("historico-pagamento.html", pagamentos=[])
+        # Instancia a classe Pagamentos e chama a função gerar_pagamento
+    pagamento = Pagamentos()
+    if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
+        return render_template("historico-pagamento.html")
+    if historico:
+        return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
+    else:
+        return render_template("historico-pagamento.html", pagamentos=[])
+      
 
 
 @app.route("/historico_pagamento_filtro/<mes>", methods=['post'])
