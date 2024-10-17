@@ -34,17 +34,13 @@ class Pagamentos():
             mycursor.execute(sql, (id_aluno, nome_aluno, data, mes, float(valor), cpf_motorista))
 
             mydb.commit()
+            mycursor.close()
             return True
 
         except Exception as e:
             mydb.rollback()
             print(f"Erro ao cadastrar pagamento: {e}")
-            return False
 
-        finally:
-            # Certifique-se de fechar o cursor e a conexão
-            mycursor.close()
-            mydb.close()
 
     def listar_historico(self):
         try:
@@ -72,7 +68,6 @@ class Pagamentos():
         except Exception as e:
             print(f"Erro ao listar histórico: {e}")
             return False
-        
     def listar_historico_filtro(self, mes, cpf_motorista):
         try:
             mydb = Conexao.conectar()

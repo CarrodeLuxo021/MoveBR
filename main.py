@@ -32,7 +32,8 @@ def pag_cadastro_motorista():
         if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
             return redirect('/logar') 
         else:
-            return redirect('/')           
+            return redirect('/')
+                 
 
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cadastro_aluno():
@@ -73,7 +74,6 @@ def logar():
         else:
             session.clear()
             return redirect("/logar")
-    
 
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
@@ -99,7 +99,6 @@ def historico_pagamento():
     else:
         return render_template("historico-pagamento.html", pagamentos=[])
       
-
 
 
 @app.route("/historico_pagamento_filtro/<mes>", methods=['post'])
@@ -133,14 +132,14 @@ def gerar_pagamento_post():
         data_pagamento = request.form["data_pagamento"]
         mes_pagamento = request.form["mes_pagamento"]
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")  # Certifique-se de que o motorista esteja logado
+        cpf_motorista = session.get("cpf_motorista")
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
         if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
-            return redirect("/historico_pagamento")  # Redireciona para o histórico de pagamentos após sucesso
+            return redirect("/historico_pagamento")
         else:
-            return "Erro ao gerar o pagamento", 500  # Retorna erro no caso de falha
+            return "Erro ao gerar o pagamento", 500
     except Exception as e:
         print(f"Erro: {e}")
         return "Erro no processamento", 500
