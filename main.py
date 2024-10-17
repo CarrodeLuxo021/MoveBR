@@ -84,7 +84,7 @@ def listar_alunos():
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 
-@app.route("/historico_pagamento", methods=['GET'])
+@app.route("/historico-pagamento", methods=['GET'])
 def historico_pagamento():
     if request.method == 'GET':
         pagamentos = Pagamentos()
@@ -112,33 +112,28 @@ def historico_pagamento_filtro(mes):
     else:
         return "Erro ao gerar pagamento", 500
 
-@app.route("/gerar-pagamento", methods=['GET'])
+@app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
-    usuario = Usuario()
-    lista_alunos = usuario.listar_aluno()
-    return render_template("gerar_pagamento.html", alunos=lista_alunos)
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()
+        return render_template("gerar_pagamento.html", alunos=lista_alunos)
+    else:
 
-
-@app.route("/gerar-pagamento", methods=['POST'])
-def gerar_pagamento_post():
-    try:
         # Pega os valores do formulário
-        id_aluno = request.form["id_aluno"]
-        data_pagamento = request.form["data_pagamento"]
-        mes_pagamento = request.form["mes_pagamento"]
+        id_aluno = request.form.get("id_aluno")
+        data_pagamento = request.form.get("data_pagamento")
+        mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
         cpf_motorista = session.get("cpf_motorista")
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
         if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
-            return redirect("/historico_pagamento")
+            return redirect("/historico-pagamento")
         else:
             return "Erro ao gerar o pagamento", 500
-    except Exception as e:
-        print(f"Erro: {e}")
-        return "Erro no processamento", 500
-
+ 
     
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
 def quebra_foto(id_aluno):
@@ -151,5 +146,13 @@ def excluir_aluno(id_aluno):
             usuario = Usuario()
             usuario.excluir_aluno(id_aluno)
             return redirect('/listar-alunos')
+        
+@app.route("/excluir-hsitorico/<id_aluno>", methods=['GET', 'POST'])
+def excluir_historico(id_aluno):
+    if request.method == 'GET':
+        if 'usuario_logado' in session:
+            usuario = Usuario()
+            usuario.excluir_historico(id_aluno)
+            return redirect('/historico-pagamento')
     
 app.run(debug=True)
