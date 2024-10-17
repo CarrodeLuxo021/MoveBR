@@ -62,6 +62,8 @@ def logar():
     else:
         senha = request.form['senha']
         email = request.form['email']
+        
+
         usuario = Usuario()
         if usuario.logar(email, senha):
             session['usuario_logado'] = {
@@ -72,6 +74,7 @@ def logar():
             return redirect('/pag-inicial-motorista')
         else:
             session.clear()
+            flash("alert('login ou senha incorretos!')")
             return redirect("/logar")
     
 
