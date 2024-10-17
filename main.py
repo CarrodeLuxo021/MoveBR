@@ -33,13 +33,7 @@ def pag_cadastro_motorista():
             return redirect('/logar') 
         else:
             return redirect('/')
-        
-@app.route("/listar-alunos", methods=['GET', 'POST'])
-def listar_alunos():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
-        return render_template("listar-aluno.html", alunos=lista_alunos)            
+                 
 
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cadastro_aluno():
@@ -97,19 +91,10 @@ def historico_pagamento():
         pagamentos = Pagamentos()
         historico = pagamentos.listar_historico()  # Chama o método listar_historico()
 
-        # Instancia a classe Pagamentos e chama a função gerar_pagamento
-    pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
-        return render_template("historico-pagamento.html")
-    if historico:
-        return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
-    else:
-        return render_template("historico-pagamento.html", pagamentos=[])
         if historico:
             return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
         else:
             return render_template("historico-pagamento.html", pagamentos=[])
-
 
 
 @app.route("/historico_pagamento_filtro/<mes>", methods=['post'])
@@ -143,14 +128,14 @@ def gerar_pagamento_post():
         data_pagamento = request.form["data_pagamento"]
         mes_pagamento = request.form["mes_pagamento"]
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")  # Certifique-se de que o motorista esteja logado
+        cpf_motorista = session.get("cpf_motorista")
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
         if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
-            return redirect("/historico_pagamento")  # Redireciona para o histórico de pagamentos após sucesso
+            return redirect("/historico_pagamento")
         else:
-            return "Erro ao gerar o pagamento", 500  # Retorna erro no caso de falha
+            return "Erro ao gerar o pagamento", 500
     except Exception as e:
         print(f"Erro: {e}")
         return "Erro no processamento", 500
