@@ -33,7 +33,6 @@ def pag_cadastro_motorista():
             return redirect('/logar') 
         else:
             return redirect('/')
-                 
 
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cadastro_aluno():
@@ -75,33 +74,18 @@ def logar():
             session.clear()
             return redirect("/logar")
 
-
-@app.route("/listar-alunos", methods=['GET', 'POST'])
-def listar_alunos():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
-        return render_template("listar-aluno.html", alunos=lista_alunos)
-
-
-@app.route("/historico-pagamento", methods=['GET'])
+@app.route("/historico_pagamento", methods=['GET'])
 def historico_pagamento():
     if request.method == 'GET':
         pagamentos = Pagamentos()
         historico = pagamentos.listar_historico()  # Chama o método listar_historico()
 
-        # Instancia a classe Pagamentos e chama a função gerar_pagamento
-    pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
-        return render_template("historico-pagamento.html")
-    if historico:
-        return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
-    else:
-        return render_template("historico-pagamento.html", pagamentos=[])
-      
+        if historico:
+            return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
+        else:
+            return render_template("historico-pagamento.html", pagamentos=[])
 
-
-@app.route("/historico_pagamento_filtro/<mes>", methods=['post'])
+@app.route("/historico_pagamento_filtro/<mes>", methods=['POST'])
 def historico_pagamento_filtro(mes):
     mes = request.args.get('mes')
      # Recupera o id do motorista logado a partir da sessão
@@ -113,7 +97,7 @@ def historico_pagamento_filtro(mes):
 
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(mes, cpf_motorista):
-        return render_template("historico_pagamento.html")
+        return render_template("historico-pagamento.html")
     else:
         return "Erro ao gerar pagamento", 500
 
@@ -121,8 +105,7 @@ def historico_pagamento_filtro(mes):
 def gerar_pagamento_get():
     usuario = Usuario()
     lista_alunos = usuario.listar_aluno()
-    return render_template("gerar_pagamento.html", alunos=lista_alunos)
-
+    return render_template("gerar-pagamento.html", alunos=lista_alunos)
 
 @app.route("/gerar-pagamento", methods=['POST'])
 def gerar_pagamento_post():
@@ -144,11 +127,10 @@ def gerar_pagamento_post():
         print(f"Erro: {e}")
         return "Erro no processamento", 500
 
- 
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
 def quebra_foto(id_aluno):
-    return render_template("quebra-contrato.html", id_aluno = id_aluno)
-    
+    return render_template("quebra-contrato.html", id_aluno=id_aluno)
+
 @app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
 def excluir_aluno(id_aluno):
     if request.method == 'GET':
@@ -156,5 +138,20 @@ def excluir_aluno(id_aluno):
             usuario = Usuario()
             usuario.excluir_aluno(id_aluno)
             return redirect('/listar-alunos')
-    
+
+@app.route("/listar-alunos", methods=['GET', 'POST'])
+def listar_alunos():
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()  # Pega todos os alunos
+        escolas = {aluno['escola'] for aluno in lista_alunos}  # Conjunto com todas as escolas (evita duplicatas)
+        return render_template("listar-aluno.html", alunos=lista_alunos, escolas=escolas)
+
+@app.route("/listar-alunos/escola/<nome_escola>", methods=['GET'])
+def listar_alunos_por_escola(nome_escola):
+    usuario = Usuario()
+    alunos_filtrados = usuario.listar_aluno_por_escola(nome_escola)  # Método para listar alunos de uma escola específica
+    escolas = {aluno['escola'] for aluno in alunos_filtrados}  # Atualiza lista de escolas
+    return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
+
 app.run(debug=True)

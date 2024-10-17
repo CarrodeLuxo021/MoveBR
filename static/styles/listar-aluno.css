@@ -331,3 +331,26 @@ figure{
     text-align: center;
     margin-bottom: 20px;
 }
+.filtro-escolas {
+    margin-bottom: 20px;
+}
+
+.escolas-botoes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.botao-escola {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.botao-escola:hover {
+    background-color: #0056b3;
+}
