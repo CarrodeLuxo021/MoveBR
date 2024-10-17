@@ -80,11 +80,7 @@ def logar():
         else:
             session.clear()
             return redirect("/logar")
-            
-<<<<<<< HEAD
-@app.route("/gerar-pagamento", methods=['GET', 'POST'])
-def gerar_pagamento():
-=======
+    
 
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
@@ -97,18 +93,9 @@ def listar_alunos():
 
 @app.route("/historico_pagamento", methods=['GET'])
 def historico_pagamento():
->>>>>>> 321426eaaa04444efa9613d5a275f5f07c3ab2b7
     if request.method == 'GET':
         pagamentos = Pagamentos()
         historico = pagamentos.listar_historico()  # Chama o método listar_historico()
-
-<<<<<<< HEAD
-            # Instancia a classe Pagamentos e chama a função gerar_pagamento
-            pagamento = Pagamentos()
-            if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento):
-                return render_template("historico-pagamento.html")
- 
-=======
         if historico:
             return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
         else:
