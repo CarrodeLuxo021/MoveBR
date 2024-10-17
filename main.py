@@ -32,14 +32,7 @@ def pag_cadastro_motorista():
         if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
             return redirect('/logar') 
         else:
-            return redirect('/')
-        
-@app.route("/listar-alunos", methods=['GET', 'POST'])
-def listar_alunos():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
-        return render_template("listar-aluno.html", alunos=lista_alunos)            
+            return redirect('/')           
 
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
 def pag_cadastro_aluno():
@@ -80,10 +73,7 @@ def logar():
         else:
             session.clear()
             return redirect("/logar")
-            
-@app.route("/gerar-pagamento", methods=['GET', 'POST'])
-def gerar_pagamento():
-
+    
 
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
@@ -96,7 +86,6 @@ def listar_alunos():
 
 @app.route("/historico_pagamento", methods=['GET'])
 def historico_pagamento():
-
     if request.method == 'GET':
         pagamentos = Pagamentos()
         historico = pagamentos.listar_historico()  # Chama o método listar_historico()
@@ -109,6 +98,11 @@ def historico_pagamento():
         return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
     else:
         return render_template("historico-pagamento.html", pagamentos=[])
+        if historico:
+            return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
+        else:
+            return render_template("historico-pagamento.html", pagamentos=[])
+
 
 
 @app.route("/historico_pagamento_filtro/<mes>", methods=['post'])
