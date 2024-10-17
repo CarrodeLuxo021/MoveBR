@@ -28,10 +28,21 @@ header h2{
     padding-right: 20px;
 }
 
+.button-back{
+    background-color: transparent;
+    border: none;
+}
+
+.button-back img{
+    width: 30px;
+    height: auto;
+    margin-left: 30px;
+}
+
 figure img {
-    width: 100px; /* Tamanho da imagem do logo */
+    width: 110px; /* Tamanho da imagem do logo */
     height: auto; /* Manter a proporção da imagem */
-    margin-left: 10px;
+    margin: 0 0 0 10rem;
 }
 
 /* Estilização do main */
@@ -75,7 +86,8 @@ main {
 /* Estilização dos campos de entrada */
 .container-form input[type="text"],
 .container-form input[type="email"],
-.container-form input[type="password"] {
+.container-form input[type="password"],
+.container-form input[type="tel"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -109,6 +121,8 @@ main {
 .btn-container button:active {
     transform: scale(0.98);
 }
+
+
 
 /* Media Queries */
 

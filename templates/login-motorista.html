@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/icones/senha-de-login.png" type="image/x-icon">
         <link rel="stylesheet" href="/static/styles/login.css">
         <link rel="stylesheet" href="/static/styles/variaveis.css">
         <title>Login</title>
@@ -41,5 +42,12 @@
                 </div>
             </form>
         </main>
+        <script>
+            {% with mensagens = get_flashed_messages() %}
+                {% for alerta in mensagens %}
+                    {{ alerta|safe }}
+                {% endfor %}
+            {% endwith %}
+        </script>
     </body>
 </html>

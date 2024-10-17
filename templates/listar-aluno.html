@@ -22,7 +22,7 @@
     
     <nav id="menu" class="menu">
 
-        <a href="/"><button class="card" id="pagInicial" aria-label="pagInicial">
+        <a href="/pag-inicial-motorista"><button class="card" id="pagInicial" aria-label="pagInicial">
             <img src="/static/icones/inicio.png" alt="Ícone de início" />
             <p>Início</p>
         </button></a>
@@ -52,8 +52,15 @@
               <button class="icone-busca" type="submit">🔍</button>
           </form>
       </div>
+
                        
     </section>
+        {% if alunos %}
+        <h2 class="AA">Alunos cadastrados:</h2>
+
+        {% else %}
+            <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
+        {% endif %}
 
     {% for aluno in alunos %}
         <!-- Tabela de alunos -->

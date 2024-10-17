@@ -54,8 +54,8 @@ class Usuario():
             sql = "SELECT nome_motorista, cpf_motorista, email_motorista FROM tb_motoristas WHERE email_motorista = %s AND senha_motorista = %s"
             values = (email, senha)
             mycursor.execute(sql, values)
-
             resultado = mycursor.fetchone()
+            
             if resultado:
                 self.nome = resultado[0]
                 self.cpf = resultado[1]
