@@ -84,7 +84,7 @@ def listar_alunos():
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 
-@app.route("/historico_pagamento", methods=['GET'])
+@app.route("/historico-pagamento", methods=['GET'])
 def historico_pagamento():
     if request.method == 'GET':
         pagamentos = Pagamentos()
@@ -98,10 +98,7 @@ def historico_pagamento():
         return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
     else:
         return render_template("historico-pagamento.html", pagamentos=[])
-        if historico:
-            return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
-        else:
-            return render_template("historico-pagamento.html", pagamentos=[])
+      
 
 
 
