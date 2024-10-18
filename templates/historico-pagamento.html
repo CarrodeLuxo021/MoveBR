@@ -47,9 +47,8 @@
             <button id="toggleBtn" class="toggle-btn">&#9650;</button>
         </div>
         
-        <form action="/gerar-pagamento" method="get">
-            <button type="submit">Gerar novo pagamento</button>
-        </form>
+          <a href="/gerar-pagamento"><button type="submit">Gerar novo pagamento</button></a>
+       
     
         <!-- Verifica se existem pagamentos e itera sobre eles -->
         {% if pagamentos %}
@@ -68,7 +67,7 @@
                                             <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }} </p>
                                             <p><strong>Valor do pagamento:</strong> <p id="valor_pagamento">{{ pagamento.valor_pagamento }}</p> </p>
                                         </div>
-                                        <button id="excluir_pagamento">Excluir</button>
+                                        <a href="/excluir-historico/{{ pagamento.id_pagamento }}"><button>Excluir</button></a>
                                     </div>
                                 </td>
                             </tr>
@@ -104,3 +103,6 @@
     <script src="/static/js/historico-pagamento.js"></script>
 </body>
 </html>
+ 
+
+        

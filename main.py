@@ -101,26 +101,23 @@ def historico_pagamento_filtro(mes):
     else:
         return "Erro ao gerar pagamento", 500
 
-@app.route("/gerar-pagamento", methods=['GET'])
+@app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
     usuario = Usuario()
     lista_alunos = usuario.listar_aluno()
     return render_template("gerar-pagamento.html", alunos=lista_alunos)
 
-@app.route("/gerar-pagamento", methods=['POST'])
-def gerar_pagamento_post():
-    try:
         # Pega os valores do formulário
-        id_aluno = request.form["id_aluno"]
-        data_pagamento = request.form["data_pagamento"]
-        mes_pagamento = request.form["mes_pagamento"]
+        id_aluno = request.form.get("id_aluno")
+        data_pagamento = request.form.get("data_pagamento")
+        mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
         cpf_motorista = session.get("cpf_motorista")
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
         if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
-            return redirect("/historico_pagamento")
+            return redirect("/historico-pagamento")
         else:
             return "Erro ao gerar o pagamento", 500
     except Exception as e:
@@ -136,7 +133,7 @@ def excluir_aluno(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
             usuario = Usuario()
-            usuario.excluir_aluno(id_aluno)
+            usuario.excluir_alunos(id_aluno)
             return redirect('/listar-alunos')
 
 

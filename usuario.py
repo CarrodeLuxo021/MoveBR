@@ -123,22 +123,18 @@ class Usuario():
         except Exception as e:
             print(f"Erro ao listar alunos por escola: {e}")
             return False
-
+    
     def excluir_aluno(self, id_aluno):
-        try:
-            mydb = Conexao.conectar()
-            mycursor = mydb.cursor()
 
-            sql = f"DELETE FROM tb_alunos WHERE id_aluno = {id_aluno}"
-            mycursor.execute(sql)
-            mydb.commit()
-            mycursor.close()
-            mydb.close()
-            return True
-        except Exception as e:
-            print(f"Erro ao excluir aluno: {e}")
-            return False
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
 
+        sql = f"DELETE  FROM tb_alunos WHERE id_aluno = {id_aluno}"
+        mycursor.execute(sql)
+        mydb.commit()
+        mydb.close()
+        return True
+    
     def pesquisar_aluno(self, pesquisa):
         try:
             mydb = Conexao.conectar()
