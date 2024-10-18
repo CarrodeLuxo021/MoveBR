@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Pagamentos</title>
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
-</head>
+    <link rel="icon" href="/static/icones/dinheiro.png" type="image/x-icon">
 
-<body>
     <header>
         <button class="button-back" type="button"><a href="/pag-inicial-motorista"><img
                     src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
@@ -24,68 +20,95 @@
             <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="icone-dinheiro">
             <h2>Histórico de Pagamentos</h2>
         </div>
+        <form action="/gerar_pagamento" method="get">
+            <button type="submit">Gerar novo pagamento</button>
+        </form>
+        
+        <div id="menu1" class="menu1">
+            <form action="/listar_historico" method="post">
+                <a href="/historico_pagamento/Janeiro">
+                    <button class="month" data-month="Janeiro" type="submit" ><i class="fas fa-calendar-alt"></i> Janeiro</button>
+                </a>
 
-        <section class="informacoes">
-            <form action="/gerar-pagamento" class="ger-pagamento" method="get">
-                <div class="ger-pagamento-container">
-                    <button type="submit">Gerar novo pagamento</button>
-                </div>
+                <a href="/historico_pagamento/Fevereiro">
+                    <button class="month" data-month="Fevereiro" type="submit"><i class="fas fa-calendar-alt"></i> Fevereiro</button>
+                </a>
+                
+                <a href="/historico_pagamento/Março">
+                    <button class="month" data-month="Março" type="submit"><i class="fas fa-calendar-alt"></i> Março</button>
+                </a>
+
+                <a href="/historico_pagamento/Abril">
+                    <button class="month" data-month="Abril" type="submit"><i class="fas fa-calendar-alt"></i> Abril</button>
+                </a>
+
+                <a href="/historico_pagamento/Maio">
+                    <button class="month" data-month="Maio" type="submit"><i class="fas fa-calendar-alt"></i> Maio</button>
+                </a>
+
+                <a href="/historico_pagamento/Junho"></a>
+                    <button class="month" data-month="Junho" type="submit"><i class="fas fa-calendar-alt"></i> Junho</button>
+
+                <a href="/historico_pagamento/Julho"></a>
+                    <button class="month" data-month="Julho" type="submit"><i class="fas fa-calendar-alt"></i> Julho</button>
+                </a>
+
+                <a href="/historico_pagamento/Agosto"></a>
+                    <button class="month" data-month="Agosto" type="submit"><i class="fas fa-calendar-alt"></i> Agosto</button>
+                </a>
+
+                <a href="/historico_pagamento/Setembro"></a>
+                    <button class="month" data-month="Setembro" type="submit"><i class="fas fa-calendar-alt"></i> Setembro</button>
+                </a>
+
+                <a href="/historico_pagamento/Outubro"></a>
+                    <button class="month" data-month="Outubro" type="submit"><i class="fas fa-calendar-alt"></i> Outubro</button>
+                </a>
+
+                <a href="/historico_pagamento/Novembro"></a>
+                    <button class="month" data-month="Novembro" type="submit"><i class="fas fa-calendar-alt"></i> Novembro</button>
+                </a>
+
+                <a href="/historico_pagamento/Dezembro"></a>
+                    <button class="month" data-month="Dezembro" type="submit"><i class="fas fa-calendar-alt"></i> Dezembro</button>
+                </a>
             </form>
-
-            <!-- Verifica se existem pagamentos e itera sobre eles -->
+        </div>
+        <div>
             {% if pagamentos %}
             {% for pagamento in pagamentos %}
-            <table class="alunos-listados">
-                <div class="container-tabela">
-                    <tbody>
-                        <tr class="aluno">
-                            <td>
-                                <!-- Perfil do Aluno -->
-                                <div class="perfil-aluno">
-                                    <!-- Informações básicas do Pagamento -->
-                                    <div class="info-aluno">
-                                        <h2>{{ pagamento.nome_aluno }}</h2> <!-- Nome do aluno -->
-                                        <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }} </p>
-                                        <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }} </p>
-                                        <p><strong>Valor do pagamento:</strong>
-                                        <p id="valor_pagamento">{{ pagamento.valor_pagamento }}</p>
-                                        </p>
+                <table class="alunos-listados">
+                    <div class="container-tabela">
+                        <tbody>
+                            <tr class="aluno">
+                                <td>
+                                    <!-- Perfil do Aluno -->
+                                    <div class="perfil-aluno">
+                                        <!-- Informações básicas do Pagamento -->
+                                        <div class="info-aluno">
+                                            <h2>{{ pagamento.nome_aluno }}</h2> <!-- Nome do aluno -->
+                                            <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }} </p>
+                                            <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }} </p>
+                                            <p><strong>Valor do pagamento:</strong> {{ pagamento.valor_pagamento }} </p>
+                                        </div>
                                     </div>
-                                    <button class="btn-excluir" id="excluir_pagamento">Excluir</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </div>
-            </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </table>
             {% endfor %}
             {% else %}
             <p>Nenhum pagamento encontrado.</p>
             {% endif %}
 
-            <h2 class="valor_total">Valor Total: <span id="valor_total"></span></h2>
-        </section>
+            <!-- Details será mostrado ao clicar em um mês -->
+        <div id="details" class="details" style="display: none;">
+            <p> Alunos que pagam naquele mês e o dia que pagam. </p>
+            <div class="btn-container">
+                <button class="somapag"> Somar Pagamentos </button>
+            </div>
+        </div>
     </div>
 
-    <script>
-        window.onload = function () {
-            // Seleciona todos os elementos <p> com o id 'valor_pagamento'
-            const valoresPagamento = document.querySelectorAll("#valor_pagamento");
-            let total = 0;
-
-            // Itera pelos elementos e soma os valores
-            valoresPagamento.forEach(function (pagamento) {
-                let valor = parseFloat(pagamento.textContent.trim()); // Converte o texto para float
-                if (!isNaN(valor)) { // Verifica se é um número válido
-                    total += valor;
-                }
-            });
-
-            // Exibe o valor total no span com id "valor_total"
-            document.getElementById("valor_total").textContent = total.toFixed(2); // Formata para 2 casas decimais
-        };
-    </script>
-    <script src="/static/js/historico-pagamento.js"></script>
-</body>
-
-</html>
+    <script src="../static/js/historico-pagamento.js"></script>
