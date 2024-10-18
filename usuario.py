@@ -46,6 +46,12 @@ class Usuario():
         #     print(f"Erro ao cadastrar aluno: {e}")
         #     return False
 
+    def atualizar_cadastro(self, id_aluno):
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+
+        sql = f"""UPDATE tb_alunos SET nome_responsavel = "mara maravilha" WHERE id_aluno = {id_aluno};"""
+
     def logar(self, email, senha):
         try:
             mydb = Conexao.conectar()

@@ -154,5 +154,7 @@ def excluir_historico(id_pagamento):
             usuario = Usuario()
             usuario.excluir_historico(id_pagamento)
             return redirect('/historico-pagamento')
+        
+@app.route("/editar-cadastro")
     
 app.run(debug=True)
