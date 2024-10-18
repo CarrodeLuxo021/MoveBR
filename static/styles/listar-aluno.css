@@ -48,6 +48,18 @@ figure img {
     margin: 0 20px 0 0;
 }
 
+.btn-cadaluno button{
+    background-color: var(--cor-06);
+    color: var(--cor-03);
+    font-size: 15px;
+    margin-top: 6px;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 99999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;    
+}
+
 main {
     width: 100%;
     margin: auto;

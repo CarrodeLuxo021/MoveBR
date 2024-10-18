@@ -7,13 +7,13 @@ class Usuario():
         self.email = None
         self.logado = False
 
-    def cadastrar_motorista(self, nome, cpf, cnh, cnpj, telefone, email, senha):
+    def cadastrar_motorista(self, nome, cpf, telefone, email, senha):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"""INSERT INTO tb_motoristas (nome_motorista, cpf_motorista, cnh, cnpj, tel_motorista, email_motorista, senha_motorista)
-                      VALUES ('{nome}', '{cpf}', '{cnh}', '{cnpj}', '{telefone}', '{email}', '{senha}');
+            sql = f"""INSERT INTO tb_motoristas (nome_motorista, cpf_motorista, tel_motorista, email_motorista, senha_motorista)
+                      VALUES ('{nome}', '{cpf}', '{telefone}', '{email}', '{senha}');
                    """
             mycursor.execute(sql)
             mydb.commit()
