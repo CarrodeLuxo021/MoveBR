@@ -5,16 +5,23 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
-    line-height: 1.6; /* Melhora a legibilidade */
-    background-color: var(--cor-04); /* Cor de fundo clara */
-    color: var(--cor-01); /* Cor do texto */
+    font-family: 'Arial', sans-serif;
+    /* Fonte limpa e moderna */
+    line-height: 1.6;
+    /* Melhora a legibilidade */
+    background-color: var(--cor-04);
+    /* Cor de fundo clara */
+    color: var(--cor-01);
+    /* Cor do texto */
 }
 
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+    /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03);
+    /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra suave para profundidade */
     height: 90px;
     margin-bottom: 20px;
     display: flex;
@@ -22,20 +29,22 @@ header {
     justify-content: space-between;
 }
 
-.button-back{
+.button-back {
     background-color: transparent;
     border: none;
 }
 
-.button-back img{
+.button-back img {
     width: 20px;
     height: auto;
     margin-left: 30px;
 }
 
 figure img {
-    width: 100px; /* Tamanho da imagem do logo */
-    height: auto; /* Manter a proporção da imagem */
+    width: 100px;
+    /* Tamanho da imagem do logo */
+    height: auto;
+    /* Manter a proporção da imagem */
     margin: 0 20px 0 0;
 }
 
@@ -55,43 +64,55 @@ main {
 .container-busca {
     display: flex;
     align-items: center;
-    position: relative; /* Para posicionar o botão corretamente */ 
-}
-
-.icone-busca{
-    position: absolute;
-    top: 20%;
-}
-
-.container-tabela{
-    margin: 2rem 0 0 0 ;
-}
-
-.input-busca {
-    padding: 10px 40px 10px 12px; /* Adiciona espaço para o ícone */
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
-    width: 100%; /* Preencher o espaço disponível */
-    transition: border-color 0.3s; /* Efeito de transição */
-}
-
-.input-busca:focus {
-    border-color: var(--cor-06); /* Cor ao focar */
-    outline: none; /* Remove contorno padrão */
+    position: relative;
+    /* Para posicionar o botão corretamente */
 }
 
 .icone-busca {
     position: absolute;
-    right: 10px; /* Espaço à direita */
-    background: transparent; /* Fundo transparente */
-    border: none; /* Remove borda */
-    cursor: pointer; /* Mão ao passar o mouse */
-    font-size: 16px; /* Tamanho do ícone */
+    top: 20%;
+}
+
+.container-tabela {
+    margin: 2rem 0 0 0;
+}
+
+.input-busca {
+    padding: 10px 40px 10px 12px;
+    /* Adiciona espaço para o ícone */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 100%;
+    /* Preencher o espaço disponível */
+    transition: border-color 0.3s;
+    /* Efeito de transição */
+}
+
+.input-busca:focus {
+    border-color: var(--cor-06);
+    /* Cor ao focar */
+    outline: none;
+    /* Remove contorno padrão */
+}
+
+.icone-busca {
+    position: absolute;
+    right: 10px;
+    /* Espaço à direita */
+    background: transparent;
+    /* Fundo transparente */
+    border: none;
+    /* Remove borda */
+    cursor: pointer;
+    /* Mão ao passar o mouse */
+    font-size: 16px;
+    /* Tamanho do ícone */
 }
 
 .icone-busca:hover {
-    color: var(--cor-06); /* Muda a cor ao passar o mouse */
+    color: var(--cor-06);
+    /* Muda a cor ao passar o mouse */
 }
 
 .alunos-listados {
@@ -167,11 +188,14 @@ td {
 
 /* Remover a repetição e manter o estilo dos detalhes */
 .detalhes {
-    display: none; /* Esconde inicialmente */
-    background-color: #F2F2F2; /* Cor de fundo cinza claro */
+    display: none;
+    /* Esconde inicialmente */
+    background-color: #F2F2F2;
+    /* Cor de fundo cinza claro */
     padding: 10px;
     border-radius: 4px;
-    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
+    margin-top: 10px;
+    /* Espaço entre o cabeçalho e a área expandida */
     transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
@@ -213,18 +237,25 @@ td {
 }
 
 .container-btn-excluir button {
-    background-color: var(--cor-06); /* Cor de fundo */
-    color: var(--cor-03); /* Cor do texto */
-    border: none; /* Remove borda padrão */
-    padding: 12px; /* Espaçamento interno */
-    border-radius: 6px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    background-color: var(--cor-06);
+    /* Cor de fundo */
+    color: var(--cor-03);
+    /* Cor do texto */
+    border: none;
+    /* Remove borda padrão */
+    padding: 12px;
+    /* Espaçamento interno */
+    border-radius: 6px;
+    /* Bordas arredondadas */
+    cursor: pointer;
+    /* Cursor de mão */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Transições suaves */
 }
 
 /* --------------------------------------------------- */
 
-.AA{
+.AA {
     color: #333;
     font-size: 24px;
     text-align: center;
@@ -238,20 +269,21 @@ td {
 @media (max-width: 768px) {}
 
 @media (max-width: 576px) {
-    .c-table{
+    .c-table {
         display: flex;
         justify-content: space-between;
     }
 
-    .c-table h1{
+    .c-table h1 {
         font-size: 15px;
     }
 
-    .container-tabela{
+    .container-tabela {
         margin: 0 0 0 20px;
     }
 
     .input-busca {
-        width: 80%; /* Preencher o espaço disponível */
+        width: 80%;
+        /* Preencher o espaço disponível */
     }
 }

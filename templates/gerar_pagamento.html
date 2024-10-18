@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
 </head>
+
 <body>
     <header>
         <figure>
@@ -27,19 +29,19 @@
                         <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
                         {% endfor %}
                     </select>
-                    
+
                     <!-- Mês do pagamento -->
                     <label for="mesPagamento">Mês do pagamento:</label>
                     <input type="text" id="mesPagamento" placeholder="ex: Janeiro" name="mes_pagamento">
-                    
+
                     <!-- Data exata do pagamento -->
                     <label for="dataPagamento">Data exata do pagamento:</label>
                     <input type="text" id="dataPagamento" placeholder="ex: 17/10/2023" name="data_pagamento">
-                    
+
                     <!-- Valor do pagamento -->
                     <label for="valorPagamento">Valor do pagamento:</label>
                     <input type="text" id="valorPagamento" placeholder="ex: 500.00" name="valor_pagamento">
-                    
+
                     <!-- Botão de submit -->
                     <button type="submit" class="botao">Gerar pagamento</button>
                 </section>
@@ -47,4 +49,5 @@
         </form>
     </main>
 </body>
+
 </html>

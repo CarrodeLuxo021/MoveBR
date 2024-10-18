@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +13,11 @@
     <script defer src="/static/js/mascara-telefone.js"></script>
     <script defer src="/static/js/foto-aluno.js"></script>
 </head>
+
 <body>
     <header>
-        <button class="button-back" type="button"><a href="/pag-inicial-motorista"><img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
+        <button class="button-back" type="button"><a href="/pag-inicial-motorista"><img
+                    src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
         <figure>
             <div class="logo"><img src="/static/icones/logo.png" alt="logo da movebr"></div>
         </figure>
@@ -27,26 +30,31 @@
                 <div class="lado-esquerdo-container">
                     <label for="nomeAluno">Nome do aluno:</label>
                     <input type="text" id="nomeAluno" placeholder="ex: João da Silva" name="nome-aluno" required>
-                    
+
                     <label for="nomeResponsavel">Nome do responsável:</label>
-                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel" required>
-                    
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel"
+                        required>
+
                     <label for="telefoneResponsavel">Telefone do responsável:</label>
-                    <input  type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel" required>
-                    
+                    <input type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel"
+                        placeholder="ex: (00) 0000-0000" name="telefone-responsavel" required>
+
                     <label for="escola">Escola:</label>
                     <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola" required>
                 </div>
-                
-                <div class="lado-direito-container">        
+
+                <div class="lado-direito-container">
                     <label for="condicaoMedica">Observações:</label>
-                    <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre" name="condicao-medica" required>
+                    <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre" name="condicao-medica"
+                        required>
 
                     <label for="enderecoAluno">Endereço:</label>
-                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno" required>
+                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado"
+                        name="endereco-aluno" required>
 
                     <label for="fotoAluno">Foto Aluno:</label>
-                    <input type="file" id="fotoAluno" accept="image/*" placeholder="Insira o link da foto aqui" name="foto-aluno" required>
+                    <input type="file" id="fotoAluno" accept="image/*" placeholder="Insira o link da foto aqui"
+                        name="foto-aluno" required>
 
                     <div class="btn-container">
                         <button type="submit" class="cadastrar">Cadastrar</button>
@@ -57,4 +65,5 @@
         </form>
     </main>
 </body>
+
 </html>

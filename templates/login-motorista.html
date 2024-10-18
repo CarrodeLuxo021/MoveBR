@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="/static/icones/senha-de-login.png" type="image/x-icon">
-        <link rel="stylesheet" href="/static/styles/login.css">
-        <link rel="stylesheet" href="/static/styles/variaveis.css">
-        <title>Login</title>
-    </head>
-    <body>
-        
-        <header class="global-header">
-            <figure>
-                <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
-            </figure>
-        </header>
 
-        <main>
-            <div class="titulo">
-                <h2>BEM VINDO(A) AO MOVEBR!</h2>
-                <p>Faça seu login para ter acesso ao sistema.</p>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/icones/senha-de-login.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles/login.css">
+    <link rel="stylesheet" href="/static/styles/variaveis.css">
+    <title>Login</title>
+</head>
 
-            <form class="container-form" action="#" method="post">
-                <div class="itens-form">
-                    <div class="cima-container">
-                        <label for="emailAluno">Email:</label>
-                        <input type="email" id="emailAluno" name="email" placeholder="ex: nome@exemplo.com">
-                        
-                        <label for="senhaAluno">Senha:</label>
-                        <input type="password" id="senhaAluno" name="senha" placeholder="ex: mínimo 8 caracteres">
-                        <a href="#" class="link-senha">Esqueceu sua senha?</a>
-                    </div>
-                    
-                    <div class="btn-container">
-                        <button type="submit" class="login">Login</button>
-                    </div>
+<body>
 
-                    <div class="baixo-container">
-                        <hr>
-                        <p>Ainda não possui cadastro? <a href="/cadastrar-motorista">Cadastrar-se!</a></p>
-                    </div>
+    <header class="global-header">
+        <figure>
+            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+        </figure>
+    </header>
+
+    <main>
+        <div class="titulo">
+            <h2>BEM VINDO(A) AO MOVEBR!</h2>
+            <p>Faça seu login para ter acesso ao sistema.</p>
+        </div>
+
+        <form class="container-form" action="#" method="post">
+            <div class="itens-form">
+                <div class="cima-container">
+                    <label for="emailAluno">Email:</label>
+                    <input type="email" id="emailAluno" name="email" placeholder="ex: nome@exemplo.com">
+
+                    <label for="senhaAluno">Senha:</label>
+                    <input type="password" id="senhaAluno" name="senha" placeholder="ex: mínimo 8 caracteres">
+                    <a href="#" class="link-senha">Esqueceu sua senha?</a>
                 </div>
-            </form>
-        </main>
 
-        <script>
-            {% with mensagens = get_flashed_messages() %}
-                {% for alerta in mensagens %}
-                    {{ alerta|safe }}
-                {% endfor %}
-            {% endwith %}
-        </script>
+                <div class="btn-container">
+                    <button type="submit" class="login">Login</button>
+                </div>
 
-    </body>
+                <div class="baixo-container">
+                    <hr>
+                    <p>Ainda não possui cadastro? <a href="/cadastrar-motorista">Cadastrar-se!</a></p>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        {% with mensagens = get_flashed_messages() %}
+        {% for alerta in mensagens %}
+        { { alerta | safe } }
+        {% endfor %}
+        {% endwith %}
+    </script>
+
+</body>
+
 </html>

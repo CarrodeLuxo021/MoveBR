@@ -9,9 +9,12 @@
 
 /* Estilização do cabeçalho */
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+    /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03);
+    /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra suave para profundidade */
     height: 90px;
     margin-bottom: 20px;
     display: flex;
@@ -34,14 +37,15 @@ figure img {
 
 body {
     margin: 0;
-    font-family: "Roboto", "Helvetica Neue", "Helvetica",  "Arial", sans-serif;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     background: #eaeaea;
 }
 
 nav {
     height: 40px;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
+    /* Centraliza horizontalmente */
     align-items: center;
 }
 
@@ -65,20 +69,26 @@ nav a:last-child .botao {
 
 /* Efeito hover para mudar a cor da letra */
 .botao:hover {
-    color: var(--cor-03); /* Texto branco */
-    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
+    color: var(--cor-03);
+    /* Texto branco */
+    background-color: var(--cor-06);
+    /* Cor de fundo diferente ao passar o mouse */
 }
 
 /* Estilização do rodapé */
 footer {
     position: absolute;
     background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
-    color: var(--cor-03); /* Texto claro para contraste */
-    padding: 30px; /* Espaçamento interno */
+    color: var(--cor-03);
+    /* Texto claro para contraste */
+    padding: 30px;
+    /* Espaçamento interno */
     bottom: 0;
     height: 20px;
-    width: 100%; /* Ocupa toda a largura da página */
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
+    width: 100%;
+    /* Ocupa toda a largura da página */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra suave para profundidade */
 }
 
 p {
@@ -93,8 +103,10 @@ main {
     height: 100%;
     padding: 20px;
     margin-top: 20px;
-    background-color: #f4f4f4; /* Fundo claro para contraste */
-    color: #000000; /* Texto escuro para melhor legibilidade */
+    background-color: #f4f4f4;
+    /* Fundo claro para contraste */
+    color: #000000;
+    /* Texto escuro para melhor legibilidade */
 }
 
 .section01-pag_motorista {
@@ -169,15 +181,15 @@ h1 {
 @media (max-width: 768px) {}
 
 @media (max-width: 576px) {
-    nav{
+    nav {
         display: none;
     }
 
-    h1{
+    h1 {
         font-size: 20px;
     }
 
-    .botao{
+    .botao {
         display: none;
     }
 }

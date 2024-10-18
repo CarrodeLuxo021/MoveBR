@@ -12,9 +12,12 @@ body {
 }
 
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+    /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03);
+    /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra suave para profundidade */
     height: 90px;
     margin-bottom: 20px;
     display: flex;
@@ -22,20 +25,22 @@ header {
     align-items: center;
 }
 
-.button-back{
+.button-back {
     background-color: transparent;
     border: none;
 }
 
-.button-back img{
+.button-back img {
     width: 20px;
     height: auto;
     margin-left: 30px;
 }
 
 figure img {
-    width: 100px; /* Tamanho da imagem do logo */
-    height: auto; /* Manter a proporção da imagem */
+    width: 100px;
+    /* Tamanho da imagem do logo */
+    height: auto;
+    /* Manter a proporção da imagem */
     margin: 0 20px 0 0;
 }
 
@@ -46,7 +51,7 @@ figure img {
     background-color: var(--cor-03);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cabecalho-container {
@@ -59,20 +64,20 @@ figure img {
     margin: 0;
 }
 
-.icone-dinheiro{
+.icone-dinheiro {
     width: 30px;
     height: auto;
 }
 
-.informacoes{
+.informacoes {
     padding: 10px;
 }
 
-.cabecalho-container h2{
+.cabecalho-container h2 {
     margin-left: 10px;
-} 
+}
 
-.ger-pagamento button{
+.ger-pagamento button {
     background-color: var(--cor-06);
     color: var(--cor-03);
     border: none;
@@ -85,18 +90,18 @@ figure img {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.ger-pagamento button:hover{
+.ger-pagamento button:hover {
     background-color: var(--cor-05);
 }
 
-.ger-pagamento-container{
+.ger-pagamento-container {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: end;
 }
 
-.btn-excluir{
+.btn-excluir {
     background-color: var(--cor-06);
     color: var(--cor-03);
     border: none;
@@ -117,7 +122,7 @@ figure img {
 
 @media (max-width: 576px) {
 
-    .cabecalho-container h2{
+    .cabecalho-container h2 {
         font-size: 18px;
-    } 
+    }
 }

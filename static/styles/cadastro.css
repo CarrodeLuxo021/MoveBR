@@ -14,9 +14,12 @@ body {
 }
 
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+    /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03);
+    /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra suave para profundidade */
     height: 90px;
     margin-bottom: 20px;
     display: flex;
@@ -24,20 +27,22 @@ header {
     align-items: center;
 }
 
-.button-back{
+.button-back {
     background-color: transparent;
     border: none;
 }
 
-.button-back img{
+.button-back img {
     width: 20px;
     height: auto;
     margin-left: 30px;
 }
 
 figure img {
-    width: 100px; /* Tamanho da imagem do logo */
-    height: auto; /* Manter a proporção da imagem */
+    width: 100px;
+    /* Tamanho da imagem do logo */
+    height: auto;
+    /* Manter a proporção da imagem */
     margin: 0 20px 0 0;
 }
 
@@ -58,7 +63,7 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.container-form h3{
+.container-form h3 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--cor-06);
@@ -69,13 +74,15 @@ main {
 .itens-form {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* Para telas menores, os itens se ajustam */
+    flex-wrap: wrap;
+    /* Para telas menores, os itens se ajustam */
 }
 
 /* Estilização dos containers de lado */
 .lado-esquerdo-container,
 .lado-direito-container {
-    min-width: 100%; /* Ocupa 100% da largura em telas pequenas */
+    min-width: 100%;
+    /* Ocupa 100% da largura em telas pequenas */
 }
 
 /* Estilização dos labels */
@@ -134,12 +141,14 @@ main {
     }
 
     .container-form {
-        max-width: 540px; /* Ajuste da largura para dispositivos pequenos */
+        max-width: 540px;
+        /* Ajuste da largura para dispositivos pequenos */
     }
 
     .lado-esquerdo-container,
     .lado-direito-container {
-        min-width: 100%; /* Continua com 100% de largura em dispositivos pequenos */
+        min-width: 100%;
+        /* Continua com 100% de largura em dispositivos pequenos */
     }
 }
 
@@ -154,12 +163,14 @@ main {
     }
 
     .itens-form {
-        flex-wrap: nowrap; /* Remove a quebra de linha para tablets */
+        flex-wrap: nowrap;
+        /* Remove a quebra de linha para tablets */
     }
 
     .lado-esquerdo-container,
     .lado-direito-container {
-        min-width: 300px; /* Largura mínima ajustada para tablets */
+        min-width: 300px;
+        /* Largura mínima ajustada para tablets */
     }
 }
 
@@ -171,31 +182,39 @@ main {
 
     .lado-esquerdo-container,
     .lado-direito-container {
-        min-width: 450px; /* Ajusta a largura mínima para desktops */
+        min-width: 450px;
+        /* Ajusta a largura mínima para desktops */
     }
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     .container-form {
-        max-width: 1000px; /* Usa a largura completa para desktops grandes */
+        max-width: 1000px;
+        /* Usa a largura completa para desktops grandes */
     }
 
     .btn-container button {
-        font-size: 18px; /* Aumenta o tamanho da fonte do botão */
-        padding: 14px 28px; /* Aumenta o espaçamento do botão */
+        font-size: 18px;
+        /* Aumenta o tamanho da fonte do botão */
+        padding: 14px 28px;
+        /* Aumenta o espaçamento do botão */
     }
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
     .container-form {
-        max-width: 1200px; /* Aumenta o tamanho máximo para telas muito grandes */
-        padding: 50px; /* Adiciona mais espaçamento interno */
+        max-width: 1200px;
+        /* Aumenta o tamanho máximo para telas muito grandes */
+        padding: 50px;
+        /* Adiciona mais espaçamento interno */
     }
 
     .btn-container button {
-        font-size: 20px; /* Tamanho maior para o botão */
-        padding: 16px 32px; /* Ajusta o padding do botão */
+        font-size: 20px;
+        /* Tamanho maior para o botão */
+        padding: 16px 32px;
+        /* Ajusta o padding do botão */
     }
 }
