@@ -21,15 +21,13 @@ def pag_cadastro_motorista():
     else:
         nome = request.form["nome"]
         cpf = request.form["cpf"]
-        cnpj = request.form["cnpj"]
-        cnh = request.form["cnh"]
         telefone = request.form["telefone"]
         email = request.form["email"]
         senha = request.form["senha"]
         flash("alert('Usuário cadastrado com sucesso!')")
 
         usuario = Usuario()
-        if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
+        if usuario.cadastrar_motorista(nome, cpf, telefone, email, senha):
             return redirect('/logar') 
         else:
             return redirect('/')

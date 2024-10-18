@@ -4,291 +4,125 @@
     margin: 0;
 }
 
-.logo img {
-    width: 100px;
-}
-
-.header h1 {
-    color: #ffcc00; /* Amarelo */
-    font-size: 2rem;
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: var(--cor-01);
 }
 
 header {
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+    /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03);
+    /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra suave para profundidade */
+    height: 90px;
+    margin-bottom: 20px;
     display: flex;
-    height: 85px;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 20px;
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Verde mais escuro */
 }
 
-.navegacao {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;
-    margin-top: 20px; /* Ajusta a margem para dar espaçamento */
-    margin-bottom: 60px;
-}
-
-/* Estilos dos botões */
-.botao {
-    border: solid 1px var(--cor-06);
-    border-radius: 10px;
-    color: #000000;
-    background-color: var(--cor-03);
-    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
-    height: 50px;
-    width: 200px;
-    margin-right: 30px;
-}
-
-/* Último botão sem margem à direita */
-.navegacao a:last-child .botao {
-    margin-right: 0;
-}
-
-/* Efeito hover para mudar a cor da letra */
-.botao:hover {
-    color: var(--cor-03); /* Texto branco */
-    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
-}
-
-.menu-icon {
-    cursor: pointer;
-}
-.botao {
-    border: solid 1px var(--cor-06);
-    border-radius: 10px;
-    color: #000000;
-    background-color: var(--cor-03);
-    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
-    height: 50px;
-    width: 200px;
-    margin-right: 30px;
-}
-
-.menu-icon img {
-    width: 50px;
-    height: 50px;
-}
-
-/* Inicialmente, o menu estará fora da tela (à direita) */
-.menu {
-    position: fixed;
-    top: 10%;
-    right: -400px; /* Mover para fora da tela */
-    height: 80%;
-    width: 170px;
-    background-color: #00000086;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px 0 0 10px;
-    transition: right 0.5s ease, transform 0.5s ease;
-    transform: scale(1); /* Sem redimensionamento inicialmente */
-    opacity: 1; 
-}
-
-/* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
-.menu.show {
-    right: 0; /* Move o menu para dentro da tela */
-    transform: scale(0.9); /* Reduz o tamanho um pouco */
-    opacity: 1;
-}
-
-.menu a{
-    text-decoration: none;
-}
-
-/* Estilo dos cards */
-.card {
-    background-color: #d3d3d300;
+.button-back {
+    background-color: transparent;
     border: none;
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    width: 130px;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.card img {
-    width: 80px;
-    height: 80px;
+.button-back img {
+    width: 20px;
+    height: auto;
+    margin-left: 30px;
 }
 
-.card p {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: var(--cor-03);
-}
-
-/* Efeitos de hover */
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card:active {
-    transform: scale(0.98);
+figure img {
+    width: 100px;
+    /* Tamanho da imagem do logo */
+    height: auto;
+    /* Manter a proporção da imagem */
+    margin: 0 20px 0 0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: calc(100vh - 80px); /* Altura restante após o header */
-    background-color: #004400;
-}
-
-/* Media Queries */
-@media (max-width: 1200px) {
-    .logo img {
-        width: 80px; /* Reduzir o tamanho do logo em telas menores */
-    }
-
-    .header h1 {
-        font-size: 1.8rem; /* Diminuir o tamanho do título */
-    }
-
-    .botao {
-        width: 180px; /* Ajustar largura dos botões */
-    }
-
-    .card {
-        width: 120px; /* Diminuir largura dos cards */
-    }
-}
-
-@media (max-width: 992px) {
-    header {
-        flex-direction: column; /* Colocar elementos do cabeçalho em coluna */
-        align-items: flex-start; /* Alinhar à esquerda */
-    }
-
-    .navegacao {
-        flex-direction: column; /* Colocar botões em coluna */
-        align-items: stretch; /* Esticar botões */
-    }
-
-    .botao {
-        margin: 10px 0; /* Margem entre botões */
-        width: 100%; /* Botões ocupam 100% da largura */
-    }
-}
-
-@media (max-width: 768px) {
-    .logo img {
-        width: 60px; /* Reduzir o tamanho do logo ainda mais */
-    }
-
-    .header h1 {
-        font-size: 1.5rem; /* Diminuir ainda mais o tamanho do título */
-    }
-
-    .container {
-        flex-direction: column; /* Mudança para coluna em telas menores */
-        height: auto; /* Altura automática */
-        padding: 20px; /* Padding para melhor aparência */
-    }
-}
-
-@media (max-width: 576px) {
-    .header h1 {
-        font-size: 1.2rem; /* Tamanho menor para telas muito pequenas */
-    }
-
-    .menu {
-        width: 150px; /* Ajustar largura do menu */
-    }
-
-    .card p {
-        font-size: 1rem; /* Ajustar tamanho do texto do card */
-    }
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: var(--cor-04);
-}
-
-.container1 {
     width: 80%;
     max-width: 800px;
     margin: 20px auto;
     background-color: var(--cor-03);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.header1 {
+.cabecalho-container {
     background-color: var(--cor-06);
     color: var(--cor-03);
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    width: 100%;
+    margin: 0;
 }
 
-.user-photo {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+.icone-dinheiro {
+    width: 30px;
+    height: auto;
 }
 
-.menu1 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+.informacoes {
     padding: 10px;
-    display: none; /* Menu começa oculto */
 }
 
-.month {
-    padding: 10px;
-    border: none;
-    background-color:  var(--cor-05);
-    color: var(--cor-03);
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 14px;
+.cabecalho-container h2 {
+    margin-left: 10px;
 }
 
-.month i {
-    font-size: 16px;
-}
-
-.month:hover {
+.ger-pagamento button {
     background-color: var(--cor-06);
-}
-
-.details {
-    padding: 20px;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    border-top: 1px solid #ddd;
-    margin-top: 10px;
-}
-
-.toggle-btn {
-    background: none;
-    border: none;
     color: var(--cor-03);
-    font-size: 24px;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.toggle-btn:focus {
-    outline: none;
+.ger-pagamento button:hover {
+    background-color: var(--cor-05);
+}
+
+.ger-pagamento-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: end;
+}
+
+.btn-excluir {
+    background-color: var(--cor-06);
+    color: var(--cor-03);
+    border: none;
+    padding: 8px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px 0 5px 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {}
+
+@media (max-width: 992px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 576px) {
+
+    .cabecalho-container h2 {
+        font-size: 18px;
+    }
 }
