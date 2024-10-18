@@ -54,11 +54,13 @@
     <h2>Escolas</h2>
     <ul>
         <!-- Botão para exibir todos os alunos, aparece apenas uma vez -->
+        {% if alunos %}
         <li>
             <form method="GET" action="{{ url_for('listar_alunos') }}">
                 <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
             </form>
         </li>
+        {% endif %}
 
         <!-- Botões para cada escola, baseados na lista de escolas -->
         {% for escola in escolas %}
