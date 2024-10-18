@@ -103,11 +103,12 @@ def historico_pagamento_filtro(mes):
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
-    usuario = Usuario()
-    lista_alunos = usuario.listar_aluno()
-    return render_template("gerar-pagamento.html", alunos=lista_alunos)
-
-        # Pega os valores do formulário
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()
+        return render_template("gerar-pagamento.html", alunos=lista_alunos)
+    else:
+           # Pega os valores do formulário
         id_aluno = request.form.get("id_aluno")
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
@@ -120,9 +121,8 @@ def gerar_pagamento_get():
             return redirect("/historico-pagamento")
         else:
             return "Erro ao gerar o pagamento", 500
-    except Exception as e:
-        print(f"Erro: {e}")
-        return "Erro no processamento", 500
+
+     
 
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
 def quebra_foto(id_aluno):
