@@ -139,19 +139,31 @@ def excluir_aluno(id_aluno):
             usuario.excluir_aluno(id_aluno)
             return redirect('/listar-alunos')
 
+
+
+
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
-    if request.method == 'GET':
-        usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()  # Pega todos os alunos
-        escolas = {aluno['escola'] for aluno in lista_alunos}  # Conjunto com todas as escolas (evita duplicatas)
-        return render_template("listar-aluno.html", alunos=lista_alunos, escolas=escolas)
+    usuario = Usuario()  # Inicializa a classe Usuario
+    escola = request.args.get("escola")  # Obtém o parâmetro 'escola' da URL
 
-@app.route("/listar-alunos/escola/<nome_escola>", methods=['GET'])
-def listar_alunos_por_escola(nome_escola):
-    usuario = Usuario()
-    alunos_filtrados = usuario.listar_aluno_por_escola(nome_escola)  # Método para listar alunos de uma escola específica
-    escolas = {aluno['escola'] for aluno in alunos_filtrados}  # Atualiza lista de escolas
+    if escola:
+        # Se uma escola específica foi selecionada, filtra os alunos dessa escola
+        alunos_filtrados = usuario.listar_aluno_por_escola(escola)  # Lista de alunos filtrada pela escola
+    else:
+        # Se nenhuma escola foi selecionada, lista todos os alunos
+        alunos_filtrados = usuario.listar_aluno()  # Lista de todos os alunos
+
+    # Independente de escola selecionada, obtém a lista de todas as escolas disponíveis
+    lista_completa_alunos = usuario.listar_aluno()  # Lista completa de todos os alunos
+    escolas = {aluno['escola'] for aluno in lista_completa_alunos}  # Conjunto de todas as escolas (evita duplicatas)
+
+    # Renderiza o template, passando os alunos filtrados e todas as escolas
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
+
+
+
+
+    
 
 app.run(debug=True)
