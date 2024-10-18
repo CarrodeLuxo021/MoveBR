@@ -182,10 +182,6 @@ class Usuario():
             sql_contratos = "DELETE FROM contratos_fechados WHERE id_aluno = %s"
             mycursor.execute(sql_contratos, (id_aluno,))
 
-            # Excluir da tabela historico_pagamentos
-            sql_pagamentos = "DELETE FROM historico_pagamentos WHERE id_aluno = %s"
-            mycursor.execute(sql_pagamentos, (id_aluno,))
-
             # Excluir da tabela tb_alunos
             sql_alunos = "DELETE FROM tb_alunos WHERE id_aluno = %s"
             mycursor.execute(sql_alunos, (id_aluno,))

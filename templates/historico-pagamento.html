@@ -24,12 +24,31 @@
     </div>
     
     <div class="container1">
+        <form action="/historico_pagamento_filtro" method="post">
+            <label for="mesPagamento">Mês do pagamento:</label>
+            <select id="mesPagamento" name="mes_pagamento">
+                <option value="Janeiro">Janeiro</option>
+                <option value="Fevereiro">Fevereiro</option>
+                <option value="Março">Março</option>
+                <option value="Abril">Abril</option>
+                <option value="Maio">Maio</option>
+                <option value="Junho">Junho</option>
+                <option value="Julho">Julho</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Setembro">Setembro</option>
+                <option value="Outubro">Outubro</option>
+                <option value="Novembro">Novembro</option>
+                <option value="Dezembro">Dezembro</option>
+            </select>
+            <button type="submit">Procurar</button>
+        </form>
+                    
         <div class="header1">
             <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="user-photo">
             <h1>Histórico de Pagamentos</h1>
             <button id="toggleBtn" class="toggle-btn">&#9650;</button>
         </div>
-
+    
         <a href="/gerar-pagamento"><button type="submit">Gerar novo pagamento</button></a>
     
         <!-- Verifica se existem pagamentos e itera sobre eles -->
@@ -58,18 +77,19 @@
                 </table>
             {% endfor %}
         {% else %}
-            <p>Nenhum pagamento encontrado.</p>
+            <!-- Se não houver pagamentos, exibe a mensagem fornecida -->
+            <p>{{ mensagem }}</p>
         {% endif %}
-
+    
         <h2 class="valor_total">Valor Total: <span id="valor_total"></span></h2>
     </div>
-
+    
     <script>
         window.onload = function() {
             // Seleciona todos os elementos <p> com o id 'valor_pagamento'
             const valoresPagamento = document.querySelectorAll("#valor_pagamento");
             let total = 0;
-
+    
             // Itera pelos elementos e soma os valores
             valoresPagamento.forEach(function(pagamento) {
                 let valor = parseFloat(pagamento.textContent.trim()); // Converte o texto para float
@@ -77,13 +97,10 @@
                     total += valor;
                 }
             });
-
+    
             // Exibe o valor total no span com id "valor_total"
             document.getElementById("valor_total").textContent = total.toFixed(2); // Formata para 2 casas decimais
         };
     </script>
 </body>
 </html>
- 
-
-        

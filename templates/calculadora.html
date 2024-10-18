@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de viagens</title>
+    <script type="text/javascript" src="/static/js/calculadora.js"></script>
+    <link rel="stylesheet" href="/static/styles/calculadora.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculadora">
+            <h1>Calculadora de Viagem</h1>
+
+            <p>Preço do Etanol (R$/L):</p>
+            <input type="number" id="etanol" max='100' required>
+
+            <p>Preço da Gasolina (R$/L):</p>
+            <input type="number" id="gasolina" max='100' required>
+
+            <p>Combustível do carro:</p>
+            <select id="combustivel_usado">
+                <option value="gasolina">Gasolina</option>
+                <option value="etanol">Etanol</option>
+            </select>
+            
+            <p>Gasto médio (KM/L):</p>
+            <input type="number" id="gasto_medio" max='100' required>
+
+            <p>Distancia da Viagem (KM):</p>
+            <input type="number" id="distancia" required>
+
+            <p>Velocidade média(KM/h):</p>
+            <input type="number" id="velo_media" required>
+
+            <p>Quantidade de pedagios (opcional):</p>
+            <input type="number" id="pedagio_quant">
+
+            <p>Valor dos pedagios (opcional):</p>
+            <input type="number" id="pedagio_valor">
+
+            <p><input type="checkbox" id="volta">Calcular volta.</p>
+
+            <div class="buttons">
+                <button onclick="calcular_viagem()">Calcular</button>
+                <button onclick="limpar()">Limpar</button>
+            </div>
+        </div>
+        <div id="resultado">
+            <h1>Insira os dados para Ver os resultados aqui:</h1>
+        </div>
+    </div>
+</body>
+</html>

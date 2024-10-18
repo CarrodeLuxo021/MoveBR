@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    border: 10px black;
+}
+.calculadora{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 32px;
+    border: 2px black;
+    margin: 20px;
+}
+.resultado{
+    width: 40%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 32px;
+    border: 2px black;
+    margin-top: 20px;
+}
+li{
+    font-size: 30px;
+    gap:50px;
+}
+h1{
+    font-size: 50px;
+}

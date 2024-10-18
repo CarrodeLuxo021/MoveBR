@@ -62,24 +62,29 @@ class Pagamentos():
         except Exception as e:
             print(f"Erro ao listar histórico: {e}")
             return False
+        
     def listar_historico_filtro(self, mes, cpf_motorista):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"SELECT * from historico_pagamentos where mes_pagamento = {mes} and cpf_motorista = {cpf_motorista} "
+            # Usando query parametrizada para evitar injeção de SQL
+            sql = "SELECT nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_aluno FROM historico_pagamentos WHERE mes_pagamento = %s AND cpf_motorista = %s"
+            mycursor.execute(sql, (mes, cpf_motorista))
 
-            mycursor.execute(sql)
             resultados = mycursor.fetchall()
             historico = []
             for linha in resultados:
-                historico.append({"nome_aluno":linha[0],
-                               "mes_pagamento": linha[1],
-                               "data_pagamento": linha[2],
-                               "valor_pagamento": linha[3]
+                historico.append({
+                    "nome_aluno": linha[0],
+                    "mes_pagamento": linha[1],
+                    "data_pagamento": linha[2],
+                    "valor_pagamento": linha[3],
+                    "id_aluno": linha[4]  # Adicionei o campo id_aluno para o botão de excluir
                 })
-    
+
             mydb.close()
             return historico
-        except:
+        except Exception as e:
+            print(f"Erro ao listar histórico: {e}")
             return False
