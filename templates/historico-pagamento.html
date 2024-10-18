@@ -6,8 +6,6 @@
     <title>Histórico de Pagamentos</title>
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    
     <link rel="stylesheet" href="/static/styles/variaveis.css">
 </head>
 <body>
@@ -23,32 +21,16 @@
     <div class="navegacao">
         <a href="/pag-inicial-motorista"><button class="botao">Início</button></a> 
         <a href="/listar-alunos"><button class="botao">Alunos clientes</button></a>  
-         
     </div>
     
-    <nav id="menu" class="menu">
-
-        <a href="/"><button class="card" id="pagInicial" aria-label="pagInicial">
-            <img src="/static/icones/inicio.png" alt="Ícone de início" />
-            <p>Início</p>
-        </button></a>
-
-        <a href="/listar-aluno"><button class="card" id="Rotas" aria-label="Rotas">
-            <img src="/static/icones/estudantes.png" alt="Ícone de alunos" />
-            <p>Alunos</p>
-        </button></a>
-        
-    </nav>
-
     <div class="container1">
         <div class="header1">
             <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="user-photo">
             <h1>Histórico de Pagamentos</h1>
             <button id="toggleBtn" class="toggle-btn">&#9650;</button>
         </div>
-        
-          <a href="/gerar-pagamento"><button type="submit">Gerar novo pagamento</button></a>
-       
+
+        <a href="/gerar-pagamento"><button type="submit">Gerar novo pagamento</button></a>
     
         <!-- Verifica se existem pagamentos e itera sobre eles -->
         {% if pagamentos %}
@@ -84,23 +66,22 @@
 
     <script>
         window.onload = function() {
-        // Seleciona todos os elementos <p> com o id 'valor_pagamento'
-        const valoresPagamento = document.querySelectorAll("#valor_pagamento");
-        let total = 0;
+            // Seleciona todos os elementos <p> com o id 'valor_pagamento'
+            const valoresPagamento = document.querySelectorAll("#valor_pagamento");
+            let total = 0;
 
-        // Itera pelos elementos e soma os valores
-        valoresPagamento.forEach(function(pagamento) {
-            let valor = parseFloat(pagamento.textContent.trim()); // Converte o texto para float
-            if (!isNaN(valor)) { // Verifica se é um número válido
-                total += valor;
-            }
-        });
+            // Itera pelos elementos e soma os valores
+            valoresPagamento.forEach(function(pagamento) {
+                let valor = parseFloat(pagamento.textContent.trim()); // Converte o texto para float
+                if (!isNaN(valor)) { // Verifica se é um número válido
+                    total += valor;
+                }
+            });
 
-        // Exibe o valor total no span com id "valor_total"
-        document.getElementById("valor_total").textContent = total.toFixed(2); // Formata para 2 casas decimais
+            // Exibe o valor total no span com id "valor_total"
+            document.getElementById("valor_total").textContent = total.toFixed(2); // Formata para 2 casas decimais
         };
-        </script>
-    <script src="/static/js/historico-pagamento.js"></script>
+    </script>
 </body>
 </html>
  

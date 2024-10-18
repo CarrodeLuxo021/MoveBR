@@ -13,10 +13,11 @@ class Pagamentos():
 
             # Inserindo na tabela historico_pagamentos
             sql = """
-            INSERT INTO historico_pagamentos (id_aluno, data_pagamento, mes_pagamento, valor_pagamento, cpf_motorista)
+            INSERT INTO historico_pagamentos 
+            (id_aluno, data_pagamento, mes_pagamento, valor_pagamento, cpf_motorista)
             VALUES (%s, %s, %s, %s, %s);
             """
-            mycursor.execute(sql, (id_aluno, data, mes, float(valor), cpf_motorista))
+            mycursor.execute(sql, (id_aluno, data, mes, valor, cpf_motorista))
 
             mydb.commit()
             mycursor.close()
@@ -25,6 +26,7 @@ class Pagamentos():
         except Exception as e:
             mydb.rollback()
             print(f"Erro ao cadastrar pagamento: {e}")
+            return False
 
 
     def listar_historico(self):
@@ -32,10 +34,13 @@ class Pagamentos():
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            # SQL sem o filtro de mês
-            sql = """SELECT nome_aluno, mes_pagamento, data_pagamento, valor_pagamento FROM historico_pagamentos
-                    INNER JOIN tb_alunos
-                    ON historico_pagamentos.id_aluno = tb_alunos.id_aluno;"""
+            # SQL para buscar os pagamentos junto com o nome dos alunos
+            sql = """
+            SELECT tb_alunos.nome_aluno, historico_pagamentos.mes_pagamento, historico_pagamentos.data_pagamento, 
+                   historico_pagamentos.valor_pagamento, historico_pagamentos.id_aluno
+            FROM historico_pagamentos
+            INNER JOIN tb_alunos ON historico_pagamentos.id_aluno = tb_alunos.id_aluno;
+            """
 
             mycursor.execute(sql)
             resultados = mycursor.fetchall()
@@ -47,12 +52,13 @@ class Pagamentos():
                     "nome_aluno": linha[0],
                     "mes_pagamento": linha[1],
                     "data_pagamento": linha[2],
-                    "valor_pagamento": linha[3]
+                    "valor_pagamento": linha[3],
+                    "id_aluno": linha[4]
                 })
 
             mydb.close()
             return historico
-        
+
         except Exception as e:
             print(f"Erro ao listar histórico: {e}")
             return False

@@ -80,7 +80,7 @@ def logar():
 def listar_alunos():
     if request.method == 'GET':
         usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
+        lista_alunos = usuario.listar_contratos_motorista()
         return render_template("listar-aluno.html", alunos=lista_alunos)
 
 
@@ -100,7 +100,7 @@ def historico_pagamento():
 def historico_pagamento_filtro(mes):
     mes = request.args.get('mes')
      # Recupera o id do motorista logado a partir da sessão
-    cpf_motorista = session.get("cpf_motorista")
+    cpf_motorista = session['usuario_logado']['cpf']
     
     # Verifica se o motorista está logado
     if not cpf_motorista:
@@ -116,16 +116,15 @@ def historico_pagamento_filtro(mes):
 def gerar_pagamento_get():
     if request.method == 'GET':
         usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
+        lista_alunos = usuario.listar_contratos_motorista()
         return render_template("gerar_pagamento.html", alunos=lista_alunos)
     else:
-
         # Pega os valores do formulário
         id_aluno = request.form.get("id_aluno")
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")
+        cpf_motorista = session.get("usuario_logado")['cpf']  # Pegando o CPF do motorista logado
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
@@ -139,7 +138,7 @@ def gerar_pagamento_get():
 def quebra_foto(id_aluno):
     return render_template("quebra-contrato.html", id_aluno = id_aluno)
     
-@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
+@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST']) 
 def excluir_aluno(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
@@ -147,7 +146,7 @@ def excluir_aluno(id_aluno):
             usuario.excluir_aluno(id_aluno)
             return redirect('/listar-alunos')
         
-@app.route("/excluir-hsitorico/<id_aluno>", methods=['GET', 'POST'])
+@app.route("/excluir-historico/<id_aluno>", methods=['GET', 'POST'])
 def excluir_historico(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
