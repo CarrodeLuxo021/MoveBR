@@ -144,15 +144,15 @@ def excluir_aluno(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
             usuario = Usuario()
-            usuario.excluir_aluno(id_aluno)
+            usuario.excluir_alunos(id_aluno)
             return redirect('/listar-alunos')
         
-@app.route("/excluir-hsitorico/<id_aluno>", methods=['GET', 'POST'])
-def excluir_historico(id_aluno):
+@app.route("/excluir-historico/<id_pagamento>", methods=['GET', 'POST'])
+def excluir_historico(id_pagamento):
     if request.method == 'GET':
         if 'usuario_logado' in session:
             usuario = Usuario()
-            usuario.excluir_historico(id_aluno)
+            usuario.excluir_historico(id_pagamento)
             return redirect('/historico-pagamento')
     
 app.run(debug=True)
