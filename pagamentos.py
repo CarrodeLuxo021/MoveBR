@@ -33,7 +33,7 @@ class Pagamentos():
             mycursor = mydb.cursor()
 
             # SQL sem o filtro de mês
-            sql = """SELECT nome_aluno, mes_pagamento, data_pagamento, valor_pagamento FROM historico_pagamentos
+            sql = """SELECT nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_pagamento FROM historico_pagamentos
                     INNER JOIN tb_alunos
                     ON historico_pagamentos.id_aluno = tb_alunos.id_aluno;"""
 
@@ -47,7 +47,8 @@ class Pagamentos():
                     "nome_aluno": linha[0],
                     "mes_pagamento": linha[1],
                     "data_pagamento": linha[2],
-                    "valor_pagamento": linha[3]
+                    "valor_pagamento": linha[3],
+                    "id_pagamento": linha[4]
                 })
 
             mydb.close()

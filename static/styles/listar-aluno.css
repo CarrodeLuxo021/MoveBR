@@ -331,3 +331,41 @@ figure{
     text-align: center;
     margin-bottom: 20px;
 }
+.filtro-escolas {
+    margin-bottom: 20px;
+}
+
+.escolas-botoes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.botao-escola {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.botao-escola:hover {
+    background-color: #0056b3;
+}
+.btn-escola{
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    font-size: 15px;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
+}
+.btn-escola:hover{
+    color: var(--cor-03); /* Texto branco */
+    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
+}
