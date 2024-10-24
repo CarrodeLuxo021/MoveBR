@@ -12,26 +12,28 @@
 
 <body>
 
-    <header class="global-header">
-        <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
-        </figure>
+    <header>
+        <div class="cabecalho_motorista">
+            <figure>
+                <div class="logo"><img src="/static/icones/movebr.png" alt="Logo MoveBR"></div>
+            </figure>
+        </div>
     </header>
 
     <main>
-        <div class="titulo">
+        <section class="titulo">
             <h2>BEM VINDO(A) AO MOVEBR!</h2>
             <p>Faça seu login para ter acesso ao sistema.</p>
-        </div>
+        </section>
 
         <form class="container-form" action="#" method="post">
             <div class="itens-form">
                 <div class="cima-container">
                     <label for="emailAluno">Email:</label>
-                    <input type="email" id="emailAluno" name="email" placeholder="ex: nome@exemplo.com">
+                    <input type="email" id="emailAluno" name="email" placeholder="ex: nome@exemplo.com" required>
 
                     <label for="senhaAluno">Senha:</label>
-                    <input type="password" id="senhaAluno" name="senha" placeholder="ex: mínimo 8 caracteres">
+                    <input type="password" id="senhaAluno" name="senha" placeholder="ex: mínimo 8 caracteres" required>
                     <a href="#" class="link-senha">Esqueceu sua senha?</a>
                 </div>
 
@@ -50,7 +52,7 @@
     <script>
         {% with mensagens = get_flashed_messages() %}
         {% for alerta in mensagens %}
-        { { alerta | safe } }
+        {{ alerta | safe }}
         {% endfor %}
         {% endwith %}
     </script>

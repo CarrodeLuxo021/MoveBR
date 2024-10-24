@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-/* Reset básico para garantir consistência entre navegadores */
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -9,187 +9,202 @@
 
 /* Estilização do cabeçalho */
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
-    /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03);
-    /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    /* Sombra suave para profundidade */
-    height: 90px;
-    margin-bottom: 20px;
+    background-color: #2c3e50; /* Azul escuro */
+    color: #ecf0f1; /* Texto claro */
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
-figure img {
-    height: auto;
-    width: 120px;
+.cabecalho_motorista .logo img {
+    height: 100px;
 }
 
-.cabecalho_motorista {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-body {
-    margin: 0;
-    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    background: #eaeaea;
-}
-
-nav {
+.perfil-icon {
     height: 40px;
+    border-radius: 50%;
+}
+
+/* Estilização da navegação */
+nav {
     display: flex;
     justify-content: center;
-    /* Centraliza horizontalmente */
-    align-items: center;
+    background-color: #34495e; /* Azul mais claro */
 }
 
-/* Estilos dos botões */
-.botao {
-    border: solid 1px var(--cor-06);
-    border-radius: 15px;
-    color: #000000;
-    font-size: 15px;
-    background-color: var(--cor-03);
-    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
-    height: 50px;
-    width: 200px;
-    margin-right: 30px;
+.nav-item {
+    color: #ecf0f1;
+    padding: 15px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
-/* Último botão sem margem à direita */
-nav a:last-child .botao {
-    margin-right: 0;
+.nav-item:hover {
+    background-color: #E79428; /* Azul vibrante ao passar o mouse */
 }
 
-/* Efeito hover para mudar a cor da letra */
-.botao:hover {
-    color: var(--cor-03);
-    /* Texto branco */
-    background-color: var(--cor-06);
-    /* Cor de fundo diferente ao passar o mouse */
+/* Estilização do corpo */
+body {
+    font-family: "Roboto", sans-serif;
+    background: #ecf0f1;
+    color: #2c3e50;
 }
 
-/* Estilização do rodapé */
-footer {
-    position: absolute;
-    background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
-    color: var(--cor-03);
-    /* Texto claro para contraste */
-    padding: 30px;
-    /* Espaçamento interno */
-    bottom: 0;
-    height: 20px;
-    width: 100%;
-    /* Ocupa toda a largura da página */
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
-    /* Sombra suave para profundidade */
-}
-
-p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Estilos para as novas seções */
+/* Seções principais */
 main {
-    width: 100%;
-    height: 100%;
     padding: 20px;
-    margin-top: 20px;
-    background-color: #f4f4f4;
-    /* Fundo claro para contraste */
-    color: #000000;
-    /* Texto escuro para melhor legibilidade */
 }
 
-.section01-pag_motorista {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--cor-01);
+.welcome-section {
+    text-align: center;
     margin-bottom: 40px;
 }
 
-h1 {
-    text-align: center;
-    font-size: 26px;
-    margin-bottom: 10px;
-    font-weight: 800;
-}
-
 .slogan {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--cor-06);
+    font-size: 16px;
+    font-weight: 500;
+    color: #4c6b89;
 }
 
-.section02-pag_motorista {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #000000;
+/* Estilização dos cards */
+.services-section {
+    text-align: center;
 }
 
-.cards-inicio-motorista {
+.cards-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.card-pag-inicio-motorista {
-    background-color: var(--cor-03);
-    border: 1px solid #ddd;
+.service-card {
+    background-color: #ffffff;
     border-radius: 10px;
-    width: 250px;
-    margin: 20px 30px 0 0;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    width: 280px;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.card-pag-inicio-motorista h2 {
-    color: var(--cor-06);
-    font-weight: 600;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
+.service-card:hover {
+    transform: translateY(-5px);
 }
 
-.card-pag-inicio-motorista p {
-    color: var(--cor-01);
-    font-size: 0.9rem;
-}
-
-.icon img {
+.service-icon {
     width: 50px;
     height: 50px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2, h3 {
+    font-size: 20px;
+}
+
+/* Estilização do rodapé */
+footer {
+    margin-top: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px;
 }
 
 /* Media Queries */
-@media (max-width: 1200px) {}
 
-@media (max-width: 992px) {}
+/* Para telas menores que 1200px */
+@media (max-width: 1200px) {
+    .service-card {
+        width: 220px;
+    }
 
-@media (max-width: 768px) {}
+    nav .nav-item {
+        font-size: 14px;
+    }
+}
 
+/* Para telas menores que 992px */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column; /* Coloca a logo e o menu em coluna */
+        align-items: center; /* Centraliza a logo */
+        text-align: center; /* Centraliza o texto do cabeçalho */
+    }
+
+    .cabecalho_motorista {
+        width: 100%;
+        padding: 10px 0; /* Espaçamento para melhor visualização */
+    }
+
+    .perfil-icon {
+        margin-top: 10px;
+    }
+}
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .welcome-section h1 {
+        font-size: 22px;
+    }
+
+    .slogan {
+        font-size: 14px;
+    }
+
+    nav {
+        flex-direction: column; /* Alinha os itens verticalmente */
+        align-items: center; /* Centraliza os itens no mobile */
+    }
+
+    /* Centraliza a logo verticalmente e horizontalmente */
+    .cabecalho_motorista {
+        display: flex;
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        height: 100px; /* Define altura para centralização vertical */
+    }
+}
+
+/* Para telas menores que 576px */
 @media (max-width: 576px) {
     nav {
-        display: none;
+        width: 100%; /* Ocupa toda a largura */
+    }
+
+    .nav-item {
+        padding: 10px 0; /* Aumenta o espaçamento vertical */
+        width: 100%; /* Itens ocupam toda a largura */
+        text-align: center; /* Centraliza o texto */
     }
 
     h1 {
         font-size: 20px;
     }
 
-    .botao {
-        display: none;
+    .slogan {
+        font-size: 12px;
+    }
+
+    .service-card {
+        width: 100%;
     }
 }
