@@ -131,7 +131,7 @@ def excluir_aluno(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
             usuario = Usuario()
-            usuario.excluir_alunos(id_aluno)
+            usuario.excluir_aluno(id_aluno)
             return redirect('/listar-alunos')
 
 
