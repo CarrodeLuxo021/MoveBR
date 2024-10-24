@@ -165,7 +165,7 @@ def excluir_historico(id_aluno):
         if 'usuario_logado' in session:
             usuario = Pagamentos()
             usuario.excluir_historico(id_aluno)
-            return redirect('/historico-pagamento')
+            return redirect('/historico_pagamento')
 
 
     
