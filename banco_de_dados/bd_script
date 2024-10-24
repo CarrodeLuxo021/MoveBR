@@ -40,15 +40,14 @@ CREATE TABLE tb_alunos_clientes (
 
 -- Criação da tabela historico_pagamento
 CREATE TABLE historico_pagamentos (
-    nome_aluno VARCHAR(50),
     id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
+    nome_aluno VARCHAR(50),
     valor_pagamento FLOAT,
-    mes_pagamento varchar(20),
-    data_pagamento varchar(10),
+    mes_pagamento VARCHAR(20),
+    data_pagamento VARCHAR(10),
     id_aluno INT,
-    cpf_motorista varchar(100),
+    cpf_motorista VARCHAR(100),
     FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
-    
 );
 
 -- Criação da tabela tb_faltas

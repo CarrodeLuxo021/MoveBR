@@ -1,69 +1,76 @@
 <!DOCTYPE html>
-
+<html lang="pt-br">
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Pagamentos</title>
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
     <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
     <link rel="icon" href="/static/icones/dinheiro.png" type="image/x-icon">
 </head>
-
 <body>
     <header>
-        <button class="button-back" type="button"><a href="/pag-inicial-motorista"><img
-                    src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
+        <button class="button-back" type="button">
+            <a href="/pag-inicial-motorista">
+                <img src="/static/icones/seta-voltar.png" alt="Voltar para a página inicial">
+            </a>
+        </button>
         <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt="logo da movebr"></div>
+            <div class="logo">
+                <img src="/static/icones/logo.png" alt="Logo da MoveBR">
+            </div>
         </figure>
     </header>
 
     <div class="container">
         <div class="cabecalho-container">
-            <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="icone-dinheiro">
+            <img src="/static/icones/dinheiro.png" alt="Ícone de dinheiro" class="icone-dinheiro">
             <h2>Histórico de Pagamentos</h2>
         </div>
-        <form action="/gerar_pagamento" class="ger-pagamento" method="get">
+
+        <form action="/gerar-pagamento" method="get" class="ger-pagamento">
             <div class="ger-pagamento-container">
-                <button type="submit" class="ger-pagamento" id="ger-pagamento">Gerar novo pagamento</button>
+                <button type="submit" class="ger-pagamento">Gerar novo pagamento</button>
             </div>
         </form>
 
         <div class="informacoes">
+            <!-- Verifica se há pagamentos -->
             {% if pagamentos %}
-            {% for pagamento in pagamentos %}
             <table class="alunos-listados">
-                <div class="container-tabela">
-                    <tbody>
-                        <tr class="aluno">
-                            <td>
-                                <!-- Perfil do Aluno -->
-                                <div class="perfil-aluno">
-                                    <!-- Informações básicas do Pagamento -->
-                                    <div class="info-aluno">
-                                        <h2>{{ pagamento.nome_aluno }}</h2> <!-- Nome do aluno -->
-                                        <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }} </p>
-                                        <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }} </p>
-                                        <p><strong>Valor do pagamento:</strong> {{ pagamento.valor_pagamento }} </p>
-                                    </div>
-                                    <a href="/excluir-historico/{{pagamento.id_pagamento}}"><button class="btn-excluir">Excluir</button></a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </div>
+                <thead>
+                    <tr>
+                        <th>Nome do Aluno</th>
+                        <th>Mês do Pagamento</th>
+                        <th>Data do Pagamento</th>
+                        <th>Valor do Pagamento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pagamento in pagamentos %}
+                    <tr>
+                        <td>{{ pagamento.nome_aluno }}</td>
+                        <td>{{ pagamento.mes_pagamento }}</td>
+                        <td>{{ pagamento.data_pagamento }}</td>
+                        <td>R$ {{ pagamento.valor_pagamento }}</td>
+                        <td>
+                            <a href="/excluir-historico/{{ pagamento.id_pagamento }}">
+                                <button class="btn-excluir">Excluir</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
-            {% endfor %}
             {% else %}
             <p>Nenhum pagamento encontrado.</p>
             {% endif %}
-
-
         </div>
+    </div>
 
-        <script src="../static/js/historico-pagamento.js"></script>
+    <script src="/static/js/historico-pagamento.js"></script>
 </body>
-
 </html>

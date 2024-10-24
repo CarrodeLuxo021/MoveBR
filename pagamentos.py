@@ -32,16 +32,19 @@ class Pagamentos():
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            # SQL sem o filtro de mês
-            sql = """SELECT nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_pagamento FROM historico_pagamentos
-                    INNER JOIN tb_alunos
-                    ON historico_pagamentos.id_aluno = tb_alunos.id_aluno;"""
+            # Consulta SQL para listar os pagamentos e informações dos alunos
+            sql = """
+            SELECT tb_alunos.nome_aluno, historico_pagamentos.mes_pagamento, historico_pagamentos.data_pagamento, 
+                historico_pagamentos.valor_pagamento, historico_pagamentos.id_pagamento
+            FROM historico_pagamentos
+            INNER JOIN tb_alunos ON historico_pagamentos.id_aluno = tb_alunos.id_aluno;
+            """
 
             mycursor.execute(sql)
             resultados = mycursor.fetchall()
-            historico = []
 
-            # Iterando sobre os resultados e adicionando ao histórico
+            # Formatação dos resultados em uma lista de dicionários
+            historico = []
             for linha in resultados:
                 historico.append({
                     "nome_aluno": linha[0],
@@ -51,12 +54,16 @@ class Pagamentos():
                     "id_pagamento": linha[4]
                 })
 
-            mydb.close()
             return historico
-        
+
         except Exception as e:
             print(f"Erro ao listar histórico: {e}")
-            return False
+            return []
+
+        finally:
+            if mydb.is_connected():
+                mycursor.close()
+                mydb.close()
            
     def listar_historico_filtro(self, mes, cpf_motorista):
         try:

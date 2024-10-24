@@ -77,14 +77,11 @@ def logar():
 
 @app.route("/historico_pagamento", methods=['GET'])
 def historico_pagamento():
-    if request.method == 'GET':
-        pagamentos = Pagamentos()
-        historico = pagamentos.listar_historico()  # Chama o método listar_historico()
+    pagamentos = Pagamentos()
+    historico = pagamentos.listar_historico()  # Chama o método listar_historico()
 
-        if historico:
-            return render_template("historico-pagamento.html", pagamentos=historico)  # Passa a lista de pagamentos
-        else:
-            return render_template("historico-pagamento.html", pagamentos=[])
+    # Renderiza o template com os pagamentos ou uma lista vazia
+    return render_template("historico-pagamento.html", pagamentos=historico)
 
 @app.route("/historico_pagamento_filtro/<mes>", methods=['POST'])
 def historico_pagamento_filtro(mes):
@@ -109,7 +106,7 @@ def gerar_pagamento_get():
     if request.method == 'GET':
         usuario = Usuario()
         lista_alunos = usuario.listar_aluno()
-        return render_template("gerar-pagamento.html", alunos=lista_alunos)
+        return render_template("gerar_pagamento.html", alunos=lista_alunos)
     else:
            # Pega os valores do formulário
         id_aluno = request.form.get("id_aluno")
@@ -122,9 +119,9 @@ def gerar_pagamento_get():
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
-            return redirect("/historico-pagamento")
+        return redirect("/historico_pagamento")
     else:
-            return "Erro ao gerar o pagamento", 500
+        return "Erro ao gerar o pagamento", 500
 
      
 
