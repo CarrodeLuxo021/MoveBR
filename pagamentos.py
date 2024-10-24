@@ -57,6 +57,7 @@ class Pagamentos():
         except Exception as e:
             print(f"Erro ao listar histórico: {e}")
             return False
+           
     def listar_historico_filtro(self, mes, cpf_motorista):
         try:
             mydb = Conexao.conectar()

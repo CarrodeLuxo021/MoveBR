@@ -104,6 +104,8 @@ def historico_pagamento_filtro(mes):
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
+
+
     if request.method == 'GET':
         usuario = Usuario()
         lista_alunos = usuario.listar_aluno()
@@ -116,11 +118,12 @@ def gerar_pagamento_get():
         valor_pagamento = float(request.form["valor_pagamento"])
         cpf_motorista = session.get("cpf_motorista")
 
+
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
-        pagamento = Pagamentos()
-        if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
+    pagamento = Pagamentos()
+    if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
             return redirect("/historico-pagamento")
-        else:
+    else:
             return "Erro ao gerar o pagamento", 500
 
      
