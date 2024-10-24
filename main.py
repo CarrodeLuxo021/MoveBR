@@ -159,7 +159,13 @@ def listar_alunos():
     # Renderiza o template, passando os alunos filtrados e todas as escolas
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
 
-
+@app.route("/excluir-historico/<id_aluno>", methods=['GET', 'POST'])
+def excluir_historico(id_aluno):
+    if request.method == 'GET':
+        if 'usuario_logado' in session:
+            usuario = Usuario()
+            usuario.excluir_historico(id_aluno)
+            return redirect('/historico-pagamento')
 
 
     
