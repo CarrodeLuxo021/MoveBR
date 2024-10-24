@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 from usuario import Usuario
 from pagamentos import Pagamentos
+from conexao import Conexao
 from upload_file import upload_file
 
 app = Flask(__name__)
@@ -166,6 +167,58 @@ def excluir_historico(id_aluno):
             usuario = Pagamentos()
             usuario.excluir_historico(id_aluno)
             return redirect('/historico_pagamento')
+
+@app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
+def editar_aluno(id_aluno):
+    conn = Conexao.conectar()
+    cursor = conn.cursor(dictionary=True)
+
+    # Quando o método for GET, busque os dados do aluno para preencher o formulário
+    if request.method == 'GET':
+        cursor.execute("SELECT * FROM tb_alunos WHERE id_aluno = %s", (id_aluno,))
+        aluno = cursor.fetchone()
+        
+        if aluno:
+            return render_template('editar-aluno.html', aluno=aluno)
+        else:
+            return "Aluno não encontrado", 404
+    
+    # Quando o método for POST, salve os dados atualizados
+    elif request.method == 'POST':
+        nome_aluno = request.form.get('nome-aluno')
+        condicao_medica = request.form.get('condicao-medica')
+        escola = request.form.get('escola')
+        nome_responsavel = request.form.get('nome-responsavel')
+        endereco = request.form.get('endereco-aluno')
+        telefone_responsavel = request.form.get('telefone-responsavel')
+        email_responsavel = request.form.get('email-aluno')
+
+        # Verificar se o usuário fez upload de uma nova foto
+        foto_aluno = request.files.get('foto-aluno')
+        if foto_aluno and foto_aluno.filename != '':
+            # Validar tipo de arquivo de imagem
+            if foto_aluno.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+                foto_path = f"/static/images/{foto_aluno.filename}"
+                foto_aluno.save(os.path.join('static', 'images', foto_aluno.filename))
+            else:
+                return "Formato de imagem inválido. Use PNG, JPG ou JPEG.", 400
+        else:
+            # Manter a foto existente
+            cursor.execute("SELECT foto_aluno FROM tb_alunos WHERE id_aluno = %s", (id_aluno,))
+            foto_path = cursor.fetchone()['foto_aluno']
+
+        # Atualizar os dados do aluno no banco de dados
+        cursor.execute("""
+            UPDATE tb_alunos
+            SET nome_aluno = %s, condicao_medica = %s, escola = %s, nome_responsavel = %s, endereco = %s, telefone_responsavel = %s, email_responsavel = %s, foto_aluno = %s
+            WHERE id_aluno = %s
+        """, (nome_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel, foto_path, id_aluno))
+        
+        conn.commit()
+        conn.close()
+
+        return redirect('/listar-alunos')
+
 
 
     
