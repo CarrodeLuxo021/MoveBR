@@ -21,15 +21,13 @@ def pag_cadastro_motorista():
     else:
         nome = request.form["nome"]
         cpf = request.form["cpf"]
-        cnpj = request.form["cnpj"]
-        cnh = request.form["cnh"]
         telefone = request.form["telefone"]
         email = request.form["email"]
         senha = request.form["senha"]
         flash("alert('Usuário cadastrado com sucesso!')")
 
         usuario = Usuario()
-        if usuario.cadastrar_motorista(nome, cpf, cnpj, cnh, telefone, email, senha):
+        if usuario.cadastrar_motorista(nome, cpf, telefone, email, senha):
             return redirect('/logar') 
         else:
             return redirect('/')
@@ -62,6 +60,8 @@ def logar():
     else:
         senha = request.form['senha']
         email = request.form['email']
+        
+
         usuario = Usuario()
         if usuario.logar(email, senha):
             session['usuario_logado'] = {
@@ -72,6 +72,7 @@ def logar():
             return redirect('/pag-inicial-motorista')
         else:
             session.clear()
+            flash("alert('login ou senha incorretos!')")
             return redirect("/logar")
 
 @app.route("/historico_pagamento", methods=['GET'])
@@ -103,24 +104,29 @@ def historico_pagamento_filtro(mes):
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
-    usuario = Usuario()
-    lista_alunos = usuario.listar_aluno()
-      # Pega os valores do formulário
-    id_aluno = request.form.get("id_aluno")
-    data_pagamento = request.form.get("data_pagamento")
-    mes_pagamento = request.form.get("mes_pagamento")
-    valor_pagamento = float(request.form["valor_pagamento"])
-    cpf_motorista = session.get("cpf_motorista")
+
+
+    if request.method == 'GET':
+        usuario = Usuario()
+        lista_alunos = usuario.listar_aluno()
+        return render_template("gerar-pagamento.html", alunos=lista_alunos)
+    else:
+           # Pega os valores do formulário
+        id_aluno = request.form.get("id_aluno")
+        data_pagamento = request.form.get("data_pagamento")
+        mes_pagamento = request.form.get("mes_pagamento")
+        valor_pagamento = float(request.form["valor_pagamento"])
+        cpf_motorista = session.get("cpf_motorista")
+
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
             return redirect("/historico-pagamento")
     else:
-    
-            return render_template("gerar-pagamento.html", alunos=lista_alunos)
+            return "Erro ao gerar o pagamento", 500
 
-      
+     
 
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
 def quebra_foto(id_aluno):

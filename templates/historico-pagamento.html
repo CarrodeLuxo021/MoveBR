@@ -1,108 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Histórico de Pagamentos</title>
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    
+    <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
+    <link rel="icon" href="/static/icones/dinheiro.png" type="image/x-icon">
 </head>
+
 <body>
     <header>
+        <button class="button-back" type="button"><a href="/pag-inicial-motorista"><img
+                    src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
         <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
-            <div class="menu-icon" id="menu-icon">
-                <img src="/static/icones/menu.png" alt="Perfil" id="profile-icon"/>
-            </div>
+            <div class="logo"><img src="/static/icones/logo.png" alt="logo da movebr"></div>
         </figure>
     </header>
 
-    <div class="navegacao">
-        <a href="/pag-inicial-motorista"><button class="botao">Início</button></a> 
-        <a href="/listar-alunos"><button class="botao">Alunos clientes</button></a>  
-         
-    </div>
-    
-    <nav id="menu" class="menu">
-
-        <a href="/"><button class="card" id="pagInicial" aria-label="pagInicial">
-            <img src="/static/icones/inicio.png" alt="Ícone de início" />
-            <p>Início</p>
-        </button></a>
-
-        <a href="/listar-aluno"><button class="card" id="Rotas" aria-label="Rotas">
-            <img src="/static/icones/estudantes.png" alt="Ícone de alunos" />
-            <p>Alunos</p>
-        </button></a>
-        
-    </nav>
-
-    <div class="container1">
-        <div class="header1">
-            <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="user-photo">
-            <h1>Histórico de Pagamentos</h1>
-            <button id="toggleBtn" class="toggle-btn">&#9650;</button>
+    <div class="container">
+        <div class="cabecalho-container">
+            <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="icone-dinheiro">
+            <h2>Histórico de Pagamentos</h2>
         </div>
-        
-          <a href="/gerar-pagamento"><button type="submit">Gerar novo pagamento</button></a>
-       
-    
-        <!-- Verifica se existem pagamentos e itera sobre eles -->
-        {% if pagamentos %}
+        <form action="/gerar_pagamento" class="ger-pagamento" method="get">
+            <div class="ger-pagamento-container">
+                <button type="submit" class="ger-pagamento" id="ger-pagamento">Gerar novo pagamento</button>
+            </div>
+        </form>
+
+        <div class="informacoes">
+            {% if pagamentos %}
             {% for pagamento in pagamentos %}
-                <table class="alunos-listados">
-                    <div class="container-tabela">
-                        <tbody>
-                            <tr class="aluno">
-                                <td>
-                                    <!-- Perfil do Aluno -->
-                                    <div class="perfil-aluno">
-                                        <!-- Informações básicas do Pagamento -->
-                                        <div class="info-aluno">
-                                            <h2>{{ pagamento.nome_aluno }}</h2> <!-- Nome do aluno -->
-                                            <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }} </p>
-                                            <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }} </p>
-                                            <p><strong>Valor do pagamento:</strong> <p id="valor_pagamento">{{ pagamento.valor_pagamento }}</p> </p>
-                                        </div>
-                                        <a href="/excluir-historico/{{ pagamento.id_pagamento }}"><button>Excluir</button></a>
+            <table class="alunos-listados">
+                <div class="container-tabela">
+                    <tbody>
+                        <tr class="aluno">
+                            <td>
+                                <!-- Perfil do Aluno -->
+                                <div class="perfil-aluno">
+                                    <!-- Informações básicas do Pagamento -->
+                                    <div class="info-aluno">
+                                        <h2>{{ pagamento.nome_aluno }}</h2> <!-- Nome do aluno -->
+                                        <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }} </p>
+                                        <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }} </p>
+                                        <p><strong>Valor do pagamento:</strong> {{ pagamento.valor_pagamento }} </p>
                                     </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </div>
-                </table>
+                                    <a href="/excluir-historico/{{pagamento.id_pagamento}}"><button class="btn-excluir">Excluir</button></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
+            </table>
             {% endfor %}
-        {% else %}
+            {% else %}
             <p>Nenhum pagamento encontrado.</p>
-        {% endif %}
+            {% endif %}
 
-        <h2 class="valor_total">Valor Total: <span id="valor_total"></span></h2>
-    </div>
 
-    <script>
-        window.onload = function() {
-        // Seleciona todos os elementos <p> com o id 'valor_pagamento'
-        const valoresPagamento = document.querySelectorAll("#valor_pagamento");
-        let total = 0;
+        </div>
 
-        // Itera pelos elementos e soma os valores
-        valoresPagamento.forEach(function(pagamento) {
-            let valor = parseFloat(pagamento.textContent.trim()); // Converte o texto para float
-            if (!isNaN(valor)) { // Verifica se é um número válido
-                total += valor;
-            }
-        });
-
-        // Exibe o valor total no span com id "valor_total"
-        document.getElementById("valor_total").textContent = total.toFixed(2); // Formata para 2 casas decimais
-        };
-        </script>
-    <script src="/static/js/historico-pagamento.js"></script>
+        <script src="../static/js/historico-pagamento.js"></script>
 </body>
-</html>
- 
 
-        
+</html>

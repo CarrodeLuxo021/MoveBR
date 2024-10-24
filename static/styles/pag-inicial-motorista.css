@@ -9,10 +9,17 @@
 
 /* Estilização do cabeçalho */
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
-    height: 100px;
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+    /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03);
+    /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra suave para profundidade */
+    height: 90px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 figure img {
@@ -30,21 +37,22 @@ figure img {
 
 body {
     margin: 0;
-    font-family: "Roboto", "Helvetica Neue", "Helvetica",  "Arial", sans-serif;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     background: #eaeaea;
 }
 
 nav {
+    height: 40px;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
+    /* Centraliza horizontalmente */
     align-items: center;
-    margin-top: 20px; /* Ajusta a margem para dar espaçamento */
 }
 
 /* Estilos dos botões */
 .botao {
     border: solid 1px var(--cor-06);
-    border-radius: 10px;
+    border-radius: 15px;
     color: #000000;
     font-size: 15px;
     background-color: var(--cor-03);
@@ -61,19 +69,32 @@ nav a:last-child .botao {
 
 /* Efeito hover para mudar a cor da letra */
 .botao:hover {
-    color: var(--cor-03); /* Texto branco */
-    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
+    color: var(--cor-03);
+    /* Texto branco */
+    background-color: var(--cor-06);
+    /* Cor de fundo diferente ao passar o mouse */
 }
 
 /* Estilização do rodapé */
 footer {
+    position: absolute;
     background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
-    color: var(--cor-03); /* Texto claro para contraste */
-    padding: 30px; /* Espaçamento interno */
-    text-align: center; /* Centralizar o conteúdo */
+    color: var(--cor-03);
+    /* Texto claro para contraste */
+    padding: 30px;
+    /* Espaçamento interno */
     bottom: 0;
-    width: 100%; /* Ocupa toda a largura da página */
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
+    height: 20px;
+    width: 100%;
+    /* Ocupa toda a largura da página */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra suave para profundidade */
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos para as novas seções */
@@ -81,52 +102,41 @@ main {
     width: 100%;
     height: 100%;
     padding: 20px;
-    margin-top: 30px;
-    background-color: #f4f4f4; /* Fundo claro para contraste */
-    color: #000000; /* Texto escuro para melhor legibilidade */
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    /* Fundo claro para contraste */
+    color: #000000;
+    /* Texto escuro para melhor legibilidade */
 }
 
 .section01-pag_motorista {
-    margin: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     color: var(--cor-01);
-    margin-bottom: 70px;
+    margin-bottom: 40px;
 }
 
 h1 {
-    font-size: 30px;
+    text-align: center;
+    font-size: 26px;
     margin-bottom: 10px;
     font-weight: 800;
 }
 
-h2 {
-    font-size: 25px;
-    font-weight: 700;
-}
-
 .slogan {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     color: var(--cor-06);
 }
 
 .section02-pag_motorista {
-    margin: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     color: #000000;
-    margin-bottom: 100px;
-}
-
-.section02-pag_motorista h2 {
-    font-weight: 800;
 }
 
 .cards-inicio-motorista {
@@ -140,17 +150,17 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 10px;
     width: 250px;
-    margin: 20px;
+    margin: 20px 30px 0 0;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .card-pag-inicio-motorista h2 {
-    color: #1c89aa;
+    color: var(--cor-06);
     font-weight: 600;
     font-size: 1.4rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .card-pag-inicio-motorista p {
@@ -159,72 +169,27 @@ h2 {
 }
 
 .icon img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
 }
 
 /* Media Queries */
-@media (max-width: 1200px) {
-    .card-pag-inicio-motorista {
-        width: 220px; /* Reduzir a largura em telas menores */
-    }
+@media (max-width: 1200px) {}
 
-    h1 {
-        font-size: 28px; /* Diminuir o tamanho do título */
-    }
+@media (max-width: 992px) {}
 
-    h2 {
-        font-size: 24px; /* Diminuir o tamanho do subtítulo */
-    }
-
-    .botao {
-        width: 180px; /* Ajustar largura dos botões */
-        height: 45px; /* Ajustar altura dos botões */
-    }
-}
-
-@media (max-width: 992px) {
-    nav {
-        flex-direction: column; /* Mudar para coluna em telas menores */
-        align-items: stretch; /* Alinhamento do conteúdo */
-    }
-
-    .botao {
-        margin: 10px 0; /* Adicionar margem vertical entre botões */
-        width: 100%; /* Botões ocupam 100% da largura */
-    }
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 26px; /* Diminuir ainda mais o tamanho do título */
-    }
-
-    .section01-pag_motorista {
-        margin-bottom: 50px; /* Ajustar a margem inferior */
-    }
-
-    .cards-inicio-motorista {
-        flex-direction: column; /* Colocar cartões em coluna */
-        align-items: center; /* Centralizar os cartões */
-    }
-
-    .card-pag-inicio-motorista {
-        width: 90%; /* Ajustar a largura dos cartões para 90% */
-    }
-}
+@media (max-width: 768px) {}
 
 @media (max-width: 576px) {
+    nav {
+        display: none;
+    }
+
     h1 {
-        font-size: 24px; /* Tamanho menor para telas muito pequenas */
+        font-size: 20px;
     }
 
-    .slogan {
-        font-size: 18px; /* Ajustar o tamanho do slogan */
-    }
-
-    .footer {
-        font-size: 14px; /* Ajustar o tamanho do texto do rodapé */
+    .botao {
+        display: none;
     }
 }

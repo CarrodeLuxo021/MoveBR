@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const menuIcon = document.getElementById('menu-icon');
     const menu = document.getElementById('menu');
 
-    menuIcon.addEventListener('click', function() {
+    menuIcon.addEventListener('click', function () {
         // Adiciona ou remove a classe 'show' para mostrar/esconder o menu
         if (menu.classList.contains('show')) {
             menu.classList.remove('show'); // Esconde o menu (desliza para fora)
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Função para abrir e fechar o menu
-document.getElementById('toggleBtn').addEventListener('click', function() {
+document.getElementById('toggleBtn').addEventListener('click', function () {
     var menu = document.getElementById('menu1');
     menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
     this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
@@ -26,7 +26,7 @@ const selectedMonth = document.getElementById('selectedMonth');
 
 // Adicionar evento de clique para cada botão
 monthButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         // Obter o mês atual a partir do botão clicado
         const currentMonth = this.getAttribute('data-month');
 
