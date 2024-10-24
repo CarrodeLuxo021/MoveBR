@@ -5,10 +5,59 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
-    line-height: 1.6; /* Melhora a legibilidade */
-    background-color: var(--cor-04); /* Cor de fundo clara */
-    color: var(--cor-01); /* Cor do texto */
+    font-family: 'Arial', sans-serif;
+    /* Fonte limpa e moderna */
+    line-height: 1.6;
+    /* Melhora a legibilidade */
+    background-color: var(--cor-04);
+    /* Cor de fundo clara */
+    color: var(--cor-01);
+    /* Cor do texto */
+}
+
+header {
+    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
+    /* Gradiente suave de azul claro para azul petróleo */
+    color: var(--cor-03);
+    /* Texto em bege claro para contraste elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra suave para profundidade */
+    height: 90px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-back {
+    background-color: transparent;
+    border: none;
+}
+
+.button-back img {
+    width: 20px;
+    height: auto;
+    margin-left: 30px;
+}
+
+figure img {
+    width: 100px;
+    /* Tamanho da imagem do logo */
+    height: auto;
+    /* Manter a proporção da imagem */
+    margin: 0 20px 0 0;
+}
+
+.btn-cadaluno button{
+    background-color: var(--cor-06);
+    color: var(--cor-03);
+    font-size: 15px;
+    margin-top: 6px;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 99999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;    
 }
 
 main {
@@ -27,44 +76,55 @@ main {
 .container-busca {
     display: flex;
     align-items: center;
-    position: relative; /* Para posicionar o botão corretamente */ 
-}
-
-.icone-busca{
-    position: absolute;
-    top: 20%;
-}
-
-.container-tabela{
-    margin: 2rem 0 0 0 ;
-}
-
-.input-busca {
-    padding: 10px 40px 10px 12px; /* Adiciona espaço para o ícone */
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
-    width: 100%; /* Preencher o espaço disponível */
-    transition: border-color 0.3s; /* Efeito de transição */
-    z-index: 1;
-}
-
-.input-busca:focus {
-    border-color: var(--cor-06); /* Cor ao focar */
-    outline: none; /* Remove contorno padrão */
+    position: relative;
+    /* Para posicionar o botão corretamente */
 }
 
 .icone-busca {
     position: absolute;
-    right: 10px; /* Espaço à direita */
-    background: transparent; /* Fundo transparente */
-    border: none; /* Remove borda */
-    cursor: pointer; /* Mão ao passar o mouse */
-    font-size: 16px; /* Tamanho do ícone */
+    top: 20%;
+}
+
+.container-tabela {
+    margin: 2rem 0 0 0;
+}
+
+.input-busca {
+    padding: 10px 40px 10px 12px;
+    /* Adiciona espaço para o ícone */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 100%;
+    /* Preencher o espaço disponível */
+    transition: border-color 0.3s;
+    /* Efeito de transição */
+}
+
+.input-busca:focus {
+    border-color: var(--cor-06);
+    /* Cor ao focar */
+    outline: none;
+    /* Remove contorno padrão */
+}
+
+.icone-busca {
+    position: absolute;
+    right: 10px;
+    /* Espaço à direita */
+    background: transparent;
+    /* Fundo transparente */
+    border: none;
+    /* Remove borda */
+    cursor: pointer;
+    /* Mão ao passar o mouse */
+    font-size: 16px;
+    /* Tamanho do ícone */
 }
 
 .icone-busca:hover {
-    color: var(--cor-06); /* Muda a cor ao passar o mouse */
+    color: var(--cor-06);
+    /* Muda a cor ao passar o mouse */
 }
 
 .alunos-listados {
@@ -140,11 +200,14 @@ td {
 
 /* Remover a repetição e manter o estilo dos detalhes */
 .detalhes {
-    display: none; /* Esconde inicialmente */
-    background-color: #F2F2F2; /* Cor de fundo cinza claro */
+    display: none;
+    /* Esconde inicialmente */
+    background-color: #F2F2F2;
+    /* Cor de fundo cinza claro */
     padding: 10px;
     border-radius: 4px;
-    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
+    margin-top: 10px;
+    /* Espaço entre o cabeçalho e a área expandida */
     transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
@@ -186,148 +249,71 @@ td {
 }
 
 .container-btn-excluir button {
-    background-color: var(--cor-06); /* Cor de fundo */
-    color: var(--cor-03); /* Cor do texto */
-    border: none; /* Remove borda padrão */
-    padding: 12px; /* Espaçamento interno */
-    border-radius: 6px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    background-color: var(--cor-06);
+    /* Cor de fundo */
+    color: var(--cor-03);
+    /* Cor do texto */
+    border: none;
+    /* Remove borda padrão */
+    padding: 12px;
+    /* Espaçamento interno */
+    border-radius: 6px;
+    /* Bordas arredondadas */
+    cursor: pointer;
+    /* Cursor de mão */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Transições suaves */
 }
 
+.botao-escola:hover {
+    background-color: #0056b3;
+}
+.btn-escola{
+    border: solid 1px var(--cor-06);
+    border-radius: 10px;
+    color: #000000;
+    font-size: 15px;
+    background-color: var(--cor-03);
+    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
+    height: 50px;
+    width: 200px;
+    margin-right: 30px;
+}
+.btn-escola:hover{
+    color: var(--cor-03); /* Texto branco */
+    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
+}
 /* --------------------------------------------------- */
 
-header {
-    height: 90px;
-    width: 100%;
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Verde mais escuro */
-    margin: none;
-    margin-bottom: 20px;
-}
-
-figure{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px 0 15px;
-}
-
-.logo img {
-    width: 90px;
-    height: auto;
-}
-
-.menu-icon {
-    cursor: pointer; 
-}
-
-.menu-icon img {
-    width: 50px;
-    height: 50px;
-}
-
-/* Inicialmente, o menu estará fora da tela (à direita) */
-.menu {
-    position: fixed;
-    top: 10%;
-    right: -400px; /* Mover para fora da tela */
-    height: 80%;
-    width: 170px;
-    background-color: #00000086;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px 0 0 10px;
-    transition: right 0.5s ease, transform 0.5s ease;
-    transform: scale(1); /* Sem redimensionamento inicialmente */
-    opacity: 1; 
-}
-
-/* Quando a classe 'show' é aplicada, o menu desliza para dentro da tela */
-.menu.show {
-    right: 0; /* Move o menu para dentro da tela */
-    transform: scale(0.9); /* Reduz o tamanho um pouco */
-    opacity: 1;
-    z-index: 2;
-}
-
-.menu a{
-    text-decoration: none;
-}
-
-/* Estilo dos cards */
-.card {
-    background-color: #d3d3d300;
-    border: none;
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    width: 130px;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card img {
-    width: 80px;
-    height: 80px;
-}
-
-.card p {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: var(--cor-03);
-}
-
-/* Efeitos de hover */
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card:active {
-    transform: scale(0.98);
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: calc(100vh - 80px); /* Altura restante após o header */
-}
-
-/* Estilização dos botões */
-.btn-container {
-    text-align: right; /* Alinha à direita */
-}
-
-.btn-container button {
-    background-color: var(--cor-06); /* Cor de fundo */
-    color: var(--cor-03); /* Cor do texto */
-    border: none; /* Remove borda padrão */
-    padding: 12px 24px; /* Espaçamento interno */
-    border-radius: 6px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão */
-    font-size: 16px; /* Tamanho da fonte */
-    margin-top: 40px; /* Espaço acima */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
-}
-
-.btn-container button:hover {
-    background-color: var(--cor-05); /* Cor ao passar o mouse */
-}
-
-.btn-container button:active {
-    transform: scale(0.98); /* Efeito de clique */
-}
-.AA{
+.AA {
     color: #333;
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 992px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 576px) {
+    .c-table {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .c-table h1 {
+        font-size: 15px;
+    }
+
+    .container-tabela {
+        margin: 0 0 0 20px;
+    }
+
+    .input-busca {
+        width: 80%;
+        /* Preencher o espaço disponível */
+    }
 }

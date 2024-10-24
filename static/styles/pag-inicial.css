@@ -7,37 +7,49 @@
 
 /* Estilo para o corpo do site */
 body {
-    font-family: Arial, sans-serif; /* Define a fonte do corpo */
-    background-color: #e4e4e4; /* Cor de fundo neutra */
-    color: #fff; /* Cor do texto geral branca */
+    font-family: Arial, sans-serif;
+    /* Define a fonte do corpo */
+    background-color: #e4e4e4;
+    /* Cor de fundo neutra */
+    color: #fff;
+    /* Cor do texto geral branca */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+    min-height: 100vh;
+    /* Garante que o body ocupe toda a altura da tela */
 }
 
 /* Estilos para o cabeçalho */
 header {
     display: flex;
-    justify-content: space-between; /* Alinha logo e ícone do menu nas extremidades */
-    align-items: center; /* Centraliza verticalmente os itens no header */
+    justify-content: space-between;
+    /* Alinha logo e ícone do menu nas extremidades */
+    align-items: center;
+    /* Centraliza verticalmente os itens no header */
     width: 100%;
     padding: 5px;
-    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%); /* Gradiente no background */
+    background-image: linear-gradient(to right, #6DA6B1 0%, #346D7E 100%);
+    /* Gradiente no background */
     color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra no header */
-    z-index: 999; /* Garante que o header fique sempre por cima de outros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Sombra no header */
+    z-index: 999;
+    /* Garante que o header fique sempre por cima de outros elementos */
 }
 
 /* Estilo para a logo */
 .logo img {
-    width: 150px; /* Define o tamanho da logo */
+    width: 150px;
+    /* Define o tamanho da logo */
 }
 
 /* Ícone de menu responsivo */
 .menu-icon {
-    cursor: pointer; /* Muda o cursor ao passar sobre o ícone */
-    color: #ffcc00; /* Define cor do ícone de menu */
+    cursor: pointer;
+    /* Muda o cursor ao passar sobre o ícone */
+    color: #ffcc00;
+    /* Define cor do ícone de menu */
     padding-left: 96%;
 }
 
@@ -53,17 +65,22 @@ header {
 /* Estilos principais do conteúdo */
 main {
     padding: 50px;
-    max-width: 1200px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centraliza o conteúdo */
-    color: #333; /* Cor do texto */
+    max-width: 1200px;
+    /* Largura máxima do conteúdo */
+    margin: 0 auto;
+    /* Centraliza o conteúdo */
+    color: #333;
+    /* Cor do texto */
 }
 
 /* Estilo dos títulos (h2) */
 h2 {
     color: #000;
     margin-bottom: 20px;
-    font-size: 3rem; /* Tamanho maior para destaque */
-    font-family: 'Bebas Neue', sans-serif; /* Fonte especial */
+    font-size: 3rem;
+    /* Tamanho maior para destaque */
+    font-family: 'Bebas Neue', sans-serif;
+    /* Fonte especial */
 }
 
 /* Estilo para h4 (subtítulos) */
@@ -81,8 +98,10 @@ section {
 /* Layout de cards para seções de serviços */
 .cards2 {
     display: flex;
-    justify-content: space-around; /* Distribui os cards uniformemente */
-    flex-wrap: wrap; /* Permite que os cards se ajustem em telas menores */
+    justify-content: space-around;
+    /* Distribui os cards uniformemente */
+    flex-wrap: wrap;
+    /* Permite que os cards se ajustem em telas menores */
 }
 
 /* Estilo dos cards de serviços */
@@ -93,13 +112,15 @@ section {
     width: 250px;
     margin: 20px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra leve */
     text-align: center;
 }
 
 /* Estilo dos títulos dos cards */
 .card3 h2 {
-    color: #6b1c1c; /* Cor de destaque */
+    color: #6b1c1c;
+    /* Cor de destaque */
     font-size: 1.4rem;
     margin-bottom: 15px;
 }
@@ -136,7 +157,8 @@ footer .social-icons a {
     color: #fff;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1.5rem; /* Tamanho dos ícones */
+    font-size: 1.5rem;
+    /* Tamanho dos ícones */
 }
 
 /* Estilo do texto do rodapé */
@@ -147,12 +169,14 @@ footer p {
 /* Responsividade para telas menores que 768px */
 @media (max-width: 768px) {
     .cards2 {
-        flex-direction: column; /* Alinha os cards em uma coluna */
+        flex-direction: column;
+        /* Alinha os cards em uma coluna */
         align-items: center;
     }
 
     .card3 {
-        width: 80%; /* Card ocupa maior parte da largura */
+        width: 80%;
+        /* Card ocupa maior parte da largura */
         margin-bottom: 20px;
     }
 }
@@ -160,15 +184,18 @@ footer p {
 /* Responsividade para telas menores que 600px */
 @media (max-width: 600px) {
     main {
-        padding: 20px; /* Reduz o padding em telas pequenas */
+        padding: 20px;
+        /* Reduz o padding em telas pequenas */
     }
 
     header {
-        flex-direction: column; /* Header em coluna para telas menores */
+        flex-direction: column;
+        /* Header em coluna para telas menores */
         padding: 20px;
     }
 
     h2 {
-        font-size: 2rem; /* Reduz o tamanho do título */
+        font-size: 2rem;
+        /* Reduz o tamanho do título */
     }
 }
