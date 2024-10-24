@@ -86,3 +86,5 @@ class Pagamentos():
             return historico
         except:
             return False
+        
+    

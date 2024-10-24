@@ -163,7 +163,7 @@ def listar_alunos():
 def excluir_historico(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
-            usuario = Usuario()
+            usuario = Pagamentos()
             usuario.excluir_historico(id_aluno)
             return redirect('/historico-pagamento')
 
