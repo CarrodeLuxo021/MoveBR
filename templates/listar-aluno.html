@@ -33,6 +33,27 @@
             </form>
         </div>
     </section>
+            <!-- Botões para filtrar por escola -->
+    <div class="container-listagem-busca">
+        <h2>Escolas</h2>
+        <ul>
+            <!-- Botão para exibir todos os alunos, aparece apenas uma vez -->
+            <li>
+                <form method="GET" action="{{ url_for('listar_alunos') }}">
+                    <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
+                </form>
+            </li>
+
+            <!-- Botões para cada escola, baseados na lista de escolas -->
+            {% for escola in escolas %}
+            <li>
+                <form method="GET" action="{{ url_for('listar_alunos', escola=escola) }}">
+                    <button type="submit" class="btn-escola" id="btn-{{ escola }}">{{ escola }}</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
     {% if alunos %}
     <h2 class="AA">Alunos cadastrados:</h2>
 

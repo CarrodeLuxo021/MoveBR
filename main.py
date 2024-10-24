@@ -60,6 +60,8 @@ def logar():
     else:
         senha = request.form['senha']
         email = request.form['email']
+        
+
         usuario = Usuario()
         if usuario.logar(email, senha):
             session['usuario_logado'] = {
@@ -70,6 +72,7 @@ def logar():
             return redirect('/pag-inicial-motorista')
         else:
             session.clear()
+            flash("alert('login ou senha incorretos!')")
             return redirect("/logar")
 
 @app.route("/historico_pagamento", methods=['GET'])
@@ -101,6 +104,8 @@ def historico_pagamento_filtro(mes):
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
+
+
     if request.method == 'GET':
         usuario = Usuario()
         lista_alunos = usuario.listar_aluno()
@@ -113,11 +118,12 @@ def gerar_pagamento_get():
         valor_pagamento = float(request.form["valor_pagamento"])
         cpf_motorista = session.get("cpf_motorista")
 
+
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
-        pagamento = Pagamentos()
-        if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
+    pagamento = Pagamentos()
+    if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
             return redirect("/historico-pagamento")
-        else:
+    else:
             return "Erro ao gerar o pagamento", 500
 
      
