@@ -107,7 +107,9 @@ main {
     border-radius: 6px;
     font-size: 16px;
     background-color: #f9f9f9;
+    text-transform: capitalize;
 }
+
 
 /* Estilização dos botões */
 .btn-container {
