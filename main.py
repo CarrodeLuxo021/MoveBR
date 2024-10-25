@@ -85,6 +85,10 @@ def historico_pagamento():
     # Renderiza o template com os pagamentos ou uma lista vazia
     return render_template("historico-pagamento.html", pagamentos=historico)
 
+
+
+    
+
 @app.route("/historico_pagamento_filtro/<mes>", methods=['POST'])
 def historico_pagamento_filtro(mes):
     mes = request.args.get('mes')
@@ -104,10 +108,9 @@ def historico_pagamento_filtro(mes):
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
 
-
     if request.method == 'GET':
         usuario = Usuario()
-        lista_alunos = usuario.listar_aluno()
+        lista_alunos = usuario.listar_contratos_motorista()
         return render_template("gerar_pagamento.html", alunos=lista_alunos)
     else:
            # Pega os valores do formulário
@@ -152,20 +155,23 @@ def listar_alunos():
         alunos_filtrados = usuario.listar_aluno_por_escola(escola)  # Lista de alunos filtrada pela escola
     else:
         # Se nenhuma escola foi selecionada, lista todos os alunos
-        alunos_filtrados = usuario.listar_aluno()  # Lista de todos os alunos
+        alunos_filtrados = usuario.listar_contratos_motorista()  # Lista de todos os alunos
 
     # Independente de escola selecionada, obtém a lista de todas as escolas disponíveis
-    lista_completa_alunos = usuario.listar_aluno()  # Lista completa de todos os alunos
+    lista_completa_alunos = usuario.listar_contratos_motorista()  # Lista completa de todos os alunos
     escolas = {aluno['escola'] for aluno in lista_completa_alunos}  # Conjunto de todas as escolas (evita duplicatas)
 
     # Renderiza o template, passando os alunos filtrados e todas as escolas
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
 
-@app.route("/excluir-historico/<int:id_pagamento>", methods=['POST'])
+@app.route("/excluir-historico/<id_pagamento>", methods=['POST'])
 def excluir_historico(id_pagamento):
     if 'usuario_logado' in session:
         usuario = Pagamentos()
-        usuario.excluir_historico(id_pagamento)
+        if usuario.excluir_historico(id_pagamento):
+            flash("Pagamento excluído com sucesso!")
+        else:
+            flash("Erro ao excluir pagamento.")
         return redirect('/historico_pagamento')
 
 @app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
@@ -182,7 +188,7 @@ def editar_aluno(id_aluno):
             return render_template('editar-aluno.html', aluno=aluno)
         else:
             return "Aluno não encontrado", 404
-    
+
     # Quando o método for POST, salve os dados atualizados
     elif request.method == 'POST':
         nome_aluno = request.form.get('nome-aluno')
