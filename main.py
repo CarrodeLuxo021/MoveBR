@@ -54,7 +54,7 @@ def pag_cadastro_aluno():
             return redirect('/listar-alunos') 
         else:
            return redirect('/cadastrar-aluno')
-        
+                                              
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
     if request.method == 'GET':
