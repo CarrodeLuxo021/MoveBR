@@ -89,11 +89,11 @@ class Pagamentos():
             print(f"Erro ao listar histórico: {e}")
             return False
         
-    def excluir_historico(self, id_aluno):
+    def excluir_historico(self, id_pagamento):
         mydb = Conexao.conectar()
         mycursor = mydb.cursor()
 
-        sql = f"DELETE  FROM historico_pagamentos WHERE id_aluno = {id_aluno}"
+        sql = f"DELETE FROM historico_pagamentos WHERE id_pagamento = {id_pagamento}"
         mycursor.execute(sql)
         mydb.commit()
         mydb.close()

@@ -46,7 +46,7 @@
                         <th>Mês do Pagamento</th>
                         <th>Data do Pagamento</th>
                         <th>Valor do Pagamento</th>
-                        <!-- <th>Ações</th> -->
+                        <th>Ações</th> <!-- Adicionando coluna de Ações -->
                     </tr>
                 </thead>
                 <tbody>
@@ -56,11 +56,11 @@
                         <td>{{ pagamento.mes_pagamento }}</td>
                         <td>{{ pagamento.data_pagamento }}</td>
                         <td>R$ {{ pagamento.valor_pagamento }}</td>
-                        <!-- <td>
-                            <a href="/excluir-historico/{{ pagamento.id_aluno }}">
+                        <td>
+                            <a href="/excluir-historico/{{ pagamento.id_pagamento }}">
                                 <button class="btn-excluir">Excluir</button>
                             </a>
-                        </td> -->
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
