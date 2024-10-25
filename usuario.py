@@ -14,13 +14,12 @@ class Usuario():
             mycursor = mydb.cursor()
 
             sql = f"""INSERT INTO tb_motoristas (nome_motorista, cpf_motorista, tel_motorista, email_motorista, senha_motorista)
-                      VALUES ('{nome}', '{cpf}', '{telefone}', '{email}', '{senha}');
-                   """
-            mycursor.execute(sql)
+                    VALUES (%s, %s, %s, %s, %s);"""
+            mycursor.execute(sql, (nome, cpf, telefone, email, senha))
             mydb.commit()
             mycursor.close()
             return True
-        
+
         except Exception as e:
             print(f"Erro ao cadastrar motorista: {e}")
             return False
