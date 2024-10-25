@@ -15,7 +15,7 @@ def pag_inicio():
 def pag_inicial():
     return render_template("pag-inicial-motorista.html", session=session)
 
-@app.route("/cadastrar-motorista", methods=['GET','POST'])
+@app.route("/cadastrar-motorista", methods=['GET', 'POST'])
 def pag_cadastro_motorista():
     if request.method == 'GET':
         return render_template('cadastro-motorista.html')
@@ -25,12 +25,13 @@ def pag_cadastro_motorista():
         telefone = request.form["telefone"]
         email = request.form["email"]
         senha = request.form["senha"]
-        flash("alert('Usuário cadastrado com sucesso!')")
-
+        
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, telefone, email, senha):
-            return redirect('/logar') 
+            flash("Usuário cadastrado com sucesso!")
+            return redirect('/logar')
         else:
+            flash("Erro ao cadastrar o usuário. Tente novamente.")
             return redirect('/')
 
 @app.route("/cadastrar-aluno", methods=['GET','POST'])
@@ -160,13 +161,12 @@ def listar_alunos():
     # Renderiza o template, passando os alunos filtrados e todas as escolas
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
 
-@app.route("/excluir-historico/<id_aluno>", methods=['GET', 'POST'])
-def excluir_historico(id_aluno):
-    if request.method == 'GET':
-        if 'usuario_logado' in session:
-            usuario = Pagamentos()
-            usuario.excluir_historico(id_aluno)
-            return redirect('/historico_pagamento')
+@app.route("/excluir-historico/<int:id_pagamento>", methods=['POST'])
+def excluir_historico(id_pagamento):
+    if 'usuario_logado' in session:
+        usuario = Pagamentos()
+        usuario.excluir_historico(id_pagamento)
+        return redirect('/historico_pagamento')
 
 @app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
 def editar_aluno(id_aluno):

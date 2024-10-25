@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerar Pagamento</title>
-
-    <link rel="stylesheet" href="/static/styles/gerar-pagamento.css">
+    <title>Cadastro do Aluno</title>
+    <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
     <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
 </head>
-
 <body>
     <header>
-        <button class="button-back" type="button"><a href="/historico_pagamento"><img
-                    src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
         <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt="logo da movebr"></div>
+            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
         </figure>
     </header>
 
@@ -33,24 +28,32 @@
                         {% endfor %}
                     </select>
                     
-                    <!-- Mês do pagamento -->
                     <label for="mesPagamento">Mês do pagamento:</label>
-                    <input type="text" id="mesPagamento" placeholder="ex: Janeiro" name="mes_pagamento">
+                    <select id="mesPagamento" name="mes_pagamento">
+                        <option value="Janeiro">Janeiro</option>
+                        <option value="Fevereiro">Fevereiro</option>
+                        <option value="Março">Março</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Maio">Maio</option>
+                        <option value="Junho">Junho</option>
+                        <option value="Julho">Julho</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Setembro">Setembro</option>
+                        <option value="Outubro">Outubro</option>
+                        <option value="Novembro">Novembro</option>
+                        <option value="Dezembro">Dezembro</option>
+                    </select>
                     
-                    <!-- Data exata do pagamento -->
                     <label for="dataPagamento">Data exata do pagamento:</label>
-                    <input type="text" id="dataPagamento" placeholder="ex: 17/10/2023" name="data_pagamento">
+                    <input type="date" id="dataPagamento" placeholder="ex: 17/10/2023" name="data_pagamento">
                     
-                    <!-- Valor do pagamento -->
                     <label for="valorPagamento">Valor do pagamento:</label>
                     <input type="text" id="valorPagamento" placeholder="ex: 500.00" name="valor_pagamento">
                     
-                    <!-- Botão de submit -->
                     <button type="submit" class="botao">Gerar pagamento</button>
                 </section>
             </div>
         </form>
     </main>
 </body>
-
 </html>

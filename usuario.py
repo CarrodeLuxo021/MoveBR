@@ -1,4 +1,5 @@
 from conexao import Conexao
+from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 
 class Usuario():
     def __init__(self):
@@ -13,13 +14,12 @@ class Usuario():
             mycursor = mydb.cursor()
 
             sql = f"""INSERT INTO tb_motoristas (nome_motorista, cpf_motorista, tel_motorista, email_motorista, senha_motorista)
-                      VALUES ('{nome}', '{cpf}', '{telefone}', '{email}', '{senha}');
-                   """
-            mycursor.execute(sql)
+                    VALUES (%s, %s, %s, %s, %s);"""
+            mycursor.execute(sql, (nome, cpf, telefone, email, senha))
             mydb.commit()
             mycursor.close()
             return True
-        
+
         except Exception as e:
             print(f"Erro ao cadastrar motorista: {e}")
             return False
@@ -29,17 +29,36 @@ class Usuario():
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"""
-            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel)          
-            VALUES ('{nome_aluno}', '{foto_aluno}', '{condicao_medica}', '{escola}', '{nome_responsavel}', '{endereco_responsavel}', '{tel_responsavel}', '{email_responsavel}');
+            # Inserir o aluno na tabela tb_alunos
+            sql_aluno = """
+            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """
-    
-            mycursor.execute(sql)
+            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel)
+            mycursor.execute(sql_aluno, values_aluno)
+            
+            # Obtenha o ID do aluno recém-inserido
+            id_aluno = mycursor.lastrowid
+            
+            # Obtenha o cpf_motorista da sessão
+            cpf_motorista = session['usuario_logado']['cpf']
+            
+            # Inserir o contrato na tabela contratos_fechados
+            sql_contrato = """
+            INSERT INTO contratos_fechados (id_aluno, cpf_motorista) 
+            VALUES (%s, %s)
+            """
+            values_contrato = (id_aluno, cpf_motorista)
+            mycursor.execute(sql_contrato, values_contrato)
+
             mydb.commit()
             mycursor.close()
+            mydb.close()
+
             return True
+        
         except Exception as e:
-            print(f"Erro ao cadastrar aluno: {e}")
+            print(f"Erro ao cadastrar aluno e fechar contrato: {e}")
             return False
 
     def logar(self, email, senha):
@@ -124,20 +143,83 @@ class Usuario():
             print(f"Erro ao listar alunos por escola: {e}")
             return False
 
-    def excluir_aluno(self, id_aluno):
+    def listar_contratos_motorista(self):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = f"DELETE FROM tb_alunos WHERE id_aluno = {id_aluno}"
-            mycursor.execute(sql)
-            mydb.commit()
-            mycursor.close()
+            # Obtenha o cpf_motorista da sessão
+            cpf_motorista = session['usuario_logado']['cpf']
+
+            # Busca os ids dos alunos nos contratos fechados para o motorista logado
+            sql_contratos = """
+            SELECT id_aluno FROM contratos_fechados WHERE cpf_motorista = %s
+            """
+            mycursor.execute(sql_contratos, (cpf_motorista,))
+            ids_alunos = mycursor.fetchall()
+
+            if not ids_alunos:
+                return []  # Se não houver alunos, retorna uma lista vazia
+
+            # Converte a lista de tuplas de ids em uma lista simples
+            ids_alunos = [id_aluno[0] for id_aluno in ids_alunos]
+
+            # Busca os dados dos alunos na tabela tb_alunos usando os ids encontrados
+            placeholders = ','.join(['%s'] * len(ids_alunos))
+            sql_alunos = f"""
+            SELECT id_aluno, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel 
+            FROM tb_alunos WHERE id_aluno IN ({placeholders})
+            """
+            mycursor.execute(sql_alunos, tuple(ids_alunos))
+            resultados = mycursor.fetchall()
+
+            # Formata os resultados em um dicionário
+            alunos = []
+            for linha in resultados:
+                alunos.append({
+                    "id_aluno": linha[0],
+                    "nome_aluno": linha[1],
+                    "foto_aluno": linha[2],
+                    "condicao_medica": linha[3],
+                    "escola": linha[4],
+                    "nome_responsavel": linha[5],
+                    "endereco": linha[6],
+                    "telefone_responsavel": linha[7],
+                    "email_responsavel": linha[8]
+                })
+
             mydb.close()
-            return True
+            return alunos  # Retorna os dados dos alunos
+
         except Exception as e:
-            print(f"Erro ao excluir aluno: {e}")
-            return False
+            print(f"Erro ao listar contratos fechados: {e}")
+            return []
+    
+    def excluir_aluno(self, id_aluno):
+        try:
+            # Conectar ao banco de dados
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+
+            # Excluir da tabela contratos_fechados
+            sql_contratos = "DELETE FROM contratos_fechados WHERE id_aluno = %s"
+            mycursor.execute(sql_contratos, (id_aluno,))
+
+            # Excluir da tabela tb_alunos
+            sql_alunos = "DELETE FROM tb_alunos WHERE id_aluno = %s"
+            mycursor.execute(sql_alunos, (id_aluno,))
+
+            # Confirmar as alterações no banco de dados
+            mydb.commit()
+
+            # Fechar conexão com o banco
+            mydb.close()
+
+            return True  # Retorna True para indicar sucesso
+
+        except Exception as e:
+            print(f"Erro ao excluir o aluno: {e}")
+            return False  # Retorna False em caso de erro
 
     def pesquisar_aluno(self, pesquisa):
         try:
