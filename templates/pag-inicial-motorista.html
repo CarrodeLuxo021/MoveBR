@@ -6,29 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoveBR</title>
     <link rel="icon" href="/static/icones/perfil-de-usuario.png" type="image/x-icon">
-    
     <script src="/static/js/pag-inicial-motorista.js"></script>
     <link rel="stylesheet" href="/static/styles/pag-inicial-motorista.css">
 </head>
 
 <body>
     <header>
-        <div class="cabecalho_motorista">
-            <div class="logo">
-                <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da MoveBR"></a>
-            </div>
+        <div class="logo">
+            <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da MoveBR"></a>
         </div>
+        <nav>
+            <a href="/cadastrar-aluno" class="nav-item">Cadastro Alunos</a>
+            <a href="/listar-alunos" class="nav-item">Passageiros</a>
+            <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
+        </nav>
     </header>
-
-    <nav>
-        <a href="/cadastrar-aluno" class="nav-item">Cadastro Alunos</a>
-        <a href="/listar-alunos" class="nav-item">Passageiros</a>
-        <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
-    </nav>
 
     <main>
         <section class="welcome-section">
-            <h1>Olá {{ session.usuario_logado.nome }}!</h1>
+            <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
             <p class="slogan">Transporte Escolar com Segurança, Confiabilidade e Praticidade!</p>
         </section>
 
@@ -40,16 +36,14 @@
                     <h3>Aumente sua Demanda!</h3>
                     <p>Organize-se e aumente sua quantidade de clientes.</p>
                 </div>
-
                 <div class="service-card">
                     <img src="/static/icones/icons2-paginicial.png" alt="Gerenciamento" class="service-icon">
                     <h3>Gerencie seus Pagamentos!</h3>
                     <p>Analise seu lucro de forma fácil e eficiente.</p>
                 </div>
-
                 <div class="service-card">
                     <img src="/static/icones/icons3-paginicial.png" alt="Praticidade" class="service-icon">
-                    <h3>Traga Praticidade!</h3>
+                    <h3>Traga Praticidade para o seu dia a dia!</h3>
                     <p>Ofereça passeios com segurança e conforto.</p>
                 </div>
             </div>
@@ -59,6 +53,6 @@
     <footer>
         <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
     </footer>
-
 </body>
+
 </html>
