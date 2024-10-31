@@ -24,17 +24,17 @@ class Usuario():
             print(f"Erro ao cadastrar motorista: {e}")
             return False
 
-    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
+    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, ano):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
             # Inserir o aluno na tabela tb_alunos
             sql_aluno = """
-            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel) 
+            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel, ano) 
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """
-            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel)
+            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, ano)
             mycursor.execute(sql_aluno, values_aluno)
             
             # Obtenha o ID do aluno recém-inserido
