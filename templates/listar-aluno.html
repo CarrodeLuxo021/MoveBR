@@ -31,6 +31,9 @@
                 <input type="text" name="query" class="input-busca" placeholder="Buscar...">
                 <button class="icone-busca" type="submit">🔍</button>
             </form>
+            <div class="contagem-alunos">
+
+            </div>
         </div>
     </section>
             <!-- Botões para filtrar por escola -->
@@ -164,4 +167,23 @@
 
 
     const details = document.getElementById('details');
+</script>
+<script>
+    // Função para contar os alunos exibidos e atualizar o contador
+    function atualizarContagemAlunos() {
+        // Seleciona todos os elementos que representam um aluno
+        const alunosExibidos = document.querySelectorAll('.aluno');
+        // Obtém a div onde a contagem será exibida
+        const contagemDiv = document.querySelector('.contagem-alunos');
+        // Atualiza a contagem dentro da div
+        contagemDiv.textContent = `Total de alunos: ${alunosExibidos.length}`;
+    }
+
+    // Chama a função quando o conteúdo da página é carregado
+    document.addEventListener("DOMContentLoaded", function () {
+        atualizarContagemAlunos();
+    });
+
+    // Opcional: se houver alterações dinâmicas na listagem dos alunos,
+    // você pode chamar 'atualizarContagemAlunos()' novamente após essas alterações.
 </script>
