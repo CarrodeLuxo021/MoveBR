@@ -123,6 +123,19 @@ main {
 .btn-container button:active {
     transform: scale(0.98);
 }
+   /* Ajustes no estilo para o campo de senha */
+   .password-wrapper {
+    position: relative;
+    width: 100%;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+}
 
 /* Media Queries */
 
