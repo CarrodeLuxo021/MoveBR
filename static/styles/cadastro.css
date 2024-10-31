@@ -108,6 +108,7 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="file"],
+input[type="password"],
 select {
     width: 100%;
     padding: 12px;
@@ -123,6 +124,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="file"]:focus,
+input[type="password"]:focus,
 select:focus {
     outline: none;
     border-color: #2c3e50;
@@ -165,7 +167,7 @@ button.cadastrar:hover {
     }
 
     .logo img {
-        height: 24px;
+        height: 20px;
     }
 
     .container-form {
@@ -189,6 +191,10 @@ button.cadastrar:hover {
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+    .logo img {
+        height: 10px;
+    }
+
     .container-form {
         width: 100%;
         padding: 20px;
@@ -196,7 +202,7 @@ button.cadastrar:hover {
 
     .itens-form {
         flex-direction: column; /* Exibir itens em coluna */
-        gap: 10px;
+        gap: 0px;
     }
 
     .lado-esquerdo-container, .lado-direito-container {
@@ -214,10 +220,6 @@ button.cadastrar:hover {
         width: 90%;
     }
 
-    .itens-form {
-        gap: 15px;
-    }
-
     header {
         padding: 0 15px;
     }
@@ -227,7 +229,7 @@ button.cadastrar:hover {
     }
 
     .logo img {
-        height: 28px;
+        height: 20px;
     }
 }
 

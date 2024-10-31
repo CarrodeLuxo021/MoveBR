@@ -1,262 +1,161 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-/* Reset básico */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilização do corpo */
+/* Body */
 body {
-    font-family: "Roboto", sans-serif;
-    background: #ecf0f1; /* Cor de fundo clara */
-    color: #2c3e50; /* Cor do texto */
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f6fa;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-/* Estilização do cabeçalho */
+/* Header */
 header {
-    background-color: #2c3e50; /* Azul escuro */
-    color: #ecf0f1; /* Texto claro */
+    background-color: #2c3e50;
+    color: #ecf0f1;
     height: 80px;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .button-back {
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .button-back img {
     width: 20px;
-    height: auto;
-    margin-left: 30px;
+}
+
+.button-back:hover {
+    transform: scale(1.1);
 }
 
 .logo img {
-    width: 100px;
+    height: 30px;
 }
 
-/* Seções principais */
+/* Main Layout */
 main {
-    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
 }
 
-.c-table {
+.container-header {
     display: flex;
-    margin-bottom: 20px;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
-}
-
-.input-busca {
-    padding: 10px 40px 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
     width: 100%;
-    transition: border-color 0.3s;
-}
-
-.input-busca:focus {
-    border-color: #E79428; /* Cor ao focar */
-    outline: none;
-}
-
-.icone-busca {
-    position: absolute;
-    right: 10px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.icone-busca:hover {
-    color: #E79428; /* Muda a cor ao passar o mouse */
-}
-
-.container-listagem-busca {
-    padding: 20px; /* Espaçamento interno */
-    max-width: 300px; /* Largura máxima */
-}
-
-h2 {
-    color: #2c3e50; /* Cor do texto */
-    margin-bottom: 5px; /* Espaçamento abaixo do título */
-}
-
-.select-escola {
-    width: 100%; /* Ocupa toda a largura do container */
-    padding: 10px; /* Espaçamento interno */
-    border: 1px solid #ccc; /* Borda do select */
-    border-radius: 5px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho da fonte */
-    color: #555; /* Cor do texto */
-    transition: border-color 0.3s; /* Transição suave */
-}
-
-.select-escola:focus {
-    border-color: #E79428; /* Cor da borda ao focar */
-    outline: none; /* Remove o contorno padrão */
-}
-
-.container-busca{
-    position: absolute;
-    right: 0;
-    width: 20%;
-}
-
-.input-busca{
-    position: relative;
-    right: 0;
-}
-
-/* Estilização da lista de alunos */
-.alunos-listados {
-    background-color: #ffffff; /* Branco */
-    margin: 0 auto;
-    width: 80%;
     max-width: 900px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 20px 0;
 }
 
-.alunos-listados td {
-    padding: 12px 20px;
-    font-weight: bold;
+.title {
+    font-size: 1.8em;
+    color: #2c3e50;
+    border-bottom: 2px solid #e79428;
+    padding-bottom: 10px;
 }
 
-.perfil-aluno {
+.right-header {
     display: flex;
+    gap: 15px;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.foto-aluno img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #E79428; /* Borda da foto do aluno */
-}
-
-.info-aluno {
-    margin-left: 20px;
-}
-
-.info-aluno h2 {
-    font-size: 24px;
-    color: #E79428; /* Cor do nome do aluno */
-    margin: 0;
-}
-
-.info-aluno p {
-    font-size: 16px;
-    color: #4c6b89; /* Cor do texto do responsável */
-}
-
-/* Detalhes do aluno */
-.detalhes {
-    display: none;
-    background-color: #F2F2F2; /* Cor de fundo cinza claro */
-    padding: 10px;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.btn-expandir {
-    background-color: transparent;
-    color: #E79428; /* Cor da seta */
-    border: none;
-    cursor: pointer;
-}
-
-/* Estilização dos botões */
-.btn-escola {
-    border: solid 1px #E79428;
-    border-radius: 10px;
-    color: #000000;
-}
-
-/* ----------------------------------------------------------------------------------------------- */
-
-.btn-cadaluno button{
-    background-color: #E79428;
-    color: var(--cor-03);
-    font-size: 15px;
-    margin-top: 6px;
-    border: none;
-    padding: 7px 12px;
-    border-radius: 99999px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;    
-}
-
-.btn-cadaluno button:hover{
-    background-color: #e8a651;
-    transition: background-color 0.3s ease, transform 0.2s ease;   
 }
 
 .search-container {
-    margin-left: 80px;
-    width: 300px;
     display: flex;
-    border: none;
     border-radius: 5px;
     overflow: hidden;
 }
 
 .search-input {
-    border: none;
+    border: 1px solid #ccc;
+    border-right: none;
     padding: 10px;
     font-size: 16px;
-    flex: 1;
 }
 
 .search-button {
-    background-color: #E79428;
+    background-color: #e79428;
     color: white;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 .search-button:hover {
     background-color: #e8a651;
 }
 
-.alunos-listados {
-    background-color: var(--cor-03);
-    margin: 0 auto;
+/* Estilo do Select */
+select {
+    background-color: #ffffff;
+    color: #2c3e50; /* Azul escuro */
+    border: 2px solid #e79428; /* Laranja */
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select:hover {
+    border-color: #e8a651; /* Laranja claro no hover */
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(231, 148, 40, 0.5); /* Sombra laranja */
+}
+
+option {
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.container-listagem-busca {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
     width: 80%;
     max-width: 900px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.alunos-listados {
+    position: relative; /* Permite posicionamento absoluto dos elementos internos */
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .alunos-listados td {
-    position: relative;
-}
-
-.alunos-listados td .button-container {
-    position: absolute;
-    right: 0;
-    top: 15%;
-    transform: translateY(-50%);
-}
-
-td {
     padding: 12px 20px;
     font-weight: bold;
 }
@@ -265,259 +164,123 @@ td {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.imagem-aluno {
+    width: 80px; /* Ajuste conforme necessário */
+    height: 80px; /* Deve ser o mesmo valor do width para ficar redonda */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Garante que a imagem preencha o círculo */
+    border: 2px solid #e79428; /* Adiciona uma borda laranja */
+}
+
+.btn-expandir {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e79428;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.info-aluno {
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.info-aluno h2 {
+    font-size: 24px;
+    color: #e79428;
+}
+
+.info-aluno p {
+    font-size: 16px;
+    color: #4c6b89;
+}
+
+/* Icone Detalhes */
+.detalhes {
+    position: relative; /* Permite o posicionamento absoluto de .btn-editar */
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+}
+
+.icon-detalhes {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Buttons */
+.btn-cadaluno button,
+.container-btn-excluir button {
+    background-color: #e79428;
+    color: white;
+    font-size: 15px;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cadaluno button:hover,
+.container-btn-excluir button:hover {
+    background-color: #e8a651;
 }
 
 .btn-editar {
-    background: transparent;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e79428;
+    color: #ffffff;
     border: none;
-    margin-left: 200px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .icon-editar {
-    width: 30px;
-    height: auto;
-    background-color: #2c3e50;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
 }
 
-.titulo-editar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.info-aluno {
-    margin-left: 20px;
-}
-
-.info-aluno h2 {
-    font-size: 24px;
-    color: #E79428;
-    margin: 0;
-    padding: 0;
-}
-
-.info-aluno p {
-    font-size: 16px;
-    color: var(--cor-02);
-}
-
-.info-aluno {
-    margin-left: 20px;
-}
-
-.info-aluno h2 {
-    font-size: 24px;
-    color: var(--cor-01);
-}
-
-.info-aluno p {
-    font-size: 16px;
-    color: var(--cor-02);
-}
-
-/* Remover a repetição e manter o estilo dos detalhes */
-.detalhes {
-    display: none; /* Esconde inicialmente */
-    background-color: #F2F2F2; /* Cor de fundo cinza claro */
-    padding: 10px;
-    border-radius: 4px;
-    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
-    transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.info-transporte {
-    margin-bottom: 20px;
-}
-
-.info-transporte h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #E79428;
-}
-
-.info-transporte p {
-    font-size: 16px;
-    color: var(--cor-01);
-    margin-bottom: 5px;
-}
-
-.info-extra h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #E79428;
-}
-
-/* Ajuste do botão de expansão para manter a seta no mesmo lugar */
-.btn-expandir {
-    position: absolute;
-    right: 0;
-    background-color: transparent;
-    color: #E79428;
-    border: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.container-btn-excluir {
-    margin-left: 87%;
-}
-
-.container-btn-excluir button {
-    background-color: #E79428; /* Cor de fundo */
-    color: var(--cor-03); /* Cor do texto */
-    border: none; /* Remove borda padrão */
-    padding: 13px; /* Espaçamento interno */
-    border-radius: 9999999999px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
-}
-
-/* --------------------------------------------------- */
-
-.AA {
-    color: #333;
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Estilos para dispositivos menores que 1200px */
-@media (max-width: 1200px) {
-    .c-table {
+/* Responsive */
+@media (max-width: 768px) {
+    .container-header {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .search-container {
-        margin: 20px 0; /* Espaçamento vertical */
-        width: 100%; /* Preencher o espaço disponível */
-    }
-
-    .btn-cadaluno button {
-        width: 100%; /* Botão ocupará toda a largura */
-        margin-top: 10px; /* Espaçamento em relação ao título */
-    }
-}
-
-@media (max-width: 992px) {
-    .c-table {
-        flex-direction: column; /* Coloca em coluna */
-        align-items: flex-start; /* Alinha à esquerda */
-    }
-
-    .title {
-        width: 100%; /* Preencher a largura disponível */
-        margin-bottom: 10px; /* Espaçamento abaixo do título */
-    }
-
-    .container-listagem-busca {
-        width: 100%; /* Preencher a largura disponível */
-        display: flex; /* Mantém em linha */
-        justify-content: flex-end; /* Alinha à direita */
-        margin-bottom: 10px; /* Espaçamento abaixo */
-    }
-
-    .search-container {
-        width: 100%; /* Preencher a largura disponível */
-        display: flex;
-        justify-content: center; /* Centraliza horizontalmente */
-        margin-top: 10px; /* Espaçamento acima */
-    }
-
+    .search-container,
+    .container-listagem-busca,
     .alunos-listados {
-        width: 100%; /* Ocupa 100% da largura em telas pequenas */
+        width: 100%;
     }
 
     .foto-aluno img {
-        width: 80px; /* Reduzir o tamanho da foto do aluno */
-        height: 80px; /* Reduzir o tamanho da foto do aluno */
+        width: 60px;
+        height: 60px;
     }
 
     .info-aluno h2 {
-        font-size: 20px; /* Reduzir o tamanho do texto do nome */
-    }
-}
-
-@media (max-width: 768px) {
-    .c-table {
-        flex-direction: column; /* Coloca em coluna */
-        align-items: flex-start; /* Alinha à esquerda */
-    }
-
-    .title {
-        width: 100%; /* Preencher a largura disponível */
-        margin-bottom: 10px; /* Espaçamento abaixo do título */
-    }
-
-    .container-listagem-busca {
-        width: 100%; /* Preencher a largura disponível */
-        display: flex; /* Mantém em linha */
-        justify-content: flex-end; /* Alinha à direita */
-        margin-bottom: 10px; /* Espaçamento abaixo */
-    }
-
-    .search-container {
-        width: 100%; /* Preencher a largura disponível */
-        display: flex;
-        justify-content: center; /* Centraliza horizontalmente */
-        margin-top: 10px; /* Espaçamento acima */
-    }
-
-    .btn-expandir {
-        font-size: 1rem; /* Aumentar o tamanho da fonte */
-    }
-}
-
-@media (max-width: 576px) {
-    .c-table {
-        flex-direction: column; /* Coloca em coluna */
-        align-items: flex-start; /* Alinha à esquerda */
-    }
-
-    .title {
-        width: 100%; /* Preencher a largura disponível */
-        margin-bottom: 10px; /* Espaçamento abaixo do título */
-    }
-
-    .container-listagem-busca {
-        width: 100%; /* Preencher a largura disponível */
-        display: flex; /* Mantém em linha */
-        justify-content: flex-end; /* Alinha à direita */
-        margin-bottom: 10px; /* Espaçamento abaixo */
-    }
-
-    .search-container {
-        width: 100%; /* Preencher a largura disponível */
-        display: flex;
-        justify-content: center; /* Centraliza horizontalmente */
-        margin-top: 10px; /* Espaçamento acima */
-    }
-
-    .info-aluno h2 {
-        font-size: 18px; /* Reduzir ainda mais o tamanho do texto */
+        font-size: 20px;
     }
 
     .info-aluno p {
-        font-size: 14px; /* Reduzir o tamanho do texto */
-    }
-
-    .container-btn-excluir {
-        margin-left: 0; /* Remover margem à esquerda */
-        text-align: center; /* Centralizar o botão de excluir */
-    }
-
-    .btn-editar {
-        margin-left: 0; /* Remover margem */
-    }
-
-    .alunos-listados {
-        padding: 10px; /* Reduzir o preenchimento */
-    }
-
-    .detalhes {
-        padding: 5px; /* Reduzir o preenchimento dos detalhes */
+        font-size: 14px;
     }
 }
