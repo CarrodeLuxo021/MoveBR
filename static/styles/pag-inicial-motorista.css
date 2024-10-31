@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
-/* Reset */
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -8,154 +6,177 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f6f9; /* fundo suave */
-    color: #2c3e50;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Header */
+/* Estilização do header */
 header {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: #2c3e50; /* Cor de fundo do header */
+    color: white;
     padding: 10px 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 90px;
 }
 
-header .logo img {
-    height: 30px;
-    transition: transform 0.3s;
+.logo img {
+    height: 30px; /* Tamanho da logo */
 }
 
-header .logo img:hover {
-    transform: scale(1.05);
+/* Estilização da navegação */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #34495e; /* Azul mais claro */
 }
 
 nav {
     display: flex;
-    gap: 20px;
 }
 
 .nav-item {
-    color: #ecf0f1;
+    color: white;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1em;
-    transition: color 0.3s;
+    padding: 10px 15px;
+    transition: background 0.3s;
 }
 
 .nav-item:hover {
-    color: #e74c3c;
+    background: #283c50; /* Cor de fundo ao passar o mouse */
 }
 
-/* Main Content */
+/* Estilização do main */
 main {
-    flex: 1;
-    padding: 40px 20px;
+    padding: 20px;
 }
 
 .welcome-section {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .welcome-section h1 {
-    font-size: 2em;
-    color: #2c3e50;
+    font-size: 2.5em; /* Tamanho do título */
     margin-bottom: 10px;
 }
 
-.welcome-section .slogan {
-    font-size: 1.2em;
-    color: #7f8c8d;
+.slogan {
+    font-size: 1.2em; /* Tamanho da slogan */
+    color: #555;
 }
 
-/* Services Section */
 .services-section {
-    margin-top: 30px;
-}
-
-.services-section h2 {
-    font-size: 1.8em;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .cards-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    justify-content: space-around; /* Espaçamento entre os cartões */
+    flex-wrap: wrap; /* Para que os cartões se ajustem */
 }
 
 .service-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 280px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordas arredondadas */
     padding: 20px;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    width: 30%; /* Largura dos cartões */
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* Efeito ao passar o mouse */
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px); /* Leve elevação ao passar o mouse */
 }
 
 .service-icon {
-    width: 60px;
-    height: auto;
+    height: 50px; /* Tamanho do ícone */
     margin-bottom: 15px;
 }
 
 .service-card h3 {
-    font-size: 1.4em;
-    color: #2c3e50;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    font-size: 1.5em; /* Tamanho do título do serviço */
 }
 
-.service-card p {
-    font-size: 1em;
-    color: #7f8c8d;
-}
-
-/* Footer */
 footer {
-    background-color: #2c3e50;
-    color: #ecf0f1;
     text-align: center;
     padding: 10px 0;
-    font-size: 0.9em;
-    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1);
+    background: #2c3e50;
+    color: white;
+    position: fixed; /* Para assegurar que o footer se mantenha no final */
+    bottom: 0;
+    width: 100%; /* Largura total */
+
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 20px;
-        gap: 10px;
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .logo img {
+        height: 20px; /* Ajuste do tamanho da logo */
+    }
+    
+    .welcome-section h1 {
+        font-size: 1.8em; /* Reduzir o tamanho do título */
+    }
+    
+    .slogan {
+        font-size: 1em; /* Reduzir tamanho da slogan */
     }
 
-    nav {
-        flex-direction: column;
-        gap: 10px;
+    .service-card {
+        width: 100%; /* Largura total para um cartão por linha */
+        padding: 15px;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .nav-item {
+        padding: 8px 10px; /* Reduzir espaçamento de navegação */
     }
 
-    main {
-        padding: 20px;
+    .service-card {
+        width: 100%; /* Um cartão por linha */
     }
+}
 
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .welcome-section h1 {
+        font-size: 2em; /* Ajuste do título */
+    }
+    
+    .service-card {
+        width: 100%; /* Dois cartões por linha */
+        margin: 10px;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .service-card {
+        width: 30%; /* Três cartões por linha */
+    }
+}
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+    .nav-item {
+        padding: 12px 18px; /* Aumentar espaçamento de navegação */
+    }
+    
+    .welcome-section h1 {
+        font-size: 2.3em; /* Ajuste do tamanho do título */
+    }
+    
+    .service-card {
+        width: 100%; /* Ajuste da largura do cartão */
     }
 }

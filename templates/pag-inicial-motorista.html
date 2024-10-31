@@ -11,21 +11,23 @@
 </head>
 
 <body>
+
     <header>
         <div class="logo">
             <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da MoveBR"></a>
         </div>
-        <nav>
-            <a href="/cadastrar-aluno" class="nav-item">Cadastro Alunos</a>
-            <a href="/listar-alunos" class="nav-item">Passageiros</a>
-            <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
-        </nav>
     </header>
+
+    <nav>
+        <a href="/cadastrar-aluno" class="nav-item">Cadastro Alunos</a>
+        <a href="/listar-alunos" class="nav-item">Passageiros</a>
+        <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
+    </nav>
 
     <main>
         <section class="welcome-section">
             <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
-            <p class="slogan">Transporte Escolar com Segurança, Confiabilidade e Praticidade!</p>
+            <p class="slogan">Movemos a educação que move o mundo!</p>
         </section>
 
         <section class="services-section">
