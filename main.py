@@ -226,8 +226,4 @@ def editar_aluno(id_aluno):
 
         return redirect('/listar-alunos')
 
-
-
-    
-
 app.run(debug=True)

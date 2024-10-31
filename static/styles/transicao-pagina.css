@@ -58,8 +58,14 @@ body {
 @keyframes dustEffect {
     0% {
         opacity: 0; /* Começa invisível */
-        transform: translateX(1000px); /* Começa na posição original */
+        transform: translateX(0); /* Começa na posição original */
     }
+    50% {
+        opacity: 0.5;
+        transform: translateX(50vw);
+    }
+
+    
     100% {
         opacity: 1; /* Finaliza com a poeira cobrindo toda a tela */
         transform: translateX(100vw); /* Move para fora da tela à direita */
