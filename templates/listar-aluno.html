@@ -6,7 +6,9 @@
 <!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
 <link rel="stylesheet" href="../static/styles/listar-aluno.css">
 <link rel="stylesheet" href="../static/styles/variaveis.css">
-<script src="/static/js/lista-escola.js"></script>
+<script src="/static/js/lista-escola.js" defer></script>
+<script src="/static/js/rotas-mapas.js" defer></script>
+
 
 <!-- Conteúdo principal da página -->
 <main>
@@ -49,6 +51,10 @@
             <li>
                 <form method="GET" action="{{ url_for('listar_alunos', escola=escola) }}">
                     <button type="submit" class="btn-escola" id="btn-{{ escola }}">{{ escola }}</button>
+
+                    <label>
+                        <input type="checkbox" class="school-checkbox" data-address="{{ escola }}" value="{{ escola }}">
+                    </label>
                 </form>
             </li>
             {% endfor %}
@@ -109,6 +115,10 @@
                             <div class="container-btn-excluir">
                                 <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
                             </div>
+
+                            <div class="container-rota">
+                                <input type="checkbox" class="student-checkbox" data-address="{{aluno['endereco']}}" value="{{aluno['nome_aluno']}}">
+                            </div>
                         </div>
 
                         <!-- Botão para expandir/ocultar os detalhes do aluno -->
@@ -118,12 +128,17 @@
                         </div>
                     </td>
                 </tr>
-
-                <!-- Adicione mais alunos aqui -->
+            <!-- Adicione mais alunos aqui -->
             </tbody>
         </div>
     </table>
     {% endfor %}
+    <label for="origin">Ponto de Partida:</label>
+    <input type="text" id="origin" placeholder="Insira o ponto de partida">
+                
+    <button id="generateRoute">Gerar URL da Rota</button>
+                
+    <div id="routeUrl"></div>
 </main>
 
 <!-- Script para manipulação de interações e animações -->
