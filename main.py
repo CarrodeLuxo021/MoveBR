@@ -89,21 +89,27 @@ def historico_pagamento():
 
     
 
-@app.route("/historico_pagamento_filtro/<mes>", methods=['POST'])
-def historico_pagamento_filtro(mes):
-    mes = request.args.get('mes')
-     # Recupera o id do motorista logado a partir da sessão
-    cpf_motorista = session.get("cpf_motorista")
+@app.route("/historico_pagamento_filtro", methods=['POST'])
+def historico_pagamento_filtro():
+    # Recupera o id do motorista logado a partir da sessão
+    cpf_motorista = session.get("cpf")
+    mes = request.form['mesPagamento']
     
     # Verifica se o motorista está logado
     if not cpf_motorista:
         return "Motorista não está logado", 401  # Retorna erro se não estiver logado
 
     pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(mes, cpf_motorista):
-        return render_template("historico-pagamento.html")
-    else:
-        return "Erro ao gerar pagamento", 500
+    
+    # Obtém histórico de pagamentos feitos no mês
+    historico_pagamentos = pagamento.listar_historico_filtro(mes, cpf_motorista)
+    
+    # Obtém lista de alunos sem pagamentos no mês
+    alunos_pendentes = pagamento.listar_alunos_pendentes(mes, cpf_motorista)
+    
+    return render_template("historico-pagamento.html", 
+                           historico=historico_pagamentos, 
+                           alunos_pendentes=alunos_pendentes)
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():

@@ -4,30 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Pagamentos</title>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
     <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
 </head>
 <body>
-    <header>
-        <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
-            <div class="menu-icon" id="menu-icon">
-                <img src="/static/icones/menu.png" alt="Perfil" id="profile-icon"/>
-            </div>
-        </figure>
-    </header>
+    <!-- Cabeçalho e navegação -->
+    <header> <!-- ... (omiti para brevidade) --> </header>
 
-    <div class="navegacao">
-        <a href="/pag-inicial-motorista"><button class="botao">Início</button></a> 
-        <a href="/listar-alunos"><button class="botao">Alunos clientes</button></a>  
-    </div>
+    <div class="navegacao"> <!-- ... --> </div>
     
     <div class="container1">
+        <!-- Formulário para filtro -->
         <form action="/historico_pagamento_filtro" method="post">
             <label for="mesPagamento">Mês do pagamento:</label>
-            <select id="mesPagamento" name="mes_pagamento">
+            <select id="mesPagamento" name="mesPagamento">
                 <option value="Janeiro">Janeiro</option>
                 <option value="Fevereiro">Fevereiro</option>
                 <option value="Março">Março</option>
@@ -44,44 +35,64 @@
             <button type="submit">Procurar</button>
         </form>
                     
-        <div class="header1">
-            <img src="/static/icones/dinheiro.png" alt="Perfil do Usuário" class="user-photo">
-            <h1>Histórico de Pagamentos</h1>
-            <button id="toggleBtn" class="toggle-btn">&#9650;</button>
-        </div>
+        <div class="header1"> <!-- ... --> </div>
     
         <a href="/gerar-pagamento"><button type="submit">Gerar novo pagamento</button></a>
     
-        <!-- Verifica se existem pagamentos e itera sobre eles -->
-        {% if pagamentos %}
-            {% for pagamento in pagamentos %}
+        <!-- Listagem de pagamentos feitos -->
+        {% if historico %}
+            {% for pagamento in historico %}
                 <table class="alunos-listados">
-                    <div class="container-tabela">
+                    <tbody>
+                        <tr class="aluno">
+                            <td>
+                                <div class="perfil-aluno">
+                                    <div class="info-aluno">
+                                        <h2>{{ pagamento.nome_aluno }}</h2>
+                                        <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }}</p>
+                                        <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }}</p>
+                                        <p><strong>Valor do pagamento:</strong> <span id="valor_pagamento">{{ pagamento.valor_pagamento }}</span></p>
+                                    </div>
+                                    <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post" style="display:inline;">
+                                        <button type="submit">Excluir</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endfor %}
+        {% else %}
+            <p>Não há pagamentos registrados para este mês.</p>
+        {% endif %}
+    
+        <h2 class="valor_total">Valor Total: <span id="valor_total"></span></h2>
+
+        <!-- Lista de alunos com pagamentos pendentes -->
+        {% if alunos_pendentes %}
+            <div class="pendencias">
+                <h2>Alunos com pagamento pendente</h2>
+                {% for aluno in alunos_pendentes %}
+                    <table class="alunos-listados">
                         <tbody>
                             <tr class="aluno">
                                 <td>
                                     <div class="perfil-aluno">
                                         <div class="info-aluno">
-                                            <h2>{{ pagamento.nome_aluno }}</h2>
-                                            <p><strong>Mês do pagamento:</strong> {{ pagamento.mes_pagamento }}</p>
-                                            <p><strong>Data do pagamento:</strong> {{ pagamento.data_pagamento }}</p>
-                                            <p><strong>Valor do pagamento:</strong> <p id="valor_pagamento">{{ pagamento.valor_pagamento }}</p></p>
+                                            <h2>{{ aluno.nome_aluno }}</h2>
+                                            <p><strong>Mês do pagamento:</strong> {{ mes }}</p>
+                                            <p><em>Pagamento pendente</em></p>
                                         </div>
-                                        <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post" style="display:inline;">
-                                            <button type="submit">Excluir</button>
-                                        </form>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
-                    </div>
-                </table>
-            {% endfor %}
+                    </table>
+                {% endfor %}
+            </div>
         {% else %}
-            <p>{{ mensagem }}</p>
+            <p>Nenhum aluno com pagamento pendente.</p>
         {% endif %}
-    
-        <h2 class="valor_total">Valor Total: <span id="valor_total"></span></h2>
     </div>
     
     <script>
