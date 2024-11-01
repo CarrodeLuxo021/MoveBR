@@ -85,14 +85,12 @@ def historico_pagamento():
     # Renderiza o template com os pagamentos ou uma lista vazia
     return render_template("historico-pagamento.html", pagamentos=historico)
 
-
-
     
 
 @app.route("/historico_pagamento_filtro", methods=['POST'])
 def historico_pagamento_filtro():
     # Recupera o id do motorista logado a partir da sessão
-    cpf_motorista = session.get("cpf")
+    cpf_motorista = session["usuario_logado"]["cpf"]
     mes = request.form['mesPagamento']
     
     # Verifica se o motorista está logado
@@ -124,7 +122,7 @@ def gerar_pagamento_get():
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")
+        cpf_motorista = session["usuario_logado"]["cpf"]
 
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
