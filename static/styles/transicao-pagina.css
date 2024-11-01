@@ -1,73 +1,46 @@
 body {
+    overflow: hidden; /* Impede a rolagem */
     margin: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-}
-
-.container {
+    height: 100vh;
     position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 50px;
-}
-
-.transition {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    display: none; /* Inicialmente escondido */
-    justify-content: center;
-    align-items: center;
 }
 
 .vehicle {
-    width: 100px; /* Ajuste o tamanho do veículo */
-    height: 50px; /* Ajuste o tamanho do veículo */
-    background-image: url('/static/icones/van-transicao.png'); /* Substitua pelo caminho correto da imagem */
-    background-size: contain;
-    background-repeat: no-repeat;
     position: absolute;
-    bottom: 20%; /* Ajuste a posição vertical do veículo */
-    animation: moveVehicle 1s forwards;
-    
+    width: 500px; /* Largura do veículo */
+    height: 500px; /* Altura do veículo */
+    background-image: url(/static/icones/van-transicao.png);
+    left: 0;
+    animation: moveVehicle 4s linear forwards; /* Animação para o veículo */
 }
 
-.dust {
+
+.video {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 0, 0, 0.8); /* Cor da poeira */
-    opacity: 0;
-    animation: dustEffect 1s forwards; /* Animação da poeira */
+    width: 100vw; /* Largura maior para permitir o movimento contínuo */
+    height: 100vh;
+    background-repeat: repeat-x; /* Repete horizontalmente */
+    animation: moveBackground 5s linear infinite; /* Animação contínua */
+    z-index: 0; /* Fundo atrás de outros elementos */
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translateX(0); /* Posição inicial */
+    }
+    100% {
+        transform: translateX(-50%); /* Move para a esquerda */
+    }
 }
 
 @keyframes moveVehicle {
     0% {
-        left: -150px; /* Começa fora da tela à esquerda */
+        left: -50px; /* Começa um pouco fora da tela */
     }
     100% {
-        left: 100%; /* Move para fora da tela à direita */
+        left: 100vw; /* Move para o lado direito */
     }
 }
 
-@keyframes dustEffect {
-    0% {
-        opacity: 0; /* Começa invisível */
-        transform: translateX(0); /* Começa na posição original */
-    }
-    50% {
-        opacity: 0.5;
-        transform: translateX(50vw);
-    }
 
-    
-    100% {
-        opacity: 1; /* Finaliza com a poeira cobrindo toda a tela */
-        transform: translateX(100vw); /* Move para fora da tela à direita */
-    }
-}
+

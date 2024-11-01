@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transição com Veículo</title>
+    <title>Animação de Veículo com Efeito de Poeira</title>
     <link rel="stylesheet" href="/static/styles/transicao-pagina.css">
-
+    <script src="/static/js/transicao-pagina.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Página Atual</h1>
-        <button id="transitionButton">Ir para a próxima página</button>
-    </div>
-    <div class="transition" id="transition">
-        <div class="vehicle"></div>
-        <div class="dust" id="dust"></div>
-    </div>
-    <script src="/static/js/transicao-pagina.js"></script>
+    <div id="transition" class="transition"></div>
+    <div class="vehicle"></div>
+    <div id="dust" class="dust"></div>
+    <button id="transitionButton">Iniciar Animação</button>
+    <video src="/static/icones/video-fundo.mp4" class="video"></video>
+    
 </body>
 </html>
