@@ -24,17 +24,17 @@ class Usuario():
             print(f"Erro ao cadastrar motorista: {e}")
             return False
 
-    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, ano):
-        try:
+    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie_aluno):
+        # try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
             # Inserir o aluno na tabela tb_alunos
             sql_aluno = """
-            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel, ano) 
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel, serie_aluno) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
-            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, ano)
+            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie_aluno)
             mycursor.execute(sql_aluno, values_aluno)
             
             # Obtenha o ID do aluno recém-inserido
@@ -57,9 +57,9 @@ class Usuario():
 
             return True
         
-        except Exception as e:
-            print(f"Erro ao cadastrar aluno e fechar contrato: {e}")
-            return False
+        # except Exception as e:
+        #     print(f"Erro ao cadastrar aluno e fechar contrato: {e}")
+        #     return False
 
     def logar(self, email, senha):
         try:

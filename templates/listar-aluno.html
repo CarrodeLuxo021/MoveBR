@@ -4,12 +4,12 @@
         <!-- Importa o FontAwesome para os ícones -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
-        <link rel="stylesheet" href="../static/styles/listar-aluno.css">
-        <link rel="stylesheet" href="../static/styles/variaveis.css">
-        <script src="/static/js/lista-escola.js"></script>
-        <title>Listar Aluno</title>
-    </head>
+<!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
+<link rel="stylesheet" href="../static/styles/listar-aluno.css">
+<link rel="stylesheet" href="../static/styles/variaveis.css">
+<script src="/static/js/lista-escola.js" defer></script>
+<script src="/static/js/rotas-mapas.js" defer></script>
+
 
     <body>
         <header>
@@ -30,99 +30,155 @@
                     <a href="/cadastrar-aluno" class="btn-cadaluno"><button> + Cadastrar Aluno </button></a>
                 </div>
 
-                <div class="search-container">
-                    <input type="text" placeholder="Pesquisar..." class="search-input">
-                    <button class="search-button">🔍</button>
-                </div>
+        <div class="container-busca">
+            <form action="/listar-alunos" method='get'>
+                <input type="text" name="query" class="input-busca" placeholder="Buscar...">
+                <button class="icone-busca" type="submit">🔍</button>
+            </form>
+        </div>
+    </section>
+            <!-- Botões para filtrar por escola -->
+    <div class="container-listagem-busca">
+        <h2>Escolas</h2>
+        <ul>
+            <!-- Botão para exibir todos os alunos, aparece apenas uma vez -->
+            <li>
+                <form method="GET" action="{{ url_for('listar_alunos') }}">
+                    <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
+                </form>
+            </li>
 
-                <div class="container-listagem-busca">
-                    <h3>Escolas:</h3>
-                    <form method="GET" action="{{ url_for('listar_alunos') }}">
-                        <select name="escola" onchange="this.form.submit();" class="select-escola">
-                            <option value="">Selecione uma escola</option>
-                            <option value="" id="btn-todos">Todos</option>
-                            {% for escola in escolas %}
-                            <option value="{{ escola }}" id="btn-{{ escola }}">{{ escola }} </option>
-                            {% endfor %}
-                        </select>
-                    </form>
-                </div>
-            </section>
-        
+            <!-- Botões para cada escola, baseados na lista de escolas -->
+            {% for escola in escolas %}
+            <li>
+                <form method="GET" action="{{ url_for('listar_alunos', escola=escola) }}">
+                    <button type="submit" class="btn-escola" id="btn-{{ escola }}">{{ escola }}</button>
 
-            
-        
-            {% if alunos %}
-            <h2 class="AA">Alunos cadastrados:</h2>
-            {% else %}
-            <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
-            {% endif %}
-        
-            {% for aluno in alunos %}
-
-            
-
-            <table class="alunos-listados">
-                <div class="container-tabela">
-                    <tbody>
-                        <tr class="aluno">
-                            <td>
-                                <div class="perfil-aluno">
-                                    <div class="foto-aluno">
-                                        <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
-                                    </div>
-                                    <div class="info-aluno">
-                                        <h2>{{aluno['nome_aluno']}}</h2>
-                                        <p><strong>Nome do responsável:</strong> {{aluno['nome_responsavel']}}</p>
-                                        <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}}</p>
-                                    </div>
-                                </div>
-        
-                                <div class="detalhes" style="display: none;">
-                                    <div class="info-transporte">
-                                        <div class="titulo-editar">
-                                            <h3>Informações de Transporte</h3>
-                                            <a href="/editar-aluno/{{aluno['id_aluno']}}"><button class="btn-editar"><img class="icon-editar" src="/static/icones/editar.png" alt="Ícone Editar"></button></a>
-                                        </div>
-
-                                        <p><strong>Endereço:</strong> {{aluno['endereco']}}</p>
-                                        <p><strong>Escola:</strong> {{aluno['escola']}}</p>
-                                    </div>
-        
-                                    <div class="info-extra">
-                                        <h3>Condição Médica</h3>
-                                        <p>{{aluno['condicao_medica']}}</p>
-                                    </div>
-                
-                                    <div class="container-btn-excluir">
-                                        <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
-                                    </div>
-                                </div>
-        
-                                <div class="button-container">
-                                    <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </div>
-            </table>
+                    <label>
+                        <input type="checkbox" class="school-checkbox" data-address="{{ escola }}" value="{{ escola }}">
+                    </label>
+                </form>
+            </li>
             {% endfor %}
-        </main>
-        
-        <script>
-            function toggleExpandir(button) {
-                const alunoRow = button.closest('.aluno');
-                const detalhesContainer = alunoRow.querySelector('.detalhes');
-        
-                if (detalhesContainer.style.display === 'none') {
-                    detalhesContainer.style.display = 'block';
-                    button.textContent = '▲';
-                } else {
-                    detalhesContainer.style.display = 'none';
-                    button.textContent = '▼';
-                }
+        </ul>
+    </div>
+    {% if alunos %}
+    <h2 class="AA">Alunos cadastrados:</h2>
+
+    {% else %}
+    <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
+    {% endif %}
+
+    {% for aluno in alunos %}
+    <!-- Tabela de alunos -->
+    <table class="alunos-listados">
+        <div class="container-tabela">
+            <tbody>
+                <!-- Estrutura de cada linha de aluno na tabela -->
+                <tr class="aluno">
+                    <td>
+                        <!-- Perfil do Aluno -->
+                        <div class="perfil-aluno">
+                            <!-- Foto do Aluno -->
+                            <div class="foto-aluno">
+                                <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
+                                <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
+                            </div>
+                            <!-- Informações básicas do aluno -->
+                            <div class="info-aluno">
+                                <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
+                                <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p>
+                                <!-- Nome do responsável -->
+                                <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p>
+                                <!-- Telefone do responsável -->
+                            </div>
+                        </div>
+
+                        <!-- Container para informações adicionais, inicialmente ocultas -->
+                        <div class="detalhes" style="display: none;">
+                            <!-- Informações de transporte -->
+                            <div class="info-transporte">
+                                <h3>Informações de Transporte</h3>
+                                <p><strong>Endereço:</strong> {{aluno['endereco']}} </p> <!-- Endereço do aluno -->
+                                <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                <!-- Escola que o aluno frequenta -->
+                            </div>
+
+                            <!-- Informações extras do aluno -->
+                            <div class="info-extra">
+                                <h3>Condição Médica</h3>
+                                <p> {{aluno['condicao_medica']}} </p> <!-- Qualquer informação adicional relevante -->
+                            </div>
+
+                            <div>
+                                <a href="/editar-aluno/{{aluno['id_aluno']}}"><button>Editar Aluno</button></a>
+                            </div>
+
+                            <div class="container-btn-excluir">
+                                <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
+                            </div>
+
+                            <div class="container-rota">
+                                <input type="checkbox" class="student-checkbox" data-address="{{aluno['endereco']}}" value="{{aluno['nome_aluno']}}">
+                            </div>
+                        </div>
+
+                        <!-- Botão para expandir/ocultar os detalhes do aluno -->
+                        <div class="button-container">
+                            <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+                            <!-- Ícone de seta para expandir -->
+                        </div>
+                    </td>
+                </tr>
+            <!-- Adicione mais alunos aqui -->
+            </tbody>
+        </div>
+    </table>
+    {% endfor %}
+    <label for="origin">Ponto de Partida:</label>
+    <input type="text" id="origin" placeholder="Insira o ponto de partida">
+                
+    <button id="generateRoute">Gerar URL da Rota</button>
+                
+    <div id="routeUrl"></div>
+</main>
+
+<!-- Script para manipulação de interações e animações -->
+<script>
+    function toggleExpandir(button) {
+        const alunoRow = button.closest('.aluno');
+        const detalhesContainer = alunoRow.querySelector('.detalhes');
+
+        if (detalhesContainer.style.display === 'none') {
+            detalhesContainer.style.display = 'block';
+            button.textContent = '▲';
+        } else {
+            detalhesContainer.style.display = 'none';
+            button.textContent = '▼';
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuIcon = document.getElementById('menu-icon');
+        const menu = document.getElementById('menu');
+
+        menuIcon.addEventListener('click', function () {
+            // Adiciona ou remove a classe 'show' para mostrar/esconder o menu
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show'); // Esconde o menu (desliza para fora)
+            } else {
+                menu.classList.add('show'); // Mostra o menu (desliza para dentro)
             }
-        </script>        
-    </body>
-</html>
+        });
+    });
+
+    // Função para abrir e fechar o menu
+    document.getElementById('toggleBtn').addEventListener('click', function () {
+        var menu = document.getElementById('menu1');
+        menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
+        this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
+    });
+
+
+    const details = document.getElementById('details');
+</script>
