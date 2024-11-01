@@ -26,7 +26,7 @@
         <main>
             <section class="c-table">
                 <div class="title">
-                    <h1>Passageiros</h1>
+                    <h2>Passageiros</h2>
                     <a href="/cadastrar-aluno" class="btn-cadaluno"><button> + Cadastrar Aluno </button></a>
                 </div>
 
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="container-listagem-busca">
-                    <h3>Escolas</h3>
+                    <h3>Escolas:</h3>
                     <form method="GET" action="{{ url_for('listar_alunos') }}">
                         <select name="escola" onchange="this.form.submit();" class="select-escola">
                             <option value="">Selecione uma escola</option>
@@ -69,7 +69,7 @@
                             <td>
                                 <div class="perfil-aluno">
                                     <div class="foto-aluno">
-                                        <img src="{{aluno['foto_aluno']}}" class="foto-aluno" alt="Foto do Aluno">
+                                        <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
                                     </div>
                                     <div class="info-aluno">
                                         <h2>{{aluno['nome_aluno']}}</h2>
