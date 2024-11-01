@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="/static/styles/variaveis.css">
     <link rel="icon" href="/static/icones/dinheiro.png" type="image/x-icon">
 </head>
+
 <body>
     <header>
         <button class="button-back" type="button">
@@ -19,7 +21,7 @@
         </button>
         <figure>
             <div class="logo">
-                <img src="/static/icones/logo.png" alt="Logo da MoveBR">
+                <img src="/static/icones/movebr.png" alt="Logo da MoveBR">
             </div>
         </figure>
     </header>
@@ -32,7 +34,7 @@
 
         <form action="/gerar-pagamento" method="get" class="ger-pagamento">
             <div class="ger-pagamento-container">
-                <button type="submit" class="ger-pagamento">Gerar novo pagamento</button>
+                <button type="submit" class="ger-pagamento">+ Gerar novo pagamento</button>
             </div>
         </form>
 
@@ -52,25 +54,28 @@
                 <tbody>
                     {% for pagamento in pagamentos %}
                     <tr>
-                        <td>{{ pagamento.nome_aluno }}</td>
+                        <td><strong>{{ pagamento.nome_aluno }}</strong></td>
                         <td>{{ pagamento.mes_pagamento }}</td>
                         <td>{{ pagamento.data_pagamento }}</td>
-                        <td>R$ {{ pagamento.valor_pagamento }}</td>
+                        <td><strong>R$ {{ pagamento.valor_pagamento }}</strong></td>
                         <!-- <td>
-                            <a href="/excluir-historico/{{ pagamento.id_aluno }}">
-                                <button class="btn-excluir">Excluir</button>
-                            </a>
-                        </td> -->
+                                <a href="/excluir-historico/{{ pagamento.id_aluno }}">
+                                    <button class="btn-excluir">Excluir</button>
+                                </a>
+                            </td> -->
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            
             {% else %}
             <p>Nenhum pagamento encontrado.</p>
             {% endif %}
         </div>
+
     </div>
 
     <script src="/static/js/historico-pagamento.js"></script>
 </body>
+
 </html>
