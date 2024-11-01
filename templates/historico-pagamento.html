@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Pagamentos</title>
-    <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
-    <link rel="icon" href="/static/icones/dinheiro.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles/historico-pagamento.css">
 </head>
+
 <body>
     <header>
         <button class="button-back" type="button">
-            <a href="/pag-inicial-motorista">
-                <img src="/static/icones/seta-voltar.png" alt="Voltar para a página inicial">
-            </a>
+            <a href="/pag-inicial-motorista"><img src="/static/icones/seta-voltar.png"
+                    alt="imagem de uma seta para esquerda"></a>
         </button>
         <figure>
             <div class="logo">
-                <img src="/static/icones/logo.png" alt="Logo da MoveBR">
+                <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da movebr"></a>
             </div>
         </figure>
     </header>
@@ -32,7 +32,7 @@
 
         <form action="/gerar-pagamento" method="get" class="ger-pagamento">
             <div class="ger-pagamento-container">
-                <button type="submit" class="ger-pagamento">Gerar novo pagamento</button>
+                <button type="submit" class="ger-pagamento">+ Gerar novo pagamento</button>
             </div>
         </form>
 
@@ -52,25 +52,44 @@
                 <tbody>
                     {% for pagamento in pagamentos %}
                     <tr>
-                        <td>{{ pagamento.nome_aluno }}</td>
+                        <td><strong>{{ pagamento.nome_aluno }}</strong></td>
                         <td>{{ pagamento.mes_pagamento }}</td>
                         <td>{{ pagamento.data_pagamento }}</td>
-                        <td>R$ {{ pagamento.valor_pagamento }}</td>
+                        <td><strong>R$ {{ pagamento.valor_pagamento }}</strong></td>
                         <!-- <td>
-                            <a href="/excluir-historico/{{ pagamento.id_aluno }}">
-                                <button class="btn-excluir">Excluir</button>
-                            </a>
-                        </td> -->
+                                <a href="/excluir-historico/{{ pagamento.id_aluno }}">
+                                    <button class="btn-excluir">Excluir</button>
+                                </a>
+                            </td> -->
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+
             {% else %}
             <p>Nenhum pagamento encontrado.</p>
             {% endif %}
         </div>
+
+        <h2 class="valor">Valor Total: <span id="valor_total"> </span></h2>
+
     </div>
 
-    <script src="/static/js/historico-pagamento.js"></script>
+    <script>
+        window.onload = function () {
+            const valoresPagamento = document.querySelectorAll("#valor_pagamento");
+            let total = 0;
+
+            valoresPagamento.forEach(function (pagamento) {
+                let valor = parseFloat(pagamento.textContent.trim());
+                if (!isNaN(valor)) {
+                    total += valor;
+                }
+            });
+
+            document.getElementById("valor_total").textContent = total.toFixed(2);
+        };
+    </script>
 </body>
+
 </html>
