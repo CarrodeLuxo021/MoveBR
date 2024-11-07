@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="../static/styles/variaveis.css">
     <script src="/static/js/lista-escola.js" defer></script>
     <script src="/static/js/rotas-mapas.js" defer></script>
-</head>
+    <script src="/static/js/letras-maiusculas.js" defer></script>
+    
+
 
 <body>
     <header>
@@ -29,8 +31,10 @@
             </div>
 
             <div class="container-busca">
-                <input type="text" id="searchInput" name="query" class="input-busca" placeholder="Buscar por nome...">
-                <button class="icone-busca" type="submit">🔍</button>
+                <form method="GET" action="{{ url_for('listar_alunos') }}">
+                    <input type="text" name="pesquisa-aluno" class="input-busca" placeholder="Buscar...">
+                    <button class="icone-busca" type="submit">🔍</button>
+                </form>
             </div>
 
             <div class="container-listagem-busca">
@@ -152,6 +156,7 @@
             detalhesContainer.style.display = isHidden ? 'block' : 'none';
             button.textContent = isHidden ? '▲' : '▼';
         }
+        
     </script>
 
 </body>
