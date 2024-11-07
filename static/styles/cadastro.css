@@ -28,7 +28,7 @@ header {
     justify-content: space-between;
     padding: 0 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
 }
@@ -72,10 +72,10 @@ main {
 
 /* Form Container */
 .container-form {
+    width: 70%;
     background-color: #ffffff;
     border-radius: 12px;
     padding: 40px;
-    width: 1100px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
 }
@@ -171,7 +171,7 @@ button.cadastrar:hover {
     }
 
     .container-form {
-        width: 90%;
+        width: 80%;
         padding: 20px;
     }
 
@@ -196,7 +196,7 @@ button.cadastrar:hover {
     }
 
     .container-form {
-        width: 100%;
+        width: 80%;
         padding: 20px;
     }
 
@@ -217,7 +217,7 @@ button.cadastrar:hover {
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
     .container-form {
-        width: 90%;
+        width: 80%;
     }
 
     header {
@@ -247,7 +247,8 @@ button.cadastrar:hover {
 /* X-Large devices (large desktops, less than 1400px) */
 @media (max-width: 1399.98px) {
     .container-form {
-        width: 100%;
+        margin-top: 90px;
+        width: 80%;
         gap: 0px;
     }
 
