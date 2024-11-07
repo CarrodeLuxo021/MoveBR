@@ -30,39 +30,39 @@
                 <a href="/cadastrar-aluno" class="btn-cadaluno"><button> + Cadastrar Aluno </button></a>
             </div>
 
-        <div class="container-busca">
-            <form action="/listar-alunos" method='get'>
-                <input type="text" name="query" class="input-busca" placeholder="Buscar...">
-                <button class="icone-busca" type="submit">🔍</button>
-            </form>
-            <div class="contagem-alunos">
-
+            <div class="container-busca">
+                <form action="/listar-alunos" method='get'>
+                    <input type="text" name="query" class="input-busca" placeholder="Buscar...">
+                    <button class="icone-busca" type="submit">🔍</button>
+                </form>
+                
             </div>
-        </div>
-    </section>
-            <!-- Botões para filtrar por escola -->
-    <div class="container-listagem-busca">
-        <h2>Escolas</h2>
-        <ul>
-            <!-- Botão para exibir todos os alunos, aparece apenas uma vez -->
-            <li>
-                <form method="GET" action="{{ url_for('listar_alunos') }}">
-                    <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
-                </form>
-            </li>
 
-            <!-- Botões para cada escola, baseados na lista de escolas -->
-            {% for escola in escolas %}
-            <li>
-                <form method="GET" action="{{ url_for('listar_alunos', escola=escola) }}">
-                    <button type="submit" class="btn-escola" id="btn-{{ escola }}">{{ escola }}</button>
-                </form>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+            <div class="container-listagem-busca">
+                <h2>Escolas</h2>
+                <ul>
+                    <!-- Botão para exibir todos os alunos, aparece apenas uma vez -->
+                    <li>
+                        <form method="GET" action="{{ url_for('listar_alunos') }}">
+                            <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
+                        </form>
+                    </li>
+        
+                    <!-- Botões para cada escola, baseados na lista de escolas -->
+                    {% for escola in escolas %}
+                    <li>
+                        <form method="GET" action="{{ url_for('listar_alunos', escola=escola) }}">
+                            <button type="submit" class="btn-escola" id="btn-{{ escola }}">{{ escola }}</button> <input type="checkbox" class="school-checkbox" data-address="{{escola}}" value="{{escola}}">
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
     {% if alunos %}
     <h2 class="AA">Alunos cadastrados:</h2>
+    <div class="contagem-alunos"></div>
 
     {% else %}
     <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
@@ -101,8 +101,8 @@
                                         </div>
                                         <p><strong>Endereço:</strong> {{aluno['endereco']}} </p>
                                         <p><strong>Escola:</strong> {{aluno['escola']}} </p>
-                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
-                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                        <p><strong>Série:</strong> {{aluno['serie-aluno']}} </p>
+                                        <p><strong>Período:</strong> {{aluno['periodo-aluno']}} </p>
                                     </div>
                                     <div class="info-extra">
                                         <h3>Informações Extra</h3>
@@ -150,32 +150,45 @@
             });
         });
 
-    // Função para abrir e fechar o menu
-    document.getElementById('toggleBtn').addEventListener('click', function () {
-        var menu = document.getElementById('menu1');
-        menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
-        this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
-    });
+        // Função para abrir e fechar o menu
+        document.getElementById('toggleBtn').addEventListener('click', function () {
+            var menu = document.getElementById('menu1');
+            menu.style.display = menu.style.display === 'grid' ? 'none' : 'grid';
+            this.innerHTML = menu.style.display === 'grid' ? '&#9660;' : '&#9650;';
+        });
 
+        const details = document.getElementById('details');
 
-    const details = document.getElementById('details');
+        // Função para contar os alunos exibidos e atualizar o contador
+        function atualizarContagemAlunos() {
+            // Seleciona todos os elementos que representam um aluno
+            const alunosExibidos = document.querySelectorAll('.aluno');
+            // Obtém a div onde a contagem será exibida
+            const contagemDiv = document.querySelector('.contagem-alunos');
+            // Atualiza a contagem dentro da div
+            contagemDiv.textContent = `Total de alunos: ${alunosExibidos.length}`;
+        }
+
+        // Chama a função quando o conteúdo da página é carregado
+        document.addEventListener("DOMContentLoaded", function () {
+            atualizarContagemAlunos();
+        });
+
+        // Opcional: se houver alterações dinâmicas na listagem dos alunos,
+        // você pode chamar 'atualizarContagemAlunos()' novamente após essas alterações.
 </script>
+
 <script>
-    // Função para contar os alunos exibidos e atualizar o contador
-    function atualizarContagemAlunos() {
-        // Seleciona todos os elementos que representam um aluno
-        const alunosExibidos = document.querySelectorAll('.aluno');
-        // Obtém a div onde a contagem será exibida
-        const contagemDiv = document.querySelector('.contagem-alunos');
-        // Atualiza a contagem dentro da div
-        contagemDiv.textContent = `Total de alunos: ${alunosExibidos.length}`;
+    function toggleExpandir(button) {
+        const alunoRow = button.closest('.aluno');
+        const detalhesContainer = alunoRow.querySelector('.detalhes');
+
+        if (detalhesContainer.style.display === 'none') {
+            detalhesContainer.style.display = 'block';
+            button.textContent = '▲';
+        } else {
+            detalhesContainer.style.display = 'none';
+            button.textContent = '▼';
+        }
     }
-
-    // Chama a função quando o conteúdo da página é carregado
-    document.addEventListener("DOMContentLoaded", function () {
-        atualizarContagemAlunos();
-    });
-
-    // Opcional: se houver alterações dinâmicas na listagem dos alunos,
-    // você pode chamar 'atualizarContagemAlunos()' novamente após essas alterações.
 </script>
