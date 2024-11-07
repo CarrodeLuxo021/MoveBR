@@ -1,4 +1,6 @@
 from conexao import Conexao
+import random
+import string
 from flask import Flask, render_template, redirect, url_for, request, session, flash, jsonify
 
 class Usuario():
@@ -247,3 +249,43 @@ class Usuario():
         except Exception as e:
             print(f"Erro ao pesquisar aluno: {e}")
             return False
+        
+    def gerar_codigo(tamanho=8):
+        
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+        
+        """Gera um código aleatório de tamanho especificado."""
+        caracteres = string.ascii_letters + string.digits  # Letras e dígitos
+        codigo = ''.join(random.choice(caracteres) for _ in range(tamanho))
+        
+        mycursor.execute("INSERT INTO tb_codigos (codigo) VALUES (%s)", (codigo,))
+        mydb.commit()
+        mydb.close()
+        
+        link = f"http://bdmovebr.mysql.database.azure.com/cadastrar-aluno/{codigo}"
+        
+        return link
+    
+    def verficar_codigo(self, codigo):
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+        
+        mycursor.execute("SELECT codigo FROM tb_codigos")
+        codigos = mycursor.fetchall()
+        
+        
+        lista_codigos = [codigo[0] for codigo in codigos]
+
+        for codigo in lista_codigos:
+            if codigo in lista_codigos:
+                mycursor.execute("UPDATE tb_codigos SET verificacao = 'indisponivel' WHERE codigo = %s", (codigo,))
+                return True
+            else:
+                mycursor.execute("UPDATE tb_codigos SET verificacao = 'disponivel' WHERE codigo = %s", (codigo,))
+                return False
+        
+        mydb.close()
+        mycursor.close()
+            
+       
