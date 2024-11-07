@@ -25,6 +25,7 @@ CREATE TABLE tb_alunos (
     endereco VARCHAR(100),
     telefone_responsavel varchar(100),
     email_responsavel varchar(100),
+    serie_aluno varchar(10),
     idade int,
     cpf_motorista varchar(100),
 	FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista),

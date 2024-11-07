@@ -1,30 +1,34 @@
-<title>Listar Aluno</title>
+<!DOCTYPE html>
+<html>
 
-<!-- Importa o FontAwesome para os ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/styles/listar-aluno.css">
+    <link rel="stylesheet" href="../static/styles/variaveis.css">
+    <script src="/static/js/lista-escola.js" defer></script>
+    <script src="/static/js/rotas-mapas.js" defer></script>
+    <script src="/static/js/letras-maiusculas.js" defer></script>
+    
 
-<!-- Importa o arquivo de estilo CSS personalizado para a página de listagem de alunos -->
-<link rel="stylesheet" href="../static/styles/listar-aluno.css">
-<link rel="stylesheet" href="../static/styles/variaveis.css">
-<script src="/static/js/lista-escola.js"></script>
 
-<!-- Conteúdo principal da página -->
-<main>
-
+<body>
     <header>
-        <button class="button-back" type="button"><a href="/pag-inicial-motorista"><img
-                    src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
+        <button class="button-back" type="button">
+            <a href="/pag-inicial-motorista"><img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a>
+        </button>
         <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt="logo da movebr"></div>
+            <div class="logo">
+                <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da movebr"></a>
+            </div>
         </figure>
     </header>
 
-    <section class="c-table">
-        <!-- Área de busca -->
-        <div class="title">
-            <h1>Passageiros</h1>
-            <a href="/cadastrar-aluno" class="btn-cadaluno"><button> + Cadastrar Aluno </button></a>
-        </div>
+    <main>
+        <section class="c-table">
+            <div class="title">
+                <h2>Passageiros</h2>
+                <a href="/cadastrar-aluno" class="btn-cadaluno"><button> + Cadastrar Aluno </button></a>
+            </div>
 
         <div class="container-busca">
             <form action="/listar-alunos" method='get'>
@@ -64,99 +68,87 @@
     <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
     {% endif %}
 
-    {% for aluno in alunos %}
-    <!-- Tabela de alunos -->
-    <table class="alunos-listados">
-        <div class="container-tabela">
-            <tbody>
-                <!-- Estrutura de cada linha de aluno na tabela -->
-                <tr class="aluno">
-                    <td>
-                        <!-- Perfil do Aluno -->
-                        <div class="perfil-aluno">
-                            <!-- Foto do Aluno -->
-                            <div class="foto-aluno">
-                                <!-- O src aqui deverá ser preenchido dinamicamente com a URL da foto do aluno -->
-                                <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
-                            </div>
-                            <!-- Informações básicas do aluno -->
-                            <div class="info-aluno">
-                                <h2> {{aluno['nome_aluno']}} </h2> <!-- Nome do aluno -->
-                                <p><strong>Nome do resposável:</strong> {{aluno['nome_responsavel']}} </p>
-                                <!-- Nome do responsável -->
-                                <p><strong>Telefone do resposável:</strong> {{aluno['telefone_responsavel']}} </p>
-                                <!-- Telefone do responsável -->
-                            </div>
-                        </div>
+        <div id="alunosList">
+            {% for aluno in alunos %}
+            <table class="alunos-listados" data-name="{{ aluno['nome_aluno'] | lower }}">
+                <div class="container-tabela">
+                    <tbody>
+                        <tr class="aluno">
+                            <td>
+                                <div class="perfil-aluno">
+                                    <div class="foto-aluno">
+                                        <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
+                                    </div>
+                                    <div class="info-aluno">
+                                        <h2> {{aluno['nome_aluno']}} </h2>
+                                        <p><strong>Nome do responsável:</strong> {{aluno['nome_responsavel']}} </p>
+                                        <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}} </p>
+                                    </div>
+                                    <div class="container-rota">
+                                        <input type="checkbox" class="student-checkbox" data-address="{{aluno['endereco']}}" value="{{aluno['nome_aluno']}}">
+                                    </div>
+                                </div>
 
-                        <!-- Container para informações adicionais, inicialmente ocultas -->
-                        <div class="detalhes" style="display: none;">
-                            <!-- Informações de transporte -->
-                            <div class="info-transporte">
-                                <h3>Informações de Transporte</h3>
-                                <p><strong>Endereço:</strong> {{aluno['endereco']}} </p> <!-- Endereço do aluno -->
-                                <p><strong>Escola:</strong> {{aluno['escola']}} </p>
-                                <!-- Escola que o aluno frequenta -->
-                            </div>
+                                <div class="detalhes" style="display: none;">
+                                    <div class="info-transporte">
+                                        <div class="titulo-editar">
+                                            <h3>Informações de Transporte</h3>
+                                            <a href="/editar-aluno/{{aluno['id_aluno']}}">
+                                                <button class="btn-editar">
+                                                    <img class="icon-editar" src="/static/icones/editar.png" alt="Ícone Editar">
+                                                </button>
+                                            </a>
+                                        </div>
+                                        <p><strong>Endereço:</strong> {{aluno['endereco']}} </p>
+                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                    </div>
+                                    <div class="info-extra">
+                                        <h3>Informações Extra</h3>
+                                        <p> {{aluno['condicao_medica']}} </p>
+                                    </div>
 
-                            <!-- Informações extras do aluno -->
-                            <div class="info-extra">
-                                <h3>Condição Médica</h3>
-                                <p> {{aluno['condicao_medica']}} </p> <!-- Qualquer informação adicional relevante -->
-                            </div>
+                                    <div class="container-btn-excluir">
+                                        <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
+                                    </div>
+                                </div>
 
-                            <div>
-                                <a href="/editar-aluno/{{aluno['id_aluno']}}"><button>Editar Aluno</button></a>
-                            </div>
-
-                            <div class="container-btn-excluir">
-                                <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
-                            </div>
-                        </div>
-
-                        <!-- Botão para expandir/ocultar os detalhes do aluno -->
-                        <div class="button-container">
-                            <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-                            <!-- Ícone de seta para expandir -->
-                        </div>
-                    </td>
-                </tr>
-
-                <!-- Adicione mais alunos aqui -->
-            </tbody>
+                                <div class="button-container">
+                                    <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
+            </table>
+            {% endfor %}
         </div>
-    </table>
-    {% endfor %}
-</main>
 
-<!-- Script para manipulação de interações e animações -->
-<script>
-    function toggleExpandir(button) {
-        const alunoRow = button.closest('.aluno');
-        const detalhesContainer = alunoRow.querySelector('.detalhes');
+        <section class="rota">
+            <label for="origin">Ponto de Partida:</label>
+            <br>
+            <input type="text" id="origin" placeholder="Insira o ponto de partida">
+            <button id="generateRoute">Gerar URL da Rota</button>
+            <div id="routeUrl"></div>
+        </section>
+    </main>
 
-        if (detalhesContainer.style.display === 'none') {
-            detalhesContainer.style.display = 'block';
-            button.textContent = '▲';
-        } else {
-            detalhesContainer.style.display = 'none';
-            button.textContent = '▼';
-        }
-    }
+    <script>
+        // Função para mostrar ou esconder alunos com base no texto de pesquisa
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            const alunosList = document.querySelectorAll('#alunosList .alunos-listados');
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const menuIcon = document.getElementById('menu-icon');
-        const menu = document.getElementById('menu');
-
-        menuIcon.addEventListener('click', function () {
-            // Adiciona ou remove a classe 'show' para mostrar/esconder o menu
-            if (menu.classList.contains('show')) {
-                menu.classList.remove('show'); // Esconde o menu (desliza para fora)
-            } else {
-                menu.classList.add('show'); // Mostra o menu (desliza para dentro)
-            }
+            alunosList.forEach(function (aluno) {
+                const alunoName = aluno.getAttribute('data-name');
+                if (alunoName.includes(query)) {
+                    aluno.style.display = '';
+                } else {
+                    aluno.style.display = 'none';
+                }
+            });
         });
-    });
 
     // Função para abrir e fechar o menu
     document.getElementById('toggleBtn').addEventListener('click', function () {

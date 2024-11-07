@@ -1,31 +1,43 @@
-/* Reset básico */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilização do corpo */
+/* Body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #ecf0f1; /* Cor de fundo clara */
-    color: #2c3e50; /* Cor do texto */
+    background-color: #f5f6fa;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-/* Estilização do cabeçalho */
+/* Header */
 header {
-    background-color: #2c3e50; /* Azul escuro */
-    color: #ecf0f1; /* Texto claro */
+    background-color: #2c3e50;
+    color: #ecf0f1;
     height: 80px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 .button-back {
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .button-back img {
@@ -33,129 +45,213 @@ header {
     height: auto;
 }
 
-.logo img{
-    height: 100px;
+.button-back:hover {
+    transform: scale(1.1);
 }
 
-/* Estilização do main */
+.logo img {
+    height: 30px;
+}
+
+/* Main */
 main {
+    width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.titulo{
+.titulo {
     text-align: center;
-    margin-bottom: 10px;
+    font-size: 1.8em;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e79428;
+    padding-bottom: 10px;
 }
 
-/* Estilização do container-form */
+/* Form Container */
 .container-form {
-    max-width: 1000px;
-    width: 90%;
-    margin: 0 auto;
-    background-color: #ffffff; /* Cor de fundo do formulário */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    width: 70%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-.container-form h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #E79428; /* Cor do título */
+.container-form:hover {
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Layout dos itens do formulário */
+/* Form Items */
 .itens-form {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* Estilização dos containers de lado */
-.lado-esquerdo-container,
-.lado-direito-container {
-    flex: 1;
-    min-width: 250px; /* Largura mínima */
+.lado-esquerdo-container, .lado-direito-container {
+    flex: 1 1 45%;
 }
 
-/* Estilização dos labels */
-.container-form label {
+/* Labels */
+label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #2c3e50; /* Cor dos labels */
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #2c3e50;
 }
 
-/* Estilização dos campos de entrada */
-.container-form input {
+/* Form Fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+input[type="password"],
+select {
     width: 100%;
     padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #34495e;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    background-color: #f9f9f9; /* Fundo claro */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Estilização dos botões */
-.btn-container {
-    text-align: right;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="file"]:focus,
+input[type="password"]:focus,
+select:focus {
+    outline: none;
+    border-color: #2c3e50;
+    box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.3);
 }
 
-.btn-container button {
-    background-color: #E79428; /* Cor do botão */
-    color: #ecf0f1; /* Texto claro */
+/* Submit Button */
+button.cadastrar {
+    padding: 15px 30px;
+    background-color: #e79428;
+    color: #ffffff;
     border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
+    border-radius: 8px;
+    font-size: 1.1em;
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
 }
 
-.btn-container button:hover {
-    background-color: #34495e; /* Cor do botão ao passar o mouse */
+button.cadastrar:hover {
+    background-color: #b06d14;
+    transform: translateY(-2px);
 }
 
-.btn-container button:active {
-    transform: scale(0.98);
+/* Button Container */
+.btn-container {
+    display: flex;
+    justify-content: end;
 }
 
-/* Media Queries */
-
-/* Para telas menores que 1200px */
-@media (max-width: 1200px) {
-    .container-form {
-        width: 90%; /* Largura responsiva */
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    header {
+        height: 60px;
+        padding: 0 10px;
     }
-}
 
-/* Para telas menores que 992px */
-@media (max-width: 992px) {
+    .button-back img {
+        width: 16px;
+    }
+
+    .logo img {
+        height: 20px;
+    }
+
+    .container-form {
+        width: 90%;
+        padding: 20px;
+    }
+
     .itens-form {
-        flex-direction: column; /* Coloca os itens em coluna */
+        flex-direction: column; /* Exibir itens em coluna */
     }
 
-    .lado-esquerdo-container,
-    .lado-direito-container {
-        min-width: 100%; /* Ocupa 100% da largura em dispositivos pequenos */
+    .btn-container {
+        justify-content: center;
+    }
+
+    button.cadastrar {
+        width: 100%;
+        padding: 12px;
     }
 }
 
-/* Para telas menores que 768px */
-@media (max-width: 768px) {
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .logo img {
+        height: 10px;
+    }
+
     .container-form {
-        width: 100%; /* Largura total */
+        width: 90%;
+        padding: 20px;
+    }
+
+    .itens-form {
+        flex-direction: column; /* Exibir itens em coluna */
+        gap: 0px;
+    }
+
+    .lado-esquerdo-container, .lado-direito-container {
+        width: 100%; /* Ajustar largura para ocupar a coluna toda */
+    }
+
+    .btn-container {
+        justify-content: center;
     }
 }
 
-/* Para telas menores que 576px */
-@media (max-width: 576px) {
-    .btn-container button {
-        width: 100%; /* Botão ocupa toda a largura */
-        margin-top: 20px; /* Ajustar margem */
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .container-form {
+        width: 80%;
+        margin-top: 90px;
+    }
+
+    header {
+        padding: 0 15px;
+    }
+
+    .button-back img {
+        width: 18px;
+    }
+
+    .logo img {
+        height: 20px;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .container-form {
+        width: 80%;
+        margin-top: 90px;
+    }
+}
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+    .container-form {
+        margin-top: 90px;
+        width: 80%;
+        gap: 0px;
+    }
+
+    button.cadastrar {
+        font-size: 1em;
     }
 }

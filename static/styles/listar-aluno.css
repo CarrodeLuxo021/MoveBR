@@ -6,58 +6,40 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    /* Fonte limpa e moderna */
-    line-height: 1.6;
-    /* Melhora a legibilidade */
-    background-color: var(--cor-04);
-    /* Cor de fundo clara */
-    color: var(--cor-01);
-    /* Cor do texto */
+    line-height: 1.6; /* Melhora a legibilidade */
+    background-color: var(--cor-04); /* Cor de fundo clara */
+    color: var(--cor-01); /* Cor do texto */
 }
 
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
-    /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03);
-    /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    /* Sombra suave para profundidade */
-    height: 90px;
-    margin-bottom: 20px;
+    background-color: #2c3e50;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .button-back {
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .button-back img {
     width: 20px;
     height: auto;
-    margin-left: 30px;
 }
 
-figure img {
-    width: 100px;
-    /* Tamanho da imagem do logo */
-    height: auto;
-    /* Manter a proporção da imagem */
-    margin: 0 20px 0 0;
+.button-back:hover {
+    transform: scale(1.1);
 }
 
-.btn-cadaluno button{
-    background-color: var(--cor-06);
-    color: var(--cor-03);
-    font-size: 15px;
-    margin-top: 6px;
-    border: none;
-    padding: 7px 12px;
-    border-radius: 99999px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;    
+.logo img {
+    height: 30px;
 }
 
 main {
@@ -67,64 +49,58 @@ main {
 
 .c-table {
     display: flex;
-    margin-bottom: 20px;
+    margin: 20px 0;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px 0 30px;
+    padding: 0 30px;
 }
 
+.btn-cadaluno button {
+    background-color: #e79428;
+    color: var(--cor-03);
+    font-size: 15px;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 80px;
+}
+
+.btn-cadaluno button:hover {
+    background-color: #b06d14;
+}
+
+/* Estilo do container de busca */
 .container-busca {
     display: flex;
-    align-items: center;
-    position: relative;
-    /* Para posicionar o botão corretamente */
-}
-
-.icone-busca {
-    position: absolute;
-    top: 20%;
-}
-
-.container-tabela {
-    margin: 2rem 0 0 0;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 45px;
 }
 
 .input-busca {
-    padding: 10px 40px 10px 12px;
-    /* Adiciona espaço para o ícone */
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
-    width: 100%;
-    /* Preencher o espaço disponível */
-    transition: border-color 0.3s;
-    /* Efeito de transição */
-}
-
-.input-busca:focus {
-    border-color: var(--cor-06);
-    /* Cor ao focar */
+    border: none;
+    padding: 10px 15px;
     outline: none;
-    /* Remove contorno padrão */
+    border-radius: 25px 0 0 25px;
 }
 
 .icone-busca {
-    position: absolute;
-    right: 10px;
-    /* Espaço à direita */
-    background: transparent;
-    /* Fundo transparente */
+    background-color: #2c3e50;
     border: none;
-    /* Remove borda */
+    padding: 8px 13px;
     cursor: pointer;
-    /* Mão ao passar o mouse */
-    font-size: 16px;
-    /* Tamanho do ícone */
+    border-radius: 0 25px 25px 0;
 }
 
 .icone-busca:hover {
-    color: var(--cor-06);
-    /* Muda a cor ao passar o mouse */
+    background-color: #456789;
+}
+
+.container-tabela {
+    margin-top: 2rem;
 }
 
 .alunos-listados {
@@ -138,20 +114,10 @@ main {
     margin-bottom: 20px;
 }
 
-.alunos-listados td {
-    position: relative;
-}
-
-.alunos-listados td .button-container {
-    position: absolute;
-    right: 0;
-    top: 15%;
-    transform: translateY(-50%);
-}
-
 td {
     padding: 12px 20px;
     font-weight: bold;
+    position: relative; /* Necessário para posicionar o botão corretamente */
 }
 
 .perfil-aluno {
@@ -160,12 +126,18 @@ td {
     margin-bottom: 20px;
 }
 
+.foto-aluno {
+    width: 120px; /* ou ajuste conforme necessário */
+    height: 120px; /* ou ajuste conforme necessário */
+    overflow: hidden; /* Garante que a imagem não ultrapasse o contêiner */
+    border-radius: 50%; /* Garante que o contêiner também seja redondo */
+    border: 2px solid #e79428;
+}
+
 .foto-aluno img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--cor-06);
+    width: 100%; /* Faz com que a imagem preencha o contêiner */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Remove espaços indesejados */
 }
 
 .info-aluno {
@@ -174,22 +146,7 @@ td {
 
 .info-aluno h2 {
     font-size: 24px;
-    color: var(--cor-06);
     margin: 0;
-    padding: 0;
-}
-
-.info-aluno p {
-    font-size: 16px;
-    color: var(--cor-02);
-}
-
-.info-aluno {
-    margin-left: 20px;
-}
-
-.info-aluno h2 {
-    font-size: 24px;
     color: var(--cor-01);
 }
 
@@ -198,17 +155,25 @@ td {
     color: var(--cor-02);
 }
 
-/* Remover a repetição e manter o estilo dos detalhes */
+/* Detalhes do Aluno */
 .detalhes {
-    display: none;
-    /* Esconde inicialmente */
-    background-color: #F2F2F2;
-    /* Cor de fundo cinza claro */
+    display: none; /* Esconde inicialmente */
+    background-color: #F2F2F2; /* Cor de fundo cinza claro */
     padding: 10px;
     border-radius: 4px;
-    margin-top: 10px;
-    /* Espaço entre o cabeçalho e a área expandida */
+    margin-top: 10px; /* Espaço entre o cabeçalho e a área expandida */
     transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.btn-expandir {
+    position: absolute; /* Posiciona o botão em relação ao contêiner do aluno */
+    right: 0; /* Ajuste a distância da borda direita */
+    top: 0;
+    background-color: transparent; /* Remova a cor de fundo se necessário */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para mão */
+    font-size: 1rem; /* Tamanho do ícone */
+    color: #e79428; /* Cor do texto */
 }
 
 .info-transporte {
@@ -218,7 +183,7 @@ td {
 .info-transporte h3 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: var(--cor-06);
+    color: #e79428;
 }
 
 .info-transporte p {
@@ -227,64 +192,60 @@ td {
     margin-bottom: 5px;
 }
 
+.titulo-editar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-editar {
+    background-color: #2c3e50;
+    border: none;
+    border-radius: 50%; /* Faz o botão ser redondo */
+    width: 30px; /* Ajuste conforme necessário */
+    height: 30px; /* Ajuste conforme necessário */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+    background-color: #456789; /* Cor ao passar o mouse */
+}
+
+.icon-editar {
+    width: 20px; /* Tamanho do ícone */
+    height: 20px; /* Tamanho do ícone */
+}
+
 .info-extra h3 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: var(--cor-06);
-}
-
-/* Ajuste do botão de expansão para manter a seta no mesmo lugar */
-.btn-expandir {
-    position: absolute;
-    right: 0;
-    background-color: transparent;
-    color: var(--cor-06);
-    border: none;
-    cursor: pointer;
-    font-size: 0.9rem;
+    color: #e79428;
 }
 
 .container-btn-excluir {
     margin-left: 87%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .container-btn-excluir button {
-    background-color: var(--cor-06);
-    /* Cor de fundo */
-    color: var(--cor-03);
-    /* Cor do texto */
-    border: none;
-    /* Remove borda padrão */
-    padding: 12px;
-    /* Espaçamento interno */
-    border-radius: 6px;
-    /* Bordas arredondadas */
-    cursor: pointer;
-    /* Cursor de mão */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    /* Transições suaves */
+    background-color: #e79428; /* Cor de fundo */
+    color: var(--cor-03); /* Cor do texto */
+    border: none; /* Remove borda padrão */
+    padding: 12px; /* Espaçamento interno */
+    border-radius: 50px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
 }
 
-.botao-escola:hover {
-    background-color: #0056b3;
+.container-btn-excluir button:hover {
+    background-color: #b06d14;
+    transform: translateY(-2px);
 }
-.btn-escola{
-    border: solid 1px var(--cor-06);
-    border-radius: 10px;
-    color: #000000;
-    font-size: 15px;
-    background-color: var(--cor-03);
-    transition: background-color 1.0s ease, color 0.5s ease-in, transform 0.5s ease;
-    height: 50px;
-    width: 200px;
-    margin-right: 30px;
-}
-.btn-escola:hover{
-    color: var(--cor-03); /* Texto branco */
-    background-color: var(--cor-06); /* Cor de fundo diferente ao passar o mouse */
-}
-/* --------------------------------------------------- */
 
+/* Estilo do título de alunos */
 .AA {
     color: #333;
     font-size: 24px;
@@ -292,28 +253,135 @@ td {
     margin-bottom: 20px;
 }
 
-@media (max-width: 1200px) {}
+/* Estilo do campo "Ponto de Partida" e botão de rota */
+.route-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
 
-@media (max-width: 992px) {}
+#origin {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
 
-@media (max-width: 768px) {}
+#generateRoute {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
 
-@media (max-width: 576px) {
-    .c-table {
-        display: flex;
-        justify-content: space-between;
-    }
+#generateRoute:hover {
+    background-color: #456789;
+}
 
-    .c-table h1 {
-        font-size: 15px;
-    }
+.rota {
+    padding: 20px;
+}
 
-    .container-tabela {
-        margin: 0 0 0 20px;
-    }
+form {
+    display: flex;
+    align-items: center;
+    padding-right: 3px;
+}
 
-    .input-busca {
-        width: 80%;
-        /* Preencher o espaço disponível */
-    }
+form label {
+    margin-top: 7px;
+}
+
+.container-listagem-busca h2 {
+    font-size: 18px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.container-listagem-busca ul {
+    list-style-type: none;
+}
+
+.container-listagem-busca li {
+    margin-bottom: 5px;
+}
+
+.container-listagem-busca .btn-escola {
+    background-color: #e79428;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.container-listagem-busca .btn-escola:hover {
+    background-color: #b06d14;
+}
+
+/* Estilo do container de rota */
+.container-rota {
+    display: flex;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+#origin {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#generateRoute {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#generateRoute:hover {
+    background-color: #456789;
+}
+
+/* Estilo do checkbox */
+input[type="checkbox"] {
+    appearance: none; /* Remove a aparência padrão do checkbox */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc; /* Cor da borda desmarcada */
+    border-radius: 50%; /* Torna o checkbox redondo */
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #e79428; /* Cor de fundo ao marcar */
+    border-color: #e79428; /* Borda fica da mesma cor */
+}
+
+/* Estilo opcional para o ícone de verificação */
+input[type="checkbox"]:checked::after {
+    content: '✔'; /* Ícone de verificação */
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
 }
