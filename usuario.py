@@ -223,6 +223,18 @@ class Usuario():
             print(f"Erro ao excluir o aluno: {e}")
             return False  # Retorna False em caso de erro
 
+    def listar_aluno_por_nome(self, nome):
+        # Conectar ao banco de dados e buscar alunos com base no nome
+        conn = Conexao.conectar()
+        cursor = conn.cursor(dictionary=True)
+        
+        query = "SELECT * FROM tb_alunos WHERE nome_aluno LIKE %s"
+        cursor.execute(query, ('%' + nome + '%',))  # Pesquisa com LIKE para encontrar qualquer aluno com o nome informado
+
+        alunos = cursor.fetchall()  # Recupera os resultados da pesquisa
+        conn.close()
+        return alunos
+    
     def pesquisar_aluno(self, pesquisa):
         try:
             mydb = Conexao.conectar()
@@ -243,6 +255,8 @@ class Usuario():
                     "nome_responsavel": aluno[5],
                     "endereco": aluno[6]
                 })
+    
+
             
             mydb.close()
             return alunosf

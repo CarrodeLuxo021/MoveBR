@@ -38,22 +38,36 @@
                     <label for="nomeResponsavel">Nome do responsável:</label>
                     <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel" required>
 
+                    <label for="nomeResponsavel">Nome do responsável (Opcional):</label>
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel">
+
                     <label for="telefoneResponsavel">Telefone do responsável:</label>
                     <input type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel" required>
 
                     <label for="telefoneResponsavel">Telefone do responsável (Opcional):</label>
                     <input type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel2" placeholder="ex: (00) 0000-0000" name="telefone-responsavel">
 
-                    <label for="escola">Escola:</label>
-                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola" required>
+                    <label for="emailAluno">Email do responsável:</label>
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno" required>
+
                 </div>
 
                 <div class="lado-direito-container">
+                    <label for="escola">Escola:</label>
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola" required>
+                
                     <label for="escola">Série:</label>
                     <input type="text" id="serie-aluno" placeholder="ex: 1ºA" name="serie-aluno" required>
 
-                    <label for="emailAluno">Email do responsável:</label>
-                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno" required>
+                    <label for="periodoAluno">Período:</label>
+                    <select id="periodoAluno" name="periodo-aluno" required>
+                        <option value="" disabled selected>Selecione o Período</option>
+                        <option value="manha">Manhã</option>
+                        <option value="tarde">Tarde</option>
+                        <option value="noite">Noite</option>
+                        <option value="integral">Integral</option>
+                    </select>
+
                     
                     <label for="condicaoMedica">Observações:</label>
                     <input type="text" id="condicaoMedica" placeholder="Se não há observação, escreva 'Não tem'" name="condicao-medica" required>
@@ -65,10 +79,6 @@
                     <input type="file" id="fotoAluno" accept="image/*" placeholder="Insira o link da foto aqui"
                         name="foto-aluno" required>
                     
-                    <label for="enderecoAluno">Serie do Aluno:</label>
-                    <input type="text" id="serie-aluno" placeholder="ex: 1A"
-                        name="serie-aluno" required>
-
                     <div class="btn-container">
                         <button type="submit" class="cadastrar">Cadastrar</button>
                     </div>

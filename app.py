@@ -42,17 +42,17 @@ def pag_cadastro_aluno():
     else:
         nome_aluno = request.form["nome-aluno"] 
         escola = request.form["escola"]
+        ano = request.form["ano"]
         foto_aluno = request.files["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
         nome_responsavel = request.form["nome-responsavel"]
         endereco_responsavel = request.form["endereco-aluno"]
         tel_responsavel = request.form["telefone-responsavel"]
         email_responsavel = request.form["email-aluno"]
-        serie = request.form["serie-aluno"]
 
         link_foto = upload_file(foto_aluno)
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie):
+        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, ano, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
             return redirect('/listar-alunos') 
         else:
            return redirect('/cadastrar-aluno')
@@ -121,25 +121,28 @@ def historico_pagamento():
     # Renderiza o template com os pagamentos ou uma lista vazia
     return render_template("historico-pagamento.html", pagamentos=historico)
 
-
-
     
-
-@app.route("/historico_pagamento_filtro/<mes>", methods=['POST'])
-def historico_pagamento_filtro(mes):
-    mes = request.args.get('mes')
-     # Recupera o id do motorista logado a partir da sessão
-    cpf_motorista = session.get("cpf_motorista")
+@app.route("/historico_pagamento_filtro", methods=['POST'])
+def historico_pagamento_filtro():
+    # Recupera o id do motorista logado a partir da sessão
+    cpf_motorista = session["usuario_logado"]["cpf"]
+    mes = request.form['mesPagamento']
     
     # Verifica se o motorista está logado
     if not cpf_motorista:
         return "Motorista não está logado", 401  # Retorna erro se não estiver logado
 
     pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(mes, cpf_motorista):
-        return render_template("historico-pagamento.html")
-    else:
-        return "Erro ao gerar pagamento", 500
+    
+    # Obtém histórico de pagamentos feitos no mês
+    historico_pagamentos = pagamento.listar_historico_filtro(mes, cpf_motorista)
+    
+    # Obtém lista de alunos sem pagamentos no mês
+    alunos_pendentes = pagamento.listar_alunos_pendentes(mes, cpf_motorista)
+    
+    return render_template("historico-pagamento.html", 
+                           pagamentos=historico_pagamentos, 
+                           alunos_pendentes=alunos_pendentes)
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
@@ -154,7 +157,7 @@ def gerar_pagamento_get():
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")
+        cpf_motorista = session["usuario_logado"]["cpf"]
 
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
@@ -170,7 +173,7 @@ def gerar_pagamento_get():
 def quebra_foto(id_aluno):
     return render_template("quebra-contrato.html", id_aluno=id_aluno)
 
-@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
+@app.route("/excluir-aluno/<id_aluno>", methods=['POST'])
 def excluir_aluno(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
@@ -184,21 +187,22 @@ def excluir_aluno(id_aluno):
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     usuario = Usuario()  # Inicializa a classe Usuario
-    escola = request.args.get("escola")  # Obtém o parâmetro 'escola' da URL
+    pesquisa = request.args.get("pesquisa-aluno")  # Obtém o parâmetro 'pesquisa-aluno' da URL
 
-    if escola:
-        # Se uma escola específica foi selecionada, filtra os alunos dessa escola
-        alunos_filtrados = usuario.listar_aluno_por_escola(escola)  # Lista de alunos filtrada pela escola
+    if pesquisa:
+        # Se uma pesquisa foi realizada, filtra os alunos pelo nome
+        alunos_filtrados = usuario.listar_aluno_por_nome(pesquisa)  # Lista de alunos filtrados pelo nome
     else:
-        # Se nenhuma escola foi selecionada, lista todos os alunos
+        # Se não houver pesquisa, lista todos os alunos
         alunos_filtrados = usuario.listar_contratos_motorista()  # Lista de todos os alunos
 
-    # Independente de escola selecionada, obtém a lista de todas as escolas disponíveis
+    # Independente de pesquisa, obtém a lista de todas as escolas disponíveis
     lista_completa_alunos = usuario.listar_contratos_motorista()  # Lista completa de todos os alunos
     escolas = {aluno['escola'] for aluno in lista_completa_alunos}  # Conjunto de todas as escolas (evita duplicatas)
 
     # Renderiza o template, passando os alunos filtrados e todas as escolas
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
+
 
 @app.route("/excluir-historico/<id_pagamento>", methods=['POST'])
 def excluir_historico(id_pagamento):
@@ -209,7 +213,7 @@ def excluir_historico(id_pagamento):
         else:
             flash("Erro ao excluir pagamento.")
         return redirect('/historico_pagamento')
-
+    
 @app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
 def editar_aluno(id_aluno):
     conn = Conexao.conectar()
@@ -264,5 +268,6 @@ def editar_aluno(id_aluno):
 
 
     
+if __name__ == "__main__":
 
-app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0", port=8080)
