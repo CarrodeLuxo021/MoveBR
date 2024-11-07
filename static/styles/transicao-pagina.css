@@ -19,19 +19,12 @@ body {
     position: absolute;
     width: 100vw; /* Largura maior para permitir o movimento contínuo */
     height: 100vh;
-    background-repeat: repeat-x; /* Repete horizontalmente */
-    animation: moveBackground 5s linear infinite; /* Animação contínua */
+    background-image: url("https://media.tenor.com/Zr2TbKJP_YkAAAAM/dans.gif");
+    animation: moveBackground 10s linear infinite; /* Animação contínua */
     z-index: 0; /* Fundo atrás de outros elementos */
 }
 
-@keyframes moveBackground {
-    0% {
-        transform: translateX(0); /* Posição inicial */
-    }
-    100% {
-        transform: translateX(-50%); /* Move para a esquerda */
-    }
-}
+
 
 @keyframes moveVehicle {
     0% {
