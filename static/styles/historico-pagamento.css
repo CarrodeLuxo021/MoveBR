@@ -1,14 +1,28 @@
 /* Importando a fonte */
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+/* Importando a fonte */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 * {
+    margin: 0;
+    padding: 0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 /* Body */
+/* Body */
 body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f6fa; /* Cor de fundo mais clara */
+    color: #2c3e50; /* Cor do texto padrão */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ajuste para centralizar conteúdo */
+    min-height: 100vh;
+    padding: 20px;
     font-family: 'Roboto', sans-serif;
     background-color: #f5f6fa; /* Cor de fundo mais clara */
     color: #2c3e50; /* Cor do texto padrão */
@@ -20,13 +34,23 @@ body {
 }
 
 /* Header */
+/* Header */
 header {
+    background-color: #2c3e50; /* Cor do cabeçalho */
+    color: #ecf0f1; /* Cor do texto do cabeçalho */
+    height: 80px;
     background-color: #2c3e50; /* Cor do cabeçalho */
     color: #ecf0f1; /* Cor do texto do cabeçalho */
     height: 80px;
     display: flex;
     align-items: center;
+    align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
     padding: 0 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -37,6 +61,8 @@ header {
 .button-back {
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
@@ -50,6 +76,16 @@ header {
     transform: scale(1.1);
 }
 
+.button-back:hover {
+    transform: scale(1.1);
+}
+
+/* Logo */
+.logo img {
+    height: 30px;
+}
+
+/* Container principal */
 /* Logo */
 .logo img {
     height: 30px;
@@ -62,16 +98,25 @@ header {
     background-color: #ffffff; /* Cor de fundo do container */
     border-radius: 12px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: 100px auto 20px; /* Adiciona margem superior para o header fixo */
+    background-color: #ffffff; /* Cor de fundo do container */
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Cabeçalho do histórico */
+/* Cabeçalho do histórico */
 .cabecalho-container {
+    background-color: #e79428; /* Cor do cabeçalho do histórico */
+    color: #ffffff; /* Cor do texto no cabeçalho do histórico */
     background-color: #e79428; /* Cor do cabeçalho do histórico */
     color: #ffffff; /* Cor do texto no cabeçalho do histórico */
     padding: 10px 20px;
     display: flex;
     align-items: center;
     width: 100%;
+    border-radius: 12px 12px 0 0;
     border-radius: 12px 12px 0 0;
 }
 
@@ -94,11 +139,25 @@ header {
 /* Botão gerar pagamento */
 .ger-pagamento button{
     background-color: #2c3e50; /* Cor do botão */
+    color: #ffffff; /* Cor do texto do botão */}
+.ger-pagamento-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+}
+
+/* Botão gerar pagamento */
+.ger-pagamento button{
+    background-color: #2c3e50; /* Cor do botão */
     color: #ffffff; /* Cor do texto do botão */
     border: none;
     padding: 8px 18px;
     border-radius: 9999999px;
+    padding: 8px 18px;
+    border-radius: 9999999px;
     cursor: pointer;
+    font-size: 14px;
     font-size: 14px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -112,8 +171,37 @@ header {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: #456789; /* Cor do botão ao passar o mouse */
 }
 
+/* Estilo da tabela */
+.alunos-listados {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.alunos-listados thead {
+    padding: 0;
+}
+
+.alunos-listados th, .alunos-listados td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #bdc3c7; /* Cor do fundo da tabela */
+}
+
+.alunos-listados th {
+    background-color: #2c3e50; /* Cor de fundo dos cabeçalhos */
+    color: #ecf0f1; /* Cor do texto dos cabeçalhos */
+}
+
+.informacoes p {
+    padding: 10px 0 10px 20px;
+}
+
+.valor {
+    padding: 10px;
 .alunos-listados thead {
     padding: 0;
 }
@@ -146,4 +234,11 @@ header {
 
 #valor_total{ 
     color: #e79428;
+}
+.nao-pago{
+    display: flex ;
+}
+.nao-pago h2{
+    color: red;
+    font-weight: 700;
 }
