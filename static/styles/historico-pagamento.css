@@ -1,67 +1,78 @@
+/* Importando a fonte */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 * {
-    box-sizing: border-box;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Body */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: var(--cor-01);
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f6fa; /* Cor de fundo mais clara */
+    color: #2c3e50; /* Cor do texto padrão */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ajuste para centralizar conteúdo */
+    min-height: 100vh;
+    padding: 20px;
 }
 
+/* Header */
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%);
-    /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03);
-    /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    /* Sombra suave para profundidade */
-    height: 90px;
-    margin-bottom: 20px;
+    background-color: #2c3e50; /* Cor do cabeçalho */
+    color: #ecf0f1; /* Cor do texto do cabeçalho */
+    height: 80px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .button-back {
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .button-back img {
     width: 20px;
     height: auto;
-    margin-left: 30px;
 }
 
-figure img {
-    width: 100px;
-    /* Tamanho da imagem do logo */
-    height: auto;
-    /* Manter a proporção da imagem */
-    margin: 0 20px 0 0;
+.button-back:hover {
+    transform: scale(1.1);
 }
 
+/* Logo */
+.logo img {
+    height: 30px;
+}
+
+/* Container principal */
 .container {
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: var(--cor-03);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: 100px auto 20px; /* Adiciona margem superior para o header fixo */
+    background-color: #ffffff; /* Cor de fundo do container */
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Cabeçalho do histórico */
 .cabecalho-container {
-    background-color: var(--cor-06);
-    color: var(--cor-03);
+    background-color: #e79428; /* Cor do cabeçalho do histórico */
+    color: #ffffff; /* Cor do texto no cabeçalho do histórico */
     padding: 10px 20px;
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 0;
+    border-radius: 12px 12px 0 0;
 }
 
 .icone-dinheiro {
@@ -69,60 +80,77 @@ figure img {
     height: auto;
 }
 
-.informacoes {
-    padding: 10px;
-}
-
 .cabecalho-container h2 {
     margin-left: 10px;
 }
 
-.ger-pagamento button {
-    background-color: var(--cor-06);
-    color: var(--cor-03);
+.ger-pagamento-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+}
+
+/* Botão gerar pagamento */
+.ger-pagamento button{
+    background-color: #2c3e50; /* Cor do botão */
+    color: #ffffff; /* Cor do texto do botão */
     border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
+    padding: 8px 18px;
+    border-radius: 9999999px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-    margin-right: 10px;
+    font-size: 14px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .ger-pagamento button:hover {
-    background-color: var(--cor-05);
+    background-color: #456789; /* Cor do botão ao passar o mouse */
 }
 
-.ger-pagamento-container {
+/* Estilo da tabela */
+.alunos-listados {
     width: 100%;
-    height: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.alunos-listados thead {
+    padding: 0;
+}
+
+.alunos-listados th, .alunos-listados td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #bdc3c7; /* Cor do fundo da tabela */
+}
+
+.alunos-listados th {
+    background-color: #2c3e50; /* Cor de fundo dos cabeçalhos */
+    color: #ecf0f1; /* Cor do texto dos cabeçalhos */
+}
+
+.informacoes p {
+    padding: 10px 0 10px 20px;
+}
+
+.valor {
+    padding: 10px;
+    width: 100%;
     display: flex;
     justify-content: end;
 }
 
-.btn-excluir {
-    background-color: var(--cor-06);
-    color: var(--cor-03);
-    border: none;
-    padding: 8px 24px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px 0 5px 0;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.valor h2 {
+    color: #2c3e50;
 }
 
-/* Media Queries */
-@media (max-width: 1200px) {}
-
-@media (max-width: 992px) {}
-
-@media (max-width: 768px) {}
-
-@media (max-width: 576px) {
-
-    .cabecalho-container h2 {
-        font-size: 18px;
-    }
+#valor_total{ 
+    color: #e79428;
+}
+.nao-pago{
+    display: flex ;
+}
+.nao-pago h2{
+    color: red;
+    font-weight: 700;
 }

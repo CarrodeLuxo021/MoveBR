@@ -106,7 +106,7 @@ def historico_pagamento_filtro():
     alunos_pendentes = pagamento.listar_alunos_pendentes(mes, cpf_motorista)
     
     return render_template("historico-pagamento.html", 
-                           historico=historico_pagamentos, 
+                           pagamentos=historico_pagamentos, 
                            alunos_pendentes=alunos_pendentes)
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
@@ -138,7 +138,7 @@ def gerar_pagamento_get():
 def quebra_foto(id_aluno):
     return render_template("quebra-contrato.html", id_aluno=id_aluno)
 
-@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
+@app.route("/excluir-aluno/<id_aluno>", methods=['POST'])
 def excluir_aluno(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:
