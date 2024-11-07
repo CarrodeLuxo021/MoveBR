@@ -41,17 +41,17 @@ def pag_cadastro_aluno():
     else:
         nome_aluno = request.form["nome-aluno"] 
         escola = request.form["escola"]
+        ano = request.form["ano"]
         foto_aluno = request.files["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
         nome_responsavel = request.form["nome-responsavel"]
         endereco_responsavel = request.form["endereco-aluno"]
         tel_responsavel = request.form["telefone-responsavel"]
         email_responsavel = request.form["email-aluno"]
-        serie = request.form["serie-aluno"]
 
         link_foto = upload_file(foto_aluno)
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie):
+        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, ano, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
             return redirect('/listar-alunos') 
         else:
            return redirect('/cadastrar-aluno')
@@ -87,7 +87,6 @@ def historico_pagamento():
     return render_template("historico-pagamento.html", pagamentos=historico)
 
     
-
 @app.route("/historico_pagamento_filtro", methods=['POST'])
 def historico_pagamento_filtro():
     # Recupera o id do motorista logado a partir da sessão
@@ -179,7 +178,7 @@ def excluir_historico(id_pagamento):
         else:
             flash("Erro ao excluir pagamento.")
         return redirect('/historico_pagamento')
-
+    
 @app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
 def editar_aluno(id_aluno):
     conn = Conexao.conectar()
