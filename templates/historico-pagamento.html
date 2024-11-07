@@ -40,8 +40,8 @@
         <a href="/gerar-pagamento"><button type="submit">Gerar novo pagamento</button></a>
     
         <!-- Listagem de pagamentos feitos -->
-        {% if historico %}
-            {% for pagamento in historico %}
+        {% if pagamentos %}
+            {% for pagamento in pagamentos %}
                 <table class="alunos-listados">
                     <tbody>
                         <tr class="aluno">
