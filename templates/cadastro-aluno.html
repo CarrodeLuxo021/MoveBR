@@ -1,59 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/icones/aluna.png" type="image/x-icon">
     <title>Cadastro do Aluno</title>
-    <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
-    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/static/styles/cadastro.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
+    <link rel="stylesheet" href="/static/styles/foto-aluno-teste.css">
+    <script defer src="/static/js/mascara-telefone.js"></script>
+    <script defer src="/static/js/foto-aluno.js"></script>
+    <script defer src="/static/js/letras-maiusculas.js"></script>
 </head>
+
 <body>
     <header>
+        <button class="button-back" type="button">
+            <a href="/pag-inicial-motorista">
+                <img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda">
+            </a>
+        </button>
         <figure>
-            <div class="logo"><img src="/static/icones/logo.png" alt=""></div>
+            <div class="logo">
+                <a href="/"><img src="/static/icones/movebr.png" alt="logo da movebr"></a>
+            </div>
         </figure>
     </header>
 
     <main>
-        <form class="container-form" action="#" method="post">
-            <div class="itens-form">
-                <section class="lado-esquerdo-container">
-                    <label for="nomeAluno">Nome:</label>
-                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva" name="nome-aluno">
-                    
+        <form class="container-form" action="#" method="post" enctype="multipart/form-data">
+            <section class="itens-form">
+                <div class="lado-esquerdo-container">
+                    <label for="nomeAluno">Nome do aluno:</label>
+                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva" name="nome-aluno" required>
+
                     <label for="nomeResponsavel">Nome do responsável:</label>
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel" required>
+
+                    <label for="nomeResponsavel">Nome do responsável (Opcional):</label>
                     <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel">
-                    
+
                     <label for="telefoneResponsavel">Telefone do responsável:</label>
-                    <input type="text" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel">
-                    
+                    <input type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel" required>
+
+                    <label for="telefoneResponsavel">Telefone do responsável (Opcional):</label>
+                    <input type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel2" placeholder="ex: (00) 0000-0000" name="telefone-responsavel">
+
+                    <label for="emailAluno">Email do responsável:</label>
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno" required>
+
+                </div>
+
+                <div class="lado-direito-container">
                     <label for="escola">Escola:</label>
-                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola">
-
-                </section>
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola" required>
                 
-                <section class="lado-direito-container">
+                    <label for="escola">Série:</label>
+                    <input type="text" id="serie-aluno" placeholder="ex: 1ºA" name="serie-aluno" required>
 
-                    <label for="emailAluno">Email:</label>
-                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno">
+                    <label for="periodoAluno">Período:</label>
+                    <select id="periodoAluno" name="periodo-aluno" required>
+                        <option value="" disabled selected>Selecione o Período</option>
+                        <option value="manha">Manhã</option>
+                        <option value="tarde">Tarde</option>
+                        <option value="noite">Noite</option>
+                        <option value="integral">Integral</option>
+                    </select>
 
-                    <label for="fotoAluno">Foto Aluno:</label>
-                    <input type="text" id="fotoAluno" placeholder="Insira o link da foto aqui" name="foto-aluno">
                     
-                    <label for="condicaoMedica">Condição Médica:</label>
-                    <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre, se não tem escreva 'Não tem'" name="condicao-medica">
+                    <label for="condicaoMedica">Observações:</label>
+                    <input type="text" id="condicaoMedica" placeholder="Se não há observação, escreva 'Não tem'" name="condicao-medica" required>
 
                     <label for="enderecoAluno">Endereço:</label>
-                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno">
+                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno" required>
 
+                    <label for="fotoAluno">Foto Aluno:</label>
+                    <input type="file" id="fotoAluno" accept="image/*" placeholder="Insira o link da foto aqui"
+                        name="foto-aluno" required>
+                    
                     <div class="btn-container">
                         <button type="submit" class="cadastrar">Cadastrar</button>
                     </div>
-
-                </section>
-            </div>
+                </div>
+            </section>
         </form>
     </main>
 </body>
+
 </html>

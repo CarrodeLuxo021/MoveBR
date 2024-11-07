@@ -1,35 +1,32 @@
-/* Reset básico para garantir consistência entre navegadores */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilização do corpo */
 body {
-    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
-    line-height: 1.6; /* Melhora a legibilidade */
-    background-color: var(--cor-04); /* Cor de fundo clara */
-    color: var(--cor-01); /* Cor do texto */ 
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #ecf0f1; /* Cor de fundo clara */
+    color: #2c3e50; /* Cor do texto */
 }
 
 /* Estilização do cabeçalho */
 header {
-    background-image: linear-gradient(to right, var(--cor-05) 0%, var(--cor-06) 100%); /* Gradiente suave de azul claro para azul petróleo */
-    color: var(--cor-03); /* Texto em bege claro para contraste elegante */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra suave para profundidade */
+    background-color: #2c3e50; /* Azul escuro */
+    color: #ecf0f1; /* Texto claro */
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo img {
-    width: 80px; /* Tamanho da imagem do logo */
-    height: auto; /* Manter a proporção da imagem */
-    margin-left: 10px;
-}
-
-
-.logo img {
-    width: 80px; /* Tamanho da imagem do logo */
-    height: auto; /* Manter a proporção da imagem */
-    margin-left: 10px;
+    height: 40px;
 }
 
 /* Estilização do main */
@@ -38,116 +35,173 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: calc(100vh - 160px); /* Altura mínima: 100% da altura da tela menos o espaço do header e footer */
-    padding: 20px; /* Adiciona espaçamento interno para garantir que o formulário não encoste nas bordas */
+    min-height: calc(100vh - 160px); /* Altura mínima */
+    padding: 20px;
+}
+
+.titulo{
+    margin-bottom: 10px;
 }
 
 /* Estilização do container-form */
 .container-form {
-    max-width: 1000px;
-    margin: 0 auto; /* Centraliza horizontalmente */
+    width: 500px;
     padding: 30px;
-    background-color: var(--cor-03);
+    background-color: #ffffff; /* Fundo branco */
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
 /* Layout dos itens do formulário */
 .itens-form {
     display: block;
-    flex-wrap: wrap; /* Permitir quebra de linha para responsividade */
+    flex-wrap: wrap;
     gap: 20px; /* Espaçamento entre os containers */
 }
 
 /* Estilização dos containers de lado */
 .cima-container,
 .baixo-container {
-    flex: 1; /* Fazer os containers ocuparem espaço igual */
-    min-width: 450px; /* Garantir que os containers não fiquem muito estreitos */
+    flex: 1;
+    min-width: 450px; /* Garantir largura mínima */
 }
 
-.cima-container{
+.cima-container {
     margin-bottom: 20px;
 }
 
-.baixo-container p{
-    color: var(--cor-02);
+.baixo-container p {
+    color: #34495e; /* Azul mais claro */
     text-align: center;
     margin-top: 10px;
 }
 
-.baixo-container a{
-    color: var(--cor-06);
+.baixo-container a {
+    color: #E79428; /* Cor vibrante para links */
 }
 
 /* Estilização dos labels */
 .container-form label {
-    display: block; /* Forçar os labels a ocupar uma linha inteira */
-    margin-bottom: 8px; /* Espaço entre o label e o campo de entrada */
-    font-weight: 600; /* Destacar o texto dos labels com um peso de fonte mais forte */
-    color: var(--cor-06); /* Azul petróleo para os labels para combinar com o cabeçalho */
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600; /* Peso de fonte mais forte */
+    color: #2c3e50; /* Azul escuro para os labels */
 }
 
 /* Estilização dos campos de entrada */
-.container-form input[type="email"] {
-    width: 100%; /* Ocupa toda a largura disponível */
-    padding: 12px; /* Espaçamento interno aumentado para conforto */
-    margin-bottom: 15px; /* Espaço entre os campos de entrada */
-    border: 1px solid #ddd; /* Borda leve para os campos */
-    border-radius: 6px; /* Bordas arredondadas para um visual mais moderno */
-    font-size: 16px; /* Tamanho de fonte adequado para leitura */
-    background-color: #f9f9f9; /* Fundo claro e suave para os campos de entrada */
-}
-
+.container-form input[type="email"],
 .container-form input[type="password"] {
-    width: 100%; /* Ocupa toda a largura disponível */
-    padding: 12px; /* Espaçamento interno aumentado para conforto */
-    border: 1px solid #ddd; /* Borda leve para os campos */
-    border-radius: 6px; /* Bordas arredondadas para um visual mais moderno */
-    font-size: 16px; /* Tamanho de fonte adequado para leitura */
-    background-color: #f9f9f9; /* Fundo claro e suave para os campos de entrada */ 
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd; /* Borda leve */
+    border-radius: 6px; /* Bordas arredondadas */
+    font-size: 16px;
+    background-color: #f9f9f9; /* Fundo claro */
 }
 
-.link-senha{
-    color: var(--cor-02);
+/* Estilização do link de senha */
+.link-senha {
+    color: #34495e; /* Cor do link */
     font-size: 13px;
 }
 
+/* Estilização do botão */
 .btn-container {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
 }
 
 .btn-container button {
-    background-color: var(--cor-06); /* Azul petróleo para os botões */
-    color: var(--cor-03); /* Texto bege claro para contraste */
-    border: none; /* Remover bordas padrão dos botões */
-    padding: 12px 24px; /* Espaçamento interno dos botões */
+    background-color: #E79428; /* Cor do botão */
+    color: #ecf0f1; /* Texto claro */
+    border: none;
+    padding: 12px 24px;
     border-radius: 6px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor em forma de mão ao passar sobre o botão */
-    font-size: 16px; /* Tamanho de fonte adequado */
-    margin: 5px; /* Espaço entre os botões */
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves para cor e efeito de clique */
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-container button:hover {
-    background-color: var(--cor-05); /* Azul claro ao passar o mouse sobre o botão */
+    background-color: #d6821e; /* Cor ao passar o mouse */
 }
 
 .btn-container button:active {
-    transform: scale(0.98); /* Efeito de clique para um feedback visual adicional */
+    transform: scale(0.98); /* Efeito de clique */
 }
 
-/* Estilização do rodapé */
-footer {
-    background-image: linear-gradient(to right, var(--cor-06) 0%, var(--cor-05) 100%);
-    color: var(--cor-03); /* Texto claro para contraste */
-    padding: 30px; /* Espaçamento interno */
-    text-align: center; /* Centralizar o conteúdo */
-    position: fixed; /* Manter o rodapé fixo na parte inferior */
-    bottom: 0;
-    width: 100%; /* Ocupa toda a largura da página */
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidade */
+/* Media Queries */
+
+/* Para telas menores que 1200px */
+@media (max-width: 1200px) {
+    .container-form {
+        width: 90%; /* Largura responsiva */
+    }
 }
+
+/* Para telas menores que 992px */
+@media (max-width: 992px) {
+    header {
+        flex-direction: column; /* Coloca a logo e o menu em coluna */
+        align-items: center; /* Centraliza a logo */
+        text-align: center; /* Centraliza o texto do cabeçalho */
+    }
+
+    .cabecalho_motorista {
+        padding: 10px 0; /* Espaçamento para melhor visualização */
+    }
+
+    .titulo h2 {
+        font-size: 22px; /* Ajuste do título */
+    }
+
+    .titulo p {
+        font-size: 14px; /* Ajuste do texto */
+    }
+}
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    .cima-container,
+    .baixo-container {
+        flex: 1;
+        min-width: 100%; /* Garantir que os containers não fiquem muito estreitos */
+    }
+
+    .container-form {
+        width: 100%; /* Largura total */
+    }
+}
+
+/* Para telas menores que 576px */
+@media (max-width: 576px) {
+    .container-form {
+        width: 100%; /* Largura total */
+        padding: 20px; /* Reduzir padding */
+    }
+
+    .titulo h2 {
+        font-size: 18px; /* Ajuste do título */
+    }
+
+    .titulo p {
+        font-size: 12px; /* Ajuste do texto */
+    }
+
+    .btn-container {
+        flex-direction: column; /* Coloca os botões em coluna */
+    }
+
+    .btn-container button {
+        width: 100%; /* Botão ocupa toda a largura */
+        margin: 5px 0; /* Ajustar margens entre os botões */
+    }
+
+    .link-senha {
+        font-size: 12px; /* Ajuste do link de senha */
+    }
+}
+

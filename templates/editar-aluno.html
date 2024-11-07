@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/icones/aluna.png" type="image/x-icon">
+    <title>Editar Aluno</title>
+    <link rel="stylesheet" href="/static/styles/cadastro.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/static/styles/variaveis.css">
+    <link rel="stylesheet" href="/static/styles/foto-aluno-teste.css">
+    <script defer src="/static/js/mascara-telefone.js"></script>
+    <script defer src="/static/js/foto-aluno.js"></script>
+</head>
+<body>
+    <header>
+        <button class="button-back" type="button"><a href="/pag-inicial-motorista"><img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a></button>
+        <figure>
+            <div class="logo"><img src="/static/icones/movebr.png" alt="logo da movebr"></div>
+        </figure>
+    </header>
+
+    <main>
+        <form class="container-form" action="/editar-aluno/{{ aluno['id_aluno'] }}" method="post" enctype="multipart/form-data">
+            <div class="itens-form">
+                <section class="lado-esquerdo-container">
+                    <label for="nomeAluno">Nome:</label>
+                    <input type="text" id="nomeAluno" placeholder="ex: João da Silva" name="nome-aluno" value="{{ aluno['nome_aluno'] }}" required>
+                    
+                    <label for="nomeResponsavel">Nome do responsável:</label>
+                    <input type="text" id="nomeResponsavel" placeholder="ex: Maria de Souza" name="nome-responsavel" value="{{ aluno['nome_responsavel'] }}" required>
+                    
+                    <label for="telefoneResponsavel">Telefone do responsável:</label>
+                    <input type="tel" maxlength="15" onkeyup="handlePhone(event)" id="telefoneResponsavel" placeholder="ex: (00) 0000-0000" name="telefone-responsavel" value="{{ aluno['telefone_responsavel'] }}" required>
+                    
+                    <label for="escola">Escola:</label>
+                    <input type="text" id="escola" placeholder="ex: Escola Horizonte Azul" name="escola" value="{{ aluno['escola'] }}" required>
+
+                    
+                    <label for="emailAluno">Email Responsavel:</label>
+                    <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno" value="{{ aluno['email_responsavel'] }}">
+                </section>
+                
+                <section class="lado-direito-container">
+                    <label for="condicaoMedica">Observações Aluno:</label>
+                    <input type="text" id="condicaoMedica" placeholder="Insira um texto sobre, se não tem escreva 'Não tem'" name="condicao-medica" value="{{ aluno['condicao_medica'] }}">
+
+                    <label for="enderecoAluno">Endereço:</label>
+                    <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno" value="{{ aluno['endereco'] }}" required>
+
+                    <!-- Exibir a foto atual do aluno -->
+                    <label for="fotoAluno">Foto Atual:</label>
+                    <img src="{{ aluno['foto_aluno'] or '/static/images/placeholder.png' }}" alt="Foto do Aluno" style="max-width: 100px;">
+
+                    <!-- Campo para o usuário fazer o upload de uma nova foto -->
+                    <label for="fotoAluno">Alterar Foto do Aluno:</label>
+                    <input type="file" id="fotoAluno" accept="image/*" name="foto-aluno">
+
+                    <div class="btn-container">
+                        <button type="submit" class="cadastrar">Salvar Alterações</button>
+                    </div>
+                </section>
+            </div>
+        </form>
+        <script>
+            document.getElementById('fotoAluno').addEventListener('change', function(event) {
+                const [file] = event.target.files;
+                if (file) {
+                    const img = document.querySelector('img[alt="Foto do Aluno"]');
+                    img.src = URL.createObjectURL(file);
+                }
+            });
+        </script>
+    </main>
+</body>
+</html>
