@@ -4,6 +4,7 @@ from pagamentos import Pagamentos
 from conexao import Conexao
 from upload_file import upload_file
 
+
 app = Flask(__name__)
 app.secret_key = "banana"
 
@@ -55,6 +56,40 @@ def pag_cadastro_aluno():
             return redirect('/listar-alunos') 
         else:
            return redirect('/cadastrar-aluno')
+    
+@app.route("/cadastrar-aluno/<codigo>", methods=['GET','POST'])
+def pag_cadastro_usuario(codigo):
+    usuario = Usuario()
+    verify_codigo = usuario.verficar_codigo(codigo)
+    
+    if verify_codigo == True:
+        if request.method == 'GET':
+            return render_template('cadastro-aluno.html')
+        else:
+            nome_aluno = request.form["nome-aluno"] 
+            escola = request.form["escola"]
+            foto_aluno = request.files["foto-aluno"]
+            condicao_medica = request.form["condicao-medica"]
+            nome_responsavel = request.form["nome-responsavel"]
+            endereco_responsavel = request.form["endereco-aluno"]
+            tel_responsavel = request.form["telefone-responsavel"]
+            email_responsavel = request.form["email-aluno"]
+            serie = request.form["serie-aluno"]
+
+            link_foto = upload_file(foto_aluno)
+            usuario = Usuario()
+            if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie):
+                return redirect('/listar-alunos') 
+            else:
+                return redirect('/cadastrar-aluno')
+    else:
+        return "ERROR"
+        
+@app.route("/gerar-codigo", methods=['GET'])
+def formulario():
+    usuario = Usuario
+    link = usuario.gerar_codigo()
+    return jsonify({"link": link}),200
                                               
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
