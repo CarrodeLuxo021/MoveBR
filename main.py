@@ -80,7 +80,7 @@ def logar():
 @app.route("/historico_pagamento", methods=['GET'])
 def historico_pagamento():
     pagamentos = Pagamentos()
-    histo.rico = pagamentos.listar_historico()  # Chama o método listar_historico()
+    historico = pagamentos.listar_historico()  # Chama o método listar_historico()
 
     # Renderiza o template com os pagamentos ou uma lista vazia
     return render_template("historico-pagamento.html", pagamentos=historico)
