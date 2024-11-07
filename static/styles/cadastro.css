@@ -59,6 +59,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 .titulo {
@@ -171,7 +172,7 @@ button.cadastrar:hover {
     }
 
     .container-form {
-        width: 80%;
+        width: 90%;
         padding: 20px;
     }
 
@@ -196,7 +197,7 @@ button.cadastrar:hover {
     }
 
     .container-form {
-        width: 80%;
+        width: 90%;
         padding: 20px;
     }
 
@@ -218,6 +219,7 @@ button.cadastrar:hover {
 @media (max-width: 991.98px) {
     .container-form {
         width: 80%;
+        margin-top: 90px;
     }
 
     header {
@@ -237,9 +239,6 @@ button.cadastrar:hover {
 @media (max-width: 1199.98px) {
     .container-form {
         width: 80%;
-    }
-
-    main {
         margin-top: 90px;
     }
 }
