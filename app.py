@@ -86,21 +86,28 @@ def historico_pagamento():
     # Renderiza o template com os pagamentos ou uma lista vazia
     return render_template("historico-pagamento.html", pagamentos=historico)
 
-@app.route("/historico_pagamento_filtro/<mes>", methods=['POST'])
-def historico_pagamento_filtro(mes):
-    mes = request.args.get('mes')
-     # Recupera o id do motorista logado a partir da sessão
-    cpf_motorista = session.get("cpf_motorista")
+    
+@app.route("/historico_pagamento_filtro", methods=['POST'])
+def historico_pagamento_filtro():
+    # Recupera o id do motorista logado a partir da sessão
+    cpf_motorista = session["usuario_logado"]["cpf"]
+    mes = request.form['mesPagamento']
     
     # Verifica se o motorista está logado
     if not cpf_motorista:
         return "Motorista não está logado", 401  # Retorna erro se não estiver logado
 
     pagamento = Pagamentos()
-    if pagamento.gerar_pagamento(mes, cpf_motorista):
-        return render_template("historico-pagamento.html")
-    else:
-        return "Erro ao gerar pagamento", 500
+    
+    # Obtém histórico de pagamentos feitos no mês
+    historico_pagamentos = pagamento.listar_historico_filtro(mes, cpf_motorista)
+    
+    # Obtém lista de alunos sem pagamentos no mês
+    alunos_pendentes = pagamento.listar_alunos_pendentes(mes, cpf_motorista)
+    
+    return render_template("historico-pagamento.html", 
+                           pagamentos=historico_pagamentos, 
+                           alunos_pendentes=alunos_pendentes)
 
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
@@ -115,7 +122,7 @@ def gerar_pagamento_get():
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")
+        cpf_motorista = session["usuario_logado"]["cpf"]
 
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
@@ -131,7 +138,7 @@ def gerar_pagamento_get():
 def quebra_foto(id_aluno):
     return render_template("quebra-contrato.html", id_aluno=id_aluno)
 
-@app.route("/excluir-aluno/<id_aluno>", methods=['GET', 'POST'])
+@app.route("/excluir-aluno/<id_aluno>", methods=['POST'])
 def excluir_aluno(id_aluno):
     if request.method == 'GET':
         if 'usuario_logado' in session:

@@ -63,31 +63,62 @@ class Pagamentos():
             print(f"Erro ao listar histórico: {e}")
             return False
         
+    # Função para listar histórico de pagamentos realizados
     def listar_historico_filtro(self, mes, cpf_motorista):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            # Usando query parametrizada para evitar injeção de SQL
-            sql = "SELECT nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_aluno FROM historico_pagamentos WHERE mes_pagamento = %s AND cpf_motorista = %s"
+            sql = """
+            SELECT id_pagamento, nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_aluno 
+            FROM historico_pagamentos 
+            WHERE mes_pagamento = %s AND cpf_motorista = %s
+            """
             mycursor.execute(sql, (mes, cpf_motorista))
 
             resultados = mycursor.fetchall()
             historico = []
             for linha in resultados:
                 historico.append({
-                    "nome_aluno": linha[0],
-                    "mes_pagamento": linha[1],
-                    "data_pagamento": linha[2],
-                    "valor_pagamento": linha[3],
-                    "id_aluno": linha[4]  # Adicionei o campo id_aluno para o botão de excluir
+                    "id_pagamento": linha[0],
+                    "nome_aluno": linha[1],
+                    "mes_pagamento": linha[2],
+                    "data_pagamento": linha[3],
+                    "valor_pagamento": linha[4],
+                    "id_aluno": linha[5]
                 })
 
             mydb.close()
             return historico
         except Exception as e:
             print(f"Erro ao listar histórico: {e}")
-            return False
+            return []
+
+    # Função para listar alunos com pagamento pendente no mês especificado
+    def listar_alunos_pendentes(self, mes, cpf_motorista):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+            
+            sql = """
+            SELECT a.nome_aluno, a.id_aluno
+            FROM tb_alunos AS a
+            INNER JOIN contratos_fechados AS c ON a.id_aluno = c.id_aluno
+            LEFT JOIN historico_pagamentos AS hp 
+            ON a.id_aluno = hp.id_aluno AND hp.mes_pagamento = %s
+            WHERE c.cpf_motorista = %s AND hp.id_pagamento IS NULL;
+            """
+            
+            mycursor.execute(sql, (mes, cpf_motorista))
+            
+            resultados = mycursor.fetchall()
+            alunos_pendentes = [{"nome_aluno": linha[0], "id_aluno": linha[1]} for linha in resultados]
+
+            mydb.close()
+            return alunos_pendentes
+        except Exception as e:
+            print(f"Erro ao listar alunos pendentes: {e}")
+            return []
         
     def excluir_historico(self, id_pagamento):
         try:
