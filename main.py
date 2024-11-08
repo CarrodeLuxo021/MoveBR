@@ -3,6 +3,7 @@ from usuario import Usuario
 from pagamentos import Pagamentos
 from conexao import Conexao
 from upload_file import upload_file
+import os
 
 app = Flask(__name__)
 app.secret_key = "banana"

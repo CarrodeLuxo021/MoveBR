@@ -80,6 +80,48 @@ main {
     margin-left: 45px;
 }
 
+.container-listagem-busca {
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.container-listagem-busca h2 {
+    font-size: 18px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container-listagem-busca ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.container-listagem-busca li {
+    margin-bottom: 5px;
+}
+
+.container-listagem-busca .btn-escola {
+    background-color: #e79428;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.container-listagem-busca .btn-escola:hover {
+    background-color: #b06d14;
+}
+
+
 .input-busca {
     border: none;
     padding: 10px 15px;
@@ -384,4 +426,8 @@ input[type="checkbox"]:checked::after {
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1;
+}
+
+.contagem-alunos{
+    text-align: center;
 }
