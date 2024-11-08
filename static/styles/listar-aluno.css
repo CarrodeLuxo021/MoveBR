@@ -178,8 +178,8 @@ td {
 
 .foto-aluno img {
     width: 100%; /* Faz com que a imagem preencha o contêiner */
-    height: auto; /* Mantém a proporção */
-    display: block; /* Remove espaços indesejados */
+    height: 100%; /* Mantém a proporção */
+    object-fit: cover;
 }
 
 .info-aluno {
