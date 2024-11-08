@@ -169,21 +169,22 @@ def excluir_aluno(id_aluno):
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
     usuario = Usuario()  # Inicializa a classe Usuario
-    escola = request.args.get("escola")  # Obtém o parâmetro 'escola' da URL
+    pesquisa = request.args.get("pesquisa-aluno")  # Obtém o parâmetro 'pesquisa-aluno' da URL
 
-    if escola:
-        # Se uma escola específica foi selecionada, filtra os alunos dessa escola
-        alunos_filtrados = usuario.listar_aluno_por_escola(escola)  # Lista de alunos filtrada pela escola
+    if pesquisa:
+        # Se uma pesquisa foi realizada, filtra os alunos pelo nome
+        alunos_filtrados = usuario.listar_aluno_por_nome(pesquisa)  # Lista de alunos filtrados pelo nome
     else:
-        # Se nenhuma escola foi selecionada, lista todos os alunos
+        # Se não houver pesquisa, lista todos os alunos
         alunos_filtrados = usuario.listar_contratos_motorista()  # Lista de todos os alunos
 
-    # Independente de escola selecionada, obtém a lista de todas as escolas disponíveis
+    # Independente de pesquisa, obtém a lista de todas as escolas disponíveis
     lista_completa_alunos = usuario.listar_contratos_motorista()  # Lista completa de todos os alunos
     escolas = {aluno['escola'] for aluno in lista_completa_alunos}  # Conjunto de todas as escolas (evita duplicatas)
 
     # Renderiza o template, passando os alunos filtrados e todas as escolas
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
+
 
 @app.route("/excluir-historico/<id_pagamento>", methods=['POST'])
 def excluir_historico(id_pagamento):
