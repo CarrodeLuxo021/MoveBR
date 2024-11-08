@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+    {% include 'componente.html' %}
     <header>
         <div class="cabecalho_motorista">
             <figure>
@@ -47,16 +47,7 @@
                 </div>
             </div>
         </form>
-    </main>
-
-    <script>
-        {% with mensagens = get_flashed_messages() %}
-        {% for alerta in mensagens %}
-        {{ alerta | safe }}
-        {% endfor %}
-        {% endwith %}
-    </script>
-
+    </main> 
 </body>
 
 </html>

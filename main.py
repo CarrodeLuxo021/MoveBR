@@ -33,7 +33,7 @@ def pag_cadastro_motorista():
             return redirect('/logar')
         else:
             flash("Erro ao cadastrar o usuário. Tente novamente.")
-            return redirect('/')
+            return redirect('/logar')
 
 @app.route("/cadastrar-aluno", methods=['GET', 'POST'])
 def pag_cadastro_aluno():
@@ -89,7 +89,7 @@ def logar():
             return redirect('/pag-inicial-motorista')
         else:
             session.clear()
-            flash("alert('login ou senha incorretos!')")
+            flash("Login ou senha incorretos!")
             return redirect("/logar")
 
 @app.route("/historico_pagamento", methods=['GET'])
@@ -101,7 +101,9 @@ def historico_pagamento():
     return render_template("historico-pagamento.html", pagamentos=historico)
 
 
-
+@app.route("/compontes")
+def componente():
+    return render_template("componente.html")
     
 
 @app.route("/historico_pagamento_filtro", methods=['POST'])
