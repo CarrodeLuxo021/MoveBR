@@ -42,7 +42,7 @@
             </div>
         </form>
         <form action="/historico_pagamento_filtro" method="post">
-            <select name="mesPagamento">
+            <select id='mesPagamento'name="mesPagamento">
                 <option value="" disabled selected>Escolher</option>
                 <option value="janeiro">Janeiro</option>
                 <option value="fevereiro">Fevereiro</option>
@@ -58,9 +58,9 @@
                 <option value="dezembro">Dezembro</option>
             </select>
             <button type="submit">Pesquisar</button>
-          </form>
+        </form>
 
-        <div class="informacoes">
+          <div class="informacoes">
             <!-- Verifica se há pagamentos -->
             {% if pagamentos %}
             <table class="alunos-listados">
@@ -70,7 +70,6 @@
                         <th>Mês do Pagamento</th>
                         <th>Data do Pagamento</th>
                         <th>Valor do Pagamento</th>
-                        <!-- <th>Ações</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -79,12 +78,7 @@
                         <td><strong>{{ pagamento.nome_aluno }}</strong></td>
                         <td>{{ pagamento.mes_pagamento }}</td>
                         <td>{{ pagamento.data_pagamento }}</td>
-                        <td><strong>R$ {{ pagamento.valor_pagamento }}</strong></td>
-                        <td>
-                            <a href="/excluir-historico/{{ pagamento.id_aluno }}">
-                                <button class="btn-excluir">Excluir</button>
-                            </a>
-                        </td>
+                        <td class="valor_pagamento"><strong>R$ {{ pagamento.valor_pagamento }}</strong></td>
                     </tr>
                     {% endfor %}
                     {% for pendentes in alunos_pendentes %}
@@ -99,19 +93,15 @@
                         </td>
                     </tr>
                     {% endfor %}
-
                 </tbody>
             </table>
-
+    
             {% else %}
             <p>Nenhum pagamento encontrado.</p>
             {% endif %}
-        </div>
-
-        <h2 class="valor">Valor Total: <span id="valor_total"> </span></h2>
-
     </div>
 
+        <h2 class="valor">Valor Total: <span id="valor_total"> </span></h2>
 
     <script>
         window.onload = function () {
@@ -129,6 +119,5 @@
         };
     </script>
 </body>
-
 
 </html>

@@ -6,7 +6,7 @@ class Pagamentos():
         self.email = None
         self.logado = False
 
-    def gerar_pagamento(self, id_aluno, mes, data, valor, cpf_motorista):
+    def gerar_pagamento(self, id_aluno, nome_aluno, mes, data, valor, cpf_motorista):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
@@ -14,10 +14,10 @@ class Pagamentos():
             # Inserindo na tabela historico_pagamentos
             sql = """
             INSERT INTO historico_pagamentos 
-            (id_aluno, data_pagamento, mes_pagamento, valor_pagamento, cpf_motorista)
-            VALUES (%s, %s, %s, %s, %s);
+            (id_aluno, nome_aluno, data_pagamento, mes_pagamento, valor_pagamento, cpf_motorista)
+            VALUES (%s, %s, %s, %s, %s, %s);
             """
-            mycursor.execute(sql, (id_aluno, data, mes, valor, cpf_motorista))
+            mycursor.execute(sql, (id_aluno, nome_aluno, data, mes, valor, cpf_motorista))
 
             mydb.commit()
             mycursor.close()
@@ -66,9 +66,11 @@ class Pagamentos():
     # Função para listar histórico de pagamentos realizados
     def listar_historico_filtro(self, mes, cpf_motorista):
         try:
+            # Conectar ao banco de dados
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
+            # Consulta SQL para obter o histórico de pagamentos com filtros de mês e motorista
             sql = """
             SELECT id_pagamento, nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_aluno 
             FROM historico_pagamentos 
@@ -76,18 +78,22 @@ class Pagamentos():
             """
             mycursor.execute(sql, (mes, cpf_motorista))
 
+            # Recupera os resultados e formata como uma lista de dicionários
             resultados = mycursor.fetchall()
-            historico = []
-            for linha in resultados:
-                historico.append({
+            historico = [
+                {
                     "id_pagamento": linha[0],
                     "nome_aluno": linha[1],
                     "mes_pagamento": linha[2],
                     "data_pagamento": linha[3],
                     "valor_pagamento": linha[4],
                     "id_aluno": linha[5]
-                })
+                }
+                for linha in resultados
+            ]
 
+            # Fecha a conexão com o banco de dados
+            mycursor.close()
             mydb.close()
             return historico
         except Exception as e:
@@ -105,11 +111,11 @@ class Pagamentos():
             FROM tb_alunos AS a
             INNER JOIN contratos_fechados AS c ON a.id_aluno = c.id_aluno
             LEFT JOIN historico_pagamentos AS hp 
-            ON a.id_aluno = hp.id_aluno AND hp.mes_pagamento = %s
+            ON a.id_aluno = hp.id_aluno AND hp.mes_pagamento = %s AND hp.cpf_motorista = %s
             WHERE c.cpf_motorista = %s AND hp.id_pagamento IS NULL;
             """
             
-            mycursor.execute(sql, (mes, cpf_motorista))
+            mycursor.execute(sql, (mes, cpf_motorista, cpf_motorista))
             
             resultados = mycursor.fetchall()
             alunos_pendentes = [{"nome_aluno": linha[0], "id_aluno": linha[1]} for linha in resultados]
@@ -132,16 +138,20 @@ class Pagamentos():
             FROM tb_alunos AS a
             INNER JOIN contratos_fechados AS c ON a.id_aluno = c.id_aluno
             LEFT JOIN historico_pagamentos AS hp 
-            ON a.id_aluno = hp.id_aluno AND hp.mes_pagamento = %s
+            ON a.id_aluno = hp.id_aluno AND hp.mes_pagamento = %s AND hp.cpf_motorista = %s
             WHERE c.cpf_motorista = %s AND hp.id_pagamento IS NULL;
             """
             
-            mycursor.execute(sql, (mes, cpf_motorista))
+            # Corrigido para passar parâmetros como tupla
+            mycursor.execute(sql, (mes, cpf_motorista, cpf_motorista))
             
             resultados = mycursor.fetchall()
             alunos_pendentes = [{"nome_aluno": linha[0], "id_aluno": linha[1]} for linha in resultados]
 
+            # Fecha a conexão com o banco de dados
+            mycursor.close()
             mydb.close()
+            
             return alunos_pendentes
         except Exception as e:
             print(f"Erro ao listar alunos pendentes: {e}")
