@@ -40,7 +40,7 @@ class Usuario():
             INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, 
             nome_responsavel, nome_responsavel_2, endereco, telefone_responsavel, 
             telefone_responsavel_2, email_responsavel, serie_aluno, periodo)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
             values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, 
                             nome_responsavel, nome_responsavel2, endereco_responsavel, 
