@@ -49,10 +49,11 @@ def pag_cadastro_aluno():
         endereco_responsavel = request.form["endereco-aluno"]
         tel_responsavel = request.form["telefone-responsavel"]
         email_responsavel = request.form["email-aluno"]
+        serie_aluno = request.form["serie-aluno"]
 
         link_foto = upload_file(foto_aluno)
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, ano, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
+        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, ano, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie_aluno):
             return redirect('/listar-alunos') 
         else:
            return redirect('/cadastrar-aluno')

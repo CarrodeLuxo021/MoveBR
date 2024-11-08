@@ -277,7 +277,8 @@ class Usuario():
         mydb.commit()
         mydb.close()
         
-        link = f"http://bdmovebr.mysql.database.azure.com/cadastrar-aluno/{codigo}"
+        """ link = f"http://bdmovebr.mysql.database.azure.com/cadastrar-aluno/{codigo}" """
+        link = f"http://127.0.0.1:8080/cadastrar-aluno/{codigo}"
         
         return link
     
