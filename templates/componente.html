@@ -5,28 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
+
 <style>
     body {
         font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
     }
 </style>
+
 <body>
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         <script>
-          Swal.fire({
-            icon: 'info',
-            title: '{{ messages[0] }}',
-            showConfirmButton: true,
-            timer: 2000  // ou ajuste o tempo como preferir
-          });
+          // Iterar sobre as mensagens para identificar e exibir ícones adequados
+          {% for category, message in messages %}
+            Swal.fire({
+              icon: '{{ "success" if category == "success" else "error" }}',
+              title: '{{ message }}',
+              showConfirmButton: true,
+              timer: 2000  // ou ajuste o tempo conforme necessário
+            });
+          {% endfor %}
         </script>
       {% endif %}
     {% endwith %}
-
-    
 </body>
-
 </html>
