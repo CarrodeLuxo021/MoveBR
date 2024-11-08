@@ -34,16 +34,6 @@ def pag_cadastro_motorista():
             flash("Erro ao cadastrar o usuário. Tente novamente.")
             return redirect('/')
 
-def upload_file(file):
-    if file:
-        # Salva a foto em uma pasta no servidor
-        upload_folder = 'uploads'
-        os.makedirs(upload_folder, exist_ok=True)
-        filepath = os.path.join(upload_folder, file.filename)
-        file.save(filepath)
-        return filepath
-    return None
-
 @app.route("/cadastrar-aluno", methods=['GET', 'POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
@@ -63,12 +53,9 @@ def pag_cadastro_aluno():
         email_responsavel = request.form["email-aluno"]
         periodo = request.form["periodo-aluno"]
 
-        # Função para upload da foto
-        link_foto = upload_file(foto_aluno)
-
         usuario = Usuario()
         if usuario.cadastrar_aluno(
-            nome_aluno, link_foto, condicao_medica, escola, 
+            nome_aluno, foto_aluno, condicao_medica, escola, 
             nome_responsavel, nome_responsavel2, endereco_responsavel, 
             tel_responsavel, tel_responsavel2, email_responsavel, 
             serie_aluno, periodo
