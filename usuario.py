@@ -26,42 +26,47 @@ class Usuario():
             print(f"Erro ao cadastrar motorista: {e}")
             return False
 
-    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, nome_reponsavel_2, endereco_responsavel, tel_responsavel, tel_responsavel_2, email_responsavel, serie_aluno):
-        # try:
+    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, 
+                        nome_responsavel, nome_responsavel2, endereco_responsavel, 
+                        tel_responsavel, tel_responsavel2, email_responsavel, 
+                        serie_aluno, periodo):
+        try:
+            # Conectar ao banco de dados
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
             # Inserir o aluno na tabela tb_alunos
             sql_aluno = """
-            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, nome_reponsavel_2, endereco, telefone_responsavel, telefone_responsavel_2, email_responsavel, serie_aluno) 
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, 
+            nome_responsavel, nome_responsavel_2, endereco, telefone_responsavel, 
+            telefone_responsavel_2, email_responsavel, serie_aluno, periodo)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
-            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, nome_reponsavel_2, endereco_responsavel, tel_responsavel,tel_responsavel_2, email_responsavel, serie_aluno)
+            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, 
+                            nome_responsavel, nome_responsavel2, endereco_responsavel, 
+                            tel_responsavel, tel_responsavel2, email_responsavel, 
+                            serie_aluno, periodo)
             mycursor.execute(sql_aluno, values_aluno)
-            
-            # Obtenha o ID do aluno recém-inserido
+
+            # Obter o ID do aluno inserido
             id_aluno = mycursor.lastrowid
-            
-            # Obtenha o cpf_motorista da sessão
+
+            # Inserir contrato, se necessário
             cpf_motorista = session['usuario_logado']['cpf']
-            
-            # Inserir o contrato na tabela contratos_fechados
             sql_contrato = """
             INSERT INTO contratos_fechados (id_aluno, cpf_motorista) 
             VALUES (%s, %s)
             """
-            values_contrato = (id_aluno, cpf_motorista)
-            mycursor.execute(sql_contrato, values_contrato)
+            mycursor.execute(sql_contrato, (id_aluno, cpf_motorista))
 
             mydb.commit()
             mycursor.close()
             mydb.close()
 
             return True
-        
-        # except Exception as e:
-        #     print(f"Erro ao cadastrar aluno e fechar contrato: {e}")
-        #     return False
+        except Exception as e:
+            print(f"Erro ao cadastrar aluno: {e}")
+            return False
 
     def logar(self, email, senha):
         try:
