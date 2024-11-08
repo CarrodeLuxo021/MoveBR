@@ -26,7 +26,7 @@ class Usuario():
             print(f"Erro ao cadastrar motorista: {e}")
             return False
 
-    def cadastrar_aluno(self, nome_aluno, foto_aluno, condicao_medica, escola, 
+    def cadastrar_aluno(self, nome_aluno, link_foto, condicao_medica, escola, 
                         nome_responsavel, nome_responsavel2, endereco_responsavel, 
                         tel_responsavel, tel_responsavel2, email_responsavel, 
                         serie_aluno, periodo):
@@ -42,7 +42,7 @@ class Usuario():
             telefone_responsavel_2, email_responsavel, serie_aluno, periodo)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
-            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, 
+            values_aluno = (nome_aluno, link_foto, condicao_medica, escola, 
                             nome_responsavel, nome_responsavel2, endereco_responsavel, 
                             tel_responsavel, tel_responsavel2, email_responsavel, 
                             serie_aluno, periodo)

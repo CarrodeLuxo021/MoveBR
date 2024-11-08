@@ -54,14 +54,18 @@ def pag_cadastro_aluno():
         email_responsavel = request.form["email-aluno"]
         periodo = request.form["periodo-aluno"]
 
+        # Fazer o upload da foto e obter o link
+        link_foto = upload_file(foto_aluno)
+
+        # Instanciar o objeto Usuario
         usuario = Usuario()
         if usuario.cadastrar_aluno(
-            nome_aluno, foto_aluno, condicao_medica, escola, 
-            nome_responsavel, nome_responsavel2, endereco_responsavel, 
-            tel_responsavel, tel_responsavel2, email_responsavel, 
+            nome_aluno, link_foto, condicao_medica, escola,
+            nome_responsavel, nome_responsavel2, endereco_responsavel,
+            tel_responsavel, tel_responsavel2, email_responsavel,
             serie_aluno, periodo
         ):
-            return redirect('/listar-alunos') 
+            return redirect('/listar-alunos')
         else:
             return redirect('/cadastrar-aluno')
 
