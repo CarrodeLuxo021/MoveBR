@@ -34,27 +34,49 @@ def pag_cadastro_motorista():
             flash("Erro ao cadastrar o usuário. Tente novamente.")
             return redirect('/')
 
-@app.route("/cadastrar-aluno", methods=['GET','POST'])
+def upload_file(file):
+    if file:
+        # Salva a foto em uma pasta no servidor
+        upload_folder = 'uploads'
+        os.makedirs(upload_folder, exist_ok=True)
+        filepath = os.path.join(upload_folder, file.filename)
+        file.save(filepath)
+        return filepath
+    return None
+
+@app.route("/cadastrar-aluno", methods=['GET', 'POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
-        nome_aluno = request.form["nome-aluno"] 
+        # Coleta de dados do formulário
+        nome_aluno = request.form["nome-aluno"]
         escola = request.form["escola"]
         foto_aluno = request.files["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
         nome_responsavel = request.form["nome-responsavel"]
+        nome_responsavel2 = request.form["nome-responsavel2"]
         endereco_responsavel = request.form["endereco-aluno"]
         tel_responsavel = request.form["telefone-responsavel"]
+        tel_responsavel2 = request.form["telefone-responsavel2"]
+        serie_aluno = request.form["serie-aluno"]
         email_responsavel = request.form["email-aluno"]
-        serie = request.form["serie-aluno"]
+        periodo = request.form["periodo-aluno"]
 
+        # Função para upload da foto
         link_foto = upload_file(foto_aluno)
+
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie):
+        if usuario.cadastrar_aluno(
+            nome_aluno, link_foto, condicao_medica, escola, 
+            nome_responsavel, nome_responsavel2, endereco_responsavel, 
+            tel_responsavel, tel_responsavel2, email_responsavel, 
+            serie_aluno, periodo
+        ):
             return redirect('/listar-alunos') 
         else:
-           return redirect('/cadastrar-aluno')
+            return redirect('/cadastrar-aluno')
+
                                               
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
