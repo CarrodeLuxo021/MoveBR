@@ -36,7 +36,7 @@ class Usuario():
             INSERT INTO tb_alunos (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, nome_reponsavel_2, endereco, telefone_responsavel, telefone_responsavel_2, email_responsavel, serie_aluno) 
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
-            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie_aluno)
+            values_aluno = (nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, nome_reponsavel_2, endereco_responsavel, tel_responsavel,tel_responsavel_2, email_responsavel, serie_aluno)
             mycursor.execute(sql_aluno, values_aluno)
             
             # Obtenha o ID do aluno recém-inserido
