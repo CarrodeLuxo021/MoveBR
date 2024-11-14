@@ -67,7 +67,7 @@ nav a:last-child .botao {
 }
 
 .botao {
-    border: solid 1px var(--cor-06);
+    border: solid 1px var(--cor-05);
     border-radius: 10px;
     color: #000000;
     background-color: var(--cor-03);

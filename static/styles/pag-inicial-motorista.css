@@ -8,14 +8,14 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--cor-03); /* Utilizando cor off-white */
+    color: var(--cor-01); /* Texto em cinza-azulado escuro */
 }
 
 /* Estilização do header */
 header {
-    background: #2c3e50; /* Cor de fundo do header */
-    color: white;
+    background: var(--cor-01); /* Cor de fundo do header */
+    color: var(--cor-03); /* Cor do texto em cinza claro */
     padding: 10px 20px;
     display: flex;
     justify-content: center;
@@ -24,14 +24,14 @@ header {
 }
 
 .logo img {
-    height: 30px; /* Tamanho da logo */
+    height: 40px; /* Tamanho da logo */
 }
 
 /* Estilização da navegação */
 nav {
     display: flex;
     justify-content: center;
-    background-color: #34495e; /* Azul mais claro */
+    background-color: var(--cor-02); /* Azul mais claro para o nav */
 }
 
 nav {
@@ -39,14 +39,14 @@ nav {
 }
 
 .nav-item {
-    color: white;
+    color: var(--cor-03); /* Texto branco */
     text-decoration: none;
     padding: 10px 15px;
     transition: background 0.3s;
 }
 
 .nav-item:hover {
-    background: #283c50; /* Cor de fundo ao passar o mouse */
+    background: var(--cor-01); /* Cor de fundo ao passar o mouse */
 }
 
 /* Estilização do main */
@@ -66,7 +66,7 @@ main {
 
 .slogan {
     font-size: 1.2em; /* Tamanho da slogan */
-    color: #555;
+    color: var(--cor-01); /* Cor cinza-azulado escuro */
 }
 
 .services-section {
@@ -80,7 +80,7 @@ main {
 }
 
 .service-card {
-    background: white;
+    background: #fff; /* Cor de fundo do cartão */
     border: 1px solid #ddd;
     border-radius: 8px; /* Bordas arredondadas */
     padding: 20px;
@@ -108,12 +108,11 @@ main {
 footer {
     text-align: center;
     padding: 10px 0;
-    background: #2c3e50;
-    color: white;
+    background: var(--cor-01); /* Cor de fundo do footer */
+    color: var(--cor-03); /* Texto em cinza claro */
     position: fixed; /* Para assegurar que o footer se mantenha no final */
     bottom: 0;
     width: 100%; /* Largura total */
-
 }
 
 /* X-Small devices (portrait phones, less than 576px) */

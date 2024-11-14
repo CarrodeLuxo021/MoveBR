@@ -9,8 +9,8 @@
 /* Body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f6fa;
-    color: #2c3e50;
+    background-color: var(--cor-03);
+    color: var(--cor-01);  /* Cinza-azulado escuro */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,8 +20,8 @@ body {
 
 /* Header */
 header {
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: var(--cor-01);  /* Cinza-azulado escuro */
+    color: var(--cor-03);  /* Cinza claro */
     height: 80px;
     display: flex;
     align-items: center;
@@ -65,16 +65,16 @@ main {
 .titulo {
     text-align: center;
     font-size: 1.8em;
-    color: #2c3e50;
+    color: var(--cor-01);  /* Cinza-azulado escuro */
     margin-bottom: 30px;
-    border-bottom: 2px solid #e79428;
+    border-bottom: 2px solid var(--cor-05);  /* Laranja */
     padding-bottom: 10px;
 }
 
 /* Form Container */
 .container-form {
     width: 70%;
-    background-color: #ffffff;
+    background-color: #fff;  /* Branco */
     border-radius: 12px;
     padding: 40px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -101,7 +101,7 @@ label {
     display: block;
     font-weight: bold;
     margin-bottom: 3px;
-    color: #2c3e50;
+    color: var(--cor-01);  /* Cinza-azulado escuro */
 }
 
 /* Form Fields */
@@ -128,15 +128,15 @@ input[type="file"]:focus,
 input[type="password"]:focus,
 select:focus {
     outline: none;
-    border-color: #2c3e50;
+    border-color: var(--cor-01);  /* Cinza-azulado escuro */
     box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.3);
 }
 
 /* Submit Button */
 button.cadastrar {
     padding: 15px 30px;
-    background-color: #e79428;
-    color: #ffffff;
+    background-color: var(--cor-05);  /* Laranja */
+    color: var(--cor-03);  /* Branco */
     border: none;
     border-radius: 8px;
     font-size: 1.1em;
@@ -146,7 +146,7 @@ button.cadastrar {
 }
 
 button.cadastrar:hover {
-    background-color: #b06d14;
+    background-color: var(--cor-06);  /* Laranja escuro */
     transform: translateY(-2px);
 }
 
@@ -155,11 +155,13 @@ button.cadastrar:hover {
     display: flex;
     justify-content: end;
 }
-   /* Ajustes no estilo para o campo de senha */
-   .password-wrapper {
+
+/* Ajustes no estilo para o campo de senha */
+.password-wrapper {
     position: relative;
     width: 100%;
 }
+
 .toggle-password {
     position: absolute;
     right: 10px;
@@ -259,8 +261,8 @@ button.cadastrar:hover {
 /* X-Large devices (large desktops, less than 1400px) */
 @media (max-width: 1399.98px) {
     .container-form {
-        margin-top: 90px;
-        width: 80%;
+        margin-top: 70px;
+        width: 90%;
         gap: 0px;
     }
 

@@ -10,8 +10,8 @@
 /* Body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f6fa;
-    color: #2c3e50;
+    background-color: var(--cor-03); /* Off-white */
+    color: var(--cor-01); /* Cinza-azulado escuro */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,8 +21,8 @@ body {
 
 /* Header */
 header {
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: var(--cor-01); /* Cinza-azulado escuro */
+    color: var(--cor-03); 
     height: 80px;
     display: flex;
     align-items: center;
@@ -56,7 +56,7 @@ header {
 
 /* Main */
 main {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     margin-top: 90px; /* Para evitar sobreposição com o header */
@@ -64,9 +64,9 @@ main {
 
 /* Form Container */
 .container-form {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 40px;
+    background-color: #fff; /* Branco */
+    border-radius: 0 0 12px 12px;
+    padding: 20px 40px 40px 40px;
     width: 500px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
@@ -85,12 +85,28 @@ main {
     gap: 20px;
 }
 
+.cabecalho-container {
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+}
+
+.cabecalho-container h2{
+    color: #fff;
+    gap: 0.5px;
+    text-align: center;
+}
+
 /* Labels */
 label {
     display: block;
     font-weight: bold;
     margin-bottom: 3px;
-    color: #2c3e50;
+    color: var(--cor-01); /* Cinza-azulado escuro */
 }
 
 /* Form Fields */
@@ -111,13 +127,14 @@ input[type="text"]:focus,
 input[type="date"]:focus,
 select:focus {
     outline: none;
-    border-color: #2c3e50;
+    border-color: var(--cor-01); /* Cinza-azulado escuro */
     box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.3);
 }
 
+/* Botão */
 .botao {
-    background-color: #e79428; /* Cor do botão */
-    color: #ffffff; /* Cor do texto do botão */
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
     border: none;
     padding: 8px 18px;
     border-radius: 9999999px;
@@ -129,7 +146,7 @@ select:focus {
 }
 
 .botao:hover {
-    background-color: #b06d14; /* Cor do botão ao passar o mouse */
+    background-color: var(--cor-06); /* Laranja escuro */
 }
 
 /* Button Container */
@@ -138,10 +155,9 @@ select:focus {
     justify-content: end;
 }
 
-/* Media Queries */
-
-/* Small devices */
+/* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+
     header {
         height: 60px;
         padding: 0 10px;
@@ -151,26 +167,75 @@ select:focus {
         width: 16px;
     }
 
-    .logo img {
-        height: 20px;
-    }
-
     .container-form {
         width: 90%;
         padding: 20px;
     }
-}
 
-/* Medium devices */
-@media (max-width: 991.98px) {
-    .container-form {
-        width: 90%;
+    input[type="text"],
+    input[type="date"],
+    select {
+        width: 100%;
+        padding: 10px;
     }
 }
 
-/* Large devices */
-@media (max-width: 1199.98px) {
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+
+    header {
+        height: 65px;
+        padding: 0 15px;
+    }
+
+    .button-back img {
+        width: 18px;
+    }
+
+    .container-form {
+        width: 85%;
+        padding: 25px;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+
+    header {
+        height: 70px;
+        padding: 0 20px;
+    }
+
     .container-form {
         width: 80%;
+        padding: 30px;
+    }
+
+    .button-back img {
+        width: 20px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+        width: 100%;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+
+    .container-form {
+        width: 75%;
+        padding: 35px;
+    }
+}
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+    
+    .container-form {
+        width: 65%;
+        padding: 40px;
     }
 }
