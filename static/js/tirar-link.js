@@ -14,5 +14,10 @@ function verificarURL() {
    
 }
 
+function redirecionar() {
+    // Redireciona para a URL gerada
+    window.location.href = "{{ url_for('cadastrar_aluno', codigo=codigo) }}";
+}
+
 // Chama a função ao carregar a página
 verificarURL();
