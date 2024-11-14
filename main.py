@@ -27,34 +27,18 @@ def pag_cadastro_motorista():
         email = request.form["email"]
         senha = request.form["senha"]
 
-        # Validar CPF
-        if not validar_cpf(cpf):
-            flash("CPF inválido. Tente novamente.", "error")
-            return redirect('/cadastrar-motorista')
-
-        # Validar e-mail
-        if not validar_email(email):
-            flash("E-mail inválido. Tente novamente.", "error")
-            return redirect('/cadastrar-motorista')
-
-        # Validar senha
-        if len(senha) < 8:
-            flash("A senha deve ter pelo menos 8 caracteres.", "error")
-            return redirect('/cadastrar-motorista')
-
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, telefone, email, senha):
             flash("Usuário cadastrado com sucesso!", "success")
             return redirect('/logar')
 
-        flash("cadastrar motorista.", "success")
+        flash("Erro ao cadastrar motorista. Tente novamente.", "error")
         return redirect('/cadastrar-motorista')
 
 def validar_cpf(cpf):
     cpf = cpf.replace(".", "").replace("-", "")
     if len(cpf) != 11 or not cpf.isdigit():
         return False
-    # Adicionar o restante da lógica de validação do CPF aqui (igual ao JavaScript)
     return True
 
 def validar_email(email):
@@ -68,7 +52,6 @@ def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
-        # Coleta de dados do formulário
         nome_aluno = request.form["nome-aluno"]
         escola = request.form["escola"]
         foto_aluno = request.files["foto-aluno"]
@@ -82,10 +65,8 @@ def pag_cadastro_aluno():
         email_responsavel = request.form["email-aluno"]
         periodo = request.form["periodo-aluno"]
 
-        # Fazer o upload da foto e obter o link
         link_foto = upload_file(foto_aluno)
 
-        # Instanciar o objeto Usuario
         usuario = Usuario()
         if usuario.cadastrar_aluno(
             nome_aluno, link_foto, condicao_medica, escola,
@@ -115,18 +96,17 @@ def logar():
                 "email": usuario.email,
                 "cpf": usuario.cpf
             }
-            flash("Login realizado com sucesso!")
+            flash("Login realizado com sucesso!", "success")
             return redirect('/pag-inicial-motorista')
         else:
             session.clear()
-            flash("Login ou senha incorretos!")
+            flash("Login ou senha incorretos!", "error")
             return redirect("/logar")
 
 @app.route("/historico_pagamento", methods=['GET'])
 def historico_pagamento():
     pagamentos = Pagamentos()
     historico = pagamentos.listar_historico()
-
     return render_template("historico-pagamento.html", pagamentos=historico)
 
 @app.route("/compontes")
@@ -139,7 +119,7 @@ def historico_pagamento_filtro():
     mes = request.form['mesPagamento']
     
     if not cpf_motorista:
-        flash("Motorista não está logado.")
+        flash("Motorista não está logado.", "error")
         return "Motorista não está logado", 401
 
     pagamento = Pagamentos()
@@ -165,10 +145,10 @@ def gerar_pagamento_get():
 
         pagamento = Pagamentos()
         if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
-            flash("Pagamento gerado com sucesso!")
+            flash("Pagamento gerado com sucesso!", "success")
             return redirect("/historico_pagamento")
         else:
-            flash("Erro ao gerar o pagamento.")
+            flash("Erro ao gerar o pagamento.", "error")
             return redirect("/gerar-pagamento")
 
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
@@ -181,9 +161,9 @@ def excluir_aluno(id_aluno):
         if 'usuario_logado' in session:
             usuario = Usuario()
             if usuario.excluir_aluno(id_aluno):
-                flash("Aluno excluído com sucesso!")
+                flash("Aluno excluído com sucesso!", "success")
             else:
-                flash("Erro ao excluir o aluno.")
+                flash("Erro ao excluir o aluno.", "error")
             return redirect('/listar-alunos')
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
@@ -206,18 +186,16 @@ def excluir_historico(id_pagamento):
     if 'usuario_logado' in session:
         usuario = Pagamentos()
         if usuario.excluir_historico(id_pagamento):
-            flash("Pagamento excluído com sucesso!")
+            flash("Pagamento excluído com sucesso!", "success")
         else:
-            flash("Erro ao excluir pagamento.")
+            flash("Erro ao excluir pagamento.", "error")
         return redirect('/historico_pagamento')
-
 
 @app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
 def editar_aluno(id_aluno):
     conn = Conexao.conectar()
     cursor = conn.cursor(dictionary=True)
 
-    # Quando o método for GET, busque os dados do aluno para preencher o formulário
     if request.method == 'GET':
         cursor.execute("SELECT * FROM tb_alunos WHERE id_aluno = %s", (id_aluno,))
         aluno = cursor.fetchone()
@@ -225,9 +203,9 @@ def editar_aluno(id_aluno):
         if aluno:
             return render_template('editar-aluno.html', aluno=aluno)
         else:
-            return "Aluno não encontrado", 404
+            flash("Aluno não encontrado.", "error")
+            return redirect('/listar-alunos')
 
-    # Quando o método for POST, salve os dados atualizados
     elif request.method == 'POST':
         nome_aluno = request.form.get('nome-aluno')
         condicao_medica = request.form.get('condicao-medica')
@@ -237,21 +215,18 @@ def editar_aluno(id_aluno):
         telefone_responsavel = request.form.get('telefone-responsavel')
         email_responsavel = request.form.get('email-aluno')
 
-        # Verificar se o usuário fez upload de uma nova foto
         foto_aluno = request.files.get('foto-aluno')
         if foto_aluno and foto_aluno.filename != '':
-            # Validar tipo de arquivo de imagem
             if foto_aluno.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
                 foto_path = f"/static/images/{foto_aluno.filename}"
                 foto_aluno.save(os.path.join('static', 'images', foto_aluno.filename))
             else:
-                return "Formato de imagem inválido. Use PNG, JPG ou JPEG.", 400
+                flash("Formato de imagem inválido. Use PNG, JPG ou JPEG.", "error")
+                return redirect(f'/editar-aluno/{id_aluno}')
         else:
-            # Manter a foto existente
             cursor.execute("SELECT foto_aluno FROM tb_alunos WHERE id_aluno = %s", (id_aluno,))
             foto_path = cursor.fetchone()['foto_aluno']
 
-        # Atualizar os dados do aluno no banco de dados
         cursor.execute("""
             UPDATE tb_alunos
             SET nome_aluno = %s, condicao_medica = %s, escola = %s, nome_responsavel = %s, endereco = %s, telefone_responsavel = %s, email_responsavel = %s, foto_aluno = %s
@@ -260,11 +235,8 @@ def editar_aluno(id_aluno):
         
         conn.commit()
         conn.close()
-
+        
+        flash("Aluno atualizado com sucesso!", "success")
         return redirect('/listar-alunos')
-
-
-
-    
 
 app.run(debug=True)
