@@ -1,12 +1,3 @@
-/* Definindo as variáveis de cor */
-:root {
-    --cor-01: #2c3e50; /* Cinza-azulado escuro */
-    --cor-02: #456789; /* Cinza-azulado claro */
-    --cor-03: #ffffff; /* Branco */
-    --cor-04: #f5f6fa; /* Off-white */
-    --cor-05: #e79428; /* Laranja */
-}
-
 /* Reset de margens e paddings */
 * {
     box-sizing: border-box;
@@ -155,7 +146,7 @@ main {
 }
 
 .alunos-listados {
-    background-color: var(--cor-03); /* Branco */
+    background-color: #fff; /* Branco */
     margin: 0 auto;
     width: 80%;
     max-width: 900px;

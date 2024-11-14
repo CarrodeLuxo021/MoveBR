@@ -8,7 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: var(--cor-04); /* Utilizando cor off-white */
+    background-color: var(--cor-03); /* Utilizando cor off-white */
     color: var(--cor-01); /* Texto em cinza-azulado escuro */
 }
 
@@ -24,7 +24,7 @@ header {
 }
 
 .logo img {
-    height: 30px; /* Tamanho da logo */
+    height: 40px; /* Tamanho da logo */
 }
 
 /* Estilização da navegação */
@@ -80,7 +80,7 @@ main {
 }
 
 .service-card {
-    background: var(--cor-03); /* Cor de fundo do cartão */
+    background: #fff; /* Cor de fundo do cartão */
     border: 1px solid #ddd;
     border-radius: 8px; /* Bordas arredondadas */
     padding: 20px;
