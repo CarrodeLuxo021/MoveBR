@@ -268,3 +268,8 @@ button.cadastrar:hover {
         font-size: 1em;
     }
 }
+
+#gerarLinkBtn {
+    display: block;
+    margin: 20px;
+}

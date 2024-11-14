@@ -3,20 +3,26 @@ from usuario import Usuario
 from pagamentos import Pagamentos
 from conexao import Conexao
 from upload_file import upload_file
+from flask_login import login_required, login_manager
 
 
 app = Flask(__name__)
 app.secret_key = "banana"
 
+
+
+login_manager.login_view = '/logar'
+
 @app.route("/")
+@login_required
 def pag_inicio():
     return redirect('/logar')
-
 @app.route("/pag-inicial-motorista")
 def pag_inicial():
     return render_template("pag-inicial-motorista.html", session=session)
 
 @app.route("/cadastrar-motorista", methods=['GET', 'POST'])
+
 def pag_cadastro_motorista():
     if request.method == 'GET':
         return render_template('cadastro-motorista.html')
