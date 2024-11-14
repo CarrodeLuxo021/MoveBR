@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/styles/style.css">
     <link rel="stylesheet" href="/static/styles/variaveis.css">
     <script defer src="/static/js/mascara-telefone.js"></script>
+    <script defer src="/static/js/letras-maiusculas.js"></script>
 </head>
 
 <body>
@@ -41,12 +42,16 @@
                 <div class="lado-direito-container">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="ex: nome@exemplo.com" required>
+                    
 
                     <label for="endereco">Endereço:</label>
                     <input type="text" id="endereco" name="endereco" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" required>
 
                     <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" minlength="8" placeholder="ex: mínimo 8 caracteres" required>
+                    <div class="password-wrapper">
+                        <input type="password" id="senha" name="senha" minlength="8" placeholder="ex: mínimo 8 caracteres" required>
+                        <span class="toggle-password" onclick="togglePassword()">🔒</span>
+                    </div>
 
                     <div class="btn-container">
                         <button type="submit" class="cadastrar">Cadastrar</button>
@@ -55,6 +60,21 @@
             </section>
         </form>
     </main>
+
+    <script>
+        function togglePassword() {
+            const senhaInput = document.getElementById("senha");
+            const toggleIcon = document.querySelector(".toggle-password");
+
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+                toggleIcon.textContent = "🔓";  // Ícone de ocultar
+            } else {
+                senhaInput.type = "password";
+                toggleIcon.textContent = "🔒";  // Ícone de mostrar
+            }
+        }
+    </script>
 </body>
 
 </html>
