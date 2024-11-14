@@ -85,9 +85,9 @@
                         <td>{{ pagamento.data_pagamento }}</td>
                         <td><strong>R$ {{ pagamento.valor_pagamento }}</strong></td>
                         <td>
-                            <a href="/excluir-historico/{{ pagamento.id_aluno }}">
-                                <button class="btn-excluir">Excluir</button>
-                            </a>
+                            <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-excluir">Excluir</button>
+                            </form>
                         </td>
                     </tr>
                     {% endfor %}
@@ -97,9 +97,9 @@
                         
                         <td class="nao-pago">
                             <h2>NÃO PAGO</h2>
-                            <a href="/excluir-historico/{{ pendentes.id_aluno }}">
-                                <button class="btn-excluir">Excluir</button>
-                            </a>
+                            <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-excluir">Excluir</button>
+                            </form>
                         </td>
                     </tr>
                     {% endfor %}

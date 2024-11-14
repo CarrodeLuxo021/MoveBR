@@ -34,14 +34,14 @@ def pag_cadastro_motorista():
             flash("Erro ao cadastrar o usuário. Tente novamente.")
             return redirect('/')
 
-@app.route("/cadastrar-aluno", methods=['GET','POST'])
+@app.route("/cadastrar-aluno", methods=['GET', 'POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
-        nome_aluno = request.form["nome-aluno"] 
+        nome_aluno = request.form["nome-aluno"]
         escola = request.form["escola"]
-        ano = request.form["ano"]
+        serie_aluno = request.form["serie-aluno"]
         foto_aluno = request.files["foto-aluno"]
         condicao_medica = request.form["condicao-medica"]
         nome_responsavel = request.form["nome-responsavel"]
@@ -49,12 +49,19 @@ def pag_cadastro_aluno():
         tel_responsavel = request.form["telefone-responsavel"]
         email_responsavel = request.form["email-aluno"]
 
+        # Realizar o upload da foto
         link_foto = upload_file(foto_aluno)
+
+        # Criar uma instância de usuário e cadastrar o aluno
         usuario = Usuario()
-        if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, ano, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel):
-            return redirect('/listar-alunos') 
+        if usuario.cadastrar_aluno(
+            nome_aluno, link_foto, condicao_medica, escola,
+            nome_responsavel, endereco_responsavel, tel_responsavel,
+            email_responsavel, serie_aluno
+        ):
+            return redirect('/listar-alunos')
         else:
-           return redirect('/cadastrar-aluno')
+            return redirect('/cadastrar-aluno')
                                               
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
