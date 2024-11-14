@@ -12,11 +12,12 @@
     <script defer src="/static/js/mascara-telefone.js"></script>
     <script defer src="/static/js/foto-aluno.js"></script>
     <script defer src="/static/js/letras-maiusculas.js"></script>
+    <script defer src="/static/js/tirar-link.js"></script>
 </head>
 
 <body>
     <header>
-        <button class="button-back" type="button">
+        <button class="button-back" type="button" id="visibleButton">
             <a href="/pag-inicial-motorista">
                 <img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda">
             </a>
@@ -85,6 +86,7 @@
                 </div>
             </section>
         </form>
+        <a href="/gerar-codigo"><button id="gerarLinkBtn">gerar link de cadastro</button></a>
     </main>
 </body>
 
