@@ -1,3 +1,13 @@
+/* Definindo as variáveis de cor */
+:root {
+    --cor-01: #2c3e50; /* Cinza-azulado escuro */
+    --cor-02: #456789; /* Cinza-azulado claro */
+    --cor-03: #ffffff; /* Branco */
+    --cor-04: #f5f6fa; /* Off-white */
+    --cor-05: #e79428; /* Laranja */
+}
+
+/* Reset de margens e paddings */
 * {
     box-sizing: border-box;
     padding: 0;
@@ -12,7 +22,7 @@ body {
 }
 
 header {
-    background-color: #2c3e50;
+    background-color: var(--cor-01); /* Cor de fundo do header */
     height: 80px;
     display: flex;
     align-items: center;
@@ -56,8 +66,8 @@ main {
 }
 
 .btn-cadaluno button {
-    background-color: #e79428;
-    color: var(--cor-03);
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
     font-size: 15px;
     border: none;
     padding: 7px 12px;
@@ -68,7 +78,7 @@ main {
 }
 
 .btn-cadaluno button:hover {
-    background-color: #b06d14;
+    background-color: #b06d14; /* Laranja mais escuro */
 }
 
 /* Estilo do container de busca */
@@ -90,7 +100,7 @@ main {
 
 .container-listagem-busca h2 {
     font-size: 18px;
-    color: #2c3e50;
+    color: var(--cor-01); /* Cinza-azulado escuro */
     text-align: center;
     margin-bottom: 10px;
 }
@@ -105,8 +115,8 @@ main {
 }
 
 .container-listagem-busca .btn-escola {
-    background-color: #e79428;
-    color: #fff;
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
     padding: 8px 12px;
     border: none;
     border-radius: 20px;
@@ -118,9 +128,8 @@ main {
 }
 
 .container-listagem-busca .btn-escola:hover {
-    background-color: #b06d14;
+    background-color: #b06d14; /* Laranja mais escuro */
 }
-
 
 .input-busca {
     border: none;
@@ -130,7 +139,7 @@ main {
 }
 
 .icone-busca {
-    background-color: #2c3e50;
+    background-color: var(--cor-01); /* Cinza-azulado escuro */
     border: none;
     padding: 8px 13px;
     cursor: pointer;
@@ -138,7 +147,7 @@ main {
 }
 
 .icone-busca:hover {
-    background-color: #456789;
+    background-color: var(--cor-02); /* Cinza-azulado claro */
 }
 
 .container-tabela {
@@ -146,7 +155,7 @@ main {
 }
 
 .alunos-listados {
-    background-color: var(--cor-03);
+    background-color: var(--cor-03); /* Branco */
     margin: 0 auto;
     width: 80%;
     max-width: 900px;
@@ -173,7 +182,7 @@ td {
     height: 120px; /* ou ajuste conforme necessário */
     overflow: hidden; /* Garante que a imagem não ultrapasse o contêiner */
     border-radius: 50%; /* Garante que o contêiner também seja redondo */
-    border: 2px solid #e79428;
+    border: 2px solid var(--cor-05); /* Laranja */
 }
 
 .foto-aluno img {
@@ -189,12 +198,12 @@ td {
 .info-aluno h2 {
     font-size: 24px;
     margin: 0;
-    color: var(--cor-01);
+    color: var(--cor-01); /* Cinza-azulado escuro */
 }
 
 .info-aluno p {
     font-size: 16px;
-    color: var(--cor-02);
+    color: var(--cor-02); /* Cinza-azulado claro */
 }
 
 /* Detalhes do Aluno */
@@ -215,7 +224,7 @@ td {
     border: none; /* Remove a borda padrão */
     cursor: pointer; /* Muda o cursor para mão */
     font-size: 1rem; /* Tamanho do ícone */
-    color: #e79428; /* Cor do texto */
+    color: var(--cor-05); /* Laranja */
 }
 
 .info-transporte {
@@ -225,12 +234,12 @@ td {
 .info-transporte h3 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #e79428;
+    color: var(--cor-05); /* Laranja */
 }
 
 .info-transporte p {
     font-size: 16px;
-    color: var(--cor-01);
+    color: var(--cor-01); /* Cinza-azulado escuro */
     margin-bottom: 5px;
 }
 
@@ -240,7 +249,7 @@ td {
 }
 
 .btn-editar {
-    background-color: #2c3e50;
+    background-color: var(--cor-01); /* Cinza-azulado escuro */
     border: none;
     border-radius: 50%; /* Faz o botão ser redondo */
     width: 30px; /* Ajuste conforme necessário */
@@ -253,7 +262,7 @@ td {
 }
 
 .btn-editar:hover {
-    background-color: #456789; /* Cor ao passar o mouse */
+    background-color: var(--cor-02); /* Cinza-azulado claro */
 }
 
 .icon-editar {
@@ -264,7 +273,7 @@ td {
 .info-extra h3 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #e79428;
+    color: var(--cor-05); /* Laranja */
 }
 
 .container-btn-excluir {
@@ -273,8 +282,8 @@ td {
 }
 
 .container-btn-excluir button {
-    background-color: #e79428; /* Cor de fundo */
-    color: var(--cor-03); /* Cor do texto */
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
     border: none; /* Remove borda padrão */
     padding: 12px; /* Espaçamento interno */
     border-radius: 50px; /* Bordas arredondadas */
@@ -283,13 +292,13 @@ td {
 }
 
 .container-btn-excluir button:hover {
-    background-color: #b06d14;
+    background-color: #b06d14; /* Laranja mais escuro */
     transform: translateY(-2px);
 }
 
 /* Estilo do título de alunos */
 .AA {
-    color: #333;
+    color: var(--cor-01); /* Cinza-azulado escuro */
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
@@ -314,8 +323,8 @@ td {
 #generateRoute {
     padding: 10px 15px;
     font-size: 14px;
-    background-color: #2c3e50;
-    color: #fff;
+    background-color: var(--cor-01); /* Cinza-azulado escuro */
+    color: var(--cor-03); /* Branco */
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -323,7 +332,7 @@ td {
 }
 
 #generateRoute:hover {
-    background-color: #456789;
+    background-color: var(--cor-02); /* Cinza-azulado claro */
 }
 
 .rota {
@@ -342,7 +351,7 @@ form label {
 
 .container-listagem-busca h2 {
     font-size: 18px;
-    color: #2c3e50;
+    color: var(--cor-01); /* Cinza-azulado escuro */
     text-align: center;
 }
 
@@ -355,8 +364,8 @@ form label {
 }
 
 .container-listagem-busca .btn-escola {
-    background-color: #e79428;
-    color: #fff;
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
     padding: 8px 12px;
     border: none;
     border-radius: 20px;
@@ -368,7 +377,7 @@ form label {
 }
 
 .container-listagem-busca .btn-escola:hover {
-    background-color: #b06d14;
+    background-color: var(--cor-06); /* Laranja mais escuro */
 }
 
 /* Estilo do container de rota */
@@ -386,8 +395,8 @@ form label {
 }
 
 #generateRoute {
-    background-color: #2c3e50;
-    color: #fff;
+    background-color: var(--cor-01); /* Cinza-azulado escuro */
+    color: var(--cor-03); /* Branco */
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -395,7 +404,7 @@ form label {
 }
 
 #generateRoute:hover {
-    background-color: #456789;
+    background-color: var(--cor-02); /* Cinza-azulado claro */
 }
 
 /* Estilo do checkbox */
@@ -412,8 +421,8 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    background-color: #e79428; /* Cor de fundo ao marcar */
-    border-color: #e79428; /* Borda fica da mesma cor */
+    background-color: var(--cor-05); /* Laranja */
+    border-color: var(--cor-05); /* Borda da mesma cor */
 }
 
 /* Estilo opcional para o ícone de verificação */

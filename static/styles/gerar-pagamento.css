@@ -10,8 +10,8 @@
 /* Body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f6fa;
-    color: #2c3e50;
+    background-color: var(--cor-04); /* Off-white */
+    color: var(--cor-01); /* Cinza-azulado escuro */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,8 +21,8 @@ body {
 
 /* Header */
 header {
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: var(--cor-01); /* Cinza-azulado escuro */
+    color: var(--cor-03); /* Cinza claro */
     height: 80px;
     display: flex;
     align-items: center;
@@ -64,7 +64,7 @@ main {
 
 /* Form Container */
 .container-form {
-    background-color: #ffffff;
+    background-color: var(--cor-03); /* Branco */
     border-radius: 12px;
     padding: 40px;
     width: 500px;
@@ -90,7 +90,7 @@ label {
     display: block;
     font-weight: bold;
     margin-bottom: 3px;
-    color: #2c3e50;
+    color: var(--cor-01); /* Cinza-azulado escuro */
 }
 
 /* Form Fields */
@@ -111,13 +111,14 @@ input[type="text"]:focus,
 input[type="date"]:focus,
 select:focus {
     outline: none;
-    border-color: #2c3e50;
+    border-color: var(--cor-01); /* Cinza-azulado escuro */
     box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.3);
 }
 
+/* Botão */
 .botao {
-    background-color: #e79428; /* Cor do botão */
-    color: #ffffff; /* Cor do texto do botão */
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
     border: none;
     padding: 8px 18px;
     border-radius: 9999999px;
@@ -129,7 +130,7 @@ select:focus {
 }
 
 .botao:hover {
-    background-color: #b06d14; /* Cor do botão ao passar o mouse */
+    background-color: var(--cor-06); /* Laranja escuro */
 }
 
 /* Button Container */
