@@ -119,6 +119,33 @@ class Pagamentos():
         except Exception as e:
             print(f"Erro ao listar alunos pendentes: {e}")
             return []
+       
+
+    # Função para listar alunos com pagamento pendente no mês especificado
+    def listar_alunos_pendentes(self, mes, cpf_motorista):
+        try:
+            mydb = Conexao.conectar()
+            mycursor = mydb.cursor()
+            
+            sql = """
+            SELECT a.nome_aluno, a.id_aluno
+            FROM tb_alunos AS a
+            INNER JOIN contratos_fechados AS c ON a.id_aluno = c.id_aluno
+            LEFT JOIN historico_pagamentos AS hp 
+            ON a.id_aluno = hp.id_aluno AND hp.mes_pagamento = %s
+            WHERE c.cpf_motorista = %s AND hp.id_pagamento IS NULL;
+            """
+            
+            mycursor.execute(sql, (mes, cpf_motorista))
+            
+            resultados = mycursor.fetchall()
+            alunos_pendentes = [{"nome_aluno": linha[0], "id_aluno": linha[1]} for linha in resultados]
+
+            mydb.close()
+            return alunos_pendentes
+        except Exception as e:
+            print(f"Erro ao listar alunos pendentes: {e}")
+            return []
         
     def excluir_historico(self, id_pagamento):
         try:

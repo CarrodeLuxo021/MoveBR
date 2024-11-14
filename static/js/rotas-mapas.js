@@ -83,8 +83,8 @@ document.getElementById('generateRoute').addEventListener('click', function() {
         // Gera a URL do Google Maps
         const routeUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&waypoints=${encodeURIComponent(waypoints)}`;
 
-        // Atualiza o HTML com o link da rota
-        document.getElementById('routeUrl').innerHTML = `<a href="${routeUrl}" target="_blank">Abrir Rota no Google Maps</a>`;
+        // Abre a URL diretamente no navegador
+        window.open(routeUrl, '_blank');
     } else {
         alert('Por favor, selecione pelo menos uma escola ou um aluno, e insira o ponto de partida.');
     }
