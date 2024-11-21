@@ -440,3 +440,185 @@ input[type="checkbox"]:checked::after {
 .contagem-alunos{
     text-align: center;
 }
+/* Mobile First - Já definido acima */
+
+/* Media Queries */
+@media (min-width: 576px) {
+    header {
+        height: 90px; /* Ajuste para telas maiores */
+        padding: 0 25px;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    .c-table {
+        padding: 0 40px;
+    }
+
+    .btn-cadaluno button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .alunos-listados {
+        width: 85%;
+        padding: 25px;
+    }
+
+    .info-aluno h2 {
+        font-size: 20px;
+    }
+
+    .info-aluno p {
+        font-size: 15px;
+    }
+
+    .foto-aluno {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        height: 80px;
+        padding: 0 30px;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    .btn-cadaluno button {
+        font-size: 14px;
+        padding: 11px 18px;
+    }
+
+    .container-busca {
+        margin-left: 40px;
+    }
+
+    .container-listagem-busca {
+        width: 200px;
+    }
+
+    .alunos-listados {
+        width: 80%;
+        max-width: 1000px;
+        padding: 30px;
+    }
+
+    .info-aluno h2 {
+        font-size: 22px;
+    }
+
+    .foto-aluno {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (min-width: 992px) {
+    header {
+        height: 90px;
+        padding: 0 40px;
+    }
+
+    .logo img {
+        height: 20px;
+    }
+
+    .btn-cadaluno button {
+        font-size: 14px;
+        padding: 14px 20px;
+    }
+
+    .c-table {
+        padding: 0 50px;
+    }
+
+    .container-listagem-busca {
+        width: 150px;
+    }
+
+    .alunos-listados {
+        width: 75%;
+    }
+
+    .info-aluno h2 {
+        font-size: 24px;
+    }
+
+    .foto-aluno {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    header {
+        height: 100px;
+        padding: 0 50px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .btn-cadaluno button {
+        font-size: 15px;
+        padding: 9px 11px;
+    }
+
+    .container-listagem-busca {
+        width: 150px;
+    }
+
+    .alunos-listados {
+        width: 70%;
+    }
+
+    .info-aluno h2 {
+        font-size: 26px;
+    }
+
+    .foto-aluno {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (min-width: 1400px) {
+    header {
+        height: 100px;
+        padding: 0 70px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .btn-cadaluno button {
+        font-size: 15px;
+        padding: 8px 12px;
+    }
+
+    .container-listagem-busca {
+        width: 150px;
+    }
+
+    .alunos-listados {
+        width: 65%;
+    }
+
+    .info-aluno h2 {
+        font-size: 28px;
+    }
+
+    .foto-aluno {
+        width: 180px;
+        height: 180px;
+    }
+}
