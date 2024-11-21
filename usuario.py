@@ -286,39 +286,41 @@ class Usuario():
         
         mydb = Conexao.conectar()
         mycursor = mydb.cursor()
-        
+        verificacao = "disponivel"
         """Gera um código aleatório de tamanho especificado."""
         caracteres = string.ascii_letters + string.digits  # Letras e dígitos
         codigo = ''.join(random.choice(caracteres) for _ in range(tamanho))
         
-        mycursor.execute("INSERT INTO tb_codigos (codigo) VALUES (%s)", (codigo,))
+        mycursor.execute("INSERT INTO tb_codigos (codigo, verificacao) VALUES (%s, %s)", (codigo, verificacao))
         mydb.commit()
         mydb.close()
         
-        link = f"http://bdmovebr.mysql.database.azure.com/cadastrar-aluno/{codigo}"
-        """ link = f"http://127.0.0.1:8080/cadastrar-aluno/{codigo}" """
+        # link = f"http://bdmovebr.mysql.database.azure.com/cadastrar-aluno/{codigo}"
+        link = f"http://127.0.0.1:5000/cadastrar-aluno/{codigo}"
         
         return link
     
-    def verficar_codigo(self, codigo):
+    def verificar_codigo(self, codigo):
         mydb = Conexao.conectar()
         mycursor = mydb.cursor()
-        
-        mycursor.execute("SELECT codigo FROM tb_codigos")
-        codigos = mycursor.fetchall()
-        
-        
-        lista_codigos = [codigo[0] for codigo in codigos]
 
-        for codigo in lista_codigos:
-            if codigo in lista_codigos:
+        # Verifica se o código existe na tabela
+        mycursor.execute("SELECT verificacao FROM tb_codigos WHERE codigo = %s", (codigo,))
+        resultado = mycursor.fetchone()
+
+        if resultado:
+            verificacao = resultado[0]  # Obtém o status de verificação do código
+            if verificacao == "disponivel":
+                # Atualiza o status para 'indisponivel'
                 mycursor.execute("UPDATE tb_codigos SET verificacao = 'indisponivel' WHERE codigo = %s", (codigo,))
-                return True
+                mydb.commit()
+                mydb.close()
+                return True  # Código encontrado e atualizado, página pode ser carregada
             else:
-                mycursor.execute("UPDATE tb_codigos SET verificacao = 'disponivel' WHERE codigo = %s", (codigo,))
-                return False
-        
-        mydb.close()
-        mycursor.close()
-            
+                mydb.close()
+                return False  # Código encontrado, mas já está indisponível, página não deve ser carregada
+        else:
+            mydb.close()
+            return False  # Código não encontrado, página não deve ser carregada
+                
        
