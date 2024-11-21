@@ -1,164 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../static/styles/listar-aluno.css">
-    <link rel="stylesheet" href="../static/styles/variaveis.css">
-    <script src="/static/js/lista-escola.js" defer></script>
-    <script src="/static/js/rotas-mapas.js" defer></script>
-    <script src="/static/js/letras-maiusculas.js" defer></script>
-    
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="../static/styles/listar-aluno.css">
+        <link rel="stylesheet" href="../static/styles/variaveis.css">
+        <script src="/static/js/lista-escola.js" defer></script>
+        <script src="/static/js/rotas-mapas.js" defer></script>
+        <script src="/static/js/letras-maiusculas.js" defer></script>
+    </head>
 
 
-<body>
-    <header>
-        <button class="button-back" type="button">
-            <a href="/pag-inicial-motorista"><img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a>
-        </button>
-        <figure>
-            <div class="logo">
-                <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da movebr"></a>
-            </div>
-        </figure>
-    </header>
-
-    <main>
-        <section class="c-table">
-            <div class="title">
-                <h2>Passageiros</h2>
-                <a href="/cadastrar-aluno" class="btn-cadaluno"><button> + Cadastrar Aluno </button></a>
-            </div>
-
-            <div class="container-busca">
-                <form method="GET" action="{{ url_for('listar_alunos') }}">
-                    <input type="text" name="pesquisa-aluno" class="input-busca" placeholder="Buscar...">
-                    <button class="icone-busca" type="submit">🔍</button>
-                </form>
-            </div>
-
-            <div class="container-listagem-busca">
-                <h2>Escolas</h2>
-                <ul>
-                    <!-- Botão para exibir todos os alunos -->
-                    <li>
-                        <form method="GET" action="{{ url_for('listar_alunos') }}">
-                            <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
-                        </form>
-                    </li>
-                    <!-- Botões para cada escola -->
-                    {% for escola in escolas %}
-                    <li>
-                        <form method="GET" action="{{ url_for('listar_alunos', escola=escola) }}">
-                            <button type="submit" class="btn-escola" id="btn-{{ escola }}">{{ escola }}</button>
-                            <label>
-                                <input type="checkbox" class="school-checkbox" data-address="{{ escola }}" value="{{ escola }}">
-                            </label>
-                        </form>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-
-        {% if alunos %}
-        <h2 class="AA">Alunos cadastrados:</h2>
-        {% else %}
-        <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
-        {% endif %}
-
-        <div id="alunosList">
-            {% for aluno in alunos %}
-            <table class="alunos-listados" data-name="{{ aluno['nome_aluno'] | lower }}">
-                <div class="container-tabela">
-                    <tbody>
-                        <tr class="aluno">
-                            <td>
-                                <div class="perfil-aluno">
-                                    <div class="foto-aluno">
-                                        <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
-                                    </div>
-                                    <div class="info-aluno">
-                                        <h2> {{aluno['nome_aluno']}} </h2>
-                                        <p><strong>Nome do responsável:</strong> {{aluno['nome_responsavel']}} </p>
-                                        <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}} </p>
-                                    </div>
-                                    <div class="container-rota">
-                                        <input type="checkbox" class="student-checkbox" data-address="{{aluno['endereco']}}" value="{{aluno['nome_aluno']}}">
-                                    </div>
-                                </div>
-
-                                <div class="detalhes" style="display: none;">
-                                    <div class="info-transporte">
-                                        <div class="titulo-editar">
-                                            <h3>Informações de Transporte</h3>
-                                            <a href="/editar-aluno/{{aluno['id_aluno']}}">
-                                                <button class="btn-editar">
-                                                    <img class="icon-editar" src="/static/icones/editar.png" alt="Ícone Editar">
-                                                </button>
-                                            </a>
-                                        </div>
-                                        <p><strong>Endereço:</strong> {{aluno['endereco']}} </p>
-                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
-                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
-                                        <p><strong>Escola:</strong> {{aluno['escola']}} </p>
-                                    </div>
-                                    <div class="info-extra">
-                                        <h3>Informações Extra</h3>
-                                        <p> {{aluno['condicao_medica']}} </p>
-                                    </div>
-
-                                    <div class="container-btn-excluir">
-                                        <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
-                                    </div>
-                                </div>
-
-                                <div class="button-container">
-                                    <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
+    <body>
+        <header>
+            <button class="button-back" type="button">
+                <a href="/pag-inicial-motorista"><img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda"></a>
+            </button>
+            <figure>
+                <div class="logo">
+                    <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da movebr"></a>
                 </div>
-            </table>
-            {% endfor %}
-        </div>
+            </figure>
+        </header>
 
-        <section class="rota">
-            <label for="origin">Ponto de Partida:</label>
-            <br>
-            <input type="text" id="origin" placeholder="Insira o ponto de partida">
-            <button id="generateRoute">Gerar URL da Rota</button>
-            <div id="routeUrl"></div>
-        </section>
-    </main>
+        <main>
+            <section class="c-table">
+                <div class="title">
+                    <h2>Passageiros</h2>
+                    <a href="/cadastrar-aluno" class="btn-cadaluno"><button> + Cadastrar Aluno </button></a>
+                </div>
 
-    <script>
-        // Função para mostrar ou esconder alunos com base no texto de pesquisa
-        document.getElementById('searchInput').addEventListener('input', function () {
-            const query = this.value.toLowerCase();
-            const alunosList = document.querySelectorAll('#alunosList .alunos-listados');
+                <div class="container-busca">
+                    <form method="GET" action="{{ url_for('listar_alunos') }}">
+                        <input type="text" name="pesquisa-aluno" class="input-busca" placeholder="Buscar...">
+                        <button class="icone-busca" type="submit">🔍</button>
+                    </form>
+                </div>
 
-            alunosList.forEach(function (aluno) {
-                const alunoName = aluno.getAttribute('data-name');
-                if (alunoName.includes(query)) {
-                    aluno.style.display = '';
-                } else {
-                    aluno.style.display = 'none';
-                }
+                <div class="container-listagem-busca">
+                    <h2>Escolas</h2>
+                    <ul>
+                        <!-- Botão para exibir todos os alunos -->
+                        <li>
+                            <form method="GET" action="{{ url_for('listar_alunos') }}">
+                                <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
+                            </form>
+                        </li>
+                        <!-- Botões para cada escola -->
+                        {% for escola in escolas %}
+                        <li>
+                            <form method="GET" action="{{ url_for('listar_alunos', escola=escola) }}">
+                                <button type="submit" class="btn-escola" id="btn-{{ escola }}">{{ escola }}</button>
+                                <label>
+                                    <input type="checkbox" class="school-checkbox" data-address="{{ escola }}" value="{{ escola }}">
+                                </label>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+
+            {% if alunos %}
+            <h2 class="AA">Alunos cadastrados:</h2>
+            {% else %}
+            <h2 class="AA">Você ainda não possui alunos cadastrados.</h2>
+            {% endif %}
+
+            <div id="alunosList">
+                {% for aluno in alunos %}
+                <table class="alunos-listados" data-name="{{ aluno['nome_aluno'] | lower }}">
+                    <div class="container-tabela">
+                        <tbody>
+                            <tr class="aluno">
+                                <td>
+                                    <div class="perfil-aluno">
+                                        <div class="foto-aluno">
+                                            <img src="{{aluno['foto_aluno']}}" alt="Foto do Aluno">
+                                        </div>
+                                        <div class="info-aluno">
+                                            <h2> {{aluno['nome_aluno']}} </h2>
+                                            <p><strong>Nome do responsável:</strong> {{aluno['nome_responsavel']}} </p>
+                                            <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}} </p>
+                                        </div>
+                                        <div class="container-rota">
+                                            <input type="checkbox" class="student-checkbox" data-address="{{aluno['endereco']}}" value="{{aluno['nome_aluno']}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="detalhes" style="display: none;">
+                                        <div class="info-transporte">
+                                            <div class="titulo-editar">
+                                                <h3>Informações de Transporte</h3>
+                                                <a href="/editar-aluno/{{aluno['id_aluno']}}">
+                                                    <button class="btn-editar">
+                                                        <img class="icon-editar" src="/static/icones/editar.png" alt="Ícone Editar">
+                                                    </button>
+                                                </a>
+                                            </div>
+                                            <p><strong>Endereço:</strong> {{aluno['endereco']}} </p>
+                                            <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                            <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                            <p><strong>Escola:</strong> {{aluno['escola']}} </p>
+                                        </div>
+                                        <div class="info-extra">
+                                            <h3>Informações Extra</h3>
+                                            <p> {{aluno['condicao_medica']}} </p>
+                                        </div>
+
+                                        <div class="container-btn-excluir">
+                                            <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="button-container">
+                                        <button class="btn-expandir" onclick="toggleExpandir(this)">▼</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </table>
+                {% endfor %}
+            </div>
+
+            <section class="rota">
+                <label for="origin">Ponto de Partida:</label>
+                <br>
+                <input type="text" id="origin" placeholder="Insira o ponto de partida">
+                <button id="generateRoute">Gerar URL da Rota</button>
+                <div id="routeUrl"></div>
+            </section>
+        </main>
+
+        <script>
+            // Função para mostrar ou esconder alunos com base no texto de pesquisa
+            document.getElementById('searchInput').addEventListener('input', function () {
+                const query = this.value.toLowerCase();
+                const alunosList = document.querySelectorAll('#alunosList .alunos-listados');
+
+                alunosList.forEach(function (aluno) {
+                    const alunoName = aluno.getAttribute('data-name');
+                    if (alunoName.includes(query)) {
+                        aluno.style.display = '';
+                    } else {
+                        aluno.style.display = 'none';
+                    }
+                });
             });
-        });
 
-        function toggleExpandir(button) {
-            const alunoRow = button.closest('.aluno');
-            const detalhesContainer = alunoRow.querySelector('.detalhes');
-            const isHidden = detalhesContainer.style.display === 'none';
-            detalhesContainer.style.display = isHidden ? 'block' : 'none';
-            button.textContent = isHidden ? '▲' : '▼';
-        }
-        
-    </script>
+            function toggleExpandir(button) {
+                const alunoRow = button.closest('.aluno');
+                const detalhesContainer = alunoRow.querySelector('.detalhes');
+                const isHidden = detalhesContainer.style.display === 'none';
+                detalhesContainer.style.display = isHidden ? 'block' : 'none';
+                button.textContent = isHidden ? '▲' : '▼';
+            }
+            
+        </script>
 
-</body>
+    </body>
 
 </html>
