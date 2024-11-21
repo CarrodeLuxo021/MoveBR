@@ -1,68 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerar Pagamento</title>
-    <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
-    <link rel="stylesheet" href="/static/styles/style.css">
-    <link rel="stylesheet" href="/static/styles/variaveis.css">
-    <link rel="stylesheet" href="/static/styles/gerar-pagamento.css">
-</head>
-<body>
-    <header>
-        <button class="button-back" type="button">
-            <a href="/historico_pagamento"><img src="/static/icones/seta-voltar.png"
-                    alt="imagem de uma seta para esquerda"></a>
-        </button>
-        <figure>
-            <div class="logo">
-                <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da movebr"></a>
-            </div>
-        </figure>
-    </header>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gerar Pagamento</title>
+        <link rel="stylesheet" href="/static/styles/cadastro-aluno.css">
+        <link rel="stylesheet" href="/static/styles/style.css">
+        <link rel="stylesheet" href="/static/styles/gerar-pagamento.css">
+        <link rel="stylesheet" href="/static/styles/variaveis.css">
+    </head>
+    <body>
+        <header>
+            <button class="button-back" type="button">
+                <a href="/historico_pagamento"><img src="/static/icones/seta-voltar.png"
+                        alt="imagem de uma seta para esquerda"></a>
+            </button>
+            <figure>
+                <div class="logo">
+                    <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da movebr"></a>
+                </div>
+            </figure>
+        </header>
 
-    <main>
-        <form class="container-form" action="/gerar-pagamento" method="post">
-            <div class="itens-form">
-                <section class="lado-esquerdo-container">
+        <main>
+            <div class="cabecalho-container">
+                <h2>Cadastro de Pagamentos</h2>
+            </div> 
+            
+            <form class="container-form" action="/gerar-pagamento" method="post">
+                <div class="itens-form">
+                    <section class="lado-esquerdo-container">
 
-                    <h2>Cadastro de Pagamentos</h2>
-
-                    <label for="nomeAluno">Aluno:</label>
-                    <select id="nomeAluno" name="id_aluno">
-                        {% for aluno in alunos %}
-                        <option value="{{aluno.id_aluno}}">{{aluno.nome_aluno}}</option>
-                        {% endfor %}
-                    </select>
-                    
-                    <label for="mesPagamento">Mês:</label>
-                    <select id="mesPagamento" name="mes_pagamento">
-                        <option value="">Selecione um mês</option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
-                    
-                    <label for="dataPagamento">Data:</label>
-                    <input type="date" id="dataPagamento" placeholder="ex: 17/10/2023" name="data_pagamento">
-                    
-                    <label for="valorPagamento">Valor:</label>
-                    <input type="text" id="valorPagamento" placeholder="ex: 500.00" name="valor_pagamento">
-                    
-                    <button type="submit" class="botao">Cadastrar pagamento</button>
-                </section>
-            </div>
-        </form>
-    </main>
-</body>
+                        <label for="nomeAluno">Aluno:</label>
+                        <select id="nomeAluno" name="id_aluno">
+                            {% for aluno in alunos %}
+                            <option value="{{aluno.id_aluno}}">{{aluno.nome_aluno}}</option>
+                            {% endfor %}
+                        </select>
+                        
+                        <label for="mesPagamento">Mês:</label>
+                        <select id="mesPagamento" name="mes_pagamento">
+                            <option value="">Selecione um mês</option>
+                            <option value="Janeiro">Janeiro</option>
+                            <option value="Fevereiro">Fevereiro</option>
+                            <option value="Março">Março</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Maio">Maio</option>
+                            <option value="Junho">Junho</option>
+                            <option value="Julho">Julho</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Setembro">Setembro</option>
+                            <option value="Outubro">Outubro</option>
+                            <option value="Novembro">Novembro</option>
+                            <option value="Dezembro">Dezembro</option>
+                        </select>
+                        
+                        <label for="dataPagamento">Data:</label>
+                        <input type="date" id="dataPagamento" placeholder="ex: 17/10/2023" name="data_pagamento">
+                        
+                        <label for="valorPagamento">Valor:</label>
+                        <input type="text" id="valorPagamento" placeholder="ex: 500.00" name="valor_pagamento">
+                        
+                        <button type="submit" class="botao">Cadastrar pagamento</button>
+                    </section>
+                </div>
+            </form>
+        </main>
+    </body>
 </html>

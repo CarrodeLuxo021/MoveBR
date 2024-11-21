@@ -10,7 +10,7 @@
 /* Body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--cor-04); /* Off-white */
+    background-color: var(--cor-03); /* Off-white */
     color: var(--cor-01); /* Cinza-azulado escuro */
     display: flex;
     justify-content: center;
@@ -59,7 +59,7 @@ header {
 .container {
     width: 80%;
     margin: 100px auto 20px; /* Adiciona margem superior para o header fixo */
-    background-color: var(--cor-03); /* Branco */
+    background-color: #fff; /* Branco */
     border-radius: 12px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }

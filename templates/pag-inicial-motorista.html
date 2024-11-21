@@ -1,60 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoveBR</title>
-    <link rel="icon" href="/static/icones/perfil-de-usuario.png" type="image/x-icon">
-    <script src="/static/js/pag-inicial-motorista.js"></script>
-    <link rel="stylesheet" href="/static/styles/pag-inicial-motorista.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MoveBR</title>
+        <link rel="icon" href="/static/icones/perfil-de-usuario.png" type="image/x-icon">
+        <script src="/static/js/pag-inicial-motorista.js"></script>
+        <link rel="stylesheet" href="/static/styles/variaveis.css">
+        <link rel="stylesheet" href="/static/styles/pag-inicial-motorista.css">
+    </head>
 
-<body>
+    <body>
 
-    <header>
-        <div class="logo">
-            <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da MoveBR"></a>
-        </div>
-    </header>
-
-    <nav>
-        <a href="/cadastrar-aluno" class="nav-item">Cadastro Alunos</a>
-        <a href="/listar-alunos" class="nav-item">Alunos cadastrados</a>
-        <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
-    </nav>
-
-    <main>
-        <section class="welcome-section">
-            <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
-            <p class="slogan">Movemos a educação que move o mundo!</p>
-        </section>
-
-        <section class="services-section">
-            <h2>Serviços Disponíveis</h2>
-            <div class="cards-container">
-                <div class="service-card">
-                    <img src="/static/icones/icons1-paginicial.png" alt="Demanda" class="service-icon">
-                    <h3>Aumente sua Demanda!</h3>
-                    <p>Organize-se e aumente sua quantidade de clientes.</p>
-                </div>
-                <div class="service-card">
-                    <img src="/static/icones/icons2-paginicial.png" alt="Gerenciamento" class="service-icon">
-                    <h3>Gerencie seus Pagamentos!</h3>
-                    <p>Analise seu lucro de forma fácil e eficiente.</p>
-                </div>
-                <div class="service-card">
-                    <img src="/static/icones/icons3-paginicial.png" alt="Praticidade" class="service-icon">
-                    <h3>Traga Praticidade para o seu dia a dia!</h3>
-                    <p>Ofereça passeios com segurança e conforto.</p>
-                </div>
+        <header>
+            <div class="logo">
+                <a href="/pag-inicial-motorista"><img src="/static/icones/movebr.png" alt="logo da MoveBR"></a>
             </div>
-        </section>
-    </main>
+        </header>
 
-    <footer>
-        <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
-    </footer>
-</body>
+        <nav>
+            <a href="/cadastrar-aluno" class="nav-item">Cadastro Alunos</a>
+            <a href="/listar-alunos" class="nav-item">Alunos cadastrados</a>
+            <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
+        </nav>
+
+        <main>
+            <section class="welcome-section">
+                <h1>Olá, {{ session.usuario_logado.nome }}!</h1>
+                <p class="slogan">Movemos a educação que move o mundo!</p>
+            </section>
+
+            <section class="services-section">
+                <h2>Serviços Disponíveis</h2>
+                <div class="cards-container">
+                    <div class="service-card">
+                        <img src="/static/icones/icons1-paginicial.png" alt="Demanda" class="service-icon">
+                        <h3>Aumente sua Demanda!</h3>
+                        <p>Organize-se e aumente sua quantidade de clientes.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="/static/icones/icons2-paginicial.png" alt="Gerenciamento" class="service-icon">
+                        <h3>Gerencie seus Pagamentos!</h3>
+                        <p>Analise seu lucro de forma fácil e eficiente.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="/static/icones/icons3-paginicial.png" alt="Praticidade" class="service-icon">
+                        <h3>Traga Praticidade para o seu dia a dia!</h3>
+                        <p>Ofereça passeios com segurança e conforto.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 MoveBR. Todos os direitos reservados.</p>
+        </footer>
+    </body>
 
 </html>

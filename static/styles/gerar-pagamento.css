@@ -10,7 +10,7 @@
 /* Body */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--cor-04); /* Off-white */
+    background-color: var(--cor-03); /* Off-white */
     color: var(--cor-01); /* Cinza-azulado escuro */
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@ body {
 /* Header */
 header {
     background-color: var(--cor-01); /* Cinza-azulado escuro */
-    color: var(--cor-03); /* Cinza claro */
+    color: var(--cor-03); 
     height: 80px;
     display: flex;
     align-items: center;
@@ -56,7 +56,7 @@ header {
 
 /* Main */
 main {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     margin-top: 90px; /* Para evitar sobreposição com o header */
@@ -64,9 +64,9 @@ main {
 
 /* Form Container */
 .container-form {
-    background-color: var(--cor-03); /* Branco */
-    border-radius: 12px;
-    padding: 40px;
+    background-color: #fff; /* Branco */
+    border-radius: 0 0 12px 12px;
+    padding: 20px 40px 40px 40px;
     width: 500px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
@@ -83,6 +83,22 @@ main {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.cabecalho-container {
+    background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+}
+
+.cabecalho-container h2{
+    color: #fff;
+    gap: 0.5px;
+    text-align: center;
 }
 
 /* Labels */
