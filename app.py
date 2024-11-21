@@ -5,11 +5,8 @@ from conexao import Conexao
 from upload_file import upload_file
 from flask_login import login_required, login_manager
 
-
 app = Flask(__name__)
 app.secret_key = "banana"
-
-
 
 login_manager.login_view = '/logar'
 
@@ -17,9 +14,6 @@ login_manager.login_view = '/logar'
 @login_required
 def pag_inicio():
     return redirect('/logar')
-@app.route("/pag-inicial-motorista")
-def pag_inicial():
-    return render_template("pag-inicial-motorista.html", session=session)
 
 @app.route("/cadastrar-motorista", methods=['GET', 'POST'])
 
@@ -74,7 +68,6 @@ def pag_cadastro_aluno():
             return redirect('/listar-alunos')
         else:
             return redirect('/cadastrar-aluno')
-
                                               
 @app.route("/logar", methods=['POST', 'GET'])
 def logar():
@@ -84,7 +77,6 @@ def logar():
         senha = request.form['senha']
         email = request.form['email']
         
-
         usuario = Usuario()
         if usuario.logar(email, senha):
             session['usuario_logado'] = {
@@ -105,10 +97,6 @@ def historico_pagamento():
 
     # Renderiza o template com os pagamentos ou uma lista vazia
     return render_template("historico-pagamento.html", pagamentos=historico)
-
-
-
-    
 
 @app.route("/historico_pagamento_filtro", methods=['POST'])
 def historico_pagamento_filtro():
@@ -147,15 +135,12 @@ def gerar_pagamento_get():
         valor_pagamento = float(request.form["valor_pagamento"])
         cpf_motorista = session.get("cpf_motorista")
 
-
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
     pagamento = Pagamentos()
     if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, cpf_motorista):
         return redirect("/historico_pagamento")
     else:
         return "Erro ao gerar o pagamento", 500
-
-     
 
 @app.route("/quebra-contrato/<id_aluno>", methods=['GET'])
 def quebra_foto(id_aluno):
@@ -168,9 +153,6 @@ def excluir_aluno(id_aluno):
             usuario = Usuario()
             usuario.excluir_aluno(id_aluno)
             return redirect('/listar-alunos')
-
-
-
 
 @app.route("/listar-alunos", methods=['GET', 'POST'])
 def listar_alunos():
@@ -190,7 +172,6 @@ def listar_alunos():
 
     # Renderiza o template, passando os alunos filtrados e todas as escolas
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
-
 
 @app.route("/excluir-historico/<id_pagamento>", methods=['POST'])
 def excluir_historico(id_pagamento):
@@ -252,9 +233,5 @@ def editar_aluno(id_aluno):
         conn.close()
 
         return redirect('/listar-alunos')
-
-
-
-    
 
 app.run(debug=True)

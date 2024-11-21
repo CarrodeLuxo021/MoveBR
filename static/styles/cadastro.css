@@ -73,6 +73,7 @@ main {
 
 /* Form Container */
 .container-form {
+    margin-top: 50px;
     width: 70%;
     background-color: #fff;  /* Branco */
     border-radius: 12px;
