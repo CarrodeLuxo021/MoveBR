@@ -276,3 +276,25 @@ button.cadastrar:hover {
     display: block;
     margin: 20px;
 }
+
+.gerar-codigo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gerar-codigo button {
+    padding: 12px 22px;
+    background-color: var(--cor-01);  /* Laranja */
+    color: var(--cor-03);  /* Branco */
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.gerar-codigo button:hover {
+    background-color: var(--cor-02);  /* Laranja escuro */
+    transform: translateY(-2px);
+}

@@ -22,8 +22,6 @@
                     <img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda">
                 </a>
             </button>
-
-            <a href="gerar-codigo" id="gerarLinkBtn"><button>Gerar link de cadastro</button></a>
             
             <figure>
                 <div class="logo">
@@ -34,6 +32,7 @@
 
         <main>
             <form class="container-form" action="/cadastrar-aluno" method="post" enctype="multipart/form-data">
+                
                 <section class="itens-form">
                     <div class="lado-esquerdo-container">
                         <label for="nomeAluno">Nome do aluno:</label>
@@ -53,6 +52,8 @@
         
                         <label for="emailAluno">Email do responsável:</label>
                         <input type="email" id="emailAluno" placeholder="ex: nome@exemplo.com" name="email-aluno" required>
+
+                        <a href="gerar-codigo" id="gerarLinkBtn" class="gerar-codigo"><button>Gerar link de cadastro</button></a>
                     </div>
         
                     <div class="lado-direito-container">
