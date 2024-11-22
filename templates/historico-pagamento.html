@@ -56,72 +56,59 @@
                 <button type="submit">Pesquisar</button>
             </form>
 
-            <div class="informacoes">
-                <!-- Verifica se há pagamentos -->
-                {% if pagamentos %}
-                <table class="alunos-listados">
-                    <thead>
-                        <tr>
-                            <th>Nome do Aluno</th>
-                            <th>Mês do Pagamento</th>
-                            <th>Data do Pagamento</th>
-                            <th>Valor do Pagamento</th>
-                            <!-- <th>Ações</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for pagamento in pagamentos %}
-                        <tr>
-                            <td><strong>{{ pagamento.nome_aluno }}</strong></td>
-                            <td>{{ pagamento.mes_pagamento }}</td>
-                            <td>{{ pagamento.data_pagamento }}</td>
-                            <td><strong>R$ {{ pagamento.valor_pagamento }}</strong></td>
-                            <td>
-                                <form action="/excluir-historico/{{ pagamento.id_aluno }}" method="post">
-                                    <button class="btn-excluir" type="submit">Excluir</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        {% for pendentes in alunos_pendentes %}
-                        <tr>
-                            <td><strong>{{ pendentes.nome_aluno }}</strong></td>
-                            
-                            <td class="nao-pago">
-                                <h2>NÃO PAGO</h2>
-                                <a href="/excluir-historico/{{ pendentes.id_aluno }}">
-                                    <button class="btn-excluir">Excluir</button>
-                                </a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-
-                    </tbody>
-                </table>
-
-                {% else %}
-                <p>Nenhum pagamento encontrado.</p>
-                {% endif %}
-            </div>
-
-            <h2 class="valor">Valor Total: <span id="valor_total"> </span></h2>
-
+        <div class="informacoes">
+            <!-- Verifica se há pagamentos -->
+            {% if pagamentos %}
+            <table class="alunos-listados">
+                <thead>
+                    <tr>
+                        <th>Nome do Aluno</th>
+                        <th>Mês do Pagamento</th>
+                        <th>Data do Pagamento</th>
+                        <th>Valor do Pagamento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pagamento in pagamentos %}
+                    <tr>
+                        <td><strong>{{ pagamento.nome_aluno }}</strong></td>
+                        <td>{{ pagamento.mes_pagamento }}</td>
+                        <td>{{ pagamento.data_pagamento }}</td>
+                        <td><strong class="valor_pagamento">R$ {{ pagamento.valor_pagamento }}</strong></td>
+                        <td>
+                            <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post">
+                                <button class="btn-excluir" type="submit">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            {% else %}
+            <p>Nenhum pagamento encontrado.</p>
+            {% endif %}
         </div>
+        
+        <h2 class="valor">Valor Total: <span id="valor_total">R$ 0,00</span></h2>
 
 
         <script>
             window.onload = function () {
-                const valoresPagamento = document.querySelectorAll(".valor_pagamento strong");
+                const valoresPagamento = document.querySelectorAll(".valor_pagamento");
                 let total = 0;
-
+        
                 valoresPagamento.forEach(function (pagamento) {
-                    let valor = parseFloat(pagamento.textContent.replace("R$ ", "").trim());
+                    // Remove o "R$ " e converte para número float
+                    let valor = parseFloat(pagamento.textContent.replace("R$ ", "").trim().replace(",", "."));
                     if (!isNaN(valor)) {
                         total += valor;
                     }
                 });
-
-                document.getElementById("valor_total").textContent = "R$ " + total.toFixed(2);
+        
+                // Exibe o valor total com duas casas decimais
+                document.getElementById("valor_total").textContent = "R$ " + total.toFixed(2).replace(".", ",");
             };
         </script>
     </body>

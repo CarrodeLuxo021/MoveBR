@@ -37,7 +37,7 @@ class Pagamentos():
             # SQL para buscar os pagamentos junto com o nome dos alunos
             sql = """
             SELECT tb_alunos.nome_aluno, historico_pagamentos.mes_pagamento, historico_pagamentos.data_pagamento, 
-                   historico_pagamentos.valor_pagamento, historico_pagamentos.id_aluno
+                   historico_pagamentos.valor_pagamento, historico_pagamentos.id_aluno, historico_pagamentos.id_pagamento
             FROM historico_pagamentos
             INNER JOIN tb_alunos ON historico_pagamentos.id_aluno = tb_alunos.id_aluno;
             """
@@ -53,7 +53,8 @@ class Pagamentos():
                     "mes_pagamento": linha[1],
                     "data_pagamento": linha[2],
                     "valor_pagamento": linha[3],
-                    "id_aluno": linha[4]
+                    "id_aluno": linha[4],
+                    "id_pagamento": linha[5],
                 })
 
             mydb.close()
@@ -164,12 +165,13 @@ class Pagamentos():
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
+            # Deletando o pagamento pelo ID correto
             sql = "DELETE FROM historico_pagamentos WHERE id_pagamento = %s"
             mycursor.execute(sql, (id_pagamento,))
             mydb.commit()
             mycursor.close()
             return True
-            
+
         except Exception as e:
             print(f"Erro ao excluir pagamento: {e}")
             return False
