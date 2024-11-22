@@ -19,3 +19,19 @@ function redirecionar() {
 }
 
 verificarURL();
+
+
+// Função para gerar o link e copiar
+function gerarECopiarLink() {
+    const link = "{{ linkAt }}"; // Obtém o link diretamente da variável do template
+    copiarLink(link);
+}
+
+ // Função para copiar o link
+ function copiarLink(linkAt) {
+    navigator.clipboard.writeText(linkAt).then(() => {
+        alert("Link copiado para a área de transferência: " + linkAt);
+    }).catch(err => {
+        console.error("Erro ao copiar o link: ", err);
+    });
+}
