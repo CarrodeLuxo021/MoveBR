@@ -20,18 +20,29 @@ function redirecionar() {
 
 verificarURL();
 
+$(document).ready(function() {
+    $('#gerarCodigoBtn').click(function() {
+        // Fazer a requisição AJAX para o backend Flask
+        $.ajax({
+            url: 'http://127.0.0.1:5000/gerar_codigo',  // URL do backend Flask
+            method: 'GET',
+            success: function(data) {
+                // Exibir o link retornado pelo backend
+                const link = data.link;
+                $('#link').text(link);
 
-// Função para gerar o link e copiar
-function gerarECopiarLink() {
-    const link = "{{ linkAt }}"; // Obtém o link diretamente da variável do template
-    copiarLink(link);
-}
-
- // Função para copiar o link
- function copiarLink(linkAt) {
-    navigator.clipboard.writeText(linkAt).then(() => {
-        alert("Link copiado para a área de transferência: " + linkAt);
-    }).catch(err => {
-        console.error("Erro ao copiar o link: ", err);
+                // Copiar o link para a área de transferência
+                navigator.clipboard.writeText(link)
+                    .then(function() {
+                        alert('Link copiado para a área de transferência!');
+                    })
+                    .catch(function(err) {
+                        console.error('Erro ao copiar para a área de transferência:', err);
+                    });
+            },
+            error: function(error) {
+                console.log('Erro ao fazer a requisição AJAX:', error);
+            }
+        });
     });
-}
+});
