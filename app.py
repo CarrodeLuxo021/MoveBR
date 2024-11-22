@@ -179,7 +179,7 @@ def gerar_pagamento_get():
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")
+        cpf_motorista = session["usuario_logado"]["cpf"]
 
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
@@ -234,7 +234,7 @@ def excluir_historico(id_pagamento):
             flash("Pagamento excluído com sucesso!")
         else:
             flash("Erro ao excluir pagamento.")
-        return redirect('/historico_pagamento')
+        return render_template('historico-pagamento.html')
 
 @app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
 def editar_aluno(id_aluno):
