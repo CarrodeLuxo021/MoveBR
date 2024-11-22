@@ -5,6 +5,7 @@ from conexao import Conexao
 from upload_file import upload_file
 
 
+
 app = Flask(__name__)
 app.secret_key = "banana"
 
@@ -141,21 +142,25 @@ def historico_pagamento():
 
 @app.route("/historico_pagamento_filtro", methods=['POST'])
 def historico_pagamento_filtro():
-    # Recupera o id do motorista logado a partir da sessão
-    cpf_motorista = session["usuario_logado"]["cpf"]
-    mes = request.form['mesPagamento']
+    # Recupera o CPF do motorista logado a partir da sessão
+    cpf_motorista = session.get("usuario_logado", {}).get("cpf")
     
     # Verifica se o motorista está logado
     if not cpf_motorista:
         return "Motorista não está logado", 401  # Retorna erro se não estiver logado
 
+    mes = request.form.get('mesPagamento')  # Usar 'get' para evitar KeyError
+
     pagamento = Pagamentos()
-    
-    # Obtém histórico de pagamentos feitos no mês
-    historico_pagamentos = pagamento.listar_historico_filtro(mes, cpf_motorista)
-    
-    # Obtém lista de alunos sem pagamentos no mês
-    alunos_pendentes = pagamento.listar_alunos_pendentes(mes, cpf_motorista)
+
+    # Se o mês foi fornecido, filtra os pagamentos e alunos pendentes por mês
+    if mes:
+        historico_pagamentos = pagamento.listar_historico_filtro(mes, cpf_motorista)
+        alunos_pendentes = pagamento.listar_alunos_pendentes(mes, cpf_motorista)
+    else:
+        # Caso não tenha sido fornecido mês, busca todos os pagamentos
+        historico_pagamentos = pagamento.listar_historico_filtro(None, cpf_motorista)
+        alunos_pendentes = pagamento.listar_alunos_pendentes(None, cpf_motorista)
     
     return render_template("historico-pagamento.html", 
                            pagamentos=historico_pagamentos, 

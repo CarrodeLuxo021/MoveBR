@@ -66,30 +66,42 @@ class Pagamentos():
     # Função para listar histórico de pagamentos realizados
     def listar_historico_filtro(self, mes, cpf_motorista):
         try:
+            # Estabelece a conexão com o banco de dados
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            sql = """
-            SELECT id_pagamento, nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_aluno 
-            FROM historico_pagamentos 
-            WHERE mes_pagamento = %s AND cpf_motorista = %s
-            """
-            mycursor.execute(sql, (mes, cpf_motorista))
+            if mes:
+                sql = """
+                SELECT id_pagamento, nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_aluno 
+                FROM historico_pagamentos 
+                WHERE mes_pagamento = %s AND cpf_motorista = %s
+                """
+                mycursor.execute(sql, (mes, cpf_motorista))
+            else:
+                # Se o mês for None, seleciona todos os pagamentos do motorista
+                sql = """
+                SELECT id_pagamento, nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, id_aluno 
+                FROM historico_pagamentos 
+                WHERE cpf_motorista = %s
+                """
+                mycursor.execute(sql, (cpf_motorista,))
 
+            # Obtém os resultados da consulta
             resultados = mycursor.fetchall()
-            historico = []
-            for linha in resultados:
-                historico.append({
-                    "id_pagamento": linha[0],
-                    "nome_aluno": linha[1],
-                    "mes_pagamento": linha[2],
-                    "data_pagamento": linha[3],
-                    "valor_pagamento": linha[4],
-                    "id_aluno": linha[5]
-                })
+            
+            # Organiza os resultados em uma lista de dicionários
+            historico = [{
+                "id_pagamento": linha[0],
+                "nome_aluno": linha[1],
+                "mes_pagamento": linha[2],
+                "data_pagamento": linha[3],
+                "valor_pagamento": linha[4],
+                "id_aluno": linha[5]
+            } for linha in resultados]
 
-            mydb.close()
+            mydb.close()  # Fecha a conexão com o banco de dados
             return historico
+
         except Exception as e:
             print(f"Erro ao listar histórico: {e}")
             return []
