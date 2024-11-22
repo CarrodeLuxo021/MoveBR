@@ -179,7 +179,7 @@ def gerar_pagamento_get():
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
-        cpf_motorista = session.get("cpf_motorista")
+        cpf_motorista = session["usuario_logado"]["cpf"]
 
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
@@ -226,7 +226,7 @@ def listar_alunos():
     return render_template("listar-aluno.html", alunos=alunos_filtrados, escolas=escolas)
 
 
-@app.route("/excluir-historico/<id_pagamento>", methods=['POST'])
+@app.route("/excluir-historico/<int:id_pagamento>", methods=['POST'])
 def excluir_historico(id_pagamento):
     if 'usuario_logado' in session:
         usuario = Pagamentos()
@@ -234,7 +234,12 @@ def excluir_historico(id_pagamento):
             flash("Pagamento excluído com sucesso!")
         else:
             flash("Erro ao excluir pagamento.")
-        return redirect('/historico_pagamento')
+        return redirect(url_for('historico_pagamento'))  # Redireciona de volta para a página de histórico de pagamentos.
+
+    # Se o usuário não estiver logado, redireciona para o login
+    flash("Você precisa estar logado para excluir pagamentos.")
+    return redirect(url_for('/logar'))
+
 
 @app.route('/editar-aluno/<int:id_aluno>', methods=['GET', 'POST'])
 def editar_aluno(id_aluno):
