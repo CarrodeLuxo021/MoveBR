@@ -30,7 +30,7 @@
             <form class="container-form" action="/gerar-pagamento" method="post">
                 <div class="itens-form">
                     <section class="lado-esquerdo-container">
-
+            
                         <label for="nomeAluno">Aluno:</label>
                         <select id="nomeAluno" name="id_aluno">
                             {% for aluno in alunos %}
@@ -60,7 +60,16 @@
                         
                         <label for="valorPagamento">Valor:</label>
                         <input type="text" id="valorPagamento" placeholder="ex: 500.00" name="valor_pagamento">
-                        
+            
+                        <!-- Novo campo: Método de pagamento -->
+                        <label for="metodoPagamento">Método de Pagamento:</label>
+                        <select id="metodoPagamento" name="metodo_pagamento">
+                            <option value="Cartão de Crédito">Cartão de Crédito</option>
+                            <option value="Cartão de Débito">Cartão de Débito</option>
+                            <option value="PIX">PIX</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                        </select>
+            
                         <button type="submit" class="botao">Cadastrar pagamento</button>
                     </section>
                 </div>

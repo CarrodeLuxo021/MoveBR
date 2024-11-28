@@ -56,40 +56,49 @@
                 <button type="submit">Pesquisar</button>
             </form>
 
-        <div class="informacoes">
-            <!-- Verifica se há pagamentos -->
-            {% if pagamentos %}
-            <table class="alunos-listados">
-                <thead>
-                    <tr>
-                        <th>Nome do Aluno</th>
-                        <th>Mês do Pagamento</th>
-                        <th>Data do Pagamento</th>
-                        <th>Valor do Pagamento</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for pagamento in pagamentos %}
-                    <tr>
-                        <td><strong>{{ pagamento.nome_aluno }}</strong></td>
-                        <td>{{ pagamento.mes_pagamento }}</td>
-                        <td>{{ pagamento.data_pagamento }}</td>
-                        <td><strong class="valor_pagamento">R$ {{ pagamento.valor_pagamento }}</strong></td>
-                        <td>
-                            <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post">
-                                <button class="btn-excluir" type="submit">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        
-            {% else %}
-            <p>Nenhum pagamento encontrado.</p>
-            {% endif %}
-        </div>
+            <div class="informacoes">
+                {% if pagamentos %}
+                <table class="alunos-listados">
+                    <thead>
+                        <tr>
+                            <th>Nome do Aluno</th>
+                            <th>Método de Pagamento</th>
+                            <th>Data do Pagamento</th>
+                            <th>Valor do Pagamento</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pagamento in pagamentos %}
+                        <tr>
+                            <td><strong>{{ pagamento.nome_aluno }}</strong></td>
+                            <td>{{ pagamento.metodo_pagamento }}</td>
+                            <td>{{ pagamento.data_pagamento }}</td>
+                            <td><strong class="valor_pagamento">R$ {{ pagamento.valor_pagamento }}</strong></td>
+                            <td>
+                                <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post">
+                                    <button class="btn-excluir" type="submit">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% for pendentes in alunos_pendentes %}
+                        <tr>
+                            <td><strong>{{ pendentes.nome_aluno }}</strong></td>
+                            <td class="nao-pago">
+                                <h2>NÃO PAGO</h2>
+                                <form action="/excluir-historico/{{ pendentes.id_pagamento }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn-excluir">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>Nenhum pagamento encontrado.</p>
+                {% endif %}
+            </div>
         
         <h2 class="valor">Valor Total: <span id="valor_total">R$ 0,00</span></h2>
 
