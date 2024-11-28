@@ -68,7 +68,7 @@ def pag_cadastro_aluno():
             tel_responsavel, tel_responsavel2, email_responsavel,
             serie_aluno, periodo
         ):
-            return redirect('/listar-alunos')
+            return redirect('/cadastrar-aluno')
         else:
             return redirect('/cadastrar-aluno')
 
@@ -94,9 +94,10 @@ def pag_cadastro_usuario(codigo):
             link_foto = upload_file(foto_aluno)
             usuario = Usuario()
             if usuario.cadastrar_aluno(nome_aluno, link_foto, condicao_medica, escola, nome_responsavel, endereco_responsavel, tel_responsavel, email_responsavel, serie):
-                return redirect('/cadastrar-aluno') 
+                flash("alert('cadastro efetuado com sucesso')")
+                return render_template('check-cadastro.html')
             else:
-                return redirect('/cadastrar-aluno')
+                return redirect(f'/cadastrar-aluno/{codigo}')
     else:
         return "ERROR"
 
