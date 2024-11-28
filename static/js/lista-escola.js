@@ -1,24 +1,23 @@
-
-
+// Aguarda o carregamento completo do DOM antes de executar o código
 document.addEventListener("DOMContentLoaded", function() {
-    // Obtém todos os botões de escolas usando a classe 'escola-btn'
+    // Obtém todos os botões de escolas que têm um ID começando com 'btn-'
     const escolaButtons = document.querySelectorAll("button[id^='btn-']");
 
-    // Adiciona um event listener para cada botão individualmente
+    // Adiciona um event listener para cada botão encontrado
     escolaButtons.forEach(function(button) {
         button.addEventListener("click", function(event) {
-            // Evita comportamento padrão para que possamos controlar o evento
+            // Evita o comportamento padrão do clique (ex.: envio de formulário ou navegação)
             event.preventDefault();
 
-            // Verifica se o botão clicado é o "Todos" (sem filtro)
+            // Verifica se o botão clicado é o botão "Todos"
             if (this.id === "btn-todos") {
-                // Redireciona para listar todos os alunos
+                // Redireciona para a página que lista todos os alunos
                 window.location.href = `/listar-alunos`;
             } else {
-                // Para botões de escola, extrai o nome da escola a partir do ID do botão
-                const escola = this.id.replace("btn-", "");
+                // Para os botões de escolas específicas, obtém o nome da escola do ID
+                const escola = this.id.replace("btn-", ""); // Remove o prefixo "btn-"
 
-                // Redireciona para a URL com o filtro da escola, usando o parâmetro GET
+                // Redireciona para a URL que lista os alunos da escola específica com um filtro GET
                 window.location.href = `/listar-alunos?escola=${encodeURIComponent(escola)}`;
             }
         });
