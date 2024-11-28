@@ -1,8 +1,9 @@
-function verificarURL() {
+function verificarURL(event) {
     const urlAtual = window.location.href; // Obtém a URL atual
     const padrao = /http:\/\/127\.0\.0\.1:5000\/cadastrar-aluno\/.+/; // Regex para verificar se a URL contém /cadastrar-aluno/{codigo}
 
     if (padrao.test(urlAtual)) {
+
         // Se a URL corresponder ao padrão, oculta o botão
         document.getElementById('gerarLinkBtn').style.display = 'none';
         document.getElementById('visibleButton').style.display = 'none';
