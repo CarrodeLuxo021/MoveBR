@@ -274,4 +274,21 @@ button.cadastrar:hover {
 #gerarLinkBtn {
     display: block;
     margin: 20px;
+    padding: 15px 30px;
+    background-color: var(--cor-01);  /* Laranja */
+    color: var(--cor-04);
+    font-weight: 500;
+    border: var(--cor-05) solid 0.5px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-left: 150px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 1px 5px var(--cor-05); /* Sombra na parte inferior */
+}
+
+
+#gerarLinkBtn:hover {
+    background-color: var(--cor-06);  /* Laranja escuro */
+    transform: translateY(-2px);
 }
