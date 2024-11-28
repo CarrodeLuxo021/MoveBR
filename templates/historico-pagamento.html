@@ -82,21 +82,10 @@
                             </td>
                         </tr>
                         {% endfor %}
-                        {% for pendentes in alunos_pendentes %}
-                        <tr>
-                            <td><strong>{{ pendentes.nome_aluno }}</strong></td>
-                            <td class="nao-pago">
-                                <h2>NÃO PAGO</h2>
-                                <form action="/excluir-historico/{{ pendentes.id_pagamento }}" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn-excluir">Excluir</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
                 {% else %}
-                <p>Nenhum pagamento encontrado.</p>
+                <p>Nenhum pagamento encontrado para este aluno.</p>
                 {% endif %}
             </div>
         

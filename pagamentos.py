@@ -6,7 +6,7 @@ class Pagamentos():
         self.email = None
         self.logado = False
 
-    def gerar_pagamento(self, id_aluno, mes, data, valor, metodo_pagamento, cpf_motorista):
+    def gerar_pagamento(self, id_aluno, nome_aluno, mes, data, valor, metodo_pagamento, cpf_motorista):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
@@ -14,10 +14,10 @@ class Pagamentos():
             # Inserindo na tabela historico_pagamentos
             sql = """
             INSERT INTO historico_pagamentos 
-            (id_aluno, data_pagamento, mes_pagamento, valor_pagamento, metodo_pagamento, cpf_motorista)
-            VALUES (%s, %s, %s, %s, %s, %s);
+            (id_aluno, nome_aluno, data_pagamento, mes_pagamento, valor_pagamento, metodo_pagamento, cpf_motorista)
+            VALUES (%s, %s, %s, %s, %s, %s, %s);
             """
-            mycursor.execute(sql, (id_aluno, data, mes, valor, metodo_pagamento, cpf_motorista))
+            mycursor.execute(sql, (id_aluno, nome_aluno, data, mes, valor, metodo_pagamento, cpf_motorista))
 
             mydb.commit()
             mycursor.close()
@@ -64,18 +64,18 @@ class Pagamentos():
             print(f"Erro ao listar histórico: {e}")
             return False
         
-    def listar_historico_filtro(self, metodo, cpf_motorista):
+    def listar_historico_filtro(self, mes, cpf_motorista):
         try:
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            if metodo:
+            if mes:
                 sql = """
                 SELECT id_pagamento, nome_aluno, metodo_pagamento, data_pagamento, valor_pagamento, id_aluno 
                 FROM historico_pagamentos 
-                WHERE metodo_pagamento = %s AND cpf_motorista = %s
+                WHERE mes_pagamento = %s AND cpf_motorista = %s
                 """
-                mycursor.execute(sql, (metodo, cpf_motorista))
+                mycursor.execute(sql, (mes, cpf_motorista))
             else:
                 # Se o método for None, seleciona todos os pagamentos do motorista
                 sql = """

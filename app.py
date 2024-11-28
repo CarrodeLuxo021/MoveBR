@@ -166,6 +166,42 @@ def historico_pagamento_filtro():
                            pagamentos=historico_pagamentos, 
                            alunos_pendentes=alunos_pendentes)
 
+
+
+@app.route("/listar_historico_aluno/<int:id_aluno>", methods=['GET'])
+def listar_historico_aluno(id_aluno):
+    try:
+        # Conectando ao banco de dados
+        mydb = Conexao.conectar()
+        mycursor = mydb.cursor()
+
+        # Consulta SQL para listar os pagamentos do aluno específico
+        sql = """
+        SELECT nome_aluno, metodo_pagamento, data_pagamento, valor_pagamento, id_pagamento 
+        FROM historico_pagamentos 
+        WHERE id_aluno = %s;
+        """
+        mycursor.execute(sql, (id_aluno,))
+        resultados = mycursor.fetchall()
+
+        # Organizando os dados em uma lista de dicionários
+        pagamentos = [{
+            "nome_aluno": linha[0],
+            "metodo_pagamento": linha[1],
+            "data_pagamento": linha[2],
+            "valor_pagamento": linha[3],
+            "id_pagamento": linha[4],
+        } for linha in resultados]
+
+        mydb.close()
+
+        # Renderizando o template de histórico de pagamentos para o aluno
+        return render_template("historico-pagamento.html", pagamentos=pagamentos, id_aluno=id_aluno)
+
+    except Exception as e:
+        print(f"Erro ao listar pagamentos do aluno {id_aluno}: {e}")
+        return "Erro ao listar pagamentos do aluno", 500
+
 @app.route("/gerar-pagamento", methods=['GET', 'POST'])
 def gerar_pagamento_get():
     if request.method == 'GET':
@@ -175,6 +211,7 @@ def gerar_pagamento_get():
     else:
         # Pega os valores do formulário
         id_aluno = request.form.get("id_aluno")
+        nome_aluno = request.form.get("nomeAluno")
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
@@ -183,7 +220,7 @@ def gerar_pagamento_get():
 
         # Instancia a classe Pagamentos e chama a função gerar_pagamento
         pagamento = Pagamentos()
-        if pagamento.gerar_pagamento(id_aluno, mes_pagamento, data_pagamento, valor_pagamento, metodo_pagamento, cpf_motorista):
+        if pagamento.gerar_pagamento(id_aluno, nome_aluno, mes_pagamento, data_pagamento, valor_pagamento, metodo_pagamento, cpf_motorista):
             return redirect("/historico_pagamento")
         else:
             return "Erro ao gerar o pagamento", 500
