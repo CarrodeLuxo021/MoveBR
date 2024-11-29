@@ -11,7 +11,20 @@ class Pagamentos():
             mydb = Conexao.conectar()
             mycursor = mydb.cursor()
 
-            # Inserindo na tabela historico_pagamentos
+            # Se o nome_aluno não foi passado, consulte na tabela tb_alunos
+            if not nome_aluno:
+                # Consultar o nome do aluno com base no id_aluno
+                sql_nome = "SELECT nome_aluno FROM tb_alunos WHERE id_aluno = %s"
+                mycursor.execute(sql_nome, (id_aluno,))
+                result = mycursor.fetchone()
+
+                if result:
+                    nome_aluno = result[0]  # Pega o nome_aluno retornado da consulta
+                else:
+                    print(f"Aluno com id {id_aluno} não encontrado.")
+                    return False
+
+            # Inserir os dados na tabela historico_pagamentos
             sql = """
             INSERT INTO historico_pagamentos 
             (id_aluno, nome_aluno, data_pagamento, mes_pagamento, valor_pagamento, metodo_pagamento, cpf_motorista)

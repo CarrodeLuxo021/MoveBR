@@ -68,7 +68,7 @@ def pag_cadastro_aluno():
             tel_responsavel, tel_responsavel2, email_responsavel,
             serie_aluno, periodo
         ):
-            return redirect('/listar-aluno')
+            return redirect('/listar-alunos')
         else:
             return redirect('/cadastrar-aluno')
 
@@ -212,7 +212,7 @@ def gerar_pagamento_get():
     else:
         # Pega os valores do formulário
         id_aluno = request.form.get("id_aluno")
-        nome_aluno = request.form.get("nome_aluno")
+        nome_aluno = request.form.get("id_aluno")
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])

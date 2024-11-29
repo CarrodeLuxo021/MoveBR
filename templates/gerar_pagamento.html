@@ -32,9 +32,9 @@
                     <section class="lado-esquerdo-container">
             
                         <label for="nomeAluno">Aluno:</label>
-                        <select id="nomeAluno" name="nome_aluno">
+                        <select id="nomeAluno" name="id_aluno">
                             {% for aluno in alunos %}
-                            <option value="{{aluno.nome_aluno}}">{{aluno.nome_aluno}}</option>
+                            <option value="{{aluno.id_aluno}}">{{aluno.nome_aluno}}</option>
                             {% endfor %}
                         </select>
                         
