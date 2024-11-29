@@ -211,7 +211,7 @@ def gerar_pagamento_get():
     else:
         # Pega os valores do formulário
         id_aluno = request.form.get("id_aluno")
-        nome_aluno = request.form.get("nomeAluno")
+        nome_aluno = request.form.get("nome_aluno")
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
