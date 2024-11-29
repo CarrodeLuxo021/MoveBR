@@ -49,6 +49,7 @@ CREATE TABLE historico_pagamentos (
     valor_pagamento FLOAT,
     mes_pagamento VARCHAR(20),
     data_pagamento VARCHAR(10),
+    metodo_pagamento VARCHAR(50),
     id_aluno INT,
     cpf_motorista VARCHAR(100),
     FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
