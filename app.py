@@ -68,7 +68,7 @@ def pag_cadastro_aluno():
             tel_responsavel, tel_responsavel2, email_responsavel,
             serie_aluno, periodo
         ):
-            return redirect('/listar-aluno')
+            return redirect('/listar-alunos')
         else:
             return redirect('/cadastrar-aluno')
 

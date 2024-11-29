@@ -43,7 +43,7 @@
                         <!-- Botão para exibir todos os alunos -->
                         <li>
                             <form method="GET" action="{{ url_for('listar_alunos') }}">
-                                <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
+                                <button type="submit" class="btn-todos" id="btn-todos">Todos</button>
                             </form>
                         </li>
                         <!-- Botões para cada escola -->
@@ -81,7 +81,7 @@
                                         <div class="info-aluno">
                                             <h2> {{aluno['nome_aluno']}} </h2>
                                             <p><strong>Nome do responsável:</strong> {{aluno['nome_responsavel']}} </p>
-                                            <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}} '-' {{aluno['telefone_responsavel_2']}}/p>
+                                            <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}} - {{aluno['telefone_responsavel_2']}}/p>
                                         </div>
                                         <div class="container-rota">
                                             <input type="checkbox" class="student-checkbox" data-address="{{aluno['endereco']}}" value="{{aluno['nome_aluno']}}">

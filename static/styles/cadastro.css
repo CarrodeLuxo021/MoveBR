@@ -138,7 +138,7 @@ button.cadastrar {
     background-color: var(--cor-05);  /* Laranja */
     color: var(--cor-03);  /* Branco */
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;

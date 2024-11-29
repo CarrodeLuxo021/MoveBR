@@ -98,7 +98,8 @@ header {
     color: var(--cor-03); /* Branco */
     border: none;
     padding: 8px 18px;
-    border-radius: 9999999px;
+    border-radius: 4px;
+    margin: 0 35rem 0 0;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -140,13 +141,41 @@ header {
     display: flex;
     justify-content: end;
 }
-
 .valor h2 {
     color: var(--cor-01); /* Cinza-azulado escuro */
 }
 
 #valor_total {
-    color: var(--cor-05); /* Laranja */
+    color: var(--cor-05);
+    margin-left: 10px; /* Laranja */
+}
+
+.months-content{
+    margin: 0 0 0 38rem;
+}
+
+.search-button{
+    padding: 7.5px 15px;
+    background-color: var(--cor-05);  /* Laranja */
+    color: var(--cor-03);  /* Branco */
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: 550;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.search-button:hover{
+    background-color: var(--cor-06);  /* Laranja escuro */
+    transform: translateY(-2px);
+}
+
+.select-meses{
+    padding: 5px 15px;
+    border: 1px solid ;
+    border-radius: 4px;
 }
 
 .nao-pago {

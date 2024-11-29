@@ -37,8 +37,8 @@
                     <button type="submit" class="ger-pagamento">+ Cadastrar novo pagamento</button>
                 </div>
             </form>
-            <form action="/historico_pagamento_filtro" method="post">
-                <select name="mesPagamento">
+            <form action="/historico_pagamento_filtro" method="post" class="months-content">
+                <select name="mesPagamento" class="select-meses">
                     <option value="" disabled selected>Todos</option>
                     <option value="janeiro">Janeiro</option>
                     <option value="fevereiro">Fevereiro</option>
@@ -53,7 +53,7 @@
                     <option value="novembro">Novembro</option>
                     <option value="dezembro">Dezembro</option>
                 </select>
-                <button type="submit">Pesquisar</button>
+                <button type="submit" class="search-button">Pesquisar</button>
             </form>
 
             <div class="informacoes">
@@ -86,7 +86,7 @@
                         <tr>
                             <td><strong>{{ pendentes.nome_aluno }}</strong></td>
                             <td class="nao-pago">
-                                <h2>NÃO PAGO</h2>
+                                <h3>não pago</h3>
                                 <form action="/excluir-historico/{{ pendentes.id_pagamento }}" method="POST" style="display:inline;">
                                     <button type="submit" class="btn-excluir">Excluir</button>
                                 </form>
@@ -100,7 +100,7 @@
                 {% endif %}
             </div>
         
-        <h2 class="valor">Valor Total: <span id="valor_total">R$ 0,00</span></h2>
+        <h2 class="valor">Valor Total:<span id="valor_total">R$0,00</span></h2>
 
 
         <script>
