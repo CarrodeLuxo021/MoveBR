@@ -174,7 +174,7 @@ class Usuario():
             # Busca os dados dos alunos na tabela tb_alunos usando os ids encontrados
             placeholders = ','.join(['%s'] * len(ids_alunos))
             sql_alunos = f"""
-            SELECT id_aluno, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel 
+            SELECT id_aluno, nome_aluno, foto_aluno, condicao_medica, escola, nome_responsavel, endereco, telefone_responsavel, email_responsavel,serie_aluno
             FROM tb_alunos WHERE id_aluno IN ({placeholders})
             """
             mycursor.execute(sql_alunos, tuple(ids_alunos))
@@ -192,7 +192,8 @@ class Usuario():
                     "nome_responsavel": linha[5],
                     "endereco": linha[6],
                     "telefone_responsavel": linha[7],
-                    "email_responsavel": linha[8]
+                    "email_responsavel": linha[8], 
+                    "serie": linha[9]
                 })
 
             mydb.close()
