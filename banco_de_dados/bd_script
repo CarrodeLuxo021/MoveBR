@@ -73,6 +73,12 @@ CREATE TABLE contratos_fechados (
     FOREIGN KEY (cpf_motorista) REFERENCES tb_motoristas(cpf_motorista)
 );
 
+
+CREATE TABLE tb_codigos(
+    codigo VARCHAR(10),
+    verificacao VARCHAR(20)
+);
+
 -- Criação do usuário e concessão de privilégios
 CREATE USER 'movebr'@'%' IDENTIFIED BY '123456789';
 
