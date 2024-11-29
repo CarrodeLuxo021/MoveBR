@@ -16,11 +16,18 @@ body {
 header {
     background: var(--cor-01); /* Cor de fundo do header */
     color: var(--cor-03); /* Cor do texto em cinza claro */
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
 }
 
 .logo img {
@@ -61,12 +68,11 @@ main {
 
 .welcome-section h1 {
     font-size: 2.5em; /* Tamanho do título */
-    margin-bottom: 10px;
 }
 
 .slogan {
     font-size: 1.2em; /* Tamanho da slogan */
-    color: var(--cor-01); /* Cor cinza-azulado escuro */
+    color: var(--cor-03); /* Cor cinza-azulado escuro */
 }
 
 .services-section {
