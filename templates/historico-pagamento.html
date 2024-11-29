@@ -79,6 +79,9 @@
                                 <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post">
                                     <button class="btn-excluir" type="submit">Excluir</button>
                                 </form>
+                                <form action="/editar-pagamento/{{ pagamento.id_pagamento }}" method="get">
+                                    <button class="btn-excluir" type="submit">Editar</button>
+                                </form>
                             </td>
                         </tr>
                         {% endfor %}

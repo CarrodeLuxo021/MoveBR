@@ -329,8 +329,61 @@ def editar_aluno(id_aluno):
 
         return redirect('/listar-alunos')
 
+@app.route('/editar-pagamento/<int:id_pagamento>', methods=['GET', 'POST'])
+def editar_pagamento(id_pagamento):
+    conn = Conexao.conectar()
+    cursor = conn.cursor(dictionary=True)
 
+    # Quando o método for GET, busque os dados do aluno para preencher o formulário
+    if request.method == 'GET':
+        query = """
+            SELECT 
+                hp.id_pagamento,
+                hp.metodo_pagamento,
+                hp.data_pagamento,
+                hp.valor_pagamento,
+                hp.id_aluno,
+                ta.nome_aluno
+            FROM 
+                historico_pagamentos hp
+            JOIN 
+                tb_alunos ta 
+            ON 
+                hp.id_aluno = ta.id_aluno
+            WHERE 
+                hp.id_pagamento = %s
+        """
+        cursor.execute(query, (id_pagamento,))
+        linha = cursor.fetchone()
 
-    
+        if linha:
+            historico = {
+                "id_pagamento": linha["id_pagamento"],
+                "nome_aluno": linha["nome_aluno"],  # Nome do aluno vindo da tabela tb_alunos
+                "metodo_pagamento": linha["metodo_pagamento"],
+                "data_pagamento": linha["data_pagamento"],
+                "valor_pagamento": linha["valor_pagamento"],
+                "id_aluno": linha["id_aluno"]
+            }
+            return render_template('editar-pagamento.html', pagamento=historico)
+        else:
+            return "Pagamento não encontrado", 404
+        
+    elif request.method == 'POST':
+        nome_aluno = request.form.get('nomeAluno')
+        mes_pagamento = request.form.get('mes_pagamento')
+        data_pagamento = request.form.get('data_pagamento')
+        metodo_pagamento = request.form.get('metodo_pagamento')
+        valor_pagamento = request.form.get('valor_pagamento')
+        
+        cursor.execute("""
+            UPDATE historico_pagamentos
+            SET nome_aluno = %s, mes_pagamento = %s, data_pagamento = %s, metodo_pagamento = %s, valor_pagamento = %s
+            WHERE id_pagamento = %s
+        """, (nome_aluno, mes_pagamento, data_pagamento, metodo_pagamento, valor_pagamento, id_pagamento ))
+        
+        conn.commit()
+        conn.close()
 
+        return redirect('/historico_pagamento')
 app.run(debug=True)
