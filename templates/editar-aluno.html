@@ -48,6 +48,8 @@
                         <label for="enderecoAluno">Endereço:</label>
                         <input type="text" id="enderecoAluno" placeholder="ex: Rua das Flores, 123 - Bairro, Cidade, Estado" name="endereco-aluno" value="{{ aluno['endereco'] }}" required>
 
+                      
+
                         <!-- Exibir a foto atual do aluno -->
                         <label for="fotoAluno">Foto Atual:</label>
                         <img src="{{ aluno['foto_aluno'] or '/static/images/placeholder.png' }}" alt="Foto do Aluno" style="max-width: 100px;">
