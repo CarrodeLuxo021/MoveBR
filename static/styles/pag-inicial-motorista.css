@@ -82,7 +82,6 @@ main {
 .cards-container {
     display: flex;
     justify-content: space-around; /* Espaçamento entre os cartões */
-    flex-wrap: wrap; /* Para que os cartões se ajustem */
 }
 
 .service-card {
@@ -91,8 +90,7 @@ main {
     border-radius: 8px; /* Bordas arredondadas */
     padding: 20px;
     text-align: center;
-    width: 30%; /* Largura dos cartões */
-    margin: 10px 0;
+    margin: 10px 3px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s; /* Efeito ao passar o mouse */
 }
