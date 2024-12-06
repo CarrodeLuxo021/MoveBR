@@ -31,41 +31,44 @@
                 <img src="/static/icones/dinheiro.png" alt="Ícone de dinheiro" class="icone-dinheiro">
                 <h2>Histórico de Pagamentos</h2>
             </div>
-
-            <form action="/gerar-pagamento" method="get" class="ger-pagamento">
-                <div class="ger-pagamento-container">
-                    <button type="submit" class="ger-pagamento">+ Cadastrar novo pagamento</button>
-                </div>
-            </form>
-            <form action="/historico_pagamento_filtro" method="post">
-                <select name="mesPagamento">
-                    <option value="" disabled selected>Todos</option>
-                    <option value="janeiro">Janeiro</option>
-                    <option value="fevereiro">Fevereiro</option>
-                    <option value="março">Março</option>
-                    <option value="abril">Abril</option>
-                    <option value="maio">Maio</option>
-                    <option value="junho">Junho</option>
-                    <option value="julho">Julho</option>
-                    <option value="agosto">Agosto</option>
-                    <option value="setembro">Setembro</option>
-                    <option value="outubro">Outubro</option>
-                    <option value="novembro">Novembro</option>
-                    <option value="dezembro">Dezembro</option>
-                </select>
-                <button type="submit">Pesquisar</button>
-            </form>
-
+            <div class="container-historico">
+                <form action="/gerar-pagamento" method="get" class="ger-pagamento">
+                    <div class="ger-pagamento-container">
+                        <button type="submit" class="ger-pagamento">+ Cadastrar novo pagamento</button>
+                    </div>
+                </form>
+                <form action="/historico_pagamento_filtro" method="post">
+                    <div class="container-mes-pagamento">
+                        <select name="mesPagamento">
+                            <option value="" disabled selected>Todos</option>
+                            <option value="janeiro">Janeiro</option>
+                            <option value="fevereiro">Fevereiro</option>
+                            <option value="março">Março</option>
+                            <option value="abril">Abril</option>
+                            <option value="maio">Maio</option>
+                            <option value="junho">Junho</option>
+                            <option value="julho">Julho</option>
+                            <option value="agosto">Agosto</option>
+                            <option value="setembro">Setembro</option>
+                            <option value="outubro">Outubro</option>
+                            <option value="novembro">Novembro</option>
+                            <option value="dezembro">Dezembro</option>
+                        </select>
+                        <button type="submit">Pesquisar</button>
+                    </div>
+                </form>
+            </div>
+        
             <div class="informacoes">
                 {% if pagamentos %}
                 <table class="alunos-listados">
                     <thead>
                         <tr>
-                            <th>Nome do Aluno</th>
-                            <th>Método de Pagamento</th>
-                            <th>Data do Pagamento</th>
-                            <th>Valor do Pagamento</th>
-                            <th>Ações</th>
+                            <th><center>Nome do Aluno</center></th>
+                            <th><center>Método de Pagamento</center></th>
+                            <th><center>Data do Pagamento</center></th>
+                            <th><center>Valor do Pagamento</center></th>
+                            <th><center>Ações</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,24 +78,27 @@
                             <td>{{ pagamento.metodo_pagamento }}</td>
                             <td>{{ pagamento.data_pagamento }}</td>
                             <td><strong class="valor_pagamento">R$ {{ pagamento.valor_pagamento }}</strong></td>
-                            <td>
-                                <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post">
-                                    <button class="btn-excluir" type="submit">Excluir</button>
-                                </form>
+                            <td class="td-buttons">
                                 <form action="/editar-pagamento/{{ pagamento.id_pagamento }}" method="get">
-                                    <button class="btn-excluir" type="submit">Editar</button>
+                                    <button class="btn-editar" type="submit"><img src="/static/icones/editar-icone.png" alt=""></button>
                                 </form>
+                                <form action="/excluir-historico/{{ pagamento.id_pagamento }}" method="post">
+                                    <button class="btn-excluir" type="submit"><img src="/static/icones/deletar-pagamento.png" alt=""></button>
+                                </form> 
                             </td>
                         </tr>
                         {% endfor %}
                         {% for pendentes in alunos_pendentes %}
                         <tr>
                             <td><strong>{{ pendentes.nome_aluno }}</strong></td>
-                            <td class="nao-pago">
-                                <h2>NÃO PAGO</h2>
-                                <form action="/excluir-historico/{{ pendentes.id_pagamento }}" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn-excluir">Excluir</button>
-                                </form>
+                            
+                            <td>Pendente</td>
+                            <td>Pendente</td>
+                            <td>Pendente</td>
+                            <td class="td-buttons">
+                                <form action="/excluir-historico/{{ pendentes.id_pagamento }}" method="post">
+                                    <button class="btn-excluir" type="submit"><img src="/static/icones/deletar-pagamento.png" alt=""></button>
+                                </form> 
                             </td>
                         </tr>
                         {% endfor %}
