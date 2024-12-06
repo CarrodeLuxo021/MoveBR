@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,20 +14,24 @@
 </style>
 
 <body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <script>
-          // Iterar sobre as mensagens para identificar e exibir ícones adequados
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+      <script>
+          // Exibir alertas SweetAlert para cada mensagem
           {% for category, message in messages %}
-            Swal.fire({
+          Swal.fire({
               icon: '{{ "success" if category == "success" else "error" }}',
-              title: '{{ message }}',
+              title: '{{ message|escape }}', // Escapa caracteres especiais para evitar erros
               showConfirmButton: true,
-              timer: 2000  // ou ajuste o tempo conforme necessário
-            });
+              timer: 2000
+          });
           {% endfor %}
-        </script>
-      {% endif %}
-    {% endwith %}
+      </script>
+  {% endif %}
+  {% endwith %}
+  
 </body>
 </html>
+
+
+
