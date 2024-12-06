@@ -18,8 +18,8 @@ def pag_inicio():
 def pag_inicial():
     return render_template("pag-inicial-motorista.html", session=session)
 
-@app.route("/cadastrar-motorista", methods=['GET', 'POST'])
 
+@app.route("/cadastrar-motorista", methods=['GET', 'POST'])
 def pag_cadastro_motorista():
     if request.method == 'GET':
         return render_template('cadastro-motorista.html')
@@ -29,21 +29,35 @@ def pag_cadastro_motorista():
         telefone = request.form["telefone"]
         email = request.form["email"]
         senha = request.form["senha"]
-        
+
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, telefone, email, senha):
-            flash("Usuário cadastrado com sucesso!")
+            flash("Usuário cadastrado com sucesso!", "success")
             return redirect('/logar')
-        else:
-            flash("Erro ao cadastrar o usuário. Tente novamente.")
-            return redirect('/')
+        
+        flash("Erro ao cadastrar motorista. Tente novamente.", "error")
+        return redirect('/cadastrar-motorista')
+
+def validar_cpf(cpf):
+    cpf = cpf.replace(".", "").replace("-", "")
+    if len(cpf) != 11 or not cpf.isdigit():
+        return False
+    return True
+    
+def validar_email(email):
+    import re
+    regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(regex, email) is not None
+
+
+
+
 
 @app.route("/cadastrar-aluno", methods=['GET', 'POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
-        # Coleta de dados do formulário
         nome_aluno = request.form["nome-aluno"]
         escola = request.form["escola"]
         foto_aluno = request.files["foto-aluno"]
@@ -57,10 +71,8 @@ def pag_cadastro_aluno():
         email_responsavel = request.form["email-aluno"]
         periodo = request.form["periodo-aluno"]
 
-        # Fazer o upload da foto e obter o link
         link_foto = upload_file(foto_aluno)
 
-        # Instanciar o objeto Usuario
         usuario = Usuario()
         if usuario.cadastrar_aluno(
             nome_aluno, link_foto, condicao_medica, escola,
@@ -68,8 +80,10 @@ def pag_cadastro_aluno():
             tel_responsavel, tel_responsavel2, email_responsavel,
             serie_aluno, periodo
         ):
+            flash("Aluno cadastrado com sucesso!")
             return redirect('/listar-alunos')
         else:
+            flash("Erro ao cadastrar aluno. Tente novamente.")
             return redirect('/cadastrar-aluno')
 
 @app.route("/cadastrar-aluno/<codigo>", methods=['GET','POST'])
@@ -115,18 +129,18 @@ def logar():
         senha = request.form['senha']
         email = request.form['email']
         
-
         usuario = Usuario()
         if usuario.logar(email, senha):
             session['usuario_logado'] = {
                 "nome": usuario.nome,
                 "email": usuario.email,
-                "cpf": usuario.cpf
+                
             }
+            flash("Login realizado com sucesso!","success")
             return redirect('/pag-inicial-motorista')
         else:
             session.clear()
-            flash("alert('login ou senha incorretos!')")
+            flash("Login ou senha incorretos!","error")
             return redirect("/logar")
 
 @app.route("/historico_pagamento", methods=['GET'])

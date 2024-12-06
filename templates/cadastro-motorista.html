@@ -13,13 +13,15 @@
         <script defer src="/static/js/letras-maiusculas.js"></script>
     </head>
 
-    <body>
-        <header>
-            <button class="button-back" type="button"><a href="/logar"><img src="/static/icones/seta-voltar.png" alt="Voltar"></a></button>
-            <figure class="logo">
-                <a href="/logar"><img src="/static/icones/movebr.png" alt="Logo da MoveBR"></a>
-            </figure>
-        </header>
+<body>
+    {% include 'componente.html' %}
+    <header>
+        <button class="button-back" type="button"><a href="/logar"><img src="/static/icones/seta-voltar.png" alt="Voltar"></a></button>
+        <figure class="logo">
+            <a href="/logar"><img src="/static/icones/movebr.png" alt="Logo da MoveBR"></a>
+        </figure>
+    </header>
+
 
         <main>
 
@@ -75,6 +77,49 @@
                 }
             }
         </script>
+        <script>
+            function validarCadastro() {
+                var cpf = document.getElementById("cpf").value;
+                var email = document.getElementById("email").value;
+                var senha = document.getElementById("senha").value;
+
+                if (!validarCPF(cpf)) {
+                    alert("CPF inválido.");
+                    return false; // Impede o envio do formulário
+                }
+
+                if (!validarEmail(email)) {
+                    alert("Email inválido.");
+                    return false; // Impede o envio do formulário
+                }
+
+                if (senha.length < 8) {
+                    alert("A senha deve ter pelo menos 8 caracteres.");
+                    return false; // Impede o envio do formulário
+                }
+
+                return true; // Permite o envio do formulário
+            }
+
+            // Função para validar CPF
+            function validarCPF(cpf) {
+    
+                cpf = cpf.replace(/\D/g, '');
+
+                // Verificar se o CPF tem 11 dígitos e não é uma sequência repetitiva
+                if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+                    return false;
+                }
+            }
+            
+
+            // Função para validar Email
+            function validarEmail(email) {
+                var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                return re.test(email);
+            }
+    </script>
+        
     </body>
 
 </html>

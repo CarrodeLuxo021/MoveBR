@@ -86,7 +86,7 @@ class Usuario():
             else:
                 self.logado = False
 
-            mycursor.close()
+            
             mydb.close()
             return self.logado
         except Exception as e:

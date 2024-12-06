@@ -15,13 +15,14 @@
         <script defer src="/static/js/tirar-link.js"></script>
     </head>
 
-    <body>
-        <header>
-            <button class="button-back" type="button" id="visibleButton">
-                <a href="/pag-inicial-motorista">
-                    <img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda">
-                </a>
-            </button>
+<body>
+    {% include 'componente.html' %}
+    <header>
+        <button class="button-back" type="button">
+            <a href="/pag-inicial-motorista">
+                <img src="/static/icones/seta-voltar.png" alt="imagem de uma seta para esquerda">
+            </a>
+        </button>
 
             <button onclick="gerarCodigo()" id="gerarLinkBtn">Gerar link de cadastro</button>
             
