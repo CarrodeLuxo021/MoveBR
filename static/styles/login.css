@@ -1,13 +1,4 @@
-/* Definindo as variáveis de cor */
-:root {
-    --cor-escura: #2c3e50;  /* Azul escuro */
-    --cor-clara: #ecf0f1;  /* Fundo claro */
-    --cor-vibrante: #E79428;  /* Laranja vibrante */
-    --cor-secundaria: #34495e;  /* Azul claro */
-    --cor-fundo-input: #f9f9f9;  /* Fundo claro para inputs */
-    --cor-borda-input: #ddd;  /* Cor da borda dos inputs */
-    --cor-hover-btn: #d6821e;  /* Cor de hover do botão */
-}
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 
 /* Reset básico */
 * {
@@ -16,26 +7,35 @@
     box-sizing: border-box;
 }
 
-/* Estilização do corpo */
+/* Body */
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    background-color: var(--cor-clara); /* Cor de fundo clara */
-    color: var(--cor-escura); /* Cor do texto */
-}
-
-/* Estilização do cabeçalho */
-header {
-    background-color: var(--cor-escura); /* Azul escuro */
-    color: var(--cor-clara); /* Texto claro */
-    height: 80px;
+    background-color: var(--cor-03); /* Off-white */
+    color: var(--cor-01); /* Cinza-azulado escuro */
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--cor-01); /* Cinza-azulado escuro */
+    color: var(--cor-03); 
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .logo img {
-    height: 40px;
+    height: 50px;
 }
 
 /* Estilização do main */
@@ -56,7 +56,7 @@ main {
 .container-form {
     width: 500px;
     padding: 30px;
-    background-color: #ffffff; /* Fundo branco */
+    background-color: #fff; /* Fundo branco */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
@@ -80,13 +80,13 @@ main {
 }
 
 .baixo-container p {
-    color: var(--cor-secundaria); /* Azul mais claro */
+    color: var(--cor-02); /* Azul mais claro */
     text-align: center;
     margin-top: 10px;
 }
 
 .baixo-container a {
-    color: var(--cor-vibrante); /* Cor vibrante para links */
+    color: var(--cor-05); /* Cor vibrante para links */
 }
 
 /* Estilização dos labels */
@@ -94,7 +94,7 @@ main {
     display: block;
     margin-bottom: 8px;
     font-weight: 600; /* Peso de fonte mais forte */
-    color: var(--cor-escura); /* Azul escuro para os labels */
+    color: var(--cor-01); /* Azul escuro para os labels */
 }
 
 /* Estilização dos campos de entrada */
@@ -103,15 +103,15 @@ main {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid var(--cor-borda-input); /* Borda leve */
+    border: 1px solid #ddd; /* Borda leve */
     border-radius: 6px; /* Bordas arredondadas */
     font-size: 16px;
-    background-color: var(--cor-fundo-input); /* Fundo claro */
+    background-color: var(--cor-07); /* Fundo claro */
 }
 
 /* Estilização do link de senha */
 .link-senha {
-    color: var(--cor-secundaria); /* Cor do link */
+    color: var(--cor-02); /* Cor do link */
     font-size: 13px;
 }
 
@@ -123,8 +123,8 @@ main {
 }
 
 .btn-container button {
-    background-color: var(--cor-vibrante); /* Cor do botão */
-    color: var(--cor-clara); /* Texto claro */
+    background-color: var(--cor-05); /* Cor do botão */
+    color: var(--cor-03); /* Texto claro */
     border: none;
     padding: 12px 24px;
     border-radius: 6px; /* Bordas arredondadas */
@@ -135,7 +135,7 @@ main {
 }
 
 .btn-container button:hover {
-    background-color: var(--cor-hover-btn); /* Cor ao passar o mouse */
+    background-color: var(--cor-06); /* Cor ao passar o mouse */
 }
 
 .btn-container button:active {

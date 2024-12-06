@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Link</title>
+    <script>
+        function gerarCodigo() {
+            // Envia a requisição GET para a rota '/gerar-codigo'
+            fetch('/gerar-codigo')
+                .then(response => response.json())
+                .then(data => {
+                    // Copia o link gerado para a área de transferência
+                    navigator.clipboard.writeText(data.link)
+                        .then(() => {
+                            // Exibe um alerta notificando o sucesso
+                            alert("Código copiado para a área de transferência!");
+                        })
+                        .catch(error => {
+                            console.error("Erro ao copiar para a área de transferência:", error);
+                            alert("Erro ao copiar o código!");
+                        });
+                })
+                .catch(error => {
+                    console.error("Erro ao gerar código:", error);
+                    alert("Erro ao gerar o código!");
+                });
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Gerar Link de Cadastro</h1>
+    
+    <!-- Botão para gerar o link -->
+    <button id="gerarCodigoBtn" onclick="gerarCodigo()">Gerar link de cadastro</button>
+
+</body>
+</html>
