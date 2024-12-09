@@ -14,8 +14,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     min-height: 100vh;
-    padding: 20px;
 }
 
 /* Header */
@@ -28,21 +28,18 @@ header {
     justify-content: space-between;
     padding: 0 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 0;
     width: 100%;
+    margin-top: -23px;
 }
-
 
 /* Estilização da navegação */
 nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: var(--cor-02); /* Azul mais claro para o nav */
-}
-
-nav {
-    display: flex;
+    width: 100%;
+    height: 50px;
 }
 
 .nav-item {
@@ -54,6 +51,7 @@ nav {
 
 .nav-item:hover {
     background: var(--cor-01); /* Cor de fundo ao passar o mouse */
+    padding: 16px 15px;
 }
 
 .button-back {
@@ -97,6 +95,7 @@ main {
 /* Form Container */
 .container-form {
     width: 70%;
+    height: 37rem;
     background-color: #fff;  /* Branco */
     border-radius: 12px;
     padding: 40px;
@@ -111,8 +110,7 @@ main {
 /* Form Items */
 .itens-form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
 }
 
 .lado-esquerdo-container, .lado-direito-container {
@@ -157,15 +155,15 @@ select:focus {
 
 /* Submit Button */
 button.cadastrar {
-    padding: 15px 30px;
+    width: 100%;
+    height: 100%;
     background-color: var(--cor-05);  /* Laranja */
     color: var(--cor-03);  /* Branco */
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 20px;
 }
 
 button.cadastrar:hover {
@@ -175,8 +173,10 @@ button.cadastrar:hover {
 
 /* Button Container */
 .btn-container {
-    display: flex;
-    justify-content: end;
+    height: 40px;
+    width: 7rem;
+
+    margin: 0 auto;
 }
 
 /* Ajustes no estilo para o campo de senha */

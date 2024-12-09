@@ -20,7 +20,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
+    height: 120px;
 }
 
 .logo {
@@ -38,17 +38,15 @@ header {
 nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: var(--cor-02); /* Azul mais claro para o nav */
-}
-
-nav {
-    display: flex;
+    height: 70px;
 }
 
 .nav-item {
     color: var(--cor-03); /* Texto branco */
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 23px 20px;
     transition: background 0.3s;
 }
 
