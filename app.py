@@ -18,8 +18,8 @@ def pag_inicio():
 def pag_inicial():
     return render_template("pag-inicial-motorista.html", session=session)
 
-@app.route("/cadastrar-motorista", methods=['GET', 'POST'])
 
+@app.route("/cadastrar-motorista", methods=['GET', 'POST'])
 def pag_cadastro_motorista():
     if request.method == 'GET':
         return render_template('cadastro-motorista.html')
@@ -29,21 +29,35 @@ def pag_cadastro_motorista():
         telefone = request.form["telefone"]
         email = request.form["email"]
         senha = request.form["senha"]
-        
+
         usuario = Usuario()
         if usuario.cadastrar_motorista(nome, cpf, telefone, email, senha):
-            flash("Usuário cadastrado com sucesso!")
+            flash("Usuário cadastrado com sucesso!", "success")
             return redirect('/logar')
-        else:
-            flash("Erro ao cadastrar o usuário. Tente novamente.")
-            return redirect('/')
+        
+        flash("Erro ao cadastrar motorista. Tente novamente.", "error")
+        return redirect('/cadastrar-motorista')
+
+def validar_cpf(cpf):
+    cpf = cpf.replace(".", "").replace("-", "")
+    if len(cpf) != 11 or not cpf.isdigit():
+        return False
+    return True
+    
+def validar_email(email):
+    import re
+    regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(regex, email) is not None
+
+
+
+
 
 @app.route("/cadastrar-aluno", methods=['GET', 'POST'])
 def pag_cadastro_aluno():
     if request.method == 'GET':
         return render_template('cadastro-aluno.html')
     else:
-        # Coleta de dados do formulário
         nome_aluno = request.form["nome-aluno"]
         escola = request.form["escola"]
         foto_aluno = request.files["foto-aluno"]
@@ -57,10 +71,8 @@ def pag_cadastro_aluno():
         email_responsavel = request.form["email-aluno"]
         periodo = request.form["periodo-aluno"]
 
-        # Fazer o upload da foto e obter o link
         link_foto = upload_file(foto_aluno)
 
-        # Instanciar o objeto Usuario
         usuario = Usuario()
         if usuario.cadastrar_aluno(
             nome_aluno, link_foto, condicao_medica, escola,
@@ -68,8 +80,10 @@ def pag_cadastro_aluno():
             tel_responsavel, tel_responsavel2, email_responsavel,
             serie_aluno, periodo
         ):
+            flash("Aluno cadastrado com sucesso!")
             return redirect('/listar-alunos')
         else:
+            flash("Erro ao cadastrar aluno. Tente novamente.")
             return redirect('/cadastrar-aluno')
 
 @app.route("/cadastrar-aluno/<codigo>", methods=['GET','POST'])
@@ -115,18 +129,18 @@ def logar():
         senha = request.form['senha']
         email = request.form['email']
         
-
         usuario = Usuario()
         if usuario.logar(email, senha):
             session['usuario_logado'] = {
                 "nome": usuario.nome,
                 "email": usuario.email,
-                "cpf": usuario.cpf
+                
             }
+            flash("Login realizado com sucesso!","success")
             return redirect('/pag-inicial-motorista')
         else:
             session.clear()
-            flash("alert('login ou senha incorretos!')")
+            flash("Login ou senha incorretos!","error")
             return redirect("/logar")
 
 @app.route("/historico_pagamento", methods=['GET'])
@@ -212,7 +226,7 @@ def gerar_pagamento_get():
     else:
         # Pega os valores do formulário
         id_aluno = request.form.get("id_aluno")
-        nome_aluno = request.form.get("nome_aluno")
+        nome_aluno = request.form.get("id_aluno")
         data_pagamento = request.form.get("data_pagamento")
         mes_pagamento = request.form.get("mes_pagamento")
         valor_pagamento = float(request.form["valor_pagamento"])
@@ -329,8 +343,61 @@ def editar_aluno(id_aluno):
 
         return redirect('/listar-alunos')
 
+@app.route('/editar-pagamento/<int:id_pagamento>', methods=['GET', 'POST'])
+def editar_pagamento(id_pagamento):
+    conn = Conexao.conectar()
+    cursor = conn.cursor(dictionary=True)
 
+    # Quando o método for GET, busque os dados do aluno para preencher o formulário
+    if request.method == 'GET':
+        query = """
+            SELECT 
+                hp.id_pagamento,
+                hp.metodo_pagamento,
+                hp.data_pagamento,
+                hp.valor_pagamento,
+                hp.id_aluno,
+                ta.nome_aluno
+            FROM 
+                historico_pagamentos hp
+            JOIN 
+                tb_alunos ta 
+            ON 
+                hp.id_aluno = ta.id_aluno
+            WHERE 
+                hp.id_pagamento = %s
+        """
+        cursor.execute(query, (id_pagamento,))
+        linha = cursor.fetchone()
 
-    
+        if linha:
+            historico = {
+                "id_pagamento": linha["id_pagamento"],
+                "nome_aluno": linha["nome_aluno"],  # Nome do aluno vindo da tabela tb_alunos
+                "metodo_pagamento": linha["metodo_pagamento"],
+                "data_pagamento": linha["data_pagamento"],
+                "valor_pagamento": linha["valor_pagamento"],
+                "id_aluno": linha["id_aluno"]
+            }
+            return render_template('editar-pagamento.html', pagamento=historico)
+        else:
+            return "Pagamento não encontrado", 404
+        
+    elif request.method == 'POST':
+        nome_aluno = request.form.get('nomeAluno')
+        mes_pagamento = request.form.get('mes_pagamento')
+        data_pagamento = request.form.get('data_pagamento')
+        metodo_pagamento = request.form.get('metodo_pagamento')
+        valor_pagamento = request.form.get('valor_pagamento')
+        
+        cursor.execute("""
+            UPDATE historico_pagamentos
+            SET nome_aluno = %s, mes_pagamento = %s, data_pagamento = %s, metodo_pagamento = %s, valor_pagamento = %s
+            WHERE id_pagamento = %s
+        """, (nome_aluno, mes_pagamento, data_pagamento, metodo_pagamento, valor_pagamento, id_pagamento ))
+        
+        conn.commit()
+        conn.close()
 
+        return redirect('/historico_pagamento')
 app.run(debug=True)

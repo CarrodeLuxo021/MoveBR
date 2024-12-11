@@ -85,12 +85,16 @@ header {
 .cabecalho-container h2 {
     margin-left: 10px;
 }
-
+.container-historico{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 /* Gerar pagamento */
 .ger-pagamento-container {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: first baseline;
     padding: 20px;
 }
 
@@ -101,7 +105,6 @@ header {
     border: none;
     padding: 8px 18px;
     border-radius: 4px;
-    margin: 0 35rem 0 0;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -110,7 +113,12 @@ header {
 .ger-pagamento button:hover {
     background-color: var(--cor-02); /* Cinza-azulado claro */
 }
-
+.container-mes-pagamento{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+}
 /* Estilo da tabela */
 .alunos-listados {
     width: 100%;
@@ -206,7 +214,37 @@ header {
     color: red;
     font-weight: 700;
 }
-
+.btn-editar img{
+    height: 30px;
+    width: 30px;
+}
+.btn-editar{
+    background-color: rgb(3, 136, 244);
+    padding: 5px;
+    border: 2px transparent;
+    border-radius: 300px;
+}
+.btn-excluir{
+    background-color: red;
+    padding: 5px;
+    border: 2px transparent;
+    border-radius: 300px;
+}
+.btn-excluir img{
+    height: 30px;
+    width: 30px;
+}
+.td-buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.th-pagamento{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
 /* Para telas menores que 576px (max-width: 575.98px) */
 @media (max-width: 575.98px) {
     body {

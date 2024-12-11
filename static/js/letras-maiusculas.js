@@ -1,5 +1,5 @@
 // Seleciona todos os campos de entrada do tipo texto e email
-const inputs = document.querySelectorAll('input[type="text"], input[type="email"]');
+const inputs = document.querySelectorAll('input[type="text"]');
 
 // Adiciona eventos aos campos de entrada para monitorar mudanças e pressionamento de teclas
 inputs.forEach(input => {

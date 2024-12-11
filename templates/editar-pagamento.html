@@ -26,44 +26,42 @@
             <div class="cabecalho-container">
                 <h2>Cadastro de Pagamentos</h2>
             </div> 
-            
-            <form class="container-form" action="/gerar-pagamento" method="post">
+           
+            <form class="container-form" action="/editar-pagamento/{{ pagamento.id_pagamento }}" method="post">
                 <div class="itens-form">
                     <section class="lado-esquerdo-container">
             
-                        <label for="nomeAluno">Aluno:</label>
-                        <select id="nomeAluno" name="id_aluno">
-                            {% for aluno in alunos %}
-                            <option value="{{aluno.id_aluno}}">{{aluno.nome_aluno}}</option>
-                            {% endfor %}
-                        </select>
+                        <label for="nomeAluno">Pagamento:</label>
+                        <input id="nomeAluno" name="nomeAluno" value="{{ pagamento.nome_aluno }}">
+                            
+                        </input>
                         
                         <label for="mesPagamento">Mês:</label>
                         <select id="mesPagamento" name="mes_pagamento">
-                            <option value="">Selecione um mês</option>
-                            <option value="Janeiro">Janeiro</option>
-                            <option value="Fevereiro">Fevereiro</option>
-                            <option value="Março">Março</option>
-                            <option value="Abril">Abril</option>
-                            <option value="Maio">Maio</option>
-                            <option value="Junho">Junho</option>
-                            <option value="Julho">Julho</option>
-                            <option value="Agosto">Agosto</option>
-                            <option value="Setembro">Setembro</option>
-                            <option value="Outubro">Outubro</option>
-                            <option value="Novembro">Novembro</option>
-                            <option value="Dezembro">Dezembro</option>
+                            <option value="Janeiro" {% if pagamento.mes_pagamento == 'Janeiro' %} selected {% endif %}>Janeiro</option>
+                            <option value="Fevereiro"{% if pagamento.mes_pagamento == 'Fevereiro' %} selected {% endif %}>Fevereiro</option>
+                            <option value="Março"{% if pagamento.mes_pagamento == 'Março' %} selected {% endif %}>Março</option>
+                            <option value="Abril"{% if pagamento.mes_pagamento == 'Abril' %} selected {% endif %}>Abril</option>
+                            <option value="Maio"{% if pagamento.mes_pagamento == 'Maio' %} selected {% endif %}>Maio</option>
+                            <option value="Junho"{% if pagamento.mes_pagamento == 'Junho' %} selected {% endif %}>Junho</option>
+                            <option value="Julho"{% if pagamento.mes_pagamento == 'Julho' %} selected {% endif %}>Julho</option>
+                            <option value="Agosto"{% if pagamento.mes_pagamento == 'Agosto' %} selected {% endif %}>Agosto</option>
+                            <option value="Setembro"{% if pagamento.mes_pagamento == 'Setembro' %} selected {% endif %}>Setembro</option>
+                            <option value="Outubro"{% if pagamento.mes_pagamento == 'Outubro' %} selected {% endif %}>Outubro</option>
+                            <option value="Novembro"{% if pagamento.mes_pagamento == 'Novembro' %} selected {% endif %}>Novembro</option>
+                            <option value="Dezembro"{% if pagamento.mes_pagamento == 'Dezembro' %} selected {% endif %}>Dezembro</option>
                         </select>
                         
                         <label for="dataPagamento">Data:</label>
-                        <input type="date" id="dataPagamento" placeholder="ex: 17/10/2023" name="data_pagamento">
+                        <input type="date" id="dataPagamento" value="{{ pagamento.data_pagamento }}" name="data_pagamento">
                         
                         <label for="valorPagamento">Valor:</label>
-                        <input type="text" id="valorPagamento" placeholder="ex: 500.00" name="valor_pagamento">
+                        <input type="text" id="valorPagamento" value="{{ pagamento.valor_pagamento }}" name="valor_pagamento">
             
                         <!-- Novo campo: Método de pagamento -->
                         <label for="metodoPagamento">Método de Pagamento:</label>
                         <select id="metodoPagamento" name="metodo_pagamento">
+                            <option value="pagamento['metodo_pagamento']">{{ pagamento.metodo_pagamento }}</option>
                             <option value="Cartão de Crédito">Cartão de Crédito</option>
                             <option value="Cartão de Débito">Cartão de Débito</option>
                             <option value="PIX">PIX</option>
@@ -74,6 +72,7 @@
                     </section>
                 </div>
             </form>
+         
         </main>
     </body>
 </html>
