@@ -16,11 +16,18 @@ body {
 header {
     background: var(--cor-01); /* Cor de fundo do header */
     color: var(--cor-03); /* Cor do texto em cinza claro */
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
+    height: 120px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
 }
 
 .logo img {
@@ -31,17 +38,15 @@ header {
 nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: var(--cor-02); /* Azul mais claro para o nav */
-}
-
-nav {
-    display: flex;
+    height: 70px;
 }
 
 .nav-item {
     color: var(--cor-03); /* Texto branco */
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 23px 20px;
     transition: background 0.3s;
 }
 
@@ -61,12 +66,11 @@ main {
 
 .welcome-section h1 {
     font-size: 2.5em; /* Tamanho do título */
-    margin-bottom: 10px;
 }
 
 .slogan {
     font-size: 1.2em; /* Tamanho da slogan */
-    color: var(--cor-01); /* Cor cinza-azulado escuro */
+    color: var(--cor-03); /* Cor cinza-azulado escuro */
 }
 
 .services-section {
@@ -76,7 +80,6 @@ main {
 .cards-container {
     display: flex;
     justify-content: space-around; /* Espaçamento entre os cartões */
-    flex-wrap: wrap; /* Para que os cartões se ajustem */
 }
 
 .service-card {
@@ -85,8 +88,7 @@ main {
     border-radius: 8px; /* Bordas arredondadas */
     padding: 20px;
     text-align: center;
-    width: 30%; /* Largura dos cartões */
-    margin: 10px 0;
+    margin: 10px 3px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s; /* Efeito ao passar o mouse */
 }

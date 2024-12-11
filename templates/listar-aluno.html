@@ -9,8 +9,6 @@
         <script src="/static/js/rotas-mapas.js" defer></script>
         <script src="/static/js/letras-maiusculas.js" defer></script>
     </head>
-
-
     <body>
         <header>
             <button class="button-back" type="button">
@@ -22,6 +20,12 @@
                 </div>
             </figure>
         </header>
+
+        <nav>
+            <a href="/cadastrar-aluno" class="nav-item">Cadastro Alunos</a>
+            <a href="/listar-alunos" class="nav-item">Alunos cadastrados</a>
+            <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
+        </nav>
 
         <main>
             <section class="c-table">
@@ -43,7 +47,7 @@
                         <!-- Botão para exibir todos os alunos -->
                         <li>
                             <form method="GET" action="{{ url_for('listar_alunos') }}">
-                                <button type="submit" class="btn-escola" id="btn-todos">Todos</button>
+                                <button type="submit" class="btn-todos" id="btn-todos">Todos</button>
                             </form>
                         </li>
                         <!-- Botões para cada escola -->
@@ -81,7 +85,7 @@
                                         <div class="info-aluno">
                                             <h2> {{aluno['nome_aluno']}} </h2>
                                             <p><strong>Nome do responsável:</strong> {{aluno['nome_responsavel']}} </p>
-                                            <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}} - {{aluno['telefone_responsavel_2']}}</p>
+                                            <p><strong>Telefone do responsável:</strong> {{aluno['telefone_responsavel']}} - {{aluno['telefone_responsavel_2']}}/p>
                                         </div>
                                         <div class="container-rota">
                                             <input type="checkbox" class="student-checkbox" data-address="{{aluno['endereco']}}" value="{{aluno['nome_aluno']}}">
@@ -109,10 +113,7 @@
 
                                         <div class="container-btn-excluir">
                                             <a href="/quebra-contrato/{{aluno['id_aluno']}}"><button>Excluir Aluno</button></a>
-                                        </div>
-                                        <div class="container-btn-excluir"> 
-                                            <a href="/listar_historico_aluno/{{ aluno['id_aluno'] }}">
-                                                <button>Ver pagamentos</button>
+                                            <a href="/listar_historico_aluno/{{ aluno['id_aluno'] }}">  <button>Ver pagamentos</button>
                                             </a>
                                         </div>
                                     </div>
@@ -136,6 +137,7 @@
                 <div id="routeUrl"></div>
             </section>
         </main>
+
 
         <script>
             // Função para mostrar ou esconder alunos com base no texto de pesquisa

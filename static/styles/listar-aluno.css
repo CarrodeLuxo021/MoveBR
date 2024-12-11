@@ -18,9 +18,31 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
+}
+
+
+/* Estilização da navegação */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-02); /* Azul mais claro para o nav */
+    width: 100%;
+    height: 50px;
+}
+
+.nav-item {
+    color: var(--cor-03); /* Texto branco */
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s;
+}
+
+.nav-item:hover {
+    background: var(--cor-01); /* Cor de fundo ao passar o mouse */
 }
 
 .button-back {
@@ -53,7 +75,6 @@ main {
     margin: 20px 0;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
 }
 
 .btn-cadaluno button {
@@ -61,72 +82,26 @@ main {
     color: var(--cor-03); /* Branco */
     font-size: 15px;
     border: none;
-    padding: 7px 12px;
-    border-radius: 50px;
+    padding: 8px 12px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-bottom: 80px;
+    margin-bottom: 45px;
 }
 
 .btn-cadaluno button:hover {
     background-color: #b06d14; /* Laranja mais escuro */
 }
 
-/* Estilo do container de busca */
-.container-busca {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 45px;
-}
-
-.container-listagem-busca {
-    top: 20px;
-    right: 20px;
-    width: 200px;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.container-listagem-busca h2 {
-    font-size: 18px;
-    color: var(--cor-01); /* Cinza-azulado escuro */
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.container-listagem-busca ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.container-listagem-busca li {
-    margin-bottom: 5px;
-}
-
-.container-listagem-busca .btn-escola {
-    background-color: var(--cor-05); /* Laranja */
-    color: var(--cor-03); /* Branco */
-    padding: 8px 12px;
-    border: none;
-    border-radius: 20px;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align: center;
-    margin-right: 5px;
-}
-
-.container-listagem-busca .btn-escola:hover {
-    background-color: #b06d14; /* Laranja mais escuro */
-}
-
 .input-busca {
+    background-color: rgb(220, 221, 221);
+    width: 30rem;
+    height: 4rem;
     border: none;
+    font-size: larger;
     padding: 10px 15px;
     outline: none;
-    border-radius: 25px 0 0 25px;
+    border-radius: 4px 0 0 4px;
 }
 
 .icone-busca {
@@ -134,7 +109,9 @@ main {
     border: none;
     padding: 8px 13px;
     cursor: pointer;
-    border-radius: 0 25px 25px 0;
+    border-radius: 0 4px 4px 0;
+    height: 4rem;
+    width: 4rem;
 }
 
 .icone-busca:hover {
@@ -268,16 +245,18 @@ td {
 }
 
 .container-btn-excluir {
-    margin-left: 87%;
+    margin-left: 70%;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
 }
 
 .container-btn-excluir button {
     background-color: var(--cor-05); /* Laranja */
     color: var(--cor-03); /* Branco */
+    margin-right: 5px;
     border: none; /* Remove borda padrão */
-    padding: 12px; /* Espaçamento interno */
-    border-radius: 50px; /* Bordas arredondadas */
+    padding: 8px 12px; /* Espaçamento interno */
+    border-radius: 4px; /* Bordas arredondadas */
     cursor: pointer; /* Cursor de mão */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
 }
@@ -340,6 +319,10 @@ form label {
     margin-top: 7px;
 }
 
+.container-listagem-busca{
+    margin-bottom: 20px;
+}
+
 .container-listagem-busca h2 {
     font-size: 18px;
     color: var(--cor-01); /* Cinza-azulado escuro */
@@ -354,21 +337,41 @@ form label {
     margin-bottom: 5px;
 }
 
-.container-listagem-busca .btn-escola {
+.container-listagem-busca .btn-todos {
     background-color: var(--cor-05); /* Laranja */
     color: var(--cor-03); /* Branco */
     padding: 8px 12px;
     border: none;
-    border-radius: 20px;
-    width: 100%;
+    border-radius: 4px;
+    width: 83%;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-align: center;
     margin-right: 5px;
 }
 
-.container-listagem-busca .btn-escola:hover {
+.container-listagem-busca .btn-todos:hover {
     background-color: var(--cor-06); /* Laranja mais escuro */
+}
+
+.container-listagem-busca .btn-escola{
+      background-color: var(--cor-05); /* Laranja */
+    color: var(--cor-03); /* Branco */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    margin-right: 5px;
+}
+.btn-escola:hover{
+    background-color: var(--cor-06); /* Laranja mais escuro */
+}
+
+.container-listagem-busca h2{
+    margin-left: -24px;
 }
 
 /* Estilo do container de rota */
@@ -488,7 +491,7 @@ input[type="checkbox"]:checked::after {
     }
 
     .container-busca {
-        margin-left: 40px;
+        margin-left: 40px 0 0 40px;
     }
 
     .container-listagem-busca {
