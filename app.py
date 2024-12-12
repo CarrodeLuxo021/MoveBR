@@ -134,7 +134,7 @@ def logar():
             session['usuario_logado'] = {
                 "nome": usuario.nome,
                 "email": usuario.email,
-                
+                "cpf": usuario.cpf                
             }
             flash("Login realizado com sucesso!","success")
             return redirect('/pag-inicial-motorista')

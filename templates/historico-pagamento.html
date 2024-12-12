@@ -31,37 +31,40 @@
             <a href="/listar-alunos" class="nav-item">Alunos cadastrados</a>
             <a href="/historico_pagamento" class="nav-item">Histórico de Pagamentos</a>
         </nav>
-
+        
         <div class="container">
             <div class="cabecalho-container">
                 <img src="/static/icones/dinheiro.png" alt="Ícone de dinheiro" class="icone-dinheiro">
                 <h2>Histórico de Pagamentos</h2>
             </div>
-
-            <form action="/gerar-pagamento" method="get" class="ger-pagamento">
-                <div class="ger-pagamento-container">
-                    <button type="submit" class="ger-pagamento">+ Cadastrar novo pagamento</button>
-                </div>
-            </form>
-            <form action="/historico_pagamento_filtro" method="post" class="months-content">
-                <select name="mesPagamento" class="select-meses">
-                    <option value="" disabled selected>Todos</option>
-                    <option value="janeiro">Janeiro</option>
-                    <option value="fevereiro">Fevereiro</option>
-                    <option value="março">Março</option>
-                    <option value="abril">Abril</option>
-                    <option value="maio">Maio</option>
-                    <option value="junho">Junho</option>
-                    <option value="julho">Julho</option>
-                    <option value="agosto">Agosto</option>
-                    <option value="setembro">Setembro</option>
-                    <option value="outubro">Outubro</option>
-                    <option value="novembro">Novembro</option>
-                    <option value="dezembro">Dezembro</option>
-                </select>
-                <button type="submit" class="search-button">Pesquisar</button>
-            </form>
-
+            <div class="button-content">
+                <form action="/gerar-pagamento" method="get" class="ger-pagamento">
+                    <div class="ger-pagamento-container">
+                        <button type="submit" class="ger-pagamento">+ Cadastrar novo pagamento</button>
+                    </div>
+                </form>
+                <form action="/historico_pagamento_filtro" method="post" class="months-content">
+                    <div class="container-filtro">
+                        <select name="mesPagamento" class="select-meses">
+                            <option value="" disabled selected>Todos</option>
+                            <option value="janeiro">Janeiro</option>
+                            <option value="fevereiro">Fevereiro</option>
+                            <option value="março">Março</option>
+                            <option value="abril">Abril</option>
+                            <option value="maio">Maio</option>
+                            <option value="junho">Junho</option>
+                            <option value="julho">Julho</option>
+                            <option value="agosto">Agosto</option>
+                            <option value="setembro">Setembro</option>
+                            <option value="outubro">Outubro</option>
+                            <option value="novembro">Novembro</option>
+                            <option value="dezembro">Dezembro</option>
+                        </select>
+                    
+                        <button type="submit" class="search-button">Pesquisar</button>
+                    </div>
+                </form>
+            </div>
             <div class="informacoes">
                 {% if pagamentos %}
                 <table class="alunos-listados">
@@ -94,11 +97,13 @@
                         {% for pendentes in alunos_pendentes %}
                         <tr>
                             <td><strong>{{ pendentes.nome_aluno }}</strong></td>
+                            <td>Pendente</td>
+                            <td>Pendente</td>
+                            <td>Pendente</td>
                             <td class="nao-pago">
-                                <h3>não pago</h3>
-                                <form action="/excluir-historico/{{ pendentes.id_pagamento }}" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn-excluir">Excluir</button>
-                                </form>
+                                <form action="/excluir-historico/{{ pendentes.id_pagamento }}" method="post">
+                                    <button class="btn-excluir" type="submit"><img src="/static/icones/deletar-pagamento.png" alt=""></button>
+                                </form> 
                             </td>
                         </tr>
                         {% endfor %}
@@ -107,7 +112,7 @@
                 {% else %}
                 <p>Nenhum pagamento encontrado para este aluno.</p>
                 {% endif %}
-            </div>
+        </div>
         
         <h2 class="valor">Valor Total:<span id="valor_total">R$0,00</span></h2>
 
